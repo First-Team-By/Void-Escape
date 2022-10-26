@@ -1,0 +1,13 @@
+Assets/AutoSave/**
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+.vs/**
+/Library/**
+Logs/**
+Library/StateCache/**
+Library/Artifacts/**
+Library/Artifacts/*
