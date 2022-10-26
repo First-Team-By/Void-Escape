@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
   m_Name: KnightChars
   m_EditorClassIdentifier: 
-  MaxHealth: 0
-  BaseDamage: 0
-  CritChance: 0
-  CritMultiplier: 0
-  EvadeChance: 0
-  Defence: 0
+  MaxHealth: 32
+  CritChance: 0.2
+  CritMultiplier: 1.5
+  EvadeChance: 0.15
+  Accuracy: 0
+  Defence: 0.3
