@@ -11,3 +11,4 @@ Logs/**
 Library/StateCache/**
 Library/Artifacts/**
 Library/Artifacts/*
+Assembly-CSharp.csproj

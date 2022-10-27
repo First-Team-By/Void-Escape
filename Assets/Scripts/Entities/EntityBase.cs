@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public abstract class EntityAbstract : MonoBehaviour
+public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
+
+    public int Position { get; set; }
+    public abstract List<EntityCommand> Commands(); 
 
     public float Health
     {
