@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGLoop : MonoBehaviour
 {
-    [Header("Скорость перемещения заднего фона")]
+    [Header("Скорость перемещения фона звезд")]
     [SerializeField] private float _speed;
 
     private Vector2 _offset = Vector2.zero;

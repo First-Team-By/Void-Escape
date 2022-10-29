@@ -12,7 +12,7 @@ public class ParallaxBackground : MonoBehaviour
 
     private float _planetStretchingWidth = 3f;
 
-    private float _StretchinPlanetHeight = 10f;
+    private float _stretchinPlanetHeight = 10f;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class ParallaxBackground : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector3 (_width + _planetStretchingWidth, _StretchinPlanetHeight, 0);
+            transform.localScale = new Vector3 (_width + _planetStretchingWidth, _stretchinPlanetHeight, 0);
         }
     }
 }

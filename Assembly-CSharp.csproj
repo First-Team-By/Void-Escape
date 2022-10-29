@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityState.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
+    <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityAbstract.cs" />
   </ItemGroup>
   <ItemGroup>
