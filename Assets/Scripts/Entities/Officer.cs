@@ -3,14 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Entities
+public class Officer : Character
 {
-    public class Officer : Character
+    private void Awake()
     {
-        private void Awake()
-        {
-            Weapon = new Pistol();
-        }
-
+        Weapon = new Pistol();
     }
+
 }

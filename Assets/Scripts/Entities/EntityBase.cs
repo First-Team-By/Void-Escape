@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
-
     public int Position { get; set; }
     public abstract List<EntityCommand> Commands(); 
 

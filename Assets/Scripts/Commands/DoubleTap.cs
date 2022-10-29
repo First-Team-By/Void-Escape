@@ -2,30 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Commands
+public class DoubleTap : EntityCommand
 {
-    public class DoubleTap : EntityCommand
+    private void Awake()
     {
-        private void Awake()
-        {
-            OnExecute = DoupleTapExec;
-            IsEnabled = DoupleTapEnabled;
+        OnExecute = DoupleTapExec;
+        IsEnabled = DoupleTapEnabled;
 
-            SelfPositions = new List<int>() { 1, 2, 3 };
-            EnemyPositions = new List<int>() { 1, 2, 3 };
-        }
+        SelfPositions = new List<int>() { 1, 2, 3 };
+        EnemyPositions = new List<int>() { 1, 2, 3 };
+    }
 
-        protected virtual void DoupleTapExec()
-        {
-
-        }
-
-        private bool DoupleTapEnabled(EntityBase entity)
-        {
-            return SelfPositions.Contains(entity.Position);
-        }
+    protected virtual void DoupleTapExec()
+    {
 
     }
 
+    private bool DoupleTapEnabled(EntityBase entity)
+    {
+        return SelfPositions.Contains(entity.Position);
+    }
 
 }
+

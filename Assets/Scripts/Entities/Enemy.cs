@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Entities
+public abstract class Enemy : EntityBase
 {
-    public abstract class Enemy : EntityBase
-    {
 
-    }
 }
