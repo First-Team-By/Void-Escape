@@ -22,10 +22,13 @@ public class EntityCharacteristics : ScriptableObject
     [Range(0, 0.8f)] 
     [SerializeField] private float Defence;
 
+    [SerializeField] private int Initiative;
+
     public float _maxHealth => MaxHealth;
     public float _critChance => CritChance;
     public float _critMultiplier => CritMultiplier;
     public float _evadeChance => EvadeChance;
-    public float _accuracy => _accuracy;
+    public float _accuracy => Accuracy;
     public float _defence => Defence;
+    public int _initiative => Initiative;
 }
