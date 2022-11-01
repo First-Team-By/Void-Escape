@@ -56,27 +56,32 @@
     <Analyzer Include="E:\VisualStudio\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Entities\CharacterGroup.cs" />
     <Compile Include="Assets\Scripts\Entities\Character.cs" />
     <Compile Include="Assets\Scripts\Weapons\EntityWeapon.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
+    <Compile Include="Assets\Scripts\Entities\Global.cs" />
+    <Compile Include="Assets\Scripts\UI\CharacterSlotUI.cs" />
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
+    <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
+    <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityState.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
+    <Compile Include="Assets\Scripts\Entities\Resources\EntityVisuals.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\Tools\EntityTool.cs" />
+    <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
+    <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Commands\DoubleTap.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
-    <Compile Include="Assets\BattleRoutine.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\EntityVisuals.cs" />
-    <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
-    <Compile Include="Assets\Scripts\Entities\CharacterGroup.cs" />
-    <Compile Include="Assets\Scripts\Entities\Global.cs" />
+    <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
+    <Compile Include="Assets\Scripts\EnemyPrefabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

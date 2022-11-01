@@ -7,7 +7,13 @@ using Random = UnityEngine.Random;
 public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
+    [SerializeField] private GameObject entityPrefab;
+
+    public EntityCharacteristics EntityChars => entityChars;
+    public GameObject EntityPrefab => entityPrefab;
+    public int CurrentInitiative { get; set; }
     public int Position { get; set; }
+    public bool IsActive { get; set; }
     public abstract List<EntityCommand> Commands(); 
 
     public float Health
@@ -18,7 +24,7 @@ public abstract class EntityBase : MonoBehaviour
         }
         set
         {
-            _health = Mathf.Clamp(value, 0, entityChars._maxHealth);
+            _health = Mathf.Clamp(value, 0, entityChars.MaxHealth);
         }
     }
 
@@ -39,18 +45,18 @@ public abstract class EntityBase : MonoBehaviour
 
     public bool TakeDamage(float damage, EntityCharacteristics provokerChars)
     {
-        if (Random.Range(0, 1f) < Mathf.Clamp(entityChars._evadeChance - provokerChars._accuracy, 0, 1f))
+        if (Random.Range(0, 1f) < Mathf.Clamp(entityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
         {
             return false;
         }
 
-        if (Random.Range(0, 1f) < provokerChars._critChance)
+        if (Random.Range(0, 1f) < provokerChars.CritChance)
         {
-            Health -= damage * entityChars._defence * provokerChars._critMultiplier;
+            Health -= damage * entityChars.Defence * provokerChars.CritMultiplier;
             return true;
         }
 
-        Health -= damage * entityChars._defence;
+        Health -= damage * entityChars.Defence;
         return true;
     }
 
