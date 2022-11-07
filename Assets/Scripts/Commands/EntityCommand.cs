@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityCommand: MonoBehaviour
+public abstract class EntityCommand
 {
     public Sprite Icon { set; get; }
     public Action OnExecute { set; get; }

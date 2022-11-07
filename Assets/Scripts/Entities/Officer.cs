@@ -8,6 +8,7 @@ public class Officer : Character
     private void Awake()
     {
         Weapon = new Pistol();
+        Prefab = Global.CharacterPrefabs.Officer;
     }
 
 }

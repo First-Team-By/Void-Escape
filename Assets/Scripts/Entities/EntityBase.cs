@@ -7,10 +7,24 @@ using Random = UnityEngine.Random;
 public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
-    [SerializeField] private GameObject entityPrefab;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private EntityState _state = new EntityState();
 
-    public EntityCharacteristics EntityChars => entityChars;
-    public GameObject EntityPrefab => entityPrefab;
+    public EntityCharacteristics EntityChars
+    {
+        get => entityChars;
+        set
+        {
+            entityChars = value;
+        }
+    }
+
+    public GameObject Prefab
+    {
+        get => prefab;
+        set => prefab = value;
+    }
+
     public int CurrentInitiative { get; set; }
     public int Position { get; set; }
     public bool IsActive { get; set; }
@@ -41,7 +55,6 @@ public abstract class EntityBase : MonoBehaviour
     }
 
     private float _health;
-    private EntityState _state;
 
     public bool TakeDamage(float damage, EntityCharacteristics provokerChars)
     {

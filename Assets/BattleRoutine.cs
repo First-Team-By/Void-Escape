@@ -19,7 +19,6 @@ public class BattleRoutine : MonoBehaviour
 
     private DepartmentLevel level;
     private List<Enemy> enemyList;
-    private Queue<EntityBase> turnQueue;
 
     private CharacterGroup group;
     
@@ -27,44 +26,19 @@ public class BattleRoutine : MonoBehaviour
 
     private void InitBattle()
     {
-        turnQueue = new Queue<EntityBase>();
         roundCounter = 1;
-        group = Global.currentGroup;
-        foreach (var character in group.CharacterList)
-        {
-            character.transform.SetParent(characterPositions[character.Position - 1].transform); 
-            character.transform.localPosition = Vector2.zero;
-        }
-
+        
+        SetCharactersInPositions();
         SetLevel();
-        InitQueue();
         EntityTurn();
     }
 
 
     private void EntityTurn()
     {
-        if (turnQueue.Count == 0)
-        {
-            InitQueue();
-        }
-        var currentEntity = turnQueue.Dequeue();
         
-        OnEntityTurn?.Invoke(currentEntity);
     }
-
-    private void InitQueue()
-    {
-        foreach (var character in group.CharacterList)
-        {
-            turnQueue.Enqueue(character);
-        }
-
-        foreach (var enemy in level.EnemyList)
-        {
-            turnQueue.Enqueue(enemy);
-        }
-    }
+    
     private void SetLevel()
     {
         level = new DepartmentLevel(5 ,5);
@@ -79,6 +53,33 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
+    private void SetCharactersInPositions()
+    {
+        //SetCharacterGroup();
+        group = Global.currentGroup;
+        foreach (var character in group.CurrentCharacterInfos)
+        {
+            var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
+            characterInst.transform.localPosition = Vector2.zero;
+            characterInst.transform.localScale = Vector2.one;
+        }
+    }
+
+    //private void SetCharacterGroup()
+    //{
+    //    List<CurrentCharacterInfo> characterInfos = CharacterSerializable.DeserializeCurrentInfo();
+    //    foreach (var info in characterInfos)
+    //    {
+    //        var characterInstance = Instantiate(info.CharacterPrefab);
+    //        var character = characterInstance.GetComponent<Character>();
+
+    //        character.EntityChars = info.CurrentCharacteristics;
+    //        character.Health = info.CurrentHealth;
+
+    //        Global.currentGroup.CharacterList.Add(character);
+    //    }
+    //}
+
     void Start()
     {
         InitBattle();
@@ -86,13 +87,7 @@ public class BattleRoutine : MonoBehaviour
 
     void Awake()
     {
-        Global.currentGroup = new CharacterGroup();
-        Global.currentGroup.CharacterList = new List<Character>();
-        var officer = Instantiate(officerPrefab);
-        officer.GetComponent<Officer>().Position = 1;
-
-        Global.currentGroup.CharacterList.Add(officer.GetComponent<Officer>());
-
+        
     }
 
 }

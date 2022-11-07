@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 public class CharacterGroup
 {
-    public List<Character> CharacterList { get; set; }
-    public CharacterGroup(List<Character> characters)
-    {
-        CharacterList = characters;
-    }
+    public List<CurrentCharacterInfo> CurrentCharacterInfos { get; set; }
 
     public CharacterGroup()
     {
-        
+        CurrentCharacterInfos = new List<CurrentCharacterInfo>();
     }
 }
