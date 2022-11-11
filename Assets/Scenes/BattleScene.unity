@@ -607,7 +607,6 @@ MonoBehaviour:
   - {fileID: 1304780758}
   - {fileID: 1668636621}
   - {fileID: 1489015019}
-  officerPrefab: {fileID: 8334285128583968543, guid: 7b6fe0cdb779c3840911050e585be825, type: 3}
   OnEntityTurn:
     m_PersistentCalls:
       m_Calls:
@@ -1394,6 +1393,36 @@ Transform:
   - {fileID: 1744157119}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &980307401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980307402}
+  m_Layer: 0
+  m_Name: BattleRenderHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &980307402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980307401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0453142, y: 0.81987804, z: -3.3204923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000036128
 GameObject:

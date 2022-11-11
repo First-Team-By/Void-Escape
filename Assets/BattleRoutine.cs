@@ -12,13 +12,14 @@ public class BattleRoutine : MonoBehaviour
 {
     [SerializeField] private GameObject[] characterPositions;
     [SerializeField] private GameObject[] enemyPositions;
-    [SerializeField] private GameObject officerPrefab;
 
 
     public int roundCounter { get; private set; }
+    public List<EntityBase> EntitiesRoute { get =>  enemyList.Cast<EntityBase>().Concat(characterList).ToList(); }
 
     private DepartmentLevel level;
     private List<Enemy> enemyList;
+    private List<Character> characterList;
 
     private CharacterGroup group;
     
@@ -55,33 +56,21 @@ public class BattleRoutine : MonoBehaviour
 
     private void SetCharactersInPositions()
     {
-        //SetCharacterGroup();
         group = Global.currentGroup;
         foreach (var character in group.CurrentCharacterInfos)
         {
             var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
             characterInst.transform.localPosition = Vector2.zero;
             characterInst.transform.localScale = Vector2.one;
+            characterList.Add(characterInst.GetComponent<Character>());
         }
     }
 
-    //private void SetCharacterGroup()
-    //{
-    //    List<CurrentCharacterInfo> characterInfos = CharacterSerializable.DeserializeCurrentInfo();
-    //    foreach (var info in characterInfos)
-    //    {
-    //        var characterInstance = Instantiate(info.CharacterPrefab);
-    //        var character = characterInstance.GetComponent<Character>();
-
-    //        character.EntityChars = info.CurrentCharacteristics;
-    //        character.Health = info.CurrentHealth;
-
-    //        Global.currentGroup.CharacterList.Add(character);
-    //    }
-    //}
+    
 
     void Start()
     {
+        characterList = new List<Character>();
         InitBattle();
     }
 

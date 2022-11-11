@@ -22,13 +22,10 @@ public class TeamInitHandler : MonoBehaviour
 
         if (characters.Count == 0)
         {
-            throw new InvalidOperationException("The group is null");
+            throw new InvalidOperationException("The group is null or fuck you");
         }
 
         Global.SaveCharactersInfo(characters);
-
-
-        //CharacterSerializable.SerializeCurrentInfo();
         SceneManager.LoadScene("BattleScene");
     }
 }
