@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
   m_Name: OfficerChars
   m_EditorClassIdentifier: 
-  MaxHealth: 32
-  CritChance: 0.2
-  CritMultiplier: 1.5
-  EvadeChance: 0.15
-  Accuracy: 0
-  Defence: 0.3
+  _maxHealth: 32
+  _critChance: 0.3
+  _critMultiplier: 1.5
+  _evadeChance: 0
+  _accuracy: 0
+  _defence: 0
+  _initiative: 4
+  _value: 0

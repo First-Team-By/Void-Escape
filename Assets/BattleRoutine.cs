@@ -1,49 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
+using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BattleRoutine : MonoBehaviour
 {
-    public List<Character> characters => gameObject.GetComponentsInChildren<Character>().ToList();
-    public List<Enemy> enemies => gameObject.GetComponentsInChildren<Enemy>().ToList();
+    [SerializeField] private GameObject[] characterPositions;
+    [SerializeField] private GameObject[] enemyPositions;
 
-    private Queue<EntityBase> turnQueue;
 
     public int roundCounter { get; private set; }
+    public List<EntityBase> EntitiesRoute { get =>  enemyList.Cast<EntityBase>().Concat(characterList).ToList(); }
 
-    private void Init()
+    private DepartmentLevel level;
+    private List<Enemy> enemyList;
+    private List<Character> characterList;
+
+    private CharacterGroup group;
+    
+    public UnityEvent<EntityBase> OnEntityTurn;
+
+    private void InitBattle()
     {
         roundCounter = 1;
-        turnQueue = new Queue<EntityBase>();
+        
+        SetCharactersInPositions();
+        SetLevel();
+        EntityTurn();
     }
 
-    private void InitQueue()
-    {
-        foreach (var character in characters)
-        {
-            turnQueue.Enqueue(character);
-        }
-
-        foreach (var enemy in enemies)
-        {
-            turnQueue.Enqueue(enemy);
-        }
-    }
 
     private void EntityTurn()
     {
-        if (turnQueue.Count == 0)
+        
+    }
+    
+    private void SetLevel()
+    {
+        level = new DepartmentLevel(5 ,5);
+        SetEnemiesInPositions();
+    }
+    private void SetEnemiesInPositions()
+    {
+        for (int i = 0; i < level.EnemyList.Count; i++)
         {
-            InitQueue();
+            level.EnemyList[i].transform.SetParent(enemyPositions[i].transform);
+            level.EnemyList[i].transform.localPosition = Vector2.zero;
         }
     }
 
+    private void SetCharactersInPositions()
+    {
+        group = Global.currentGroup;
+        foreach (var character in group.CurrentCharacterInfos)
+        {
+            var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
+            characterInst.transform.localPosition = Vector2.zero;
+            characterInst.transform.localScale = Vector2.one;
+            characterList.Add(characterInst.GetComponent<Character>());
+        }
+    }
+
+    
+
     void Start()
     {
-        Init();
-
-
+        characterList = new List<Character>();
+        InitBattle();
     }
+
+    void Awake()
+    {
+        
+    }
+
 }
