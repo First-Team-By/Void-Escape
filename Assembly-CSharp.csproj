@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
+    <Compile Include="Assets\Scripts\UI\UIBattleButton.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityState.cs" />
     <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityVisuals.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\Tools\EntityTool.cs" />
+    <Compile Include="Assets\Scripts\Commands\CommandType.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
@@ -87,7 +89,9 @@
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Commands\DoubleTap.cs" />
+    <Compile Include="Assets\Scripts\Commands\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
+    <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

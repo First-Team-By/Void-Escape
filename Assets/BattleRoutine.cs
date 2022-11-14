@@ -15,11 +15,16 @@ public class BattleRoutine : MonoBehaviour
 
 
     public int roundCounter { get; private set; }
-    public List<EntityBase> EntitiesRoute { get =>  enemyList.Cast<EntityBase>().Concat(characterList).ToList(); }
+    public List<EntityBase> EntitiesRoute => enemyList
+        .Cast<EntityBase>()
+        .Concat(characterList)
+        .OrderByDescending(i => i.CurrentInitiative)
+        .ToList();
 
     private DepartmentLevel level;
     private List<Enemy> enemyList;
     private List<Character> characterList;
+    private EntityBase currentEntity;
 
     private CharacterGroup group;
     
@@ -37,7 +42,8 @@ public class BattleRoutine : MonoBehaviour
 
     private void EntityTurn()
     {
-        
+        currentEntity = EntitiesRoute.First();
+        OnEntityTurn?.Invoke(currentEntity);
     }
     
     private void SetLevel()

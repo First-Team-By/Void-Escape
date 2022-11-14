@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Character : EntityBase
+public abstract class Character : EntityBase
 {
     public EntityWeapon Weapon { set; get; }
     public EntityTool Tool { set; get; }
-    public override List<EntityCommand> Commands()
-    {
-        var result = new List<EntityCommand>();
-        result.AddRange(Weapon.Commands);
-        result.AddRange(Tool.Commands);
+    public abstract List<CharacterCommand> NativeCommands { get; }
 
-        return result;
+    public override List<EntityCommand> Commands
+    {
+        get
+        {
+            return NativeCommands.Where(x => x.IsAvaliable(this)).Select(x => x as EntityCommand).ToList();
+        }
     }
+
+    //public override List<EntityCommand> Commands()
+    //{
+    //    var result = new List<EntityCommand>();
+    //    result.AddRange(Weapon.Commands);
+    //    result.AddRange(Tool.Commands);
+
+    //    return result;
+    //}
 }
