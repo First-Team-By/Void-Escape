@@ -10,6 +10,8 @@ public static class Global
 {
     public static CharacterGroup currentGroup;
 
+    public static int currentRoomNumber;
+
     public static List<GameObject> enemyPrefabs;
 
     private static GameObject enemyPrefabContainer;
