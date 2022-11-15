@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Mutant : Enemy
 {
-    public override List<EntityCommand> Commands()
-    {
-        return new List<EntityCommand>() { new ClawStrike() };
-    }
+    public override List<EntityCommand> Commands { get; }
 }

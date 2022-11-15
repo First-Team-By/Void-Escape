@@ -28,7 +28,7 @@ public abstract class EntityBase : MonoBehaviour
     public int CurrentInitiative { get; set; }
     public int Position { get; set; }
     public bool IsActive { get; set; }
-    public abstract List<EntityCommand> Commands(); 
+    public abstract List<EntityCommand> Commands { get; }
 
     public float Health
     {

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ClawStrike : EntityCommand
 {
-    void Awake()
+    public ClawStrike()
     {
         OnExecute = ClawStrikeExec;
         IsEnabled = ClawStrikeEnabled;
 
         SelfPositions = new List<int>() { 1, 2, 3 };
         EnemyPositions = new List<int>() { 1, 2, 3 };
-
     }
+
     protected virtual void ClawStrikeExec()
     {
 
@@ -22,4 +22,6 @@ public class ClawStrike : EntityCommand
     {
         return SelfPositions.Contains(entity.Position);
     }
+
+    
 }
