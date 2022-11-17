@@ -43,11 +43,14 @@ public class RoomBehaviour : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Выбрана комната номер " + _numberRoom);
+
         if (CanPass(Global.currentRoomNumber))
         {
             Global.currentRoomNumber = _numberRoom;
 
-            _controller.SetGroupMarker(this);
+            _controller.SetGroupMarker();
+
+            _controller.IsOnMouseEnter(true);
         }
     }
 

@@ -6,8 +6,6 @@ public class DungeonGenerator : MonoBehaviour
 {
     public Vector2 size;
 
-    //public int roomNumber;
-
     public int startPos = 0;
 
     private int currentCell;
