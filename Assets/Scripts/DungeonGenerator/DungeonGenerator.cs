@@ -6,8 +6,6 @@ public class DungeonGenerator : MonoBehaviour
 {
     public Vector2 size;
 
-    //public int roomNumber;
-
     public int startPos = 0;
 
     private int currentCell;
@@ -27,7 +25,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        MazeGenerator();
+        
     }
 
     void Update()
@@ -35,8 +33,10 @@ public class DungeonGenerator : MonoBehaviour
 
     }
 
-    void GenerateDungeon()
+    List<RoomBehaviour> GenerateDungeon()
     {
+        var result = new List<RoomBehaviour>(); 
+
         for (int i = 0; i < board.Count; i++)
         {
             if (board[i].visited)
@@ -46,12 +46,16 @@ public class DungeonGenerator : MonoBehaviour
                 newRoom.UpdateRoom(board[board[i].ID]);
 
                 newRoom.name += " " + board[i].x + "-" + board[i].y;
+
+                result.Add(newRoom);
             }
 
         }
+
+        return result;
     }
 
-    void MazeGenerator()
+    public List<RoomBehaviour> MazeGenerator()
     {
         board = new List<Cell>();
 
@@ -148,8 +152,9 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
+        
 
-        GenerateDungeon();
+        return GenerateDungeon();
 
     }
 
