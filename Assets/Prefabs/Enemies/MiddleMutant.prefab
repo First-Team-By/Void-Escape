@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.24, y: 5.87, z: 0}
   m_LocalScale: {x: 0.2776851, y: 0.2776851, z: 0.2776851}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,6 +44,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -71,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 5e5364d48c57335498f2f01991719e2b, type: 3}
   m_Color: {r: 0.12519169, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -96,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityChars: {fileID: 11400000, guid: 600c40d35a80f01438222dc2524cf08a, type: 2}
-  entityPrefab: {fileID: 4757637054081912182}
+  prefab: {fileID: 0}

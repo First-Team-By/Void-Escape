@@ -6,6 +6,5 @@ using System.Threading.Tasks;
 
 public abstract class CharacterCommand : EntityCommand
 {
-
     public abstract bool IsAvaliable(EntityBase entity);
 }

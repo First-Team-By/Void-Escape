@@ -34,4 +34,6 @@ public class SingleFire : CharacterCommand
 
         return true;
     }
+
+    public override string IconName { get; }
 }

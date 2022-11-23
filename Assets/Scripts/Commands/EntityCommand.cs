@@ -5,12 +5,18 @@ using UnityEngine.Events;
 
 public abstract class EntityCommand
 {
+    public abstract string IconName { get; }
     public Sprite Icon { set; get; }
     public UnityAction OnExecute { set; get; }
     public Predicate<EntityBase> IsEnabled { set; get; }
 
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
+
+    public EntityCommand()
+    {
+        Icon = Resources.Load<Sprite>("Sprites/" + IconName);
+    }
 
     public IEnumerator<EntityBase> GetAccessibleEntities(List<EntityBase> entityList)
     {
@@ -21,5 +27,10 @@ public abstract class EntityCommand
                 yield return entity;
             }
         }
+    }
+
+    public virtual List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    {
+        return new List<int>();
     }
 }

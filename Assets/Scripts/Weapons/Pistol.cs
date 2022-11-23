@@ -6,6 +6,9 @@ namespace Assets.Scripts.Weapons
 {
     public class Pistol : EntityWeapon
     {
-
+        public Pistol()
+        {
+            Type = WeaponType.Pistol;
+        }
     }
 }
