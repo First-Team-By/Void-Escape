@@ -19,7 +19,7 @@ public class CommandExecutionHandler : MonoBehaviour
         int currentButton = 0;
         foreach (var command in entity.Commands)
         {
-            battleButtons[currentButton].onClick.AddListener(delegate { battleRoutine.GetAvaliableTargets(command); });
+            battleButtons[currentButton].onClick.AddListener(delegate { battleRoutine.SetCurrentCommand(command); });
             battleButtons[currentButton].image.sprite = command.Icon;
             currentButton++;
         }

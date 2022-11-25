@@ -15,6 +15,8 @@ public class BattleRoutine : MonoBehaviour
         .OrderByDescending(i => i.CurrentInitiative)
         .ToList();
 
+    public List<GameObject> AllPositions => characterPositions.Concat(enemyPositions).ToList();
+    
     private DepartmentLevel level;
     public List<Enemy> EnemyList => level.EnemyList;
     private List<Character> characterList;
@@ -22,8 +24,9 @@ public class BattleRoutine : MonoBehaviour
 
     private CharacterGroup group;
     
-    private EntityCommand currentCommand;
+    public EntityCommand CurrentCommand { get; set; }
     public List<int> CurrentAvaliableTargets { get; set; }
+    public List<int> CurrentSelectedTargets { get; set; }
     
 
     private void InitBattle()
@@ -60,7 +63,7 @@ public class BattleRoutine : MonoBehaviour
         {
             level.EnemyList[i].transform.SetParent(enemyPositions[i].transform);
             level.EnemyList[i].transform.localPosition = Vector2.zero;
-            level.EnemyList[i].Position = i;
+            level.EnemyList[i].Position = i + 5;
         }
     }
 
@@ -78,9 +81,37 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
-    public void GetAvaliableTargets(EntityCommand command)
+    public void SetCurrentCommand(EntityCommand command)
     {
         CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EnemyList.Select(x => x.Position).ToList());
+        CurrentCommand = command;
+    }
+
+    public void SelectTargets(int targetPosition)
+    {
+        if (!CurrentAvaliableTargets.Contains(targetPosition))
+        {
+            return;
+        }
+
+        CurrentSelectedTargets = CurrentCommand.GetSelectedTargets(targetPosition);
+        foreach (var position in AllPositions)
+        {
+            var bp = position.GetComponent<BattlePosition>();
+            if (CurrentSelectedTargets.Contains(bp.Position))
+            {
+                bp.LightOn();
+            }
+        }
+    }
+
+    public void DeSelectTargets()
+    {
+        foreach (var position in AllPositions)
+        {
+            var bp = position.GetComponent<BattlePosition>();
+            bp.LightOff();
+        }
     }
 
     public void OnTargetClick(EntityBase selectedEntity)

@@ -33,4 +33,9 @@ public abstract class EntityCommand
     {
         return new List<int>();
     }
+
+    public virtual List<int> GetSelectedTargets(int targetPosition)
+    {
+        return new List<int>() { targetPosition };
+    }
 }

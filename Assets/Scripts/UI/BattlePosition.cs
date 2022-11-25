@@ -6,7 +6,9 @@ public class BattlePosition : MonoBehaviour
 {
     private BattleRoutine battleRoutine;
     [SerializeField] private Light _light;
-    [SerializeField] private int Position;
+    [SerializeField] private int _position;
+
+    public int Position => _position;
     void Start()
     {
         battleRoutine = GameObject.FindObjectOfType<BattleRoutine>();
@@ -16,11 +18,28 @@ public class BattlePosition : MonoBehaviour
     {
         if (battleRoutine.CurrentAvaliableTargets != null)
         {
-            _light.enabled = battleRoutine.CurrentAvaliableTargets.Contains(Position);
+            //_light.enabled = battleRoutine.CurrentAvaliableTargets.Contains(Position);
+            battleRoutine.SelectTargets(_position);
         }
     }
 
     private void OnMouseExit()
+    {
+        //_light.enabled = false;
+        battleRoutine.DeSelectTargets();
+    }
+
+    private void OnMouseDown()
+    {
+
+    }
+
+    public void LightOn()
+    {
+        _light.enabled = true;
+    }
+
+    public void LightOff()
     {
         _light.enabled = false;
     }

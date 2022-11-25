@@ -35,5 +35,29 @@ public class SingleFire : CharacterCommand
         return true;
     }
 
-    public override string IconName { get; }
+    public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    {
+        if (selfPosition < 4)
+        {
+            return new List<int>();
+        }
+
+        return targetPositions.Where(x => x < 9 && x > 5).ToList();
+    }
+
+    //public override List<int> GetSelectedTargets(int targetPosition)
+    //{
+    //    if (targetPosition == 6)
+    //    {
+    //        return new List<int>() { 6, 9 };
+    //    }
+    //    if (targetPosition == 8)
+    //    {
+    //        return new List<int>() { 8, 10 };
+    //    }
+
+    //    return new List<int>() { 7 };
+    //}
+
+    public override string IconName => "singlefirecommand_sprite";
 }

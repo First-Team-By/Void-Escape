@@ -41,14 +41,14 @@ public class DoubleTap : CharacterCommand
         }
         if (selfPosition == 1)
         {
-            return targetPositions.Where(x => x == 1 || x == 2).ToList();
+            return targetPositions.Where(x => x == 6 || x == 7).ToList();
         }
         if (selfPosition == 3)
         {
-            return targetPositions.Where(x => x == 2 || x == 3).ToList();
+            return targetPositions.Where(x => x == 7 || x == 8).ToList();
         }
         
-        return targetPositions.Where(x => x < 4).ToList();
+        return targetPositions.Where(x => x < 9 && x > 5).ToList();
     }
 
     private bool DoupleTapEnabled(EntityBase entity)

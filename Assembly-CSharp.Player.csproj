@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonSettings.cs" />
+    <Compile Include="Assets\Scripts\GameManager\GameController.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\Cell.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonStructure.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
