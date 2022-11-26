@@ -23,5 +23,6 @@ public class ClawStrike : EntityCommand
         return SelfPositions.Contains(entity.Position);
     }
 
-    
+
+    public override string IconName { get; }
 }

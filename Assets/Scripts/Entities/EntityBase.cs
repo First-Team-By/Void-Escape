@@ -25,7 +25,14 @@ public abstract class EntityBase : MonoBehaviour
         set => prefab = value;
     }
 
-    public int CurrentInitiative { get; set; }
+    public int CurrentInitiative
+    {
+        get
+        {
+            return entityChars.Initiative;
+        }
+    }
+
     public int Position { get; set; }
     public bool IsActive { get; set; }
     public abstract List<EntityCommand> Commands { get; }

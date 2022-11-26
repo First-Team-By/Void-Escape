@@ -1,10 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Runtime.ExceptionServices;
-using System.Runtime.InteropServices;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,28 +7,32 @@ public class BattleRoutine : MonoBehaviour
 {
     [SerializeField] private GameObject[] characterPositions;
     [SerializeField] private GameObject[] enemyPositions;
-
-
+    [SerializeField] private CommandExecutionHandler commandExecutor;
     public int roundCounter { get; private set; }
-    public List<EntityBase> EntitiesRoute => enemyList
+    public List<EntityBase> EntitiesRoute => EnemyList
         .Cast<EntityBase>()
         .Concat(characterList)
         .OrderByDescending(i => i.CurrentInitiative)
         .ToList();
 
+    public List<GameObject> AllPositions => characterPositions.Concat(enemyPositions).ToList();
+    
     private DepartmentLevel level;
-    private List<Enemy> enemyList;
+    public List<Enemy> EnemyList => level.EnemyList;
     private List<Character> characterList;
     private EntityBase currentEntity;
 
     private CharacterGroup group;
     
-    public UnityEvent<EntityBase> OnEntityTurn;
+    public EntityCommand CurrentCommand { get; set; }
+    public List<int> CurrentAvaliableTargets { get; set; }
+    public List<int> CurrentSelectedTargets { get; set; }
+    
 
     private void InitBattle()
     {
         roundCounter = 1;
-        
+
         SetCharactersInPositions();
         SetLevel();
         EntityTurn();
@@ -43,12 +42,19 @@ public class BattleRoutine : MonoBehaviour
     private void EntityTurn()
     {
         currentEntity = EntitiesRoute.First();
-        OnEntityTurn?.Invoke(currentEntity);
+        OnEntityTurn();
     }
-    
+
+    private void OnEntityTurn()
+    {
+        if (currentEntity is Character)
+        {
+            commandExecutor.SetCommands(currentEntity);
+        }
+    }
     private void SetLevel()
     {
-        level = new DepartmentLevel(5 ,5);
+        level = new DepartmentLevel(5, 5);
         SetEnemiesInPositions();
     }
     private void SetEnemiesInPositions()
@@ -57,6 +63,7 @@ public class BattleRoutine : MonoBehaviour
         {
             level.EnemyList[i].transform.SetParent(enemyPositions[i].transform);
             level.EnemyList[i].transform.localPosition = Vector2.zero;
+            level.EnemyList[i].Position = i + 5;
         }
     }
 
@@ -68,11 +75,49 @@ public class BattleRoutine : MonoBehaviour
             var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
             characterInst.transform.localPosition = Vector2.zero;
             characterInst.transform.localScale = Vector2.one;
-            characterList.Add(characterInst.GetComponent<Character>());
+            var _characterInst = characterInst.GetComponent<Character>();
+            _characterInst.Position = character.Position;
+            characterList.Add(_characterInst);
         }
     }
 
-    
+    public void SetCurrentCommand(EntityCommand command)
+    {
+        CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EnemyList.Select(x => x.Position).ToList());
+        CurrentCommand = command;
+    }
+
+    public void SelectTargets(int targetPosition)
+    {
+        if (!CurrentAvaliableTargets.Contains(targetPosition))
+        {
+            return;
+        }
+
+        CurrentSelectedTargets = CurrentCommand.GetSelectedTargets(targetPosition);
+        foreach (var position in AllPositions)
+        {
+            var bp = position.GetComponent<BattlePosition>();
+            if (CurrentSelectedTargets.Contains(bp.Position))
+            {
+                bp.LightOn();
+            }
+        }
+    }
+
+    public void DeSelectTargets()
+    {
+        foreach (var position in AllPositions)
+        {
+            var bp = position.GetComponent<BattlePosition>();
+            bp.LightOff();
+        }
+    }
+
+    public void OnTargetClick(EntityBase selectedEntity)
+    {
+
+    }
 
     void Start()
     {
@@ -82,7 +127,7 @@ public class BattleRoutine : MonoBehaviour
 
     void Awake()
     {
-        
+
     }
 
 }

@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DepartmentLevel : MonoBehaviour 
+public class DepartmentLevel 
 {
     public List<Enemy> EnemyList { get; set; }
 
@@ -24,7 +24,7 @@ public class DepartmentLevel : MonoBehaviour
         List<Enemy> enemies = new List<Enemy>(enemyCount);
         for (int i = 0; i < enemyCount; i++)
         {
-            var enemyGO = Instantiate(enemyPrefabs.FirstOrDefault(x => x.gameObject.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]));
+            var enemyGO = GameObject.Instantiate(enemyPrefabs.FirstOrDefault(x => x.gameObject.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]));
             enemies.Add(enemyGO.GetComponent<Enemy>());
         }
         return enemies;
