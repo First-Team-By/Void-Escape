@@ -7,80 +7,73 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private DungeonGenerator _dungeonGenerator;
 
-    private List<RoomBehaviour> _rooms;
+    [SerializeField] private GameObject _mapContent;
 
     [SerializeField] private GameObject _groupMarkerPrefab;
 
-    private Vector3 clickMousePoint;
+    [SerializeField] private Transform _parent;
+
+    [SerializeField] private float _speed;
+
+    private List<RoomBehaviour> _rooms;
 
     private GameObject _groupMarker;
 
-    private bool _isOnMouseEnter = false;
+    private Vector3 startPosition;
+
+    private bool _groupIsMoving;
 
     void Start()
     {
         _groupMarker = Instantiate(_groupMarkerPrefab, Vector2.zero, Quaternion.identity);
 
+        _groupMarker.transform.parent = _parent;
+        
         _rooms = _dungeonGenerator.MazeGenerator();
 
         Global.currentRoomNumber = 0;
-
-        //SetGroupMarker(_rooms[0]);
     }
 
     void Update()
     {
-        if (_isOnMouseEnter)
+        float wheelScroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if (wheelScroll != 0)
         {
-            if (Input.GetMouseButton(0))
+            _mapContent.transform.localScale += new Vector3(wheelScroll, wheelScroll, 0);
+        }
+    }
+    public void SetGroupMarker(Transform target)
+    {
+        if (!_groupIsMoving)
+        {
+            StartCoroutine(MoveToTarget(_groupMarker.transform, target));
+        }    
+    }
+
+    public IEnumerator MoveToTarget(Transform obj, Transform target)
+    {
+        _groupIsMoving = true;
+
+        try
+        {
+            obj.SetParent(target);
+
+            startPosition = obj.localPosition;
+
+            while (obj.localPosition != Vector3.zero)
             {
-                SetClickMous();
+                obj.localPosition = Vector3.MoveTowards(obj.localPosition, Vector3.zero, Time.deltaTime * _speed);
 
-                SetGroupMarker();
-
-                //StartCoroutine(MoveToTarget(_groupMarkerPrefab.transform, clickMousePoint));
+                yield return new WaitForSeconds(0.001f);
             }
-            _isOnMouseEnter = false;
-        }
-    }
 
-    private void SetClickMous()
-    {
-        clickMousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        clickMousePoint.z = 0;
-    }
-
-    public void SetGroupMarker()
-    {
-        StartCoroutine(MoveToTarget(_groupMarker.transform, clickMousePoint));
-
-        //_groupMarkerPrefab.transform.SetParent(room.transform);
-
-        //_groupMarkerPrefab.transform.localPosition = Vector2.zero;
-    }
-
-    public IEnumerator MoveToTarget(Transform obj, Vector3 point)
-    {
-        Vector3 startPosition = obj.position;
-
-        float t = 0;
-
-        const float animDuration = 0.5f;
-
-        while (t < 1)
-        {
-            obj.position = Vector3.Lerp(startPosition, point, t);
-
-            t += Time.deltaTime / animDuration;
-
-            yield return null;
+            Debug.Log("Загружаем сцену с боевкой!");
         }
 
-        Debug.Log("Загружаем сцену с боевкой!");
-    }
-
-    public bool IsOnMouseEnter(bool a)
-    {
-        return _isOnMouseEnter = a;
+        finally
+        { 
+            _groupIsMoving = false; 
+        }
     }
 }
