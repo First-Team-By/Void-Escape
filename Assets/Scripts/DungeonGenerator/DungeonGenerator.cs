@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    public Vector2 size;
+    [SerializeField] private Vector2 size;
 
-    public int startPos = 0;
+    [SerializeField] private int startPos = 0;
+
+    [Header("Префаб ячейки")]
+    [SerializeField] private GameObject room;
+
+    [SerializeField] private Vector2 offSet;
 
     private int currentCell;
 
@@ -15,23 +20,6 @@ public class DungeonGenerator : MonoBehaviour
     private int newCell;
 
     List<Cell> board;
-
-    [Header("Префаб ячейки")]
-    public GameObject room;
-
-    public Vector2 offSet;
-
-
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
 
     List<RoomBehaviour> GenerateDungeon()
     {
@@ -49,7 +37,6 @@ public class DungeonGenerator : MonoBehaviour
 
                 result.Add(newRoom);
             }
-
         }
 
         return result;
@@ -79,14 +66,11 @@ public class DungeonGenerator : MonoBehaviour
 
             board[currentCell].visited = true;
 
-
-            // Последняя ячейка
             if (currentCell == board.Count - 1)
             {
                 break;
             }
 
-            //дальше проверяем соседние ячейки в CheckNeighborsCell, после проверки помещаем в коллекцию
             List<int> neighbors = TakeNeighborsCells(currentCell);
 
             if (neighbors.Count == 0)
@@ -112,7 +96,6 @@ public class DungeonGenerator : MonoBehaviour
 
                 if (newCell > currentCell)
                 {
-                    //нижнюю или правую
                     if (newCell - 1 == currentCell)
                     {
                         board[currentCell].status[2] = true;
@@ -132,7 +115,6 @@ public class DungeonGenerator : MonoBehaviour
                 }
                 else
                 {
-                    // верхнюю или левую
                     if (newCell + 1 == currentCell)
                     {
                         board[currentCell].status[3] = true;
@@ -152,7 +134,6 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
         }
-        
 
         return GenerateDungeon();
 
@@ -162,25 +143,21 @@ public class DungeonGenerator : MonoBehaviour
     {
         List<int> neighbors = new List<int>();
 
-        //Прверяем верхнюю ячейку
         if (cell - size.x >= 0 && !board[Mathf.FloorToInt(cell - size.x)].visited)
         {
             neighbors.Add(Mathf.FloorToInt(cell - size.x));
         }
 
-        //Прверяем нижнюю ячейку
         if (cell + size.x < board.Count && !board[Mathf.FloorToInt(cell + size.x)].visited)
         {
             neighbors.Add(Mathf.FloorToInt(cell + size.x));
         }
 
-        //Прверяем правую ячейку
         if ((cell + 1) % size.x != 0 && !board[Mathf.FloorToInt(cell + 1)].visited)
         {
             neighbors.Add(Mathf.FloorToInt(cell + 1));
         }
 
-        //Прверяем левую ячейку
         if (cell % size.x != 0 && !board[Mathf.FloorToInt(cell - 1)].visited)
         {
             neighbors.Add(Mathf.FloorToInt(cell - 1));
