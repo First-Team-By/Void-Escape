@@ -13,6 +13,8 @@ public class SingleFire : CharacterCommand
 
         SelfPositions = new List<int>() { 1, 2, 3 };
         EnemyPositions = new List<int>() { 1, 2, 3 };
+
+        Name = "Single fire";
     }
 
     private void SingleFireExec()
@@ -43,6 +45,11 @@ public class SingleFire : CharacterCommand
         }
 
         return targetPositions.Where(x => x < 9 && x > 5).ToList();
+    }
+
+    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    {
+        return new CommandResult();
     }
 
     //public override List<int> GetSelectedTargets(int targetPosition)

@@ -8,7 +8,9 @@ public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private EntityState _state = new EntityState();
+    [SerializeField] private EntityConditions _conditions = new EntityConditions();
+
+    public string Name { get; set; }
 
     public EntityCharacteristics EntityChars
     {
@@ -49,47 +51,53 @@ public abstract class EntityBase : MonoBehaviour
         }
     }
 
-    public EntityState State
+    public EntityConditions Conditions
     {
         get
         {
-            return _state;
+            return _conditions;
         }
         set
         {
-            _state = value;
+            _conditions = value;
         }
     }
 
     private float _health;
 
-    public bool TakeDamage(float damage, EntityCharacteristics provokerChars)
+    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars)
     {
+        var result = new TargetState();
         if (Random.Range(0, 1f) < Mathf.Clamp(entityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
         {
-            return false;
+            result.Pose = EntityPose.EvadePose;
+            return result;
         }
 
+        var finalDamage = damage;
         if (Random.Range(0, 1f) < provokerChars.CritChance)
         {
-            Health -= damage * entityChars.Defence * provokerChars.CritMultiplier;
-            return true;
+            finalDamage *= provokerChars.CritMultiplier;
         }
 
-        Health -= damage * entityChars.Defence;
-        return true;
+        finalDamage *= entityChars.Defence;
+
+        Health -= finalDamage;
+        result.Pose = EntityPose.SufferingPose;
+        result.HealthChanged = finalDamage;
+        return result;
     }
 
     public void GetPoisoned((float damage, int duration) poisonEffects)
     {
-        _state.poisonedState.isPoisoned = true;
-        _state.poisonedState.poisonDamage = poisonEffects.damage;
-        _state.poisonedState.duration = poisonEffects.duration;
+        _conditions.poisoned.isPoisoned = true;
+        _conditions.poisoned.poisonDamage = poisonEffects.damage;
+        _conditions.poisoned.duration = poisonEffects.duration;
     }
     public void GetBleeded((float damage, int duration) bleedEffects)
     {
-        _state.bleedingState.isBleeding = true;
-        _state.bleedingState.bleedDamage = bleedEffects.damage;
-        _state.bleedingState.duration = bleedEffects.duration;
+        _conditions.bleeding.isBleeding = true;
+        _conditions.bleeding.bleedDamage = bleedEffects.damage;
+        _conditions.bleeding.duration = bleedEffects.duration;
     }
 }

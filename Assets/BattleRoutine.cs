@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public class BattleRoutine : MonoBehaviour
     [SerializeField] private GameObject[] characterPositions;
     [SerializeField] private GameObject[] enemyPositions;
     [SerializeField] private CommandExecutionHandler commandExecutor;
+    [SerializeField] private UIActionPanel actionPanel;
     public int roundCounter { get; private set; }
     public List<EntityBase> EntitiesRoute => EnemyList
         .Cast<EntityBase>()
@@ -114,9 +116,11 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
-    public void OnTargetClick(EntityBase selectedEntity)
+    public void OnTargetClick()
     {
-
+        var selectedTargets = EnemyList.Where(x => CurrentSelectedTargets.Contains(x.Position));
+        
+        actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
     }
 
     void Start()

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class DoubleTap : CharacterCommand
 {
+    private float damage;
     public DoubleTap()
     {
         OnExecute = DoupleTapExec;
@@ -13,6 +14,8 @@ public class DoubleTap : CharacterCommand
 
         SelfPositions = new List<int>() { 1, 2, 3 };
         EnemyPositions = new List<int>() { 1, 2, 3 };
+
+        Name = "Double tap";
     }
 
     public override bool IsAvaliable(EntityBase entity)
@@ -56,5 +59,16 @@ public class DoubleTap : CharacterCommand
         return SelfPositions.Contains(entity.Position);
     }
 
+    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    {
+        var result = new CommandResult();
+        Debug.Log(targets.Count());
+        foreach (var target in targets)
+        {
+            Debug.Log(target.Position + "position");
+            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars));
+        }
+        return new CommandResult();
+    }
 }
 

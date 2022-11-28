@@ -31,7 +31,7 @@ public class BattlePosition : MonoBehaviour
 
     private void OnMouseDown()
     {
-
+        battleRoutine.OnTargetClick();
     }
 
     public void LightOn()

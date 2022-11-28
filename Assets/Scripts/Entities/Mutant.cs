@@ -5,4 +5,9 @@ using UnityEngine;
 public class Mutant : Enemy
 {
     public override List<EntityCommand> Commands { get; }
+
+    void Awake()
+    {
+        Name = "Mutant";
+    }
 }

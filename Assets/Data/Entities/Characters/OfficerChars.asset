@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: OfficerChars
   m_EditorClassIdentifier: 
   _maxHealth: 32
+  _meleeDamage: 10
   _critChance: 0.3
   _critMultiplier: 1.5
-  _evadeChance: 0
-  _accuracy: 0
-  _defence: 0
+  _evadeChance: 0.591
+  _accuracy: 0.32
+  _defence: 0.116
   _initiative: 50
   _value: 0

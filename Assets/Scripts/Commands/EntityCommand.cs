@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public abstract class EntityCommand
 {
+    public string Name { get; set; }
     public abstract string IconName { get; }
     public Sprite Icon { set; get; }
     public UnityAction OnExecute { set; get; }
@@ -12,6 +13,7 @@ public abstract class EntityCommand
 
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
+    
 
     public EntityCommand()
     {
@@ -38,4 +40,6 @@ public abstract class EntityCommand
     {
         return new List<int>() { targetPosition };
     }
+
+    public abstract CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets);
 }

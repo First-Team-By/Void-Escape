@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
   m_Name: MutantChars
   m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _critChance: 0
-  _critMultiplier: 0
-  _evadeChance: 0
-  _accuracy: 0
-  _defence: 0
+  _maxHealth: 30
+  _meleeDamage: 10
+  _critChance: 0.085
+  _critMultiplier: 1.459
+  _evadeChance: 0.13
+  _accuracy: 0.379
+  _defence: 0.14
   _initiative: 1
   _value: 1

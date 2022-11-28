@@ -16,10 +16,10 @@ public class CurrentCharacterInfo
         get => _currentHealth;
         private set => _currentHealth = value;
     }
-    public EntityState CurrentState
+    public EntityConditions CurrentConditions
     {
-        get => _currentState;
-        private set => _currentState = value;
+        get => _currentConditions;
+        private set => _currentConditions = value;
     }
 
     public int Position
@@ -31,13 +31,13 @@ public class CurrentCharacterInfo
     [SerializeField] private int _position;
     [SerializeField] private GameObject _characterPrefab;
     [SerializeField] private float _currentHealth;
-    [SerializeField] private EntityState _currentState;
+    [SerializeField] private EntityConditions _currentConditions;
 
     public CurrentCharacterInfo(Character character)
     {
         CharacterPrefab = character.Prefab;
         CurrentHealth = character.Health;
-        CurrentState = character.State;
+        CurrentConditions = character.Conditions;
         Position = character.Position;
     }
 }

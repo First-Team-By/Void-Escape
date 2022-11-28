@@ -83,7 +83,7 @@
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\EntityState.cs" />
+    <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EnemyPrefabs.cs" />
@@ -105,6 +105,8 @@
     <Compile Include="Assets\Scripts\Commands\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
+    <Compile Include="Assets\UIActionPanel.cs" />
+    <Compile Include="Assets\Scripts\Commands\CommandResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

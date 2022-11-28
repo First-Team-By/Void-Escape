@@ -6,6 +6,7 @@ using UnityEngine;
 public class EntityCharacteristics : ScriptableObject
 {
     [SerializeField] private float _maxHealth;
+    [SerializeField] private float _meleeDamage;
 
     [Range(0, 1)]
     [SerializeField] private float _critChance;
@@ -26,6 +27,7 @@ public class EntityCharacteristics : ScriptableObject
     [SerializeField] private int _value;
 
     public float MaxHealth => _maxHealth;
+    public float MeleeDamage => _meleeDamage;
     public float CritChance => _critChance;
     public float CritMultiplier => _critMultiplier;
     public float EvadeChance => _evadeChance;
