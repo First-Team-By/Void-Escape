@@ -17,16 +17,34 @@ public class UIActionPanel : MonoBehaviour
     }
     private void Show(CommandResult commandResult)
     {
+        Clear();
         //_text.text = commandResult.ResultText;
         for (var i = 0; i < _enemiesTexts.Length; i++)
         {
-            Debug.Log(commandResult.TargetStates.Keys.Count + "keys");
-            var healthChanged = commandResult.TargetStates[i + 6].HealthChanged.ToString();
-            if (commandResult.TargetStates[i + 6].HealthChanged > 0)
+            var index = i + 6;
+            if (commandResult.TargetStates.ContainsKey(index))
             {
-                healthChanged = "+" + healthChanged;
+                var state = commandResult.TargetStates[index];
+                var healthChanged = state.HealthChanged.ToString();
+                if (commandResult.TargetStates[index].HealthChanged > 0)
+                {
+                    healthChanged = "+" + healthChanged;
+                }
+                if (commandResult.TargetStates[index].HealthChanged == 0)
+                {
+                    healthChanged = "";
+                }
+
+                _enemiesTexts[i].text = healthChanged;
             }
-            _enemiesTexts[i].text = healthChanged;
+        }
+    }
+
+    private void Clear()
+    {
+        foreach(var text in _enemiesTexts)
+        {
+            text.text = "";
         }
     }
 

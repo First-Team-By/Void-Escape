@@ -84,7 +84,7 @@ public abstract class EntityBase : MonoBehaviour
 
         Health -= finalDamage;
         result.Pose = EntityPose.SufferingPose;
-        result.HealthChanged = finalDamage;
+        result.HealthChanged = -finalDamage;
         return result;
     }
 

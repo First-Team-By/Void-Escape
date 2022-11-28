@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DoubleTap : CharacterCommand
 {
-    private float damage;
+    private float damage = 10;
     public DoubleTap()
     {
         OnExecute = DoupleTapExec;
@@ -68,7 +68,7 @@ public class DoubleTap : CharacterCommand
             Debug.Log(target.Position + "position");
             result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars));
         }
-        return new CommandResult();
+        return result;
     }
 }
 
