@@ -43,11 +43,13 @@ public class GameController : MonoBehaviour
             _mapContent.transform.localScale += new Vector3(wheelScroll, wheelScroll, 0);
         }
     }
-    public void SetGroupMarker(Transform target)
+    public void SetGroupMarker(RoomBehaviour room)
     {
         if (!_groupIsMoving)
         {
-            StartCoroutine(MoveToTarget(_groupMarker.transform, target));
+            Global.currentRoomNumber = room.NumberRoom;
+
+            StartCoroutine(MoveToTarget(_groupMarker.transform, room.gameObject.transform));
         }    
     }
 
@@ -65,7 +67,8 @@ public class GameController : MonoBehaviour
             {
                 obj.localPosition = Vector3.MoveTowards(obj.localPosition, Vector3.zero, Time.deltaTime * _speed);
 
-                yield return new WaitForSeconds(0.001f);
+                //yield return new WaitForSeconds(0.001f);
+                yield return null;
             }
 
             Debug.Log("Загружаем сцену с боевкой!");
