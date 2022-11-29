@@ -67,4 +67,5 @@ public class SingleFire : CharacterCommand
     //}
 
     public override string IconName => "singlefirecommand_sprite";
+    public override string EffectName { get; }
 }

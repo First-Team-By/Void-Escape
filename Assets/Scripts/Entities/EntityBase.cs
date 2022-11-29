@@ -9,8 +9,12 @@ public abstract class EntityBase : MonoBehaviour
     [SerializeField] private EntityCharacteristics entityChars;
     [SerializeField] private GameObject prefab;
     [SerializeField] private EntityConditions _conditions = new EntityConditions();
+    [SerializeField] private Sprite sufferingPose;
+    [SerializeField] private Sprite attackPose;
 
     public string Name { get; set; }
+    public Sprite SufferingPose => sufferingPose;
+    public Sprite AttackPose => attackPose;
 
     public EntityCharacteristics EntityChars
     {
@@ -65,7 +69,7 @@ public abstract class EntityBase : MonoBehaviour
 
     private float _health;
 
-    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars)
+    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect)
     {
         var result = new TargetState();
         if (Random.Range(0, 1f) < Mathf.Clamp(entityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
@@ -85,6 +89,8 @@ public abstract class EntityBase : MonoBehaviour
         Health -= finalDamage;
         result.Pose = EntityPose.SufferingPose;
         result.HealthChanged = -finalDamage;
+        result.Target = this;
+        result.Effect = effect;
         return result;
     }
 
@@ -99,5 +105,15 @@ public abstract class EntityBase : MonoBehaviour
         _conditions.bleeding.isBleeding = true;
         _conditions.bleeding.bleedDamage = bleedEffects.damage;
         _conditions.bleeding.duration = bleedEffects.duration;
+    }
+
+    public virtual Sprite GetSufferingPose()
+    {
+        return sufferingPose;
+    }
+
+    public virtual Sprite GetAttackPose()
+    {
+        return attackPose;
     }
 }

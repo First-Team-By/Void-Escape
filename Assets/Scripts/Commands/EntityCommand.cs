@@ -8,6 +8,8 @@ public abstract class EntityCommand
     public string Name { get; set; }
     public abstract string IconName { get; }
     public Sprite Icon { set; get; }
+    public Sprite Effect { set; get; }
+    public abstract string EffectName { get; }
     public UnityAction OnExecute { set; get; }
     public Predicate<EntityBase> IsEnabled { set; get; }
 
@@ -18,6 +20,7 @@ public abstract class EntityCommand
     public EntityCommand()
     {
         Icon = Resources.Load<Sprite>("Sprites/" + IconName);
+        Effect = Resources.Load<Sprite>("Sprites/" + EffectName);
     }
 
     public IEnumerator<EntityBase> GetAccessibleEntities(List<EntityBase> entityList)

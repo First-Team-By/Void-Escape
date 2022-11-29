@@ -34,6 +34,7 @@ public class DoubleTap : CharacterCommand
     }
 
     public override string IconName => "doubletap_sprite";
+    public override string EffectName => "doubletapeffect_sprite";
 
     public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
     {
@@ -62,12 +63,13 @@ public class DoubleTap : CharacterCommand
     public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
     {
         var result = new CommandResult();
-        Debug.Log(targets.Count());
         foreach (var target in targets)
         {
-            Debug.Log(target.Position + "position");
-            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars));
+            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect));
         }
+        result.Actor = actor;
+        result.ActorPose = EntityPose.AttackPose;
+        
         return result;
     }
 }

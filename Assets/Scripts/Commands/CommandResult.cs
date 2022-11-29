@@ -4,11 +4,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class CommandResult
 {
     public Dictionary<int, TargetState> TargetStates { get; set; } = new Dictionary<int, TargetState>();
     public EntityPose ActorPose { get; set; }
+    public EntityBase Actor { get; set; }
 }
 
 public class TargetState
@@ -17,8 +19,8 @@ public class TargetState
     public EntityPose Pose { get; set; }
     public EntityConditions AddedConditions { get; set; } = new EntityConditions();
     public EntityConditions RemovedConditions { get; set; } = new EntityConditions();
-
-
+    public EntityBase Target { get; set; }
+    public Sprite Effect { get; set; }
 }
 
 public enum EntityPose
