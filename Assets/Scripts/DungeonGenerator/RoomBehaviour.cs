@@ -17,9 +17,9 @@ public class RoomBehaviour : MonoBehaviour
     [Header("Ќомера соседних комнат в которые можно пройти")]
     public List<int> neighbors = new List<int>();
 
-    //[SerializeField] private Light _light;
-
     GameController _controller;
+
+    public int NumberRoom => _numberRoom;
 
     private void Start()
     {
@@ -46,25 +46,9 @@ public class RoomBehaviour : MonoBehaviour
 
         if (CanPass(Global.currentRoomNumber))
         {
-            Global.currentRoomNumber = _numberRoom;
-
-            _controller.SetGroupMarker(gameObject.transform);
+            _controller.SetGroupMarker(this);
         }
     }
-
-    //public void OnMouseEnter()
-    //{
-    //    if (CanPass(Global.currentRoomNumber))
-    //    {
-    //        _light.enabled = true;
-    //    }
-    //}
-
-    //public void OnMouseExit()
-    //{
-    //    _light.enabled = false;
-    //}
-
     bool CanPass(int room)
     {
         return neighbors.Contains(room);
