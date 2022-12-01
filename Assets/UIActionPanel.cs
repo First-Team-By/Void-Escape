@@ -26,7 +26,6 @@ public class UIActionPanel : MonoBehaviour
     private void Show(CommandResult commandResult)
     {
         Clear();
-        //_text.text = commandResult.ResultText;
         for (var i = 0; i < _enemiesTexts.Length; i++)
         {
             var index = i + 6;
