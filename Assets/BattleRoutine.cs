@@ -3,11 +3,13 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
 {
     [SerializeField] private GameObject[] characterPositions;
     [SerializeField] private GameObject[] enemyPositions;
+    [SerializeField] private Image characterImage;
     [SerializeField] private CommandExecutionHandler commandExecutor;
     [SerializeField] private UIActionPanel actionPanel;
     public int roundCounter { get; private set; }
@@ -29,7 +31,20 @@ public class BattleRoutine : MonoBehaviour
     public EntityCommand CurrentCommand { get; set; }
     public List<int> CurrentAvaliableTargets { get; set; }
     public List<int> CurrentSelectedTargets { get; set; }
-    
+
+    private EntityBase CurrentEntity
+    {
+        get
+        {
+            return currentEntity;
+        }
+        set
+        {
+            currentEntity = value;
+            characterImage.sprite = currentEntity.Portrait;
+        }
+    }
+
 
     private void InitBattle()
     {
@@ -43,7 +58,7 @@ public class BattleRoutine : MonoBehaviour
 
     private void EntityTurn()
     {
-        currentEntity = EntitiesRoute.First();
+        CurrentEntity = EntitiesRoute.First();
         OnEntityTurn();
     }
 
@@ -54,6 +69,7 @@ public class BattleRoutine : MonoBehaviour
             commandExecutor.SetCommands(currentEntity);
         }
     }
+    
     private void SetLevel()
     {
         level = new DepartmentLevel(5, 5);
@@ -75,8 +91,9 @@ public class BattleRoutine : MonoBehaviour
         foreach (var character in group.CurrentCharacterInfos)
         {
             var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
+            characterInst.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
             characterInst.transform.localPosition = Vector2.zero;
-            characterInst.transform.localScale = Vector2.one;
+            //characterInst.transform.localScale = Vector2.one;
             var _characterInst = characterInst.GetComponent<Character>();
             _characterInst.Position = character.Position;
             characterList.Add(_characterInst);
@@ -85,7 +102,7 @@ public class BattleRoutine : MonoBehaviour
 
     public void SetCurrentCommand(EntityCommand command)
     {
-        CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EnemyList.Select(x => x.Position).ToList());
+        CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EntitiesRoute.Select(x => x.Position).ToList());
         CurrentCommand = command;
     }
 
@@ -116,11 +133,19 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
+    public void ClearSelectedTargets()
+    {
+        CurrentSelectedTargets = new List<int>();
+    }
+
     public void OnTargetClick()
     {
         var selectedTargets = EnemyList.Where(x => CurrentSelectedTargets.Contains(x.Position));
-        
-        actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
+
+        if (selectedTargets.Any())
+        {
+            actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
+        }
     }
 
     void Start()
@@ -131,7 +156,7 @@ public class BattleRoutine : MonoBehaviour
 
     void Awake()
     {
-
+        actionPanel.ActionEnd += ClearSelectedTargets;
     }
 
 }

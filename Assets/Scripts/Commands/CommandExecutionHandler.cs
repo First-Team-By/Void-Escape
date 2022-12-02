@@ -16,18 +16,23 @@ public class CommandExecutionHandler : MonoBehaviour
     }
     public void SetCommands(EntityBase entity)
     {
+        OffBattleButtons();
+
         int currentButton = 0;
         foreach (var command in entity.Commands)
         {
             battleButtons[currentButton].onClick.AddListener(delegate { battleRoutine.SetCurrentCommand(command); });
             battleButtons[currentButton].image.sprite = command.Icon;
+            battleButtons[currentButton].gameObject.SetActive(true);
             currentButton++;
         }
+    }
 
-        // REDO turning off ultimate button if it doesn't exist in entity command pool
-        //if (currentButton < battleButtons.Length - 1)
-        //{
-        //    battleButtons[currentButton + 1].gameObject.SetActive(false);
-        //}
+    private void OffBattleButtons()
+    {
+        foreach (var button in battleButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
     }
 }

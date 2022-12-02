@@ -8,6 +8,7 @@ public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private Sprite portrait;
     [SerializeField] private EntityConditions _conditions = new EntityConditions();
     [SerializeField] private Sprite sufferingPose;
     [SerializeField] private Sprite attackPose;
@@ -15,6 +16,7 @@ public abstract class EntityBase : MonoBehaviour
     public string Name { get; set; }
     public Sprite SufferingPose => sufferingPose;
     public Sprite AttackPose => attackPose;
+    public Sprite Portrait => portrait;
 
     public EntityCharacteristics EntityChars
     {
@@ -89,6 +91,17 @@ public abstract class EntityBase : MonoBehaviour
         Health -= finalDamage;
         result.Pose = EntityPose.SufferingPose;
         result.HealthChanged = -finalDamage;
+        result.Target = this;
+        result.Effect = effect;
+        return result;
+    }
+
+    public TargetState GetHealth(float health, Sprite effect)
+    {
+        var result = new TargetState(); 
+        Health += health;
+        result.Pose = EntityPose.ReinforcedPose;
+        result.HealthChanged = health;
         result.Target = this;
         result.Effect = effect;
         return result;

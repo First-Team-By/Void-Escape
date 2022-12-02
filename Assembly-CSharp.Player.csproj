@@ -103,10 +103,12 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Commands\DoubleTap.cs" />
-    <Compile Include="Assets\Scripts\Commands\SingleFire.cs" />
+    <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
+    <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\Entities\Medic.cs" />
+    <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,17 @@ public class UIActionPanel : MonoBehaviour
     [SerializeField] private Image[] _effects;
     [SerializeField] private Image actorPose;
     [SerializeField] private Image actorEffect;
+    [SerializeField] private GameObject panel;
+
+    public event Action ActionEnd;
 
     void Awake()
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
     public void ShowCommandResult(CommandResult commandResult)
     {
-        gameObject.SetActive(true);
+        panel.SetActive(true);
         StartCoroutine(showCommandResult(commandResult));
     }
     private void Show(CommandResult commandResult)
@@ -99,7 +103,7 @@ public class UIActionPanel : MonoBehaviour
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 
     private IEnumerator showCommandResult(CommandResult commandResult)
@@ -107,5 +111,6 @@ public class UIActionPanel : MonoBehaviour
         Show(commandResult);
         yield return new WaitForSeconds(2f);
         Hide();
+        ActionEnd?.Invoke();
     }
 }

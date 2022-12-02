@@ -19,6 +19,8 @@ public abstract class EntityCommand
 
     public EntityCommand()
     {
+        IsEnabled = IsCommandEnabled;
+        
         Icon = Resources.Load<Sprite>("Sprites/" + IconName);
         Effect = Resources.Load<Sprite>("Sprites/" + EffectName);
     }
@@ -45,4 +47,9 @@ public abstract class EntityCommand
     }
 
     public abstract CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets);
+
+    protected virtual bool IsCommandEnabled(EntityBase entity)
+    {
+        return SelfPositions.Contains(entity.Position);
+    }
 }

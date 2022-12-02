@@ -9,11 +9,8 @@ public class DoubleTap : CharacterCommand
     private float damage = 10;
     public DoubleTap()
     {
-        OnExecute = DoupleTapExec;
-        IsEnabled = DoupleTapEnabled;
 
         SelfPositions = new List<int>() { 1, 2, 3 };
-        EnemyPositions = new List<int>() { 1, 2, 3 };
 
         Name = "Double tap";
     }
@@ -28,17 +25,11 @@ public class DoubleTap : CharacterCommand
         return true;
     }
 
-    protected virtual void DoupleTapExec()
-    {
-
-    }
-
     public override string IconName => "doubletap_sprite";
     public override string EffectName => "doubletapeffect_sprite";
 
     public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
     {
-
         if (selfPosition > 3)
         {
             return new List<int>();
@@ -53,11 +44,6 @@ public class DoubleTap : CharacterCommand
         }
         
         return targetPositions.Where(x => x < 9 && x > 5).ToList();
-    }
-
-    private bool DoupleTapEnabled(EntityBase entity)
-    {
-        return SelfPositions.Contains(entity.Position);
     }
 
     public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
