@@ -46,7 +46,7 @@ public class DoubleTap : CharacterCommand
         return targetPositions.Where(x => x < 9 && x > 5).ToList();
     }
 
-    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
     {
         var result = new CommandResult();
         foreach (var target in targets)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class SingleFire : CharacterCommand
 {
+    private float damage = 15;
     public SingleFire()
     {
         OnExecute = SingleFireExec;
@@ -47,9 +48,15 @@ public class SingleFire : CharacterCommand
         return targetPositions.Where(x => x < 9 && x > 5).ToList();
     }
 
-    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
     {
-        return new CommandResult();
+        var result = new CommandResult();
+        var target = targets.FirstOrDefault();
+        result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect));
+        result.Actor = actor;
+        result.ActorPose = EntityPose.AttackPose;
+
+        return result;
     }
 
     //public override List<int> GetSelectedTargets(int targetPosition)
@@ -67,5 +74,5 @@ public class SingleFire : CharacterCommand
     //}
 
     public override string IconName => "singlefirecommand_sprite";
-    public override string EffectName { get; }
+    public override string EffectName => "singlefireeffect_sprite";
 }

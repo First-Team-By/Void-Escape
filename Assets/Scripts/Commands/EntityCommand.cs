@@ -46,7 +46,7 @@ public abstract class EntityCommand
         return new List<int>() { targetPosition };
     }
 
-    public abstract CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets);
+    public abstract CommandResult Execute(EntityBase actor, List<EntityBase> targets);
 
     protected virtual bool IsCommandEnabled(EntityBase entity)
     {

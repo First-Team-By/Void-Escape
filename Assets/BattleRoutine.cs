@@ -24,6 +24,7 @@ public class BattleRoutine : MonoBehaviour
     private DepartmentLevel level;
     public List<Enemy> EnemyList => level.EnemyList;
     private List<Character> characterList;
+    private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
 
     private CharacterGroup group;
@@ -41,7 +42,10 @@ public class BattleRoutine : MonoBehaviour
         set
         {
             currentEntity = value;
-            characterImage.sprite = currentEntity.Portrait;
+            if (currentEntity != null)
+            {
+                characterImage.sprite = currentEntity.Portrait;
+            }
         }
     }
 
@@ -52,21 +56,39 @@ public class BattleRoutine : MonoBehaviour
 
         SetCharactersInPositions();
         SetLevel();
-        EntityTurn();
+        NextEntityTurn();
     }
 
 
-    private void EntityTurn()
+    private void NextEntityTurn()
     {
-        CurrentEntity = EntitiesRoute.First();
+        CurrentEntity = EntitiesRoute.FirstOrDefault(x => !inactiveEntitiesList.Contains(x));
+        if (currentEntity is null)
+        {
+            NextRound();
+        }
         OnEntityTurn();
+    }
+
+    private void NextRound()
+    {
+        inactiveEntitiesList.Clear();
+        CheckBattleResult();
+        NextEntityTurn();
     }
 
     private void OnEntityTurn()
     {
         if (currentEntity is Character)
         {
-            commandExecutor.SetCommands(currentEntity);
+            //commandExecutor.SetCommands(currentEntity);
+            CurrentCommand = null;
+            CurrentAvaliableTargets = null;
+        }
+        else
+        {
+            inactiveEntitiesList.Add(currentEntity);
+            NextEntityTurn();
         }
     }
     
@@ -140,12 +162,39 @@ public class BattleRoutine : MonoBehaviour
 
     public void OnTargetClick()
     {
-        var selectedTargets = EnemyList.Where(x => CurrentSelectedTargets.Contains(x.Position));
+        var selectedTargets = EntitiesRoute.Where(x => CurrentSelectedTargets.Contains(x.Position)).ToList();
 
         if (selectedTargets.Any())
         {
             actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
         }
+        
+        CheckBattleResult();
+        inactiveEntitiesList.Add(CurrentEntity);
+        NextEntityTurn();
+    }
+
+    private void CheckBattleResult()
+    {
+        if (!characterList.Any())
+        {
+            LoseBattle();   
+        }
+
+        if (!EnemyList.Any())
+        {
+            WinBattle();
+        }
+    }
+
+    private void WinBattle()
+    {
+
+    }
+
+    private void LoseBattle()
+    {
+
     }
 
     void Start()

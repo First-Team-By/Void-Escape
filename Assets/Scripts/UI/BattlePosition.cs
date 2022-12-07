@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattlePosition : MonoBehaviour
@@ -16,16 +17,14 @@ public class BattlePosition : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (battleRoutine.CurrentAvaliableTargets != null)
+        if (battleRoutine.CurrentAvaliableTargets is not null)
         {
-            //_light.enabled = battleRoutine.CurrentAvaliableTargets.Contains(Position);
             battleRoutine.SelectTargets(_position);
         }
     }
 
     private void OnMouseExit()
     {
-        //_light.enabled = false;
         battleRoutine.DeSelectTargets();
     }
 

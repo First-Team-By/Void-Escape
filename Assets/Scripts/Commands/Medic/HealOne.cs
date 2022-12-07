@@ -32,10 +32,13 @@ public class HealOne : CharacterCommand
         return SelfPositions.Contains(entity.Position);
     }
 
-    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
     {
         var result = new CommandResult();
-        var target = targets.GetEnumerator().Current;
+        Debug.Log(targets);
+        Debug.Log(targets.Count());
+        var target = targets.FirstOrDefault();
+        Debug.Log(target);
         result.TargetStates.Add(target.Position, target.GetHealth(healthAddition, Effect));
         result.Actor = actor;
         result.ActorPose = EntityPose.AttackPose;

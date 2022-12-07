@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonGenerator2.cs" />
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
+    <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\MapUI.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Assets\Scripts\DungeonGenerator\Cell.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandResult.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonStructure.cs" />
+    <Compile Include="Assets\Scripts\Entities\Medic.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
@@ -107,8 +109,6 @@
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\Medic.cs" />
-    <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

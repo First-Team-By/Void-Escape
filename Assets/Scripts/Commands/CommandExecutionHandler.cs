@@ -6,33 +6,43 @@ using UnityEngine.UI;
 
 public class CommandExecutionHandler : MonoBehaviour
 {
-    private Button[] battleButtons;
+    private Toggle[] battleButtons;
     [SerializeField] BattleRoutine battleRoutine;
     void Awake()
     {
-        battleButtons = GetComponentsInChildren<Button>()
+        battleButtons = GetComponentsInChildren<Toggle>()
             //.Where(x => x.gameObject.TryGetComponent<CommandButton>(out _))
             .ToArray();
     }
     public void SetCommands(EntityBase entity)
     {
-        OffBattleButtons();
+        HideBattleButtons();
 
         int currentButton = 0;
         foreach (var command in entity.Commands)
         {
-            battleButtons[currentButton].onClick.AddListener(delegate { battleRoutine.SetCurrentCommand(command); });
-            battleButtons[currentButton].image.sprite = command.Icon;
-            battleButtons[currentButton].gameObject.SetActive(true);
+            var button = battleButtons[currentButton];
+            button.onValueChanged.AddListener(delegate { battleRoutine.SetCurrentCommand(command); });
+            button.image.sprite = command.Icon;
+            button.gameObject.SetActive(true);
+            
             currentButton++;
         }
+        CheckOffBattleButtons();
     }
 
-    private void OffBattleButtons()
+    private void HideBattleButtons()
     {
         foreach (var button in battleButtons)
         {
             button.gameObject.SetActive(false);
+        }
+    }
+    private void CheckOffBattleButtons()
+    {
+        foreach (var button in battleButtons)
+        {
+            button.isOn = false;
         }
     }
 }

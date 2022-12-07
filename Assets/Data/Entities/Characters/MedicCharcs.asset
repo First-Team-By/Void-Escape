@@ -19,5 +19,5 @@ MonoBehaviour:
   _evadeChance: 0.198
   _accuracy: 0.209
   _defence: 0.218
-  _initiative: 20
+  _initiative: 51
   _value: 0

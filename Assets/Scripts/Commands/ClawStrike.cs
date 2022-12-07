@@ -27,7 +27,7 @@ public class ClawStrike : EntityCommand
     public override string IconName { get; }
     public override string EffectName { get; }
 
-    public override CommandResult Execute(EntityBase actor, IEnumerable<EntityBase> targets)
+    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
     {
         throw new System.NotImplementedException();
     }
