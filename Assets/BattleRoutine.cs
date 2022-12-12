@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -20,7 +21,8 @@ public class BattleRoutine : MonoBehaviour
         .ToList();
 
     public List<GameObject> AllPositions => characterPositions.Concat(enemyPositions).ToList();
-    
+
+
     private DepartmentLevel level;
     public List<Enemy> EnemyList => level.EnemyList;
     private List<Character> characterList;
@@ -53,20 +55,24 @@ public class BattleRoutine : MonoBehaviour
     private void InitBattle()
     {
         roundCounter = 1;
-
         SetCharactersInPositions();
         SetLevel();
         NextEntityTurn();
     }
 
-
-    private void NextEntityTurn()
+    private void MainBattleProcess()
     {
         CurrentEntity = EntitiesRoute.FirstOrDefault(x => !inactiveEntitiesList.Contains(x));
         if (currentEntity is null)
         {
             NextRound();
         }
+
+        NextEntityTurn();
+    }
+
+    private void NextEntityTurn()
+    {
         OnEntityTurn();
     }
 
@@ -74,21 +80,20 @@ public class BattleRoutine : MonoBehaviour
     {
         inactiveEntitiesList.Clear();
         CheckBattleResult();
-        NextEntityTurn();
     }
 
     private void OnEntityTurn()
     {
         if (currentEntity is Character)
         {
-            //commandExecutor.SetCommands(currentEntity);
+            commandExecutor.SetCommands(currentEntity);
             CurrentCommand = null;
             CurrentAvaliableTargets = null;
         }
         else
         {
             inactiveEntitiesList.Add(currentEntity);
-            NextEntityTurn();
+            MainBattleProcess();
         }
     }
     
@@ -103,7 +108,7 @@ public class BattleRoutine : MonoBehaviour
         {
             level.EnemyList[i].transform.SetParent(enemyPositions[i].transform);
             level.EnemyList[i].transform.localPosition = Vector2.zero;
-            level.EnemyList[i].Position = i + 5;
+            level.EnemyList[i].Position = i + 6;
         }
     }
 
@@ -170,8 +175,8 @@ public class BattleRoutine : MonoBehaviour
         }
         
         CheckBattleResult();
+        DeSelectTargets();
         inactiveEntitiesList.Add(CurrentEntity);
-        NextEntityTurn();
     }
 
     private void CheckBattleResult()
@@ -206,6 +211,7 @@ public class BattleRoutine : MonoBehaviour
     void Awake()
     {
         actionPanel.ActionEnd += ClearSelectedTargets;
+        actionPanel.ActionEnd += MainBattleProcess;
     }
 
 }
