@@ -35,10 +35,7 @@ public class HealOne : CharacterCommand
     public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
     {
         var result = new CommandResult();
-        Debug.Log(targets);
-        Debug.Log(targets.Count());
         var target = targets.FirstOrDefault();
-        Debug.Log(target);
         result.TargetStates.Add(target.Position, target.GetHealth(healthAddition, Effect));
         result.Actor = actor;
         result.ActorPose = EntityPose.AttackPose;
