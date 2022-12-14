@@ -6,7 +6,7 @@ public class Mutant : Enemy
 {
     public override List<EntityCommand> Commands { get; }
 
-    void Awake()
+    protected override void Init()
     {
         Name = "Mutant";
     }

@@ -35,6 +35,8 @@ public class BattleRoutine : MonoBehaviour
     public List<int> CurrentAvaliableTargets { get; set; }
     public List<int> CurrentSelectedTargets { get; set; }
 
+    private bool isCharacterTurn;
+
     private EntityBase CurrentEntity
     {
         get
@@ -56,12 +58,19 @@ public class BattleRoutine : MonoBehaviour
         roundCounter = 1;
         SetCharactersInPositions();
         SetLevel();
-        NextEntityTurn();
+        //MainBattleProcess();
+    }
+
+    private void Update()
+    {
+        if (!isCharacterTurn)
+            MainBattleProcess();
     }
 
     private void MainBattleProcess()
     {
-        //RefreshHealthBars();
+
+        RefreshHealthBars();
         CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
         if (CurrentEntity is null)
         {
@@ -73,6 +82,7 @@ public class BattleRoutine : MonoBehaviour
         }
 
         NextEntityTurn();
+
     }
 
     private void NextEntityTurn()
@@ -93,14 +103,16 @@ public class BattleRoutine : MonoBehaviour
             commandExecutor.SetCommands(currentEntity);
             CurrentCommand = null;
             CurrentAvaliableTargets = null;
+            isCharacterTurn = true;
         }
         else
         {
+            isCharacterTurn = false;
             if (currentEntity != null)
             {
                 inactiveEntitiesList.Add(currentEntity);
             }
-            MainBattleProcess();
+            //MainBattleProcess();
         }
     }
     
@@ -261,7 +273,7 @@ public class BattleRoutine : MonoBehaviour
     void Awake()
     {
         actionPanel.ActionEnd += ClearSelectedTargets;
-        actionPanel.ActionEnd += MainBattleProcess;
+        actionPanel.ActionEnd += () => isCharacterTurn = false;
     }
 
 }

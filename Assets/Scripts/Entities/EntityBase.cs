@@ -83,8 +83,11 @@ public abstract class EntityBase : MonoBehaviour
 
     void Awake()
     {
-        _health = EntityChars.MaxHealth;
+        Health = EntityChars.MaxHealth;
+        Init();
     }
+
+    protected virtual void Init() { }
 
     public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect)
     {

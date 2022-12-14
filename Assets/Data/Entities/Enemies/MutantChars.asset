@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
   m_Name: MutantChars
   m_EditorClassIdentifier: 
-  _maxHealth: 2
+  _maxHealth: 10
   _meleeDamage: 10
   _critChance: 0.085
   _critMultiplier: 1.459
