@@ -29,7 +29,7 @@ public class BattleRoutine : MonoBehaviour
     private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
 
-    private CharacterGroup group;
+    private CurrentCharacterGroup group;
     
     public EntityCommand CurrentCommand { get; set; }
     public List<int> CurrentAvaliableTargets { get; set; }

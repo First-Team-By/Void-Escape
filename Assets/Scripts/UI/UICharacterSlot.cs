@@ -15,12 +15,32 @@ public class UICharacterSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     private CanvasGroup canvasGroup;
     private GameObject lastSelectedPosition;
 
+    [SerializeField] private Button infoButton;
+    [SerializeField] private Image _portrait;
+    private UIPartyBuildGameManager gameManager;
+
     private Vector2 _originPosition;
+
+    [SerializeField] private GameObject _serviceImagePanel;
+
+    public GameObject ServiceImagePanel => _serviceImagePanel;
+
+    public Image Portrait => _portrait;
+
+    public GameObject CharacterPrefab
+    {
+        get { return characterPrefab; }
+        set { characterPrefab = value; }
+    }
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         mainCanvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+
+        gameManager = GameObject.FindObjectOfType<UIPartyBuildGameManager>();
+
+        infoButton.onClick.AddListener(gameManager.InfoImageOn);
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -47,11 +67,28 @@ public class UICharacterSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         _originPosition = transform.localPosition;
+
+        var color = GetComponent<Image>().color;
+
+        color.a = 0;
+
+        GetComponent<Image>().color = color;
+
+        ServiceImagePanel.SetActive(false);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.localPosition = _originPosition;
+
+        var color = GetComponent<Image>().color;
+
+        color.a = 1;
+
+        GetComponent<Image>().color = color;
+
+        ServiceImagePanel.SetActive(true);
+
         if (lastSelectedPosition)
         {
             lastSelectedPosition.GetComponentInChildren<SpriteRenderer>().color = Color.red;
@@ -59,7 +96,7 @@ public class UICharacterSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, I
             character.transform.SetParent(lastSelectedPosition.transform);
 
             character.GetComponent<Character>().Position = lastSelectedPosition.GetComponent<CharacterPosition>().Position;
-            transform.parent.gameObject.SetActive(false);
+            transform.gameObject.SetActive(false);
         }
 
         lastSelectedPosition = null;
