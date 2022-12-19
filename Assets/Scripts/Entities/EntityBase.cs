@@ -12,11 +12,14 @@ public abstract class EntityBase : MonoBehaviour
     [SerializeField] private EntityConditions _conditions = new EntityConditions();
     [SerializeField] private Sprite sufferingPose;
     [SerializeField] private Sprite attackPose;
-
+    [SerializeField] private Sprite deathDoorSprite;
     public string Name { get; set; }
     public Sprite SufferingPose => sufferingPose;
     public Sprite AttackPose => attackPose;
     public Sprite Portrait => portrait;
+    public Sprite DeathDoorSprite => deathDoorSprite;
+    
+    public bool OnDeathDoor { get; set; }
 
     public EntityCharacteristics EntityChars
     {
@@ -44,6 +47,7 @@ public abstract class EntityBase : MonoBehaviour
     public int Position { get; set; }
     public bool IsActive { get; set; }
     public abstract List<EntityCommand> Commands { get; }
+    public event Action<EntityBase> HealthOver;
 
     public float Health
     {
@@ -54,6 +58,12 @@ public abstract class EntityBase : MonoBehaviour
         set
         {
             _health = Mathf.Clamp(value, 0, entityChars.MaxHealth);
+            if (_health <= 0)
+            {
+                OnDeathDoor = true;
+                HealthOver?.Invoke(this);
+                GetComponent<SpriteRenderer>().sprite = DeathDoorSprite;
+            }
         }
     }
 
@@ -70,6 +80,14 @@ public abstract class EntityBase : MonoBehaviour
     }
 
     private float _health;
+
+    void Awake()
+    {
+        Health = EntityChars.MaxHealth;
+        Init();
+    }
+
+    protected virtual void Init() { }
 
     public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect)
     {

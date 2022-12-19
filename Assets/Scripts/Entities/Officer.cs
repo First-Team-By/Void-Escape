@@ -13,10 +13,10 @@ public class Officer : Character
         new SingleFire()
     };
 
-    private void Awake()
+    protected override void Init()
     {
         Weapon = new Pistol();
-        
+
         Prefab = Global.CharacterPrefabs.Officer;
     }
 }

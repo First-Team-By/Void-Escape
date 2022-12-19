@@ -11,7 +11,8 @@ public class Medic : Character
     {
         new HealOne()
     };
-    void Awake()
+
+    protected override void Init()
     {
         Prefab = Global.CharacterPrefabs.Medic;
     }
