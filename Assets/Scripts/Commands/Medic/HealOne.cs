@@ -17,9 +17,9 @@ public class HealOne : CharacterCommand
 
     public override string IconName => "healonecommand_sprite";
     public override string EffectName => "healoneeffect_sprite";
-    public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
     {
-        return targetPositions.Where(x => x < 6).ToList();
+        return targetPositions.Where(x => x.Position < 6 && !x.OnDeathDoor).ToList();
     }
 
     public override List<int> GetSelectedTargets(int targetPosition)

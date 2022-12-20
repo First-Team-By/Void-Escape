@@ -38,14 +38,14 @@ public class SingleFire : CharacterCommand
         return true;
     }
 
-    public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
     {
         if (selfPosition < 4)
         {
-            return new List<int>();
+            return new List<EntityBase>();
         }
 
-        return targetPositions.Where(x => x < 9 && x > 5).ToList();
+        return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
     }
 
     public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)

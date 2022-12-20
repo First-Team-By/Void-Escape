@@ -28,22 +28,22 @@ public class DoubleTap : CharacterCommand
     public override string IconName => "doubletap_sprite";
     public override string EffectName => "doubletapeffect_sprite";
 
-    public override List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
     {
         if (selfPosition > 3)
         {
-            return new List<int>();
+            return new List<EntityBase>();
         }
         if (selfPosition == 1)
         {
-            return targetPositions.Where(x => x == 6 || x == 7).ToList();
+            return targetPositions.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
         }
         if (selfPosition == 3)
         {
-            return targetPositions.Where(x => x == 7 || x == 8).ToList();
+            return targetPositions.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
         }
         
-        return targetPositions.Where(x => x < 9 && x > 5).ToList();
+        return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
     }
 
     public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
