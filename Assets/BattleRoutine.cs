@@ -29,7 +29,7 @@ public class BattleRoutine : MonoBehaviour
     private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
 
-    private CharacterGroup group;
+    private CurrentCharacterGroup group;
     
     public EntityCommand CurrentCommand { get; set; }
     public List<int> CurrentAvaliableTargets { get; set; }
@@ -162,7 +162,7 @@ public class BattleRoutine : MonoBehaviour
 
     public void SetCurrentCommand(EntityCommand command)
     {
-        CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EntitiesRoute.Where(x => !x.OnDeathDoor).Select(x => x.Position).ToList());
+        CurrentAvaliableTargets = command.GetAvaliableTargets(currentEntity.Position, EntitiesRoute).Select(x => x.Position).ToList();
         CurrentCommand = command;
     }
 

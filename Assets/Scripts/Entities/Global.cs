@@ -8,13 +8,16 @@ using UnityEngine;
 
 public static class Global
 {
-    public static CharacterGroup currentGroup;
+    public static CurrentCharacterGroup currentGroup;
+
+    public static CharacterGroup allCharacters;
 
     public static int currentRoomNumber;
 
     public static List<GameObject> enemyPrefabs;
 
     private static GameObject enemyPrefabContainer;
+
     private static GameObject characterPrefabContainer;
 
     public static CharacterPrefabs CharacterPrefabs { get; set; }
@@ -23,10 +26,15 @@ public static class Global
     {
         enemyPrefabContainer = Resources.Load<GameObject>("EnemyPrefabs");
         enemyPrefabs = enemyPrefabContainer.GetComponent<EnemyPrefabs>().EnemyList;
-        currentGroup = new CharacterGroup();
+        currentGroup = new CurrentCharacterGroup();
 
         characterPrefabContainer = Resources.Load<GameObject>("CharacterPrefabs");
         CharacterPrefabs = characterPrefabContainer.GetComponent<CharacterPrefabs>();
+        allCharacters = new CharacterGroup();
+        allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
+             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer),
+             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic)
+             });
     }
 
     public static void SaveCharactersInfo(List<Character> characters)
@@ -34,7 +42,7 @@ public static class Global
         currentGroup.CurrentCharacterInfos.Clear();
         foreach (var character in characters)
         {
-            currentGroup.CurrentCharacterInfos.Add(new CurrentCharacterInfo(character));
+            currentGroup.CurrentCharacterInfos.Add(CharacterFactory.CreateCurrentCharacterInfo(character));
         }
     }
 }

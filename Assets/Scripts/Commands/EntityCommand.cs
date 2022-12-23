@@ -36,9 +36,9 @@ public abstract class EntityCommand
         }
     }
 
-    public virtual List<int> GetAvaliableTargets(int selfPosition, List<int> targetPositions)
+    public virtual List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
     {
-        return new List<int>();
+        return new List<EntityBase>();
     }
 
     public virtual List<int> GetSelectedTargets(int targetPosition)

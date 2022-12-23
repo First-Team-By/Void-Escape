@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+
+ public class CharacterInfo
+ {
+    [SerializeField] protected float _currentHealth;
+    [SerializeField] protected GameObject _characterPrefab;
+
+    public float CurrentHealth
+    {
+        get => _currentHealth;
+        set => _currentHealth = value;
+    }
+
+    public GameObject CharacterPrefab
+    {
+        get => _characterPrefab;
+        set => _characterPrefab = value;
+    }
+
+
+}
+
