@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1604612260, guid: 22677d828b1305b45817f1745c1b3bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8320573fd62c1594f941f3159de9effd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,4 +101,6 @@ MonoBehaviour:
   prefab: {fileID: 8334285128583968543}
   portrait: {fileID: 21300000, guid: 489c8e377b7daaf45a9bda6bea49eb6b, type: 3}
   sufferingPose: {fileID: 0}
-  attackPose: {fileID: 21300000, guid: 20a8df12ae5297d40a6c5afaa3134100, type: 3}
+  attackPose: {fileID: 21300000, guid: 45b1009cbc828db40b6590c29f18f912, type: 3}
+  deathDoorSprite: {fileID: 0}
+  entityClass: 0

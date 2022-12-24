@@ -6,8 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class CurrentCharacterInfo : CharacterInfo
 {
-    
-    
+    [SerializeField] private int _position;
+    [SerializeField] private EntityConditions _currentConditions;
+
     public EntityConditions CurrentConditions
     {
         get => _currentConditions;
@@ -19,11 +20,4 @@ public class CurrentCharacterInfo : CharacterInfo
         get => _position;
         set => _position = value;
     }
-
-    [SerializeField] private int _position;
-    
-    
-    [SerializeField] private EntityConditions _currentConditions;
-
-   
 }

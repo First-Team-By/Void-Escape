@@ -99,3 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityChars: {fileID: 11400000, guid: f7bf32bd30e307348950e1ac8c565faf, type: 2}
   prefab: {fileID: 0}
+  portrait: {fileID: 0}
+  sufferingPose: {fileID: 0}
+  attackPose: {fileID: 0}
+  deathDoorSprite: {fileID: 0}
+  entityClass: 2

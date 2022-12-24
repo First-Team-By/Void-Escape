@@ -9,25 +9,26 @@ using UnityEngine.UIElements;
 
 public static class CharacterFactory
 {
-    public static CharacterInfo CreateCharacterInfo(GameObject prefab)
+    public static CharacterInfo CreateCharacterInfo(GameObject prefab, int id)
     {
         var characterInfo = new CharacterInfo();
 
         characterInfo.CharacterPrefab = prefab;
+        characterInfo.Id = id;
+        characterInfo.CurrentHealth = prefab.GetComponent<Character>().EntityChars.MaxHealth;
 
         return characterInfo;
 
     }
 
-    public static CurrentCharacterInfo CreateCurrentCharacterInfo(Character character)
+    public static CurrentCharacterInfo CreateCurrentCharacterInfo(CharacterInfo characterInfo, int position)
     {
         var currentCharacterInfo = new CurrentCharacterInfo();
-        currentCharacterInfo.CharacterPrefab = character.Prefab;
-        currentCharacterInfo.CurrentHealth = character.Health;
-        currentCharacterInfo.CurrentConditions = character.Conditions;
-        currentCharacterInfo.Position = character.Position;
+        currentCharacterInfo.CharacterPrefab = characterInfo.CharacterPrefab;
+        currentCharacterInfo.CurrentHealth = characterInfo.CurrentHealth;
+        currentCharacterInfo.Conditions = characterInfo.Conditions;
+        currentCharacterInfo.Position = position;
         return currentCharacterInfo;
-
     }
 }
 

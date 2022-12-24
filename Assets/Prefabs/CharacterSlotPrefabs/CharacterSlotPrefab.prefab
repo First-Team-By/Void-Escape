@@ -410,6 +410,7 @@ MonoBehaviour:
   infoButton: {fileID: 8880411784251031803}
   _portrait: {fileID: 8880411785099886660}
   _serviceImagePanel: {fileID: 643011167780109518}
+  _characterName: {fileID: 8880411784484980303}
 --- !u!1 &8880411784251031807
 GameObject:
   m_ObjectHideFlags: 0

@@ -102,3 +102,5 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: 6b2593cef3e7cdf4998be273741d6bf7, type: 3}
   sufferingPose: {fileID: 0}
   attackPose: {fileID: 0}
+  deathDoorSprite: {fileID: 0}
+  entityClass: 1

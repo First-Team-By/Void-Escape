@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum EntityClass
+{
+    Officer = 0,
+    Medic = 1,
+    Mutant = 2
+}
+
 public abstract class EntityBase : MonoBehaviour
 {
     [SerializeField] private EntityCharacteristics entityChars;
@@ -44,10 +51,20 @@ public abstract class EntityBase : MonoBehaviour
         }
     }
 
+    private static string[] entityClassNames = new string[] { "Officer", "Medic", "Mutant" };
+
+    public static string GetClassName(EntityClass entityClass)
+    {
+        return entityClassNames[Convert.ToInt32(entityClass)];
+    }
+
     public int Position { get; set; }
     public bool IsActive { get; set; }
     public abstract List<EntityCommand> Commands { get; }
     public event Action<EntityBase> HealthOver;
+
+    public EntityClass EntityClass => entityClass;
+    [SerializeField] private EntityClass entityClass;
 
     public float Health
     {
@@ -148,3 +165,5 @@ public abstract class EntityBase : MonoBehaviour
         return attackPose;
     }
 }
+
+

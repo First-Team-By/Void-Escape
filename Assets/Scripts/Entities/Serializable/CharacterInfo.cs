@@ -10,6 +10,7 @@ using UnityEngine;
  {
     [SerializeField] protected float _currentHealth;
     [SerializeField] protected GameObject _characterPrefab;
+    [SerializeField] private EntityConditions _conditions;
 
     public float CurrentHealth
     {
@@ -23,6 +24,11 @@ using UnityEngine;
         set => _characterPrefab = value;
     }
 
-
+    public EntityConditions Conditions
+    {
+        get => _conditions;
+        set => _conditions = value;
+    }
+    public int Id { get; set; }
 }
 

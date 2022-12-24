@@ -32,17 +32,17 @@ public static class Global
         CharacterPrefabs = characterPrefabContainer.GetComponent<CharacterPrefabs>();
         allCharacters = new CharacterGroup();
         allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
-             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer),
-             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic)
+             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer, 1),
+             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
              });
     }
 
-    public static void SaveCharactersInfo(List<Character> characters)
-    {
-        currentGroup.CurrentCharacterInfos.Clear();
-        foreach (var character in characters)
-        {
-            currentGroup.CurrentCharacterInfos.Add(CharacterFactory.CreateCurrentCharacterInfo(character));
-        }
-    }
+    //public static void SaveCharactersInfo(List<Character> characters)
+    //{
+    //    currentGroup.CurrentCharacterInfos.Clear();
+    //    foreach (var character in characters)
+    //    {
+    //        currentGroup.CurrentCharacterInfos.Add(CharacterFactory.CreateCurrentCharacterInfo(character));
+    //    }
+    //}
 }

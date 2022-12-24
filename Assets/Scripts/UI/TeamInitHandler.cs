@@ -10,22 +10,22 @@ public class TeamInitHandler : MonoBehaviour
     public void SetTeam()
     {
 
-        List<Character> characters = new List<Character>();
-        for (int i = 0; i < characterPositions.Length; i++)
-        {
-            Character character = characterPositions[i].GetComponentInChildren<Character>();
-            if (character != null)
-            {
-                characters.Add(character);
-            }
-        }
+        //List<Character> characters = new List<Character>();
+        //for (int i = 0; i < characterPositions.Length; i++)
+        //{
+        //    Character character = characterPositions[i].GetComponentInChildren<Character>();
+        //    if (character != null)
+        //    {
+        //        characters.Add(character);
+        //    }
+        //}
 
-        if (characters.Count == 0)
-        {
-            throw new InvalidOperationException("The group is null or fuck you");
-        }
+        //if (characters.Count == 0)
+        //{
+        //    throw new InvalidOperationException("The group is null or fuck you");
+        //}
 
-        Global.SaveCharactersInfo(characters);
+        //Global.SaveCharactersInfo(characters);
         SceneManager.LoadScene("BattleScene");
     }
 }

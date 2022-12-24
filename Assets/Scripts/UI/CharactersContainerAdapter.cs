@@ -9,7 +9,7 @@ public class CharactersContainerAdapter : MonoBehaviour
 
     [SerializeField] private RectTransform _content;
 
-    [SerializeField] private Text _countCharacterSlots;
+    
 
 
 
@@ -18,12 +18,19 @@ public class CharactersContainerAdapter : MonoBehaviour
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)
         {
             var characterSlot = GameObject.Instantiate(_characterSlotPrefab.gameObject) as GameObject;
+            var uiCharacterSlot = characterSlot.GetComponent<UICharacterSlot>();
 
-            characterSlot.GetComponent<UICharacterSlot>().Portrait.sprite = characterInfo.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
+            uiCharacterSlot.Portrait.sprite = characterInfo.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
 
-            characterSlot.GetComponent<UICharacterSlot>().CharacterPrefab = characterInfo.CharacterPrefab;
+            uiCharacterSlot.CharacterPrefab = characterInfo.CharacterPrefab;
 
+            uiCharacterSlot.CharacterId = characterInfo.Id;
             characterSlot.transform.SetParent(_content, false);
+
+            var character = characterInfo.CharacterPrefab.GetComponent<EntityBase>();
+
+
+            uiCharacterSlot.CharacterName.text = EntityBase.GetClassName(character.EntityClass);
         }
     }
 }
