@@ -11,6 +11,8 @@ public class DoorContainer : MonoBehaviour
 
     [SerializeField] private GameObject _door;
 
+    [SerializeField] private GameObject _window;
+
     private SpriteRenderer _topDoorSR;
 
     private SpriteRenderer _bottomDoorSR;
@@ -43,5 +45,14 @@ public class DoorContainer : MonoBehaviour
     private void OnMouseDown()
     {
         _anim.SetBool("isOpen", true);
+
+        StartCoroutine(WindowsLoading());
+    }
+
+    private IEnumerator WindowsLoading()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        _window.SetActive(true);
     }
 }
