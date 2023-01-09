@@ -8,6 +8,10 @@ using UnityEngine;
 
 public static class Global
 {
+    public static HibernateCapsule[] capsules;
+
+    public static List<GameObject> availableClasses;
+
     public static CurrentCharacterGroup currentGroup;
 
     public static CharacterGroup allCharacters;
@@ -31,10 +35,18 @@ public static class Global
         characterPrefabContainer = Resources.Load<GameObject>("CharacterPrefabs");
         CharacterPrefabs = characterPrefabContainer.GetComponent<CharacterPrefabs>();
         allCharacters = new CharacterGroup();
-        allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
-             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer, 1),
-             CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
-             });
+        //allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
+        //     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer, 1),
+        //     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
+        //     });
+
+        availableClasses = new List<GameObject>()
+        {
+            CharacterPrefabs.Officer,
+            CharacterPrefabs.Medic
+        };
+
+        capsules = new HibernateCapsule[] { new HibernateCapsule()};
     }
 
     //public static void SaveCharactersInfo(List<Character> characters)

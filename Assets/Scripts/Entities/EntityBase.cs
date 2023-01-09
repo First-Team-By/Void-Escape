@@ -53,6 +53,12 @@ public abstract class EntityBase : MonoBehaviour
 
     private static string[] entityClassNames = new string[] { "Officer", "Medic", "Mutant" };
 
+    public string ClassName
+    {
+
+        get { return GetClassName(entityClass); }
+    }
+
     public static string GetClassName(EntityClass entityClass)
     {
         return entityClassNames[Convert.ToInt32(entityClass)];
