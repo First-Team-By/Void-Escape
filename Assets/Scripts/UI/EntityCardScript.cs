@@ -19,6 +19,15 @@ public class EntityCardScript : MonoBehaviour
 
     [SerializeField] private Text _evadeChance;
 
+    [SerializeField] private Text _accuracy;
+
+    [SerializeField] private Text _defence;
+
+    [SerializeField] private Text _initiative;
+
+    [SerializeField] private Text _value;
+
+
     public void FillInfo(EntityBase entity)
     {
         if (entity is null)
@@ -43,5 +52,13 @@ public class EntityCardScript : MonoBehaviour
         _critMultiplier.text = entity.EntityChars.CritMultiplier.ToString();
 
         _evadeChance.text = entity.EntityChars.EvadeChance.ToString();
+
+        _accuracy.text = entity.EntityChars.Accuracy.ToString();
+
+        _defence.text = entity.EntityChars.Defence.ToString();
+
+        _initiative.text = entity.EntityChars.Initiative.ToString();
+
+        _value.text = entity.EntityChars.Value.ToString();
     }
 }
