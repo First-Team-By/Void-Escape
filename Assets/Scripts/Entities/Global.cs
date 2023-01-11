@@ -46,7 +46,7 @@ public static class Global
             CharacterPrefabs.Medic
         };
 
-        capsules = new HibernateCapsule[] { new HibernateCapsule()};
+        capsules = new HibernateCapsule[] { new HibernateCapsule(), new HibernateCapsule()};
     }
 
     //public static void SaveCharactersInfo(List<Character> characters)

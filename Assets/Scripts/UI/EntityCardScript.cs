@@ -25,8 +25,6 @@ public class EntityCardScript : MonoBehaviour
 
     [SerializeField] private Text _initiative;
 
-    [SerializeField] private Text _value;
-
 
     public void FillInfo(EntityBase entity)
     {
@@ -58,7 +56,5 @@ public class EntityCardScript : MonoBehaviour
         _defence.text = entity.EntityChars.Defence.ToString();
 
         _initiative.text = entity.EntityChars.Initiative.ToString();
-
-        _value.text = entity.EntityChars.Value.ToString();
     }
 }

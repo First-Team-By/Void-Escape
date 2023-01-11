@@ -8,14 +8,14 @@ public class HibernaiteChamber : MonoBehaviour
 
     private void Awake()
     {
-        LoadeFromGlobal();
+        LoadFromGlobal();
     }
 
     private void OnEnable()
     {
         for (int i = 0; i < capsules.Length; i++)
         {
-            capsules[i].Open();
+            capsules[i].CheckStatus();
         }
     }
 
@@ -27,7 +27,7 @@ public class HibernaiteChamber : MonoBehaviour
         }
     }
 
-    public void LoadeFromGlobal()
+    public void LoadFromGlobal()
     {
         for (int i = 0; i < capsules.Length; i++)
         {

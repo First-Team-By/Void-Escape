@@ -16,6 +16,8 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
     [SerializeField] private HibernaiteChamber _hibernaiteChamber;
 
+    [SerializeField] private Animator _animator;
+
 
     public void Extract()
     {
@@ -47,16 +49,34 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         _entityCardScript.FillInfo(capsuleInfo.Character);
     }
 
-    public void Open()
+    public void CheckStatus()
     {
-        if (capsuleInfo.Status == CapsuleStatus.JustOpened)
+        if (capsuleInfo.Status == CapsuleStatus.UnFreezed)
         {
             var index = new System.Random().Next(0, Global.availableClasses.Count);
             capsuleInfo.Character = GameObject.Instantiate(Global.availableClasses[index]).GetComponent<Character>();
             capsuleInfo.Status = CapsuleStatus.Opened;
             _hibernaiteChamber.SaveToGlobal();
-        }
 
+            _animator.SetTrigger("Open");
+        }
+        else if (capsuleInfo.Status == CapsuleStatus.Opened || capsuleInfo.Status == CapsuleStatus.Empty)
+        {
+            _animator.SetTrigger("Opened");
+        }else if (capsuleInfo.Status == CapsuleStatus.Freezed)
+        {
+            _animator.SetTrigger("Closed");
+        }
+    }
+
+    public void Freeze()
+    {
+        capsuleInfo.Character = null;
+        capsuleInfo.Status = CapsuleStatus.Freezed;
+        _hibernaiteChamber.SaveToGlobal();
+        _entityCardScript.FillInfo(capsuleInfo.Character);
+
+        _animator.SetTrigger("Close");
     }
 }
 
