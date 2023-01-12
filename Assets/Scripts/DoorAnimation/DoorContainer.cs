@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DoorContainer : MonoBehaviour
+public class DoorContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] private GameObject _topDoor;
 
@@ -17,7 +19,9 @@ public class DoorContainer : MonoBehaviour
 
     private SpriteRenderer _bottomDoorSR;
 
-    private Animator _anim;
+    private Image _imageDoor;
+
+    [SerializeField] private Animator _anim;
 
 
 
@@ -26,18 +30,21 @@ public class DoorContainer : MonoBehaviour
         _topDoorSR = _topDoor.GetComponent<SpriteRenderer>();
         _bottomDoorSR = _bottomDoor.GetComponent<SpriteRenderer>();
         _anim = _door.GetComponent<Animator>();
+        _imageDoor = _topDoor.GetComponent<Image>(); 
     }
 
     private void OnMouseEnter()
     {
         _topDoorSR.color = Color.gray;
         _bottomDoorSR.color = Color.gray;
+        
     }
 
     private void OnMouseExit()
     {
         _topDoorSR.color = Color.white;
         _bottomDoorSR.color = Color.white;
+        
 
         _anim.SetBool("isOpen", false);
     }
@@ -54,5 +61,24 @@ public class DoorContainer : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         _window.SetActive(true);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _imageDoor.color = Color.gray;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        _anim.SetBool("isOpen", true);
+
+        StartCoroutine(WindowsLoading());
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _imageDoor.color = Color.white;
+
+        _anim.SetBool("isOpen", false);
     }
 }
