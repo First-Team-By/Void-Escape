@@ -18,10 +18,11 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private Animator _topAnimator;
 
     public void Extract()
     {
-        if  (capsuleInfo.Status == CapsuleStatus.Empty)
+        if  (capsuleInfo.Status == CapsuleStatus.Empty || capsuleInfo.Status == CapsuleStatus.Freezed)
         {
             return;
         }
@@ -31,6 +32,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         capsuleInfo.Status = CapsuleStatus.Empty;
         _hibernaiteChamber.SaveToGlobal();
         _entityCardScript.FillInfo(capsuleInfo.Character);
+        _topAnimator.SetTrigger("Extract");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -67,16 +69,24 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         {
             _animator.SetTrigger("Closed");
         }
+
+        if (capsuleInfo.Status == CapsuleStatus.Empty)
+        {
+            _topAnimator.SetBool("Extracted", true);
+        }
     }
 
     public void Freeze()
     {
-        capsuleInfo.Character = null;
-        capsuleInfo.Status = CapsuleStatus.Freezed;
-        _hibernaiteChamber.SaveToGlobal();
-        _entityCardScript.FillInfo(capsuleInfo.Character);
+        if (capsuleInfo.Status == CapsuleStatus.Opened)
+        {
+            capsuleInfo.Character = null;
+            capsuleInfo.Status = CapsuleStatus.Freezed;
+            _hibernaiteChamber.SaveToGlobal();
+            _entityCardScript.FillInfo(capsuleInfo.Character);
 
-        _animator.SetTrigger("Close");
+            _animator.SetTrigger("Close");
+        }
     }
 }
 

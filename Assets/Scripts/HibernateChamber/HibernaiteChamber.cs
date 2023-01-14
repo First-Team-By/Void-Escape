@@ -6,6 +6,8 @@ public class HibernaiteChamber : MonoBehaviour
 {
     [SerializeField] private HibernateCapsuleScript[] capsules;
 
+    [SerializeField] private EntityCardScript _card;
+
     private void Awake()
     {
         LoadFromGlobal();
@@ -17,6 +19,8 @@ public class HibernaiteChamber : MonoBehaviour
         {
             capsules[i].CheckStatus();
         }
+
+        _card.FillInfo(null);
     }
 
     public void SaveToGlobal()
