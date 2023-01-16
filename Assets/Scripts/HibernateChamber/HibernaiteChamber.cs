@@ -6,17 +6,21 @@ public class HibernaiteChamber : MonoBehaviour
 {
     [SerializeField] private HibernateCapsuleScript[] capsules;
 
+    [SerializeField] private EntityCardScript _card;
+
     private void Awake()
     {
-        LoadeFromGlobal();
+        LoadFromGlobal();
     }
 
     private void OnEnable()
     {
         for (int i = 0; i < capsules.Length; i++)
         {
-            capsules[i].Open();
+            capsules[i].CheckStatus();
         }
+
+        _card.FillInfo(null);
     }
 
     public void SaveToGlobal()
@@ -27,7 +31,7 @@ public class HibernaiteChamber : MonoBehaviour
         }
     }
 
-    public void LoadeFromGlobal()
+    public void LoadFromGlobal()
     {
         for (int i = 0; i < capsules.Length; i++)
         {

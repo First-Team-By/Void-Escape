@@ -8,10 +8,10 @@ using UnityEngine;
 
 public enum CapsuleStatus
 {
-    JustOpened,
+    UnFreezed,
     Opened,
     Empty,
-    Rejected
+    Freezed
 }
 
 public class HibernateCapsule
@@ -28,7 +28,7 @@ public class HibernateCapsule
 
     public HibernateCapsule()
     {
-        Status = CapsuleStatus.JustOpened;
+        Status = CapsuleStatus.UnFreezed;
     }
  
 }
