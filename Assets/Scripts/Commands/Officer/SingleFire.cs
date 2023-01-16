@@ -16,6 +16,8 @@ public class SingleFire : CharacterCommand
         EnemyPositions = new List<int>() { 1, 2, 3 };
 
         Name = "Single fire";
+
+        Conditioning.SetBleeding(0.75f, 2, 50);
     }
 
     private void SingleFireExec()
@@ -52,7 +54,7 @@ public class SingleFire : CharacterCommand
     {
         var result = new CommandResult();
         var target = targets.FirstOrDefault();
-        result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect));
+        result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect, Conditioning));
         result.Actor = actor;
         result.ActorPose = EntityPose.AttackPose;
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -98,6 +99,12 @@ public class BattleRoutine : MonoBehaviour
 
     private void OnEntityTurn()
     {
+        if (CurrentEntity != null)
+        {
+            var conditionsResult = CurrentEntity.ProcessConditions();
+            StartCoroutine(conditionsProcess(conditionsResult, CurrentEntity.Position));
+        }
+
         if (CurrentEntity is Character)
         {
             commandExecutor.SetCommands(currentEntity);
@@ -108,7 +115,7 @@ public class BattleRoutine : MonoBehaviour
         else
         {
             isCharacterTurn = false;
-            if (currentEntity != null)
+            if (CurrentEntity != null)
             {
                 inactiveEntitiesList.Add(currentEntity);
             }
@@ -132,9 +139,17 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
+    private IEnumerator conditionsProcess(List<TargetState> states, int position)
+    {
+        foreach (var state in states)
+        {
+            GetBattlePosition(position).ShowCondition(state.HealthChanged.ToString());
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
     private void OnHealthOver(EntityBase entity)
     {
-        
+        CheckBattleResult();
     }
 
     private bool IsActive(EntityBase entity)
@@ -187,6 +202,11 @@ public class BattleRoutine : MonoBehaviour
     private BattlePosition GetBattlePosition(EntityBase entity)
     {
         var position = entity.Position;
+        return GetBattlePosition(position);
+    }
+
+    private BattlePosition GetBattlePosition(int position)
+    {
         var battlePosition = position > 5 ? enemyPositions[position - 6] : characterPositions[position - 1];
         return battlePosition.GetComponent<BattlePosition>();
     }

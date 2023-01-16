@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealOne : CharacterCommand
 {
-    private float healthAddition = 10;
+    private float healthAddition = 100;
     public HealOne()
     {
         IsEnabled = HealOneEnabled;

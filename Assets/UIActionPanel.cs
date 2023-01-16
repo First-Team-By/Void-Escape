@@ -10,11 +10,20 @@ using UnityEngine.UI;
 public class UIActionPanel : MonoBehaviour
 {
     [SerializeField] private Text[] _enemiesTexts;
-    [SerializeField] private Image[] _poses;
-    [SerializeField] private Image[] _effects;
+    [SerializeField] private Text[] _charactersTexts;
+    [SerializeField] private Image[] _charactersPoses;
+    [SerializeField] private Image[] _enemiesPoses;
+    [SerializeField] private Image[] _enemiesEffects;
+    [SerializeField] private Image[] _charactersEffects;
+
     [SerializeField] private Image actorPose;
     [SerializeField] private Image actorEffect;
+    [SerializeField] private Text actorText;
     [SerializeField] private GameObject panel;
+
+    private Text[] EntitiesTexts => _charactersTexts.Concat(_enemiesTexts).ToArray();
+    private Image[] EntitiesPoses => _charactersPoses.Concat(_enemiesPoses).ToArray();
+    private Image[] EntitiesEffects => _charactersEffects.Concat(_enemiesEffects).ToArray();
 
     public event Action ActionEnd;
 
@@ -30,38 +39,57 @@ public class UIActionPanel : MonoBehaviour
     private void Show(CommandResult commandResult)
     {
         Clear();
-        for (var i = 0; i < _enemiesTexts.Length; i++)
+        for (var i = 0; i < EntitiesTexts.Length; i++)
         {
-            var index = i + 6;
+            var index = i + 1;
             if (commandResult.TargetStates.ContainsKey(index))
             {
+                actorText.text = null;
                 var state = commandResult.TargetStates[index];
                 var healthChanged = state.HealthChanged.ToString();
-                _enemiesTexts[i].color = Color.red;
+                EntitiesTexts[i].color = Color.red;
+                actorText.color = Color.red;
                 if (commandResult.TargetStates[index].HealthChanged > 0)
                 {
                     healthChanged = "+" + healthChanged;
-                    _enemiesTexts[i].color = Color.green;
+                    EntitiesTexts[i].color = Color.green;
+                    actorText.color = Color.green;
                 }
                 if (commandResult.TargetStates[index].HealthChanged == 0)
                 {
                     healthChanged = "";
-                    _enemiesTexts[i].color = Color.gray;
+                    EntitiesTexts[i].color = Color.gray;
+                    actorText.color = Color.gray;
                 }
 
                 actorPose.enabled = true;
-                _poses[i].enabled = true;
-                _effects[i].enabled = true;
-
-                switch (state.Pose)
+                if (commandResult.Actor.Position != index)
                 {
-                    case EntityPose.SufferingPose:
-                        _poses[i].sprite = state.Target.GetSufferingPose();
-                        break;
+                    EntitiesPoses[i].enabled = true;
+                    EntitiesEffects[i].enabled = true;
+                    EntitiesEffects[i].sprite = state.Effect;
+                    EntitiesPoses[i].sprite = state.Target.SufferingPose;
+                    EntitiesTexts[i].text = healthChanged;
+                }
+                else
+                {
+                    actorEffect.enabled = true;
+                    actorEffect.sprite = state.Effect;
+                    actorText.text = healthChanged;
+                }
 
-                    case EntityPose.AttackPose:
-                        _poses[i].sprite = state.Target.GetAttackPose();
-                        break;
+                if (index != commandResult.Actor.Position)
+                {
+                    switch (state.Pose)
+                    {
+                        case EntityPose.SufferingPose:
+                            EntitiesPoses[i].sprite = state.Target.GetSufferingPose();
+                            break;
+
+                        case EntityPose.AttackPose:
+                            EntitiesPoses[i].sprite = state.Target.GetAttackPose();
+                            break;
+                    }
                 }
 
                 switch (commandResult.ActorPose)
@@ -74,25 +102,21 @@ public class UIActionPanel : MonoBehaviour
                         actorPose.sprite = commandResult.Actor.GetAttackPose();
                         break;
                 }
-
-                _effects[i].sprite = state.Effect;
-                _poses[i].sprite = state.Target.SufferingPose;
-                _enemiesTexts[i].text = healthChanged;
             }
         }
     }
 
     private void Clear()
     {
-        foreach(var text in _enemiesTexts)
+        foreach(var text in EntitiesTexts)
         {
             text.text = "";
         }
-        foreach (var pose in _poses)
+        foreach (var pose in EntitiesPoses)
         {
             pose.enabled = false;
         }
-        foreach (var effect in _effects)
+        foreach (var effect in EntitiesEffects)
         {
             effect.enabled = false;
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -112,7 +113,7 @@ public abstract class EntityBase : MonoBehaviour
 
     protected virtual void Init() { }
 
-    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect)
+    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
     {
         var result = new TargetState();
         if (Random.Range(0, 1f) < Mathf.Clamp(entityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
@@ -129,11 +130,32 @@ public abstract class EntityBase : MonoBehaviour
 
         finalDamage *= entityChars.Defence;
 
+        if (finalDamage > 0 && conditioning.CanGetBleed)
+        {
+            var chance = Random.Range(0, 1);
+            if (chance <= conditioning.Bleeding.Chance)
+            {
+                Debug.Log("success");
+                GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
+            }
+        }
+
         Health -= finalDamage;
         result.Pose = EntityPose.SufferingPose;
         result.HealthChanged = -finalDamage;
         result.Target = this;
         result.Effect = effect;
+        return result;
+    }
+
+    private TargetState TakeDamage(float damage, Sprite effect = null)
+    {
+        var result = new TargetState();
+        result.Pose = EntityPose.SufferingPose;
+        result.HealthChanged -= damage;
+        result.Target = this;
+        result.Effect = effect;
+
         return result;
     }
 
@@ -154,11 +176,10 @@ public abstract class EntityBase : MonoBehaviour
         _conditions.poisoned.poisonDamage = poisonEffects.damage;
         _conditions.poisoned.duration = poisonEffects.duration;
     }
-    public void GetBleeded((float damage, int duration) bleedEffects)
+    public void GetBleeded(float damage, int duration)
     {
-        _conditions.bleeding.isBleeding = true;
-        _conditions.bleeding.bleedDamage = bleedEffects.damage;
-        _conditions.bleeding.duration = bleedEffects.duration;
+        _conditions.bleeding.bleedDamage = damage;
+        _conditions.bleeding.duration = duration;
     }
 
     public virtual Sprite GetSufferingPose()
@@ -169,6 +190,19 @@ public abstract class EntityBase : MonoBehaviour
     public virtual Sprite GetAttackPose()
     {
         return attackPose;
+    }
+
+    public List<TargetState> ProcessConditions()
+    {
+        List<TargetState> results = new List<TargetState>();
+        if (_conditions.IsBleeding)
+        {
+            results.Add(TakeDamage(_conditions.bleeding.bleedDamage));
+            _conditions.bleeding.duration--;
+        }
+
+
+        return results;
     }
 }
 

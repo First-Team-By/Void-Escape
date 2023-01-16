@@ -16,13 +16,15 @@ public abstract class EntityCommand
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
     
-
+    public Conditioning Conditioning { get; set; }
     public EntityCommand()
     {
         IsEnabled = IsCommandEnabled;
         
         Icon = Resources.Load<Sprite>("Sprites/" + IconName);
         Effect = Resources.Load<Sprite>("Sprites/" + EffectName);
+
+        Conditioning = new Conditioning();
     }
 
     public IEnumerator<EntityBase> GetAccessibleEntities(List<EntityBase> entityList)

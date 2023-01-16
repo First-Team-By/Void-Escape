@@ -101,6 +101,6 @@ MonoBehaviour:
   prefab: {fileID: 7579930907680073728}
   portrait: {fileID: 21300000, guid: 6b2593cef3e7cdf4998be273741d6bf7, type: 3}
   sufferingPose: {fileID: 0}
-  attackPose: {fileID: 0}
+  attackPose: {fileID: 21300000, guid: 04e634e7012743c47afdb1811cfafcc1, type: 3}
   deathDoorSprite: {fileID: 0}
   entityClass: 1

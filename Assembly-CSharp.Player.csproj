@@ -56,6 +56,7 @@
     <Analyzer Include="E:\VisualStudio\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Dungeon.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\UI\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonGenerator2.cs" />
+    <Compile Include="Assets\Scripts\DoorAnimation\DoorContainer.cs" />
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
@@ -84,7 +86,10 @@
     <Compile Include="Assets\Scripts\UI\CharacterPosition.cs" />
     <Compile Include="Assets\Scripts\UI\BattlePosition.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
+    <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Corridor.cs" />
+    <Compile Include="Assets\Scripts\UI\EntityCardScript.cs" />
+    <Compile Include="Assets\Scripts\DoorAnimation\CompartmentButtons.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInterface.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
@@ -93,6 +98,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />
     <Compile Include="Assets\test.cs" />
+    <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EnemyPrefabs.cs" />
@@ -103,6 +109,7 @@
     <Compile Include="Assets\Scripts\Tools\EntityTool.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandType.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
+    <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsuleScript.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInfoButton.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonSettings.cs" />
@@ -120,6 +127,8 @@
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
+    <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -9,7 +9,6 @@ public class DoubleTap : CharacterCommand
     private float damage = 10;
     public DoubleTap()
     {
-
         SelfPositions = new List<int>() { 1, 2, 3 };
 
         Name = "Double tap";
@@ -51,7 +50,7 @@ public class DoubleTap : CharacterCommand
         var result = new CommandResult();
         foreach (var target in targets)
         {
-            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect));
+            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect, Conditioning));
         }
         result.Actor = actor;
         result.ActorPose = EntityPose.AttackPose;

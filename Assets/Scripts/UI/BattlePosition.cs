@@ -11,6 +11,8 @@ public class BattlePosition : MonoBehaviour
     [SerializeField] private int _position;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Image _healthBar;
+    [SerializeField] private Text _conditionEffectText;
+
 
     public int Position => _position;
     void Start()
@@ -56,5 +58,10 @@ public class BattlePosition : MonoBehaviour
     {
         _healthBar.fillAmount = percent;
         _healthBar.gameObject.SetActive(percent > 0);
+    }
+
+    public void ShowCondition(string text)
+    {
+        _conditionEffectText.text = text;
     }
 }
