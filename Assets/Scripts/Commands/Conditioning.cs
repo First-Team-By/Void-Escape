@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public struct ConditionInfo
+public class ConditionInfo
 {
     public ConditionInfo(float chance, int duration, float damage)
     {
@@ -16,7 +16,7 @@ public struct ConditionInfo
     public int Duration { get; set; }
     public float Damage { get; set; }
 }
-public struct Conditioning
+public class Conditioning
 {
     public ConditionInfo Bleeding { get; set; }
     public bool CanGetBleed => Bleeding.Chance > 0;

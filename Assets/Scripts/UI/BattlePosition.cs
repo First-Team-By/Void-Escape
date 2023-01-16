@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,8 +61,19 @@ public class BattlePosition : MonoBehaviour
         _healthBar.gameObject.SetActive(percent > 0);
     }
 
-    public void ShowCondition(string text)
+    public void ShowConditionHealthChanging(float changed)
     {
-        _conditionEffectText.text = text;
+        if (changed < 0) 
+        {
+            _conditionEffectText.color = Color.red;
+        }
+        else
+            _conditionEffectText.color = Color.green;
+        _conditionEffectText.text = changed.ToString();        
+    }
+
+    internal void ClearCondition()
+    {
+        _conditionEffectText.text = "";
     }
 }

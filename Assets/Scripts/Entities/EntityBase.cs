@@ -132,7 +132,7 @@ public abstract class EntityBase : MonoBehaviour
 
         if (finalDamage > 0 && conditioning.CanGetBleed)
         {
-            var chance = Random.Range(0, 1);
+            var chance = Random.Range(0, 1f);
             if (chance <= conditioning.Bleeding.Chance)
             {
                 Debug.Log("success");
@@ -150,9 +150,11 @@ public abstract class EntityBase : MonoBehaviour
 
     private TargetState TakeDamage(float damage, Sprite effect = null)
     {
+        Health-= damage;
+
         var result = new TargetState();
         result.Pose = EntityPose.SufferingPose;
-        result.HealthChanged -= damage;
+        result.HealthChanged = -damage;
         result.Target = this;
         result.Effect = effect;
 

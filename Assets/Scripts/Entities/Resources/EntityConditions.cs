@@ -10,7 +10,7 @@ public class EntityConditions
     public (bool isDeseased, EntityDesease desease) desease;
     public bool isStunned;
 
-    public bool IsBleeding => bleeding.duration < 1;
+    public bool IsBleeding => bleeding.duration > 0;
     //public bool isAffected;
     //public bool isReinforced;
     //public bool isDiminished;

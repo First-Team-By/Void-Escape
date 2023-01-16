@@ -11,7 +11,7 @@ public class DoorContainer : MonoBehaviour
 
     [SerializeField] private GameObject _window;
 
-    private List<SpriteRenderer>  _doorPartsSR;
+    private List<SpriteRenderer> _doorPartsSR;
 
     private Animator _anim;
 

@@ -103,6 +103,7 @@ public class BattleRoutine : MonoBehaviour
         {
             var conditionsResult = CurrentEntity.ProcessConditions();
             StartCoroutine(conditionsProcess(conditionsResult, CurrentEntity.Position));
+            RefreshHealthBars();
         }
 
         if (CurrentEntity is Character)
@@ -141,11 +142,14 @@ public class BattleRoutine : MonoBehaviour
 
     private IEnumerator conditionsProcess(List<TargetState> states, int position)
     {
+        var battlePosition = GetBattlePosition(position);
         foreach (var state in states)
         {
-            GetBattlePosition(position).ShowCondition(state.HealthChanged.ToString());
-            yield return new WaitForSeconds(0.2f);
+            if (state.HealthChanged != 0)
+                battlePosition.ShowConditionHealthChanging(state.HealthChanged);
+            yield return new WaitForSeconds(1.5f);
         }
+        battlePosition.ClearCondition();
     }
     private void OnHealthOver(EntityBase entity)
     {
