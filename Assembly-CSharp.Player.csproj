@@ -66,6 +66,7 @@
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Room.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CharacterPrefabs.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CurrentCharacterInfo.cs" />
+    <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildCharacterHolder.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitHandler.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\CommandButton.cs" />
@@ -124,11 +125,10 @@
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
+    <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
-    <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

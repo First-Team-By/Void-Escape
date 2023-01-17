@@ -18,6 +18,7 @@ public class SingleFire : CharacterCommand
         Name = "Single fire";
 
         Conditioning.SetBleeding(1f, 2, 3);
+        Conditioning.SetPoisoning(1f, 2, 1);
     }
 
     private void SingleFireExec()

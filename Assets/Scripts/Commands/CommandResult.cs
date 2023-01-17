@@ -17,10 +17,9 @@ public class TargetState
 {
     public float HealthChanged { get; set; }
     public EntityPose Pose { get; set; }
-    public EntityConditions AddedConditions { get; set; } = new EntityConditions();
-    public EntityConditions RemovedConditions { get; set; } = new EntityConditions();
     public EntityBase Target { get; set; }
     public Sprite Effect { get; set; }
+    public string ConditionName { get; set; }
 }
 
 public enum EntityPose

@@ -135,8 +135,16 @@ public abstract class EntityBase : MonoBehaviour
             var chance = Random.Range(0, 1f);
             if (chance <= conditioning.Bleeding.Chance)
             {
-                Debug.Log("success");
                 GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
+            }
+        }
+
+        if (finalDamage > 0 && conditioning.CanGetPoison)
+        {
+            var chance = Random.Range(0, 1f);
+            if (chance <= conditioning.Poisoning.Chance)
+            {
+                GetPoisoned(conditioning.Poisoning.Damage, conditioning.Poisoning.Duration);
             }
         }
 
@@ -148,7 +156,7 @@ public abstract class EntityBase : MonoBehaviour
         return result;
     }
 
-    private TargetState TakeDamage(float damage, Sprite effect = null)
+    private TargetState TakeDamage(float damage, string reason, Sprite effect = null)
     {
         Health-= damage;
 
@@ -157,6 +165,7 @@ public abstract class EntityBase : MonoBehaviour
         result.HealthChanged = -damage;
         result.Target = this;
         result.Effect = effect;
+        result.ConditionName = reason;
 
         return result;
     }
@@ -172,11 +181,10 @@ public abstract class EntityBase : MonoBehaviour
         return result;
     }
 
-    public void GetPoisoned((float damage, int duration) poisonEffects)
+    public void GetPoisoned(float damage, int duration)
     {
-        _conditions.poisoned.isPoisoned = true;
-        _conditions.poisoned.poisonDamage = poisonEffects.damage;
-        _conditions.poisoned.duration = poisonEffects.duration;
+        _conditions.poisoned.poisonDamage = damage;
+        _conditions.poisoned.duration = duration;
     }
     public void GetBleeded(float damage, int duration)
     {
@@ -199,8 +207,14 @@ public abstract class EntityBase : MonoBehaviour
         List<TargetState> results = new List<TargetState>();
         if (_conditions.IsBleeding)
         {
-            results.Add(TakeDamage(_conditions.bleeding.bleedDamage));
+            results.Add(TakeDamage(_conditions.bleeding.bleedDamage, " ровотечение"));
             _conditions.bleeding.duration--;
+        }
+
+        if (_conditions.IsPoisoned)
+        {
+            results.Add(TakeDamage(_conditions.poisoned.poisonDamage, "яд"));
+            _conditions.poisoned.duration--;
         }
 
 

@@ -70,7 +70,7 @@ public class BattleRoutine : MonoBehaviour
 
     private void MainBattleProcess()
     {
-
+        RefreshConditions();
         RefreshHealthBars();
         CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
         if (CurrentEntity is null)
@@ -146,7 +146,7 @@ public class BattleRoutine : MonoBehaviour
         foreach (var state in states)
         {
             if (state.HealthChanged != 0)
-                battlePosition.ShowConditionHealthChanging(state.HealthChanged);
+                battlePosition.ShowConditionHealthChanging(state.HealthChanged, state.ConditionName);
             yield return new WaitForSeconds(1.5f);
         }
         battlePosition.ClearCondition();
@@ -261,7 +261,17 @@ public class BattleRoutine : MonoBehaviour
     {
         foreach (var entity in EntitiesRoute)
         {
-            GetBattlePosition(entity).SetHealth(entity.Health / entity.EntityChars.MaxHealth);
+            var position = GetBattlePosition(entity);
+            position.SetHealth(entity.Health / entity.EntityChars.MaxHealth);
+        }
+    }
+
+    public void RefreshConditions()
+    {
+        foreach (var entity in EntitiesRoute)
+        {
+            var position = GetBattlePosition(entity);
+            position.SetConditions(entity.Conditions);
         }
     }
 

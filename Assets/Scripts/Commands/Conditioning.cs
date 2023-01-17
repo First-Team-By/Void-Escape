@@ -19,11 +19,18 @@ public class ConditionInfo
 public class Conditioning
 {
     public ConditionInfo Bleeding { get; set; }
-    public bool CanGetBleed => Bleeding.Chance > 0;
+    public ConditionInfo Poisoning { get; set; }
+    public bool CanGetBleed => Bleeding != null && Bleeding.Chance > 0;
+    public bool CanGetPoison => Poisoning != null && Poisoning.Chance > 0;
 
     public void SetBleeding(float chance, int duration, float damage)
     {
         Bleeding = new ConditionInfo(chance, duration, damage);
+    }
+
+    public void SetPoisoning(float chance, int duration, float damage)
+    {
+        Poisoning = new ConditionInfo(chance, duration, damage);
     }
 }
 

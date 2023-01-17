@@ -13,6 +13,8 @@ public class BattlePosition : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Image _healthBar;
     [SerializeField] private Text _conditionEffectText;
+    [SerializeField] private Image _bloodConditionIcon;
+    [SerializeField] private Image _poisonConditionIcon;
 
 
     public int Position => _position;
@@ -61,7 +63,13 @@ public class BattlePosition : MonoBehaviour
         _healthBar.gameObject.SetActive(percent > 0);
     }
 
-    public void ShowConditionHealthChanging(float changed)
+    public void SetConditions(EntityConditions conditions)
+    {
+        _bloodConditionIcon.gameObject.SetActive(conditions.IsBleeding);
+        _poisonConditionIcon.gameObject.SetActive(conditions.IsPoisoned);
+    }
+
+    public void ShowConditionHealthChanging(float changed, string reason)
     {
         if (changed < 0) 
         {
@@ -69,7 +77,7 @@ public class BattlePosition : MonoBehaviour
         }
         else
             _conditionEffectText.color = Color.green;
-        _conditionEffectText.text = changed.ToString();        
+        _conditionEffectText.text = reason + " " + changed;        
     }
 
     internal void ClearCondition()
