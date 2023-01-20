@@ -9,23 +9,25 @@ using UnityEngine;
 public class CommandResult
 {
     public Dictionary<int, TargetState> TargetStates { get; set; } = new Dictionary<int, TargetState>();
-    public EntityPose ActorPose { get; set; }
+    public string ActorPoseName { get; set; }
     public EntityBase Actor { get; set; }
 }
 
 public class TargetState
 {
     public float HealthChanged { get; set; }
-    public EntityPose Pose { get; set; }
+    public string PoseName { get; set; }
     public EntityBase Target { get; set; }
     public Sprite Effect { get; set; }
     public string ConditionName { get; set; }
 }
 
-public enum EntityPose
+public static class Poses
 {
-    AttackPose,
-    SufferingPose,
-    EvadePose,
-    ReinforcedPose
+    public const string PistolFire = "PistolFire";
+    public const string Buffing = "Buffing";
+    public const string Evade = "Evade";
+    public const string Suffering = "Suffering";
+    public const string Reinforced = "Reinforced";
 }
+

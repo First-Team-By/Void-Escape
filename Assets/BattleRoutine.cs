@@ -109,8 +109,8 @@ public class BattleRoutine : MonoBehaviour
         if (CurrentEntity is Character)
         {
             commandExecutor.SetCommands(currentEntity);
-            CurrentCommand = null;
-            CurrentAvaliableTargets = null;
+            //CurrentCommand = null;
+            //CurrentAvaliableTargets = null;
             isCharacterTurn = true;
         }
         else

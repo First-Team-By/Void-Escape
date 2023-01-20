@@ -18,5 +18,20 @@ public class Officer : Character
         Weapon = new Pistol();
 
         Prefab = Global.CharacterPrefabs.Officer;
+
+        GetBleeded(3, 10);
+
+        
+    }
+
+    public override Sprite GetCustomPose(string pose)
+    {
+        switch (pose)
+        {
+            case Poses.PistolFire:
+                return AttackPose;
+        }
+
+        return null;
     }
 }

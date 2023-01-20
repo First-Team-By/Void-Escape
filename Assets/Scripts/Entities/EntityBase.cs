@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,6 +21,7 @@ public abstract class EntityBase : MonoBehaviour
     [SerializeField] private EntityConditions _conditions = new EntityConditions();
     [SerializeField] private Sprite sufferingPose;
     [SerializeField] private Sprite attackPose;
+    [SerializeField] private Sprite evadePose;
     [SerializeField] private Sprite deathDoorSprite;
     public string Name { get; set; }
     public Sprite SufferingPose => sufferingPose;
@@ -32,10 +34,7 @@ public abstract class EntityBase : MonoBehaviour
     public EntityCharacteristics EntityChars
     {
         get => entityChars;
-        set
-        {
-            entityChars = value;
-        }
+        set => entityChars = value;
     }
 
     public GameObject Prefab
@@ -43,22 +42,13 @@ public abstract class EntityBase : MonoBehaviour
         get => prefab;
         set => prefab = value;
     }
+    
 
-    public int CurrentInitiative
-    {
-        get
-        {
-            return entityChars.Initiative;
-        }
-    }
+    public int CurrentInitiative => entityChars.Initiative;
 
     private static string[] entityClassNames = new string[] { "Officer", "Medic", "Mutant" };
 
-    public string ClassName
-    {
-
-        get { return GetClassName(entityClass); }
-    }
+    public string ClassName => GetClassName(entityClass);
 
     public static string GetClassName(EntityClass entityClass)
     {
@@ -75,10 +65,7 @@ public abstract class EntityBase : MonoBehaviour
 
     public float Health
     {
-        get
-        {
-            return _health;
-        }
+        get => _health;
         set
         {
             _health = Mathf.Clamp(value, 0, entityChars.MaxHealth);
@@ -93,14 +80,8 @@ public abstract class EntityBase : MonoBehaviour
 
     public EntityConditions Conditions
     {
-        get
-        {
-            return _conditions;
-        }
-        set
-        {
-            _conditions = value;
-        }
+        get => _conditions;
+        set => _conditions = value;
     }
 
     private float _health;
@@ -118,7 +99,8 @@ public abstract class EntityBase : MonoBehaviour
         var result = new TargetState();
         if (Random.Range(0, 1f) < Mathf.Clamp(entityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
         {
-            result.Pose = EntityPose.EvadePose;
+            //result.Pose = EntityPose.EvadePose;
+            result.PoseName = Poses.Evade;
             return result;
         }
 
@@ -148,20 +130,33 @@ public abstract class EntityBase : MonoBehaviour
             }
         }
 
+        if (finalDamage > 0 && conditioning.CanGetArson)
+        {
+            var chance = Random.Range(0, 1f);
+            if (chance <= conditioning.Arsoning.Chance)
+            {
+                GetArsoned(conditioning.Arsoning.Damage, conditioning.Arsoning.Duration);
+            }
+        }
+
         Health -= finalDamage;
-        result.Pose = EntityPose.SufferingPose;
+        //result.Pose = EntityPose.SufferingPose;
+        result.PoseName = Poses.Suffering;
         result.HealthChanged = -finalDamage;
         result.Target = this;
         result.Effect = effect;
         return result;
     }
 
+    
+
     private TargetState TakeDamage(float damage, string reason, Sprite effect = null)
     {
         Health-= damage;
 
         var result = new TargetState();
-        result.Pose = EntityPose.SufferingPose;
+        //result.Pose = EntityPose.SufferingPose;
+        result.PoseName = Poses.Suffering;
         result.HealthChanged = -damage;
         result.Target = this;
         result.Effect = effect;
@@ -174,7 +169,8 @@ public abstract class EntityBase : MonoBehaviour
     {
         var result = new TargetState(); 
         Health += health;
-        result.Pose = EntityPose.ReinforcedPose;
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
         result.HealthChanged = health;
         result.Target = this;
         result.Effect = effect;
@@ -183,13 +179,43 @@ public abstract class EntityBase : MonoBehaviour
 
     public void GetPoisoned(float damage, int duration)
     {
-        _conditions.poisoned.poisonDamage = damage;
-        _conditions.poisoned.duration = duration;
+        _conditions.poisoning.poisonDamage = damage;
+        _conditions.poisoning.duration = duration;
     }
     public void GetBleeded(float damage, int duration)
     {
         _conditions.bleeding.bleedDamage = damage;
         _conditions.bleeding.duration = duration;
+    }
+
+    private void GetArsoned(float damage, int duration)
+    {
+        _conditions.arsoning.arsonDamage = damage;
+        _conditions.arsoning.duration = duration;
+    }
+
+    public TargetState StopBleeding(Sprite effect)
+    {
+        var result = new TargetState();
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
+        result.Target = this;
+        result.Effect = effect;
+        _conditions.bleeding.duration = 0;
+
+        return result;
+    }
+
+    public TargetState StopPoisoning(Sprite effect)
+    {
+        var result = new TargetState();
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
+        result.Target = this;
+        result.Effect = effect;
+        _conditions.poisoning.duration = 0;
+
+        return result;
     }
 
     public virtual Sprite GetSufferingPose()
@@ -200,6 +226,23 @@ public abstract class EntityBase : MonoBehaviour
     public virtual Sprite GetAttackPose()
     {
         return attackPose;
+    }
+
+    public virtual Sprite GetPose(string pose)
+    {
+        switch (pose)
+        {
+            case Poses.Evade: return evadePose;
+
+            case Poses.Suffering: return sufferingPose;
+
+            default: return GetCustomPose(pose);
+        }
+    }
+
+    public virtual Sprite GetCustomPose(string pose)
+    {
+        return null;
     }
 
     public List<TargetState> ProcessConditions()
@@ -213,11 +256,15 @@ public abstract class EntityBase : MonoBehaviour
 
         if (_conditions.IsPoisoned)
         {
-            results.Add(TakeDamage(_conditions.poisoned.poisonDamage, "ßה"));
-            _conditions.poisoned.duration--;
+            results.Add(TakeDamage(_conditions.poisoning.poisonDamage, "ßה"));
+            _conditions.poisoning.duration--;
         }
 
-
+        if (_conditions.IsArsoned)
+        {
+            results.Add(TakeDamage(_conditions.arsoning.arsonDamage, "ֿמהזמד"));
+            _conditions.arsoning.duration--;
+        }
         return results;
     }
 }

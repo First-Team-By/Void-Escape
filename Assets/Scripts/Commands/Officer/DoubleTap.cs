@@ -53,7 +53,8 @@ public class DoubleTap : CharacterCommand
             result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect, Conditioning));
         }
         result.Actor = actor;
-        result.ActorPose = EntityPose.AttackPose;
+        //result.ActorPose = EntityPose.AttackPose;
+        result.ActorPoseName = Poses.PistolFire;
         
         return result;
     }

@@ -25,9 +25,12 @@ public class CommandExecutionHandler : MonoBehaviour
             button.onValueChanged.AddListener(delegate { battleRoutine.SetCurrentCommand(command); });
             button.image.sprite = command.Icon;
             button.gameObject.SetActive(true);
-            
+
             currentButton++;
         }
+        battleRoutine.SetCurrentCommand(entity.Commands[currentButton - 1]);
+        battleButtons[currentButton - 1].isOn = true;
+
         CheckOffBattleButtons();
     }
 

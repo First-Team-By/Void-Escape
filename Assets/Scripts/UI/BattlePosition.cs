@@ -15,6 +15,7 @@ public class BattlePosition : MonoBehaviour
     [SerializeField] private Text _conditionEffectText;
     [SerializeField] private Image _bloodConditionIcon;
     [SerializeField] private Image _poisonConditionIcon;
+    [SerializeField] private Image _arsoningConditionIcon;
 
 
     public int Position => _position;
@@ -60,6 +61,12 @@ public class BattlePosition : MonoBehaviour
     public void SetHealth(float percent)
     {
         _healthBar.fillAmount = percent;
+        var character = GetComponentInChildren<EntityBase>();
+        if (character)
+        {
+            _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y);
+            Debug.Log(character.GetComponent<SpriteRenderer>().bounds.size);
+        }
         _healthBar.gameObject.SetActive(percent > 0);
     }
 
@@ -67,6 +74,7 @@ public class BattlePosition : MonoBehaviour
     {
         _bloodConditionIcon.gameObject.SetActive(conditions.IsBleeding);
         _poisonConditionIcon.gameObject.SetActive(conditions.IsPoisoned);
+        _arsoningConditionIcon.gameObject.SetActive(conditions.IsArsoned);
     }
 
     public void ShowConditionHealthChanging(float changed, string reason)

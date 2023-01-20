@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EnemyPrefabs.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterFactory.cs" />
+    <Compile Include="Assets\Scripts\Commands\Medic\Coagulator.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityVisuals.cs" />
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />

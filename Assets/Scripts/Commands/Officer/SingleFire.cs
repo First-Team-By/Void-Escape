@@ -19,6 +19,7 @@ public class SingleFire : CharacterCommand
 
         Conditioning.SetBleeding(1f, 2, 3);
         Conditioning.SetPoisoning(1f, 2, 1);
+        Conditioning.SetArsoning(1f, 4, 1);
     }
 
     private void SingleFireExec()
@@ -57,7 +58,7 @@ public class SingleFire : CharacterCommand
         var target = targets.FirstOrDefault();
         result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect, Conditioning));
         result.Actor = actor;
-        result.ActorPose = EntityPose.AttackPose;
+        result.ActorPoseName = Poses.PistolFire;
 
         return result;
     }
