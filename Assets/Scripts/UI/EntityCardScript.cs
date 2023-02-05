@@ -1,39 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EntityCardScript : MonoBehaviour
+public class EntityCardScript : EntityCardBase
 {
     [SerializeField] private Image _image;
 
-    [SerializeField] private Text _entityType;
-    
     [SerializeField] private Image _currentHealth;
 
-    [SerializeField] private Text _meleeDamage;
+    [SerializeField] private TMP_Text _entityType;
 
-    [SerializeField] private Text _critChance;
-
-    [SerializeField] private Text _critMultiplier;
-
-    [SerializeField] private Text _evadeChance;
-
-    [SerializeField] private Text _accuracy;
-
-    [SerializeField] private Text _defence;
-
-    [SerializeField] private Text _initiative;
+    [SerializeField] private TMP_Text _initiative;
 
 
-    public Text EntityType
+    public TMP_Text EntityType
     { 
         get { return _entityType; } 
         set { _entityType = value; } 
     }
 
-    public void FillInfo(EntityBase entity)
+    public override void FillInfo(EntityBase entity)
     {
+        base.FillInfo(entity);
+
         if (entity is null)
         {
             gameObject.SetActive(false);
@@ -43,24 +34,12 @@ public class EntityCardScript : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
-
         _image.sprite = entity.ProfileSprite;
 
         EntityType.text = entity.ClassName;
 
-        _meleeDamage.text = entity.EntityChars.MeleeDamage.ToString();
-
-        _critChance.text = entity.EntityChars.CritChance.ToString();
-
-        _critMultiplier.text = entity.EntityChars.CritMultiplier.ToString();
-
-        _evadeChance.text = entity.EntityChars.EvadeChance.ToString();
-
-        _accuracy.text = entity.EntityChars.Accuracy.ToString();
-
-        _defence.text = entity.EntityChars.Defence.ToString();
-
         _initiative.text = entity.EntityChars.Initiative.ToString();
+
+        _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
     }
 }

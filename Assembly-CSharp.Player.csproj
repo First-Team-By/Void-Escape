@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterInfo.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\RoomBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildPosition.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Scripts\DoorAnimation\CompartmentButtons.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInterface.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
+    <Compile Include="Assets\Scripts\UI\UIPopUPWindow.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\CharactersContainerAdapter.cs" />
+    <Compile Include="Assets\Scripts\UI\BarracksAdapter.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
@@ -130,6 +133,8 @@
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\UI\EntityCardBase.cs" />
+    <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
