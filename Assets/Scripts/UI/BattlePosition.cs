@@ -29,10 +29,8 @@ public class BattlePosition : MonoBehaviour
     {
         if (battleRoutine.CurrentAvaliableTargets is not null)
         {
-            battleRoutine.SelectTargets(Position);
+            battleRoutine.SelectTargets(_position);
         }
-
-        battleRoutine.FillBattleInfo(Position);
     }
 
     private void OnMouseExit()
