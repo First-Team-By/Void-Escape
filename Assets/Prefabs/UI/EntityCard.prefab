@@ -495,15 +495,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f811edfca754074fbe9a4aac38c9570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 1662628518375760877}
+  _entityType: {fileID: 1662628518522138136}
+  _currentHealth: {fileID: 5891155688916598015}
   _meleeDamage: {fileID: 5962518699756807387}
   _critChance: {fileID: 8229462333136074051}
   _critMultiplier: {fileID: 8192637686580595357}
   _evadeChance: {fileID: 5214195434644265361}
   _accuracy: {fileID: 2007113184285885119}
   _defence: {fileID: 2785067917483533121}
-  _image: {fileID: 1662628518375760877}
-  _entityType: {fileID: 1662628518522138136}
-  _currentHealth: {fileID: 5891155688916598015}
   _initiative: {fileID: 5253822598371829000}
 --- !u!1 &1662628518375760879
 GameObject:
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 3
+    m_MinSize: 15
     m_MaxSize: 30
     m_Alignment: 3
     m_AlignByGeometry: 0

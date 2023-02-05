@@ -113,7 +113,6 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsuleScript.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
-    <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInfoButton.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonSettings.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameController.cs" />
@@ -131,7 +130,6 @@
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\EntityCardBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

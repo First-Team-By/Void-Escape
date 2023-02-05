@@ -14,8 +14,6 @@ public class BattleRoutine : MonoBehaviour
     [SerializeField] private Image characterImage;
     [SerializeField] private CommandExecutionHandler commandExecutor;
     [SerializeField] private UIActionPanel actionPanel;
-    [SerializeField] private EntityBattleCard battleCard;
-    
     public int roundCounter { get; private set; }
     public List<EntityBase> EntitiesRoute => EnemyList
         .Cast<EntityBase>()
@@ -298,11 +296,6 @@ public class BattleRoutine : MonoBehaviour
     private void LoseBattle()
     {
 
-    }
-
-    public void FillBattleInfo(int position)
-    {
-        battleCard.FillInfo(EntitiesRoute.FirstOrDefault(x => x.Position == position));
     }
 
     void Start()
