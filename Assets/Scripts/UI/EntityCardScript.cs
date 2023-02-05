@@ -25,23 +25,12 @@ public class EntityCardScript : MonoBehaviour
 
     [SerializeField] private Text _initiative;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     public Text EntityType
     { 
         get { return _entityType; } 
         set { _entityType = value; } 
     }
-
-
-    public void FillInfo(EntityBase entity)
-=======
-    public override void FillInfo(EntityBase entity)
->>>>>>> 8028954ea5a7e1fe4bac3c9c8f265a0ee3c912ec
-    {
-        base.FillInfo(entity);
-=======
->>>>>>> d0009a4a11df12b954bd5b49a8a3724335d935d9
 
     public void FillInfo(EntityBase entity)
     {
