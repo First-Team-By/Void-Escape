@@ -8,7 +8,7 @@ public class EntityCardScript : MonoBehaviour
     [SerializeField] private Image _image;
 
     [SerializeField] private Text _entityType;
-
+    
     [SerializeField] private Image _currentHealth;
 
     [SerializeField] private Text _meleeDamage;
@@ -25,6 +25,12 @@ public class EntityCardScript : MonoBehaviour
 
     [SerializeField] private Text _initiative;
 
+    public Text EntityType
+    { 
+        get { return _entityType; } 
+        set { _entityType = value; } 
+    }
+
 
     public void FillInfo(EntityBase entity)
     {
@@ -39,9 +45,9 @@ public class EntityCardScript : MonoBehaviour
 
         _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
 
-        _image.sprite = entity.Portrait;
+        _image.sprite = entity.ProfileSprite;
 
-        _entityType.text = entity.ClassName;
+        EntityType.text = entity.ClassName;
 
         _meleeDamage.text = entity.EntityChars.MeleeDamage.ToString();
 

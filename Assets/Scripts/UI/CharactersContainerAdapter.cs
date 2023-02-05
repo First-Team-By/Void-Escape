@@ -9,10 +9,6 @@ public class CharactersContainerAdapter : MonoBehaviour
 
     [SerializeField] private RectTransform _content;
 
-    
-
-
-
     private void Start()
     {
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)

@@ -43,6 +43,10 @@ public abstract class EntityBase : MonoBehaviour
         set => prefab = value;
     }
     
+    public Sprite ProfileSprite
+    {
+        get { return GetComponent<SpriteRenderer>().sprite; }
+    }
 
     public int CurrentInitiative => entityChars.Initiative;
 

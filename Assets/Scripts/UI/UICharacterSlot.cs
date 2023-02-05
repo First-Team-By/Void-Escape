@@ -39,7 +39,7 @@ public class UICharacterSlot : UIDragAndDrop
 
         gameManager = GameObject.FindObjectOfType<UIPartyBuildGameManager>();
 
-        infoButton.onClick.AddListener(gameManager.InfoImageOn);
+        //infoButton.onClick.AddListener(gameManager.InfoImageOn);
     }
     public override void OnDrag(PointerEventData eventData)
     {

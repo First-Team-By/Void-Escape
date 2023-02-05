@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,14 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
     [SerializeField] private Animator _topAnimator;
 
+    [SerializeField] private UIPopUPWindow _uIPopUPWindow;
+
+    public HibernateCapsule CapsuleInfo
+    {
+        get { return capsuleInfo; }
+        set { capsuleInfo = value; }
+    }
+
     public void Extract()
     {
         if  (capsuleInfo.Status == CapsuleStatus.Empty || capsuleInfo.Status == CapsuleStatus.Freezed)
@@ -33,6 +42,12 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         _hibernaiteChamber.SaveToGlobal();
         _entityCardScript.FillInfo(capsuleInfo.Character);
         _topAnimator.SetTrigger("Extract");
+
+        //UIPopUPWindow.OnEnableUIPopUpWindow();
+
+        StartCoroutine(OnEnableUIPopUpWinCor());
+
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -87,6 +102,13 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
             _animator.SetTrigger("Close");
         }
+    }
+
+    private IEnumerator OnEnableUIPopUpWinCor()
+    {
+        yield return new WaitForSeconds(1.6f);
+
+        _uIPopUPWindow.OnEnableUIPopUpWindow();
     }
 }
 
