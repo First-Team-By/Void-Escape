@@ -19,8 +19,9 @@ public class RoomBehaviour : MonoBehaviour
     public List<int> neighbors = new List<int>();
 
     GameController _controller;
-    public event Action GroupInteract; 
+    public event Action<RoomContent> GroupInteract;
 
+    private RoomContent roomContent;
     public int NumberRoom => _numberRoom;
 
     private void Start()
@@ -58,6 +59,6 @@ public class RoomBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        GroupInteract?.Invoke();
+        GroupInteract?.Invoke(roomContent);
     }
 }

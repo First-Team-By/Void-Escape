@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EntityCardBase : MonoBehaviour
+public abstract class EntityCardBase : MonoBehaviour
 {
     [SerializeField] private TMP_Text _meleeDamage;
 
@@ -18,7 +18,7 @@ public class EntityCardBase : MonoBehaviour
 
     [SerializeField] private TMP_Text _defence;
 
-    public virtual void FillInfo(EntityBase entity)
+    public void FillInfo(EntityBase entity)
     {
         if (entity is null)
         {
@@ -38,5 +38,9 @@ public class EntityCardBase : MonoBehaviour
         _accuracy.text = entity.EntityChars.Accuracy.ToString();
 
         _defence.text = entity.EntityChars.Defence.ToString();
+
+        FillAdditional(entity);
     }
+
+    public abstract void FillAdditional(EntityBase entity);
 }

@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EventResolver : MonoBehaviour
 {
-    
-    public void OnEventResolver()
+    public void OnEventResolver(RoomContent content)
     {
         SceneManager.LoadScene("BattleScene");
     }

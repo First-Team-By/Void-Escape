@@ -127,17 +127,18 @@ public class BattleRoutine : MonoBehaviour
     
     private void SetLevel()
     {
-        level = new DepartmentLevel(5, 5);
         SetEnemiesInPositions();
     }
     private void SetEnemiesInPositions()
     {
-        for (int i = 0; i < level.EnemyList.Count; i++)
+        DepartmentLevel level = new DepartmentLevel();
+        List<Enemy> enemies = level.CreateEnemies(5, 5);
+        for (int i = 0; i < enemies.Count; i++)
         {
-            level.EnemyList[i].transform.SetParent(enemyPositions[i].transform);
-            level.EnemyList[i].transform.localPosition = Vector2.zero;
-            level.EnemyList[i].Position = i + 6;
-            level.EnemyList[i].HealthOver += OnHealthOver;
+            enemies[i].transform.SetParent(enemyPositions[i].transform);
+            enemies[i].transform.localPosition = Vector2.zero;
+            enemies[i].Position = i + 6;
+            enemies[i].HealthOver += OnHealthOver;
         }
     }
 

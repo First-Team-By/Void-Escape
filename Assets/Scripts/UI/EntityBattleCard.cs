@@ -7,17 +7,8 @@ public class EntityBattleCard : EntityCardBase
 {
     [SerializeField] private TMP_Text _healthAmount;
 
-    public override void FillInfo(EntityBase entity)
+    public override void FillAdditional(EntityBase entity)
     {
-        base.FillInfo(entity);
-
-        if (entity is null)
-        {
-            gameObject.SetActive(false);
-
-            return;
-        }
-
         _healthAmount.text = $"{entity.Health} / {entity.EntityChars.MaxHealth}";
     }
 }

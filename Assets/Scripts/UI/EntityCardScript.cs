@@ -21,17 +21,8 @@ public class EntityCardScript : EntityCardBase
         set { _entityType = value; } 
     }
 
-    public override void FillInfo(EntityBase entity)
+    public override void FillAdditional(EntityBase entity)
     {
-        base.FillInfo(entity);
-
-        if (entity is null)
-        {
-            gameObject.SetActive(false);
-
-            return;
-        }
-
         gameObject.SetActive(true);
 
         _image.sprite = entity.ProfileSprite;
