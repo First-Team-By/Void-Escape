@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TeamInitScene.unity
     guid: eb9607a8af3d25b4788c56a3441f1c62
+  - enabled: 1
+    path: Assets/Scenes/SceneDungeonGenerator.unity
+    guid: 4082695266750c54396b605cbce1eb16
   m_configObjects: {}

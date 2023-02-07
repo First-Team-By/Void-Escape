@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class RoomBehaviour : MonoBehaviour
     public List<int> neighbors = new List<int>();
 
     GameController _controller;
+    public event Action GroupInteract; 
 
     public int NumberRoom => _numberRoom;
 
@@ -52,5 +54,10 @@ public class RoomBehaviour : MonoBehaviour
     bool CanPass(int room)
     {
         return neighbors.Contains(room);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        GroupInteract?.Invoke();
     }
 }

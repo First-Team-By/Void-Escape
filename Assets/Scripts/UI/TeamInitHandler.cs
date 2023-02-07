@@ -26,6 +26,6 @@ public class TeamInitHandler : MonoBehaviour
         //}
 
         //Global.SaveCharactersInfo(characters);
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("SceneDungeonGenerator");
     }
 }

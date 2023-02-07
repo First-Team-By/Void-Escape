@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Commands\Buttons\CommandButton.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
@@ -83,9 +84,11 @@
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
+    <Compile Include="Assets\Scripts\UI\EntityCardBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
     <Compile Include="Assets\AlixTestScene\Scripts\Generator2\MapUI.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterPosition.cs" />
+    <Compile Include="Assets\Scripts\DungeonInteractive\EventResolver.cs" />
     <Compile Include="Assets\Scripts\UI\BattlePosition.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Assets\Scripts\UI\UICharacterInterface.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\UI\UIPopUPWindow.cs" />
+    <Compile Include="Assets\Scripts\DungeonInteractive\RoomContent.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
@@ -133,8 +137,6 @@
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\EntityCardBase.cs" />
-    <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

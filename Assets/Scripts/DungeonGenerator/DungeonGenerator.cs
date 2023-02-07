@@ -12,6 +12,7 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private GameObject room;
 
     [SerializeField] private Vector2 offSet;
+    [SerializeField] private EventResolver eventResolver;
 
     private int currentCell;
 
@@ -30,6 +31,7 @@ public class DungeonGenerator : MonoBehaviour
             if (board[i].visited)
             {
                 var newRoom = Instantiate(room, new Vector3(board[i].x * offSet.x, -board[i].y * offSet.y, 0), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                newRoom.GroupInteract += eventResolver.OnEventResolver;
 
                 newRoom.UpdateRoom(board[board[i].ID]);
 
@@ -39,6 +41,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
+        result[0].GetComponent<Collider2D>().enabled = false;
         return result;
     }
 
