@@ -26,7 +26,7 @@ public class BattleRoutine : MonoBehaviour
 
 
     private DepartmentLevel level;
-    public List<Enemy> EnemyList => level.EnemyList;
+    public List<Enemy> EnemyList => level.CreateEnemies(5,5);
     private List<Character> characterList;
     private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
