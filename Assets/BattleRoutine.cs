@@ -26,7 +26,7 @@ public class BattleRoutine : MonoBehaviour
 
 
     private DepartmentLevel level;
-    public List<Enemy> EnemyList => level.CreateEnemies(5,5);
+    public List<Enemy> EnemyList { get; } = new List<Enemy>();
     private List<Character> characterList;
     private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
@@ -131,14 +131,15 @@ public class BattleRoutine : MonoBehaviour
     }
     private void SetEnemiesInPositions()
     {
-        DepartmentLevel level = new DepartmentLevel();
-        List<Enemy> enemies = level.CreateEnemies(5, 5);
-        for (int i = 0; i < enemies.Count; i++)
+        List<EnemyInfo> enemyInfos = Global.currentRoomContent.EnemyInfos;
+        for (int i = 0; i < enemyInfos.Count; i++)
         {
-            enemies[i].transform.SetParent(enemyPositions[i].transform);
-            enemies[i].transform.localPosition = Vector2.zero;
-            enemies[i].Position = i + 6;
-            enemies[i].HealthOver += OnHealthOver;
+            var enemy = GameObject.Instantiate(enemyInfos[i].EnemyPrefab.GetComponent<Enemy>());
+            enemy.transform.SetParent(enemyPositions[i].transform);
+            enemy.transform.localPosition = Vector2.zero;
+            enemy.Position = i + 6;
+            enemy.HealthOver += OnHealthOver;
+            EnemyList.Add(enemy);
         }
     }
 
@@ -304,9 +305,19 @@ public class BattleRoutine : MonoBehaviour
 
     }
 
+    public void LoadEnemiesFromGlobal()
+    {
+        //List<EnemyInfo> enemyInfos = Global.currentRoomContent.EnemyInfos;
+        //foreach (var enemy in enemyInfos)
+        //{
+        //    EnemyList.Add(enemy.EnemyPrefab.GetComponent<Enemy>());
+        //}
+
+    }
     void Start()
     {
         characterList = new List<Character>();
+        LoadEnemiesFromGlobal();
         InitBattle();
     }
 

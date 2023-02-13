@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\DungeonInteractive\RoomContent.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
+    <Compile Include="Assets\Scripts\Entities\Serializable\EnemyInfo.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />

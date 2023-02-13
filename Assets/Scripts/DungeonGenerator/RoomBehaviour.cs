@@ -59,6 +59,8 @@ public class RoomBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        var enemies = new DepartmentLevel().CreateEnemies(NumberRoom);
+        roomContent = new RoomContent(enemies);
         GroupInteract?.Invoke(roomContent);
     }
 }
