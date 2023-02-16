@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class EventResolver : MonoBehaviour
 {
-    public void OnEventResolver(RoomContent content)
+    public void OnEventResolve()
     {
-        SceneManager.LoadScene("BattleScene");
+        if (Global.GetCurrentRoomInfo().Inhabitable)
+        {
+            SceneManager.LoadScene("BattleScene");
+        }
     }
 }

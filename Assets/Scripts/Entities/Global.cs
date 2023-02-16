@@ -17,7 +17,10 @@ public static class Global
     public static CharacterGroup allCharacters;
 
     public static int currentRoomNumber;
-    public static RoomContent currentRoomContent;
+
+    public static MissionState missionState;
+
+    public static List<RoomInfo> currentRoomInfos;
 
     private static GameObject enemyPrefabContainer;
 
@@ -49,6 +52,10 @@ public static class Global
         capsules = new HibernateCapsule[] { new HibernateCapsule(), new HibernateCapsule()};
     }
 
+    public static RoomInfo GetCurrentRoomInfo()
+    {
+        return currentRoomInfos[currentRoomNumber];
+    }
     //public static void SaveCharactersInfo(List<Character> characters)
     //{
     //    currentGroup.CurrentCharacterInfos.Clear();

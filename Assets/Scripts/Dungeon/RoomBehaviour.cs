@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,28 +20,32 @@ public class RoomBehaviour : MonoBehaviour
     public List<int> neighbors = new List<int>();
 
     GameController _controller;
-    public event Action<RoomContent> GroupInteract;
+    public event Action GroupInteract;
 
-    private RoomContent roomContent;
+    private RoomInfo roomInfo;
     public int NumberRoom => _numberRoom;
+
+    public int Difficulty { get; set; }
 
     private void Start()
     {
         _controller = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
-    public void UpdateRoom(Cell cell)
+    public void UpdateRoom(RoomInfo roomInfo, Vector2 size)
     {
-        for (int i = 0; i < cell.status.Length; i++)
+        for (int i = 0; i < roomInfo.status.Length; i++)
         {
-            doors[i].SetActive(cell.status[i]);
+            doors[i].SetActive(roomInfo.status[i]);
 
-            walls[i].SetActive(!cell.status[i]);
+            walls[i].SetActive(!roomInfo.status[i]);
         }
 
-        _numberRoom = cell.ID;
+        neighbors.AddRange(roomInfo.neighbours);
 
-        neighbors.AddRange(cell.neighbors);
+        _numberRoom = roomInfo.GetRoomNumber(size);
+
+        this.roomInfo = roomInfo;
     }
 
     private void OnMouseDown()
@@ -59,8 +64,6 @@ public class RoomBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        var enemies = new DepartmentLevel().CreateEnemies(NumberRoom);
-        roomContent = new RoomContent(enemies);
-        GroupInteract?.Invoke(roomContent);
+        GroupInteract?.Invoke();
     }
 }

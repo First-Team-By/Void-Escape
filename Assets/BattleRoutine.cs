@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
@@ -59,8 +60,7 @@ public class BattleRoutine : MonoBehaviour
     {
         roundCounter = 1;
         SetCharactersInPositions();
-        SetLevel();
-        //MainBattleProcess();
+        SetEnemiesInPositions();
     }
 
     private void Update()
@@ -125,16 +125,12 @@ public class BattleRoutine : MonoBehaviour
         }
     }
     
-    private void SetLevel()
-    {
-        SetEnemiesInPositions();
-    }
     private void SetEnemiesInPositions()
     {
-        List<EnemyInfo> enemyInfos = Global.currentRoomContent.EnemyInfos;
+        List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
         for (int i = 0; i < enemyInfos.Count; i++)
         {
-            var enemy = GameObject.Instantiate(enemyInfos[i].EnemyPrefab.GetComponent<Enemy>());
+            var enemy = GameObject.Instantiate(enemyInfos[i].EnemyPrefab).GetComponent<Enemy>();
             enemy.transform.SetParent(enemyPositions[i].transform);
             enemy.transform.localPosition = Vector2.zero;
             enemy.Position = i + 6;
@@ -289,7 +285,7 @@ public class BattleRoutine : MonoBehaviour
             LoseBattle();   
         }
 
-        if (!EnemyList.Any())
+        if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
         {
             WinBattle();
         }
@@ -297,7 +293,9 @@ public class BattleRoutine : MonoBehaviour
 
     private void WinBattle()
     {
-
+        Global.GetCurrentRoomInfo().EnemyInfos.Clear();
+        Global.missionState = MissionState.ReturnFromBattle;
+        SceneManager.LoadScene("SceneDungeonGenerator");
     }
 
     private void LoseBattle()
@@ -305,19 +303,9 @@ public class BattleRoutine : MonoBehaviour
 
     }
 
-    public void LoadEnemiesFromGlobal()
-    {
-        //List<EnemyInfo> enemyInfos = Global.currentRoomContent.EnemyInfos;
-        //foreach (var enemy in enemyInfos)
-        //{
-        //    EnemyList.Add(enemy.EnemyPrefab.GetComponent<Enemy>());
-        //}
-
-    }
     void Start()
     {
         characterList = new List<Character>();
-        LoadEnemiesFromGlobal();
         InitBattle();
     }
 

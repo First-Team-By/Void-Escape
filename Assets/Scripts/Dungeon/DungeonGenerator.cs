@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using UnityEngine;
 
-public class DungeonGenerator : MonoBehaviour
+public class DungeonGenerator
 {
-    [SerializeField] private Vector2 size;
-
     [SerializeField] private int startPos = 0;
 
-    [Header("Префаб ячейки")]
-    [SerializeField] private GameObject room;
-
-    [SerializeField] private Vector2 offSet;
-    [SerializeField] private EventResolver eventResolver;
+    private Vector2 size;
 
     private int currentCell;
 
@@ -20,40 +16,22 @@ public class DungeonGenerator : MonoBehaviour
 
     private int newCell;
 
-    List<Cell> board;
+    private List<Cell> board;
 
-    List<RoomBehaviour> GenerateDungeon()
+    public Vector2 Size => size;
+
+    
+
+    public List<RoomInfo> GenerateMaze(Vector2 size)
     {
-        var result = new List<RoomBehaviour>(); 
-
-        for (int i = 0; i < board.Count; i++)
-        {
-            if (board[i].visited)
-            {
-                var newRoom = Instantiate(room, new Vector3(board[i].x * offSet.x, -board[i].y * offSet.y, 0), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-                newRoom.GroupInteract += eventResolver.OnEventResolver;
-
-                newRoom.UpdateRoom(board[board[i].ID]);
-
-                newRoom.name += " " + board[i].x + "-" + board[i].y;
-
-                result.Add(newRoom);
-            }
-        }
-
-        result[0].GetComponent<Collider2D>().enabled = false;
-        return result;
-    }
-
-    public List<RoomBehaviour> MazeGenerator()
-    {
+        this.size = size;
         board = new List<Cell>();
 
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
             {
-                board.Add(new Cell() { x = j, y = i, ID = Mathf.FloorToInt(j + i * size.x) });
+                board.Add(new Cell(j, i));
             }
         }
 
@@ -138,8 +116,17 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        return GenerateDungeon();
+        var roomInfos = board.Where(x => x.visited).Select(x => x.RoomInfo).ToList();
 
+        for (int i = 0; i < roomInfos.Count; i++)
+        {
+            if (i > 0)
+            {
+                roomInfos[i].InitEnemies(size);
+            }
+        }
+        
+        return roomInfos;
     }
 
     List<int> TakeNeighborsCells(int cell)

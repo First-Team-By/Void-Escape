@@ -26,6 +26,7 @@ public class TeamInitHandler : MonoBehaviour
         //}
 
         //Global.SaveCharactersInfo(characters);
+        Global.currentRoomNumber = 0;
         SceneManager.LoadScene("SceneDungeonGenerator");
     }
 }
