@@ -16,11 +16,7 @@ public static class Global
 
     public static CharacterGroup allCharacters;
 
-    public static int currentRoomNumber;
-
-    public static MissionState missionState;
-
-    public static List<RoomInfo> currentRoomInfos;
+    public static MapInfo currentMapInfo;
 
     private static GameObject enemyPrefabContainer;
 
@@ -54,7 +50,7 @@ public static class Global
 
     public static RoomInfo GetCurrentRoomInfo()
     {
-        return currentRoomInfos[currentRoomNumber];
+        return currentMapInfo.GetCurrentRoomInfo();
     }
     //public static void SaveCharactersInfo(List<Character> characters)
     //{

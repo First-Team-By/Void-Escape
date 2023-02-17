@@ -35,26 +35,31 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Vector2 offSet;
 
-    [SerializeField] private Vector2 size;
+    [SerializeField] private Transform roomNest;
+
+    public Vector2 Size { get; set; }
 
     void Start()
     {
+        Size = Global.currentMapInfo.Size;  
+        
         _groupMarker = Instantiate(_groupMarkerPrefab, Vector2.zero, Quaternion.identity);
 
-        if (Global.missionState == MissionState.Start)
+        if (Global.currentMapInfo.missionState == MissionState.Start)
         {
             var dungeonGenerator = new DungeonGenerator();
 
-            var roomInfos = dungeonGenerator.GenerateMaze(size);
-            Global.currentRoomInfos = roomInfos;
+            var roomInfos = dungeonGenerator.GenerateMaze(Size);
+            //Global.currentMapInfo.RoomInfos = roomInfos;
             _rooms = GenerateDungeon(roomInfos);
-            _groupMarker.transform.parent = _startPoint;
+            _groupMarker.transform.parent = _rooms[0].transform;
+            _groupMarker.transform.localPosition = Vector2.zero;
         }
         else
         {
-            _rooms = GenerateDungeon(Global.currentRoomInfos);
+            _rooms = GenerateDungeon(Global.currentMapInfo.RoomInfos);
             
-            _groupMarker.transform.SetParent(_rooms.First(x => x.NumberRoom == Global.currentRoomNumber).transform);
+            _groupMarker.transform.SetParent(_rooms.First(x => x.NumberRoom == Global.currentMapInfo.currentRoomNumber).transform);
             _groupMarker.transform.localPosition = Vector3.zero;
         }
         
@@ -73,7 +78,7 @@ public class GameController : MonoBehaviour
     {
         if (!_groupIsMoving)
         {
-            Global.currentRoomNumber = room.NumberRoom;
+            Global.currentMapInfo.currentRoomNumber = room.NumberRoom;
 
             StartCoroutine(MoveToTarget(_groupMarker.transform, room.gameObject.transform));
         }    
@@ -110,11 +115,11 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < board.Count; i++)
         {
-            var newRoom = Instantiate(room, new Vector3(board[i].x * offSet.x, -board[i].y * offSet.y, 0), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+            var newRoom = Instantiate(room, new Vector3(board[i].x * offSet.x, -board[i].y * offSet.y, 0), Quaternion.identity, roomNest).GetComponent<RoomBehaviour>();
             newRoom.GroupInteract += eventResolver.OnEventResolve;
 
             
-            newRoom.UpdateRoom(board[i], size);
+            newRoom.UpdateRoom(board[i], Size);
 
             newRoom.name += " " + board[i].x + "-" + board[i].y;
 

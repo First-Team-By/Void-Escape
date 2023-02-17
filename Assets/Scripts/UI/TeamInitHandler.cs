@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +27,14 @@ public class TeamInitHandler : MonoBehaviour
         //}
 
         //Global.SaveCharactersInfo(characters);
-        Global.currentRoomNumber = 0;
+
+        Global.currentMapInfo = new MapInfo()
+        {
+            Size = new Vector2(5, 5),
+            possibleEnemies = Global.EnemyPrefabs.EnemyPrefabsList.Select(x => new EnemyInfo() { EnemyPrefab = x}).ToList()
+        };
+
+        Global.currentMapInfo.currentRoomNumber = 0;
         SceneManager.LoadScene("SceneDungeonGenerator");
     }
 }

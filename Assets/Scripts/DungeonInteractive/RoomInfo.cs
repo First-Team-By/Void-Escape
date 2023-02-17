@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class RoomInfo
@@ -12,6 +13,9 @@ public class RoomInfo
 
     public List<int> neighbours = new List<int>();
 
+    public int GlobalRoomNumber { get; set; }
+
+    public int RoomNumber { get; set; }
     public List<EnemyInfo> EnemyInfos => _enemyInfos;
     
 
@@ -33,13 +37,8 @@ public class RoomInfo
         
     }
 
-    public void InitEnemies(Vector2 size)
+    public void InitEnemies(int difficulty, List<EnemyInfo> possibleEnemiyInfos)
     {
-        _enemyInfos = new DepartmentLevel().CreateEnemies(GetRoomNumber(size));
-    }
-
-    public int GetRoomNumber(Vector2 size)
-    {
-        return Mathf.FloorToInt(x + y * size.x);
+        _enemyInfos = new DepartmentLevel().CreateEnemies(difficulty, possibleEnemiyInfos);
     }
 }

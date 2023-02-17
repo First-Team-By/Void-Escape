@@ -291,7 +291,7 @@ public class BattleRoutine : MonoBehaviour
     private void WinBattle()
     {
         Global.GetCurrentRoomInfo().EnemyInfos.Clear();
-        Global.missionState = MissionState.ReturnFromBattle;
+        Global.currentMapInfo.missionState = MissionState.ReturnFromBattle;
         SceneManager.LoadScene("SceneDungeonGenerator");
     }
 

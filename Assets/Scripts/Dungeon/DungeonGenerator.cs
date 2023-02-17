@@ -18,6 +18,8 @@ public class DungeonGenerator
 
     private List<Cell> board;
 
+
+
     public Vector2 Size => size;
 
     
@@ -117,12 +119,15 @@ public class DungeonGenerator
         }
 
         var roomInfos = board.Where(x => x.visited).Select(x => x.RoomInfo).ToList();
+        Global.currentMapInfo.RoomInfos = roomInfos;
 
         for (int i = 0; i < roomInfos.Count; i++)
         {
+            roomInfos[i].RoomNumber = i;
+            roomInfos[i].GlobalRoomNumber = roomInfos[i].x + roomInfos[i].y * (int)size.x;
             if (i > 0)
             {
-                roomInfos[i].InitEnemies(size);
+                Global.currentMapInfo.InitEnemyForRoom(roomInfos[i]);
             }
         }
         

@@ -10,9 +10,9 @@ using Random = UnityEngine.Random;
 
 public class DepartmentLevel 
 {
-    public List<EnemyInfo> CreateEnemies(int difficulty)
+    public List<EnemyInfo> CreateEnemies(int difficulty, List<EnemyInfo> possibleEnemies)
     {
-        var enemyPrefabs = Global.EnemyPrefabs.EnemyPrefabsList;
+        var enemyPrefabs = possibleEnemies.Select(x => x.EnemyPrefab);
 
         var enemyValues = GetEnemyValues(difficulty);
 

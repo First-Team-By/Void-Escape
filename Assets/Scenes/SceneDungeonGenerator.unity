@@ -761,7 +761,7 @@ MonoBehaviour:
   eventResolver: {fileID: 1386445177}
   room: {fileID: 2964396252864003783, guid: 991a16a52f649c8458be43b1d9be30f4, type: 3}
   offSet: {x: 200, y: 200}
-  size: {x: 5, y: 5}
+  roomNest: {fileID: 1500735902}
 --- !u!4 &1789667874
 Transform:
   m_ObjectHideFlags: 0
