@@ -110,8 +110,6 @@ public class BattleRoutine : MonoBehaviour
         if (CurrentEntity is Character)
         {
             commandExecutor.SetCommands(currentEntity);
-            //CurrentCommand = null;
-            //CurrentAvaliableTargets = null;
             isCharacterTurn = true;
         }
         else
@@ -121,7 +119,6 @@ public class BattleRoutine : MonoBehaviour
             {
                 inactiveEntitiesList.Add(currentEntity);
             }
-            //MainBattleProcess();
         }
     }
     

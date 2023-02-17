@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
             result.Add(newRoom);
         }
 
-        result[0].GetComponent<Collider2D>().enabled = false;
+        //result[0].GetComponent<Collider2D>().enabled = false;
         return result;
     }
 }

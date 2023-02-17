@@ -19,7 +19,7 @@ public class RoomInfo
     {
         get
         {
-            return _enemyInfos.Count > 0;
+            return _enemyInfos != null && _enemyInfos.Count > 0;
         }
     }
 

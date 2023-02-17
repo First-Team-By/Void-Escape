@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TMPro;
@@ -21,8 +22,16 @@ public class DepartmentLevel
             //var enemyGO = GameObject.Instantiate(enemyPrefabs.FirstOrDefault(x => x.gameObject.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]));
             //enemies.Add(enemyGO.GetComponent<Enemy>());
             var enemyInfo = new EnemyInfo();
-            enemyInfo.EnemyPrefab =
-                enemyPrefabs.FirstOrDefault(x => x.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]);
+            try
+            {
+                enemyInfo.EnemyPrefab =
+                enemyPrefabs.First(x => x.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]);
+            }
+            catch
+            {
+                Debug.LogError("Несуществующий уровень сложности: " + enemyValues[i]);
+            }
+            
             enemiesInfos.Add(enemyInfo);
         }
         return enemiesInfos;
@@ -36,14 +45,19 @@ public class DepartmentLevel
         int average = difficulty / enemyCount;
         int remainder = difficulty % enemyCount;
 
+        //Debug.Log("average - " + average);
+        //Debug.Log("enemyCount - " + enemyCount);
+
         for (int i = 0; i < enemyCount - remainder; i++)
         {
             result[i] = average;
+            //Debug.Log("Уровень сложности - " + result[i]);
         }
 
         for (int i = enemyCount - remainder; i < enemyCount; i++)
         {
             result[i] = average + 1;
+            //Debug.Log("Уровень сложности - " + result[i]);
         }
 
         return result;
