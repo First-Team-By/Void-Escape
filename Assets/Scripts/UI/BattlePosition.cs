@@ -32,7 +32,10 @@ public class BattlePosition : MonoBehaviour
             battleRoutine.SelectTargets(Position);
         }
 
-        battleRoutine.FillBattleInfo(Position);
+        if (battleRoutine.EntitiesRoute.Any(x => x.Position == _position))
+        {
+            battleRoutine.FillBattleInfo(Position);
+        }
     }
 
     private void OnMouseExit()
