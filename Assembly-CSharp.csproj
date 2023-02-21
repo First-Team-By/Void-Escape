@@ -58,12 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Dungeon.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\Entities\Character.cs" />
     <Compile Include="Assets\Scripts\UI\UIDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\Weapons\EntityWeapon.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Room.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CharacterPrefabs.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CurrentCharacterInfo.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
@@ -73,34 +71,32 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterInfo.cs" />
     <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
-    <Compile Include="Assets\Scripts\DungeonGenerator\RoomBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonGenerator2.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\DoorContainer.cs" />
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\UI\EntityCardBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\MapUI.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterPosition.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\EventResolver.cs" />
     <Compile Include="Assets\Scripts\UI\BattlePosition.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\Corridor.cs" />
     <Compile Include="Assets\Scripts\UI\EntityCardScript.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\CompartmentButtons.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInterface.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\UI\UIPopUPWindow.cs" />
-    <Compile Include="Assets\Scripts\DungeonInteractive\RoomContent.cs" />
+    <Compile Include="Assets\Scripts\DungeonInteractive\RoomInfo.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
+    <Compile Include="Assets\Scripts\Entities\Serializable\EnemyInfo.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />
@@ -120,11 +116,9 @@
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsuleScript.cs" />
     <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterInfoButton.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonSettings.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameController.cs" />
-    <Compile Include="Assets\Scripts\DungeonGenerator\Cell.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\Cell.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandResult.cs" />
-    <Compile Include="Assets\AlixTestScene\Scripts\Generator2\DungeonStructure.cs" />
     <Compile Include="Assets\Scripts\Entities\Medic.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
@@ -136,7 +130,8 @@
     <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
-    <Compile Include="Assets\Scripts\DungeonGenerator\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\DungeonInteractive\MapInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
