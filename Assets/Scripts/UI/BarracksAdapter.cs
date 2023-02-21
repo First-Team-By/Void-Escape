@@ -33,7 +33,9 @@ public class BarracksAdapter : MonoBehaviour
 
             var character = characterInfo.CharacterPrefab.GetComponent<EntityBase>();
 
-            uiBarracksCharSlot.CharacterName.text = EntityBase.GetClassName(character.EntityClass);
+            uiBarracksCharSlot.CharacterClass.text = EntityBase.GetClassName(character.EntityClass);
+
+            uiBarracksCharSlot.CharacterFullName.text = characterInfo.FullName;
 
             uiBarracksCharSlot.CharacterInfo = characterInfo;
 

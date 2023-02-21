@@ -27,12 +27,16 @@ public static class CharacterFactory
 
         characterInfo.CharacterPrefab = character.Prefab;
         var id = 0;
+        characterInfo.FullName = NameGenerator.CreateFullName();
+        character.FullName = characterInfo.FullName;
         if (Global.allCharacters.CharacterInfos.Count > 0)
         {
            id = Global.allCharacters.CharacterInfos.Select(x => x.Id).Max() + 1;
         }
         characterInfo.Id = id;
         characterInfo.CurrentHealth = character.Prefab.GetComponent<Character>().EntityChars.MaxHealth;
+
+
 
         return characterInfo;
     }

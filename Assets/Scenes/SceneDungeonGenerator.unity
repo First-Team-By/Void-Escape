@@ -200,55 +200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174467458}
   m_CullTransparentMesh: 1
---- !u!1 &212386760
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 212386762}
-  - component: {fileID: 212386761}
-  m_Layer: 0
-  m_Name: DG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &212386761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212386760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7d25f91a321e64cb9c2555a28c63c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
-  startPos: 0
-  room: {fileID: 2964396252864003783, guid: 991a16a52f649c8458be43b1d9be30f4, type: 3}
-  offSet: {x: 200, y: 200}
-  eventResolver: {fileID: 1386445177}
---- !u!4 &212386762
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212386760}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.723877, y: -848.69, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1500735902}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604859458
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,8 +608,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 212386762}
+  m_Children: []
   m_Father: {fileID: 1119525507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -804,11 +754,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232da1793795dbd4299489a62aa1bffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dungeonGenerator: {fileID: 212386761}
   _mapContent: {fileID: 1500735901}
   _groupMarkerPrefab: {fileID: 5836699594534487739, guid: 539e9814672c3b5429db0162c686ea92, type: 3}
-  _parent: {fileID: 212386762}
+  _startPoint: {fileID: 0}
   _speed: 5
+  eventResolver: {fileID: 1386445177}
+  room: {fileID: 2964396252864003783, guid: 991a16a52f649c8458be43b1d9be30f4, type: 3}
+  offSet: {x: 200, y: 200}
+  roomNest: {fileID: 1500735902}
 --- !u!4 &1789667874
 Transform:
   m_ObjectHideFlags: 0

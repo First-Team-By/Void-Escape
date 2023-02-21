@@ -11,13 +11,17 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointer
 
     [SerializeField] private Image _portrait;
 
-    [SerializeField] private Text _characterName;
+    [SerializeField] private Text _characterClass;
+
+    [SerializeField] private Text _characterFullName;
 
     public EntityCardScript EntityCard { get; set; }
 
     public CharacterInfo CharacterInfo { get; set; }
 
-    public Text CharacterName => _characterName;
+    public Text CharacterClass => _characterClass;
+
+    public Text CharacterFullName => _characterFullName;
 
     public int CharacterId { get; set; }
 
@@ -34,6 +38,8 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointer
         var entity = CharacterInfo.CharacterPrefab.GetComponent<EntityBase>();
 
         entity.Health = CharacterInfo.CurrentHealth;
+
+        entity.FullName = CharacterInfo.FullName;
 
         EntityCard.FillInfo(entity);
     }

@@ -28,7 +28,9 @@ public abstract class EntityBase : MonoBehaviour
     public Sprite AttackPose => attackPose;
     public Sprite Portrait => portrait;
     public Sprite DeathDoorSprite => deathDoorSprite;
-    
+
+    private string _fullName;
+
     public bool OnDeathDoor { get; set; }
 
     public EntityCharacteristics EntityChars
@@ -50,13 +52,25 @@ public abstract class EntityBase : MonoBehaviour
 
     public int CurrentInitiative => entityChars.Initiative;
 
-    private static string[] entityClassNames = new string[] { "Officer", "Medic", "Mutant" };
+    private static string[] entityClassNames = new string[] { "Офицер", "Медик", "Мутант" };
 
     public string ClassName => GetClassName(entityClass);
 
     public static string GetClassName(EntityClass entityClass)
     {
         return entityClassNames[Convert.ToInt32(entityClass)];
+    }
+
+    public string FullName
+    {
+        get
+        {
+            return _fullName;
+        }
+        set 
+        {
+            _fullName = value;
+        }
     }
 
     public int Position { get; set; }
@@ -271,6 +285,8 @@ public abstract class EntityBase : MonoBehaviour
         }
         return results;
     }
+
+
 }
 
 

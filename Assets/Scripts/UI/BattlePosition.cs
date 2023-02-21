@@ -67,7 +67,7 @@ public class BattlePosition : MonoBehaviour
         if (character)
         {
             _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y);
-            Debug.Log(character.GetComponent<SpriteRenderer>().bounds.size);
+           
         }
         _healthBar.gameObject.SetActive(percent > 0);
     }

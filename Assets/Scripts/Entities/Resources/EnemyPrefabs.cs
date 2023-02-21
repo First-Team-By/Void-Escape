@@ -12,10 +12,10 @@ public class EnemyPrefabs : MonoBehaviour
     public GameObject MiddleMutant => middleMutant;
     public GameObject MegaMutant => megaMutant;
 
-    public List<GameObject> EnemyList => new List<GameObject>()
+    public List<GameObject> EnemyPrefabsList => new List<GameObject>()
     {
-        commonMutant,
-        middleMutant,
-        megaMutant
+        CommonMutant,
+        MiddleMutant,
+        MegaMutant
     };
 }

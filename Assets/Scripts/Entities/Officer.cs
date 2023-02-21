@@ -19,7 +19,7 @@ public class Officer : Character
 
         Prefab = Global.CharacterPrefabs.Officer;
 
-        GetBleeded(3, 10);
+       // GetBleeded(3, 10);
 
         
     }

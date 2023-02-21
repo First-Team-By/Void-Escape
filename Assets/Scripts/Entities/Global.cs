@@ -16,20 +16,19 @@ public static class Global
 
     public static CharacterGroup allCharacters;
 
-    public static int currentRoomNumber;
-
-    public static List<GameObject> enemyPrefabs;
+    public static MapInfo currentMapInfo;
 
     private static GameObject enemyPrefabContainer;
 
     private static GameObject characterPrefabContainer;
 
-    public static CharacterPrefabs CharacterPrefabs { get; set; }
+    public static CharacterPrefabs CharacterPrefabs { get; }
+    public static EnemyPrefabs EnemyPrefabs { get; }
 
     static Global()
     {
         enemyPrefabContainer = Resources.Load<GameObject>("EnemyPrefabs");
-        enemyPrefabs = enemyPrefabContainer.GetComponent<EnemyPrefabs>().EnemyList;
+        EnemyPrefabs = enemyPrefabContainer.GetComponent<EnemyPrefabs>();
         currentGroup = new CurrentCharacterGroup();
 
         characterPrefabContainer = Resources.Load<GameObject>("CharacterPrefabs");
@@ -49,6 +48,10 @@ public static class Global
         capsules = new HibernateCapsule[] { new HibernateCapsule(), new HibernateCapsule()};
     }
 
+    public static RoomInfo GetCurrentRoomInfo()
+    {
+        return currentMapInfo.GetCurrentRoomInfo();
+    }
     //public static void SaveCharactersInfo(List<Character> characters)
     //{
     //    currentGroup.CurrentCharacterInfos.Clear();

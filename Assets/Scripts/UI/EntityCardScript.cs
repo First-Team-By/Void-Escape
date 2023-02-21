@@ -14,6 +14,7 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] private TMP_Text _initiative;
 
+    [SerializeField] private TMP_Text _fullName;
 
     public TMP_Text EntityType
     { 
@@ -32,5 +33,7 @@ public class EntityCardScript : EntityCardBase
         _initiative.text = entity.EntityChars.Initiative.ToString();
 
         _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
+
+        _fullName.text = entity.FullName;
     }
 }

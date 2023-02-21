@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
@@ -26,7 +27,7 @@ public class BattleRoutine : MonoBehaviour
 
 
     private DepartmentLevel level;
-    public List<Enemy> EnemyList => level.CreateEnemies(5,5);
+    public List<Enemy> EnemyList { get; } = new List<Enemy>();
     private List<Character> characterList;
     private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
     private EntityBase currentEntity;
@@ -59,8 +60,7 @@ public class BattleRoutine : MonoBehaviour
     {
         roundCounter = 1;
         SetCharactersInPositions();
-        SetLevel();
-        //MainBattleProcess();
+        SetEnemiesInPositions();
     }
 
     private void Update()
@@ -110,8 +110,6 @@ public class BattleRoutine : MonoBehaviour
         if (CurrentEntity is Character)
         {
             commandExecutor.SetCommands(currentEntity);
-            //CurrentCommand = null;
-            //CurrentAvaliableTargets = null;
             isCharacterTurn = true;
         }
         else
@@ -121,24 +119,20 @@ public class BattleRoutine : MonoBehaviour
             {
                 inactiveEntitiesList.Add(currentEntity);
             }
-            //MainBattleProcess();
         }
     }
     
-    private void SetLevel()
-    {
-        SetEnemiesInPositions();
-    }
     private void SetEnemiesInPositions()
     {
-        DepartmentLevel level = new DepartmentLevel();
-        List<Enemy> enemies = level.CreateEnemies(5, 5);
-        for (int i = 0; i < enemies.Count; i++)
+        List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
+        for (int i = 0; i < enemyInfos.Count; i++)
         {
-            enemies[i].transform.SetParent(enemyPositions[i].transform);
-            enemies[i].transform.localPosition = Vector2.zero;
-            enemies[i].Position = i + 6;
-            enemies[i].HealthOver += OnHealthOver;
+            var enemy = GameObject.Instantiate(enemyInfos[i].EnemyPrefab).GetComponent<Enemy>();
+            enemy.transform.SetParent(enemyPositions[i].transform);
+            enemy.transform.localPosition = Vector2.zero;
+            enemy.Position = i + 6;
+            enemy.HealthOver += OnHealthOver;
+            EnemyList.Add(enemy);
         }
     }
 
@@ -288,7 +282,7 @@ public class BattleRoutine : MonoBehaviour
             LoseBattle();   
         }
 
-        if (!EnemyList.Any())
+        if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
         {
             WinBattle();
         }
@@ -296,7 +290,9 @@ public class BattleRoutine : MonoBehaviour
 
     private void WinBattle()
     {
-
+        Global.GetCurrentRoomInfo().EnemyInfos.Clear();
+        Global.currentMapInfo.missionState = MissionState.ReturnFromBattle;
+        SceneManager.LoadScene("SceneDungeonGenerator");
     }
 
     private void LoseBattle()
