@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityCardScript : EntityCardBase
 {
     [SerializeField] private Image _image;
 
     [SerializeField] private Image _currentHealth;
+
+    [SerializeField] private List<GameObject> _characterSkills; 
 
     [SerializeField] private TMP_Text _entityType;
 
@@ -35,5 +39,21 @@ public class EntityCardScript : EntityCardBase
         _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
 
         _fullName.text = entity.FullName;
+
+        int i = 0;
+
+        foreach (var slotCommand in _characterSkills)
+        {
+            try
+            {
+                slotCommand.GetComponent<Image>().sprite = ((Character)entity).NativeCommands[i].Icon;
+
+                i++;
+            }
+            catch (System.Exception)
+            {
+                slotCommand.GetComponent<Image>().sprite = null;
+            }
+        }
     }
 }
