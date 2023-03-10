@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapons
+
+public class Pistol : EntityWeapon
 {
-    public class Pistol : EntityWeapon
+    public Pistol()
     {
-        public Pistol()
-        {
-            Type = WeaponType.Pistol;
-        }
+        Type = WeaponType.Pistol;
     }
 }

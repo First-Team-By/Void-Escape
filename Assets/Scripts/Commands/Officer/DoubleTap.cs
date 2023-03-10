@@ -2,16 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 public class DoubleTap : CharacterCommand
 {
-    private float damage = 10;
     public DoubleTap()
     {
         SelfPositions = new List<int>() { 1, 2, 3 };
 
         Name = "Double tap";
+
+        damage = 10;
     }
 
     public override bool IsAvaliable(EntityBase entity)

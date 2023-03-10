@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 public class SingleFire : CharacterCommand
 {
-    private float damage = 15;
     public SingleFire()
     {
         OnExecute = SingleFireExec;
@@ -16,6 +15,8 @@ public class SingleFire : CharacterCommand
         EnemyPositions = new List<int>() { 1, 2, 3 };
 
         Name = "Single fire";
+
+        damage = 15;
 
         Conditioning.SetBleeding(1f, 2, 3);
         Conditioning.SetPoisoning(1f, 2, 1);

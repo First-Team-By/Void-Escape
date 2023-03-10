@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 public abstract class CharacterCommand : EntityCommand
 {
+    protected float damage;
     public abstract bool IsAvaliable(EntityBase entity);
 }
