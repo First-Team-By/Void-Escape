@@ -48,6 +48,8 @@ public class EntityCardScript : EntityCardBase
             {
                 slotCommand.GetComponent<Image>().sprite = ((Character)entity).NativeCommands[i].Icon;
 
+                slotCommand.GetComponent<ToolTipAppear>().ToolTip = ((Character)entity).NativeCommands[i].Name + ((Character)entity).NativeCommands[i].Description;
+
                 i++;
             }
             catch (System.Exception)
