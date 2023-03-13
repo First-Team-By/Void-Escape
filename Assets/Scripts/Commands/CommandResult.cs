@@ -25,6 +25,7 @@ public class TargetState
 public static class Poses
 {
     public const string PistolFire = "PistolFire";
+    public const string BladeStab = "BladeStab";
     public const string Buffing = "Buffing";
     public const string Evade = "Evade";
     public const string Suffering = "Suffering";

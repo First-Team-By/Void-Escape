@@ -11,11 +11,14 @@ public class Medic : Character
     public override List<CharacterCommand> NativeCommands => new List<CharacterCommand>()
     {
         new HealOne(),
-        new Coagulator()
+        new Coagulator(),
+        new DeepCut()
     };
 
     protected override void Init()
     {
         Prefab = Global.CharacterPrefabs.Medic;
+
+        Weapon = new Scalpel();
     }
 }

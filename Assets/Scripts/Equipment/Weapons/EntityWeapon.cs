@@ -5,7 +5,8 @@ using UnityEngine;
 public enum WeaponType
 {
     Blade,
-    Pistol
+    Pistol,
+    Scalpel
 }
 
 public abstract class EntityWeapon : Equipment
