@@ -13,6 +13,8 @@ public class HealOne : CharacterCommand
         SelfPositions = new List<int>() { 4, 5 };
 
         Name = "Heal one";
+
+        Description = "\nЛечит любого союзника\nвключая самого медика";
     }
 
     public override string IconName => "healonecommand_sprite";

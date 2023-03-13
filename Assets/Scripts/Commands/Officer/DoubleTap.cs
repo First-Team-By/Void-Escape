@@ -13,7 +13,7 @@ public class DoubleTap : CharacterCommand
 
         Name = "Double tap";
 
-        Description = "\n(Персонаж обязан находиться в первой линии)\nНаносит урон одной из двух ближайших целей";
+        Description = "\n(Персонаж обязан находиться в первой линии.)\nНаносит урон одной из двух ближайших целей.";
     }
 
     public override bool IsAvaliable(EntityBase entity)

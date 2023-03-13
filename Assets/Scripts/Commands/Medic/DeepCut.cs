@@ -16,6 +16,9 @@ public class DeepCut : CharacterCommand
 
         Name = "Double tap";
 
+        Description = "\n(Умение доступно при условии что в руке\nперсонажа находится скальпель.\nПерсонаж обязан находиться в первой линии.)" +
+            "\nНаносит урон одной из двух ближайших целей\nтак же вешает на противника debuff 'Кровотечение'.";
+
         damage = 10;
 
         Conditioning.SetBleeding(.5f, 3, 3);
