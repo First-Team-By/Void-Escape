@@ -33,15 +33,29 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointer
         set { _characterPrefab = value; }
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        var entity = CharacterInfo.CharacterPrefab.GetComponent<EntityBase>();
+        DoSelect();
+    }
 
-        entity.Health = CharacterInfo.CurrentHealth;
+    public void DoSelect()
+    {
+        var character = CharacterInfo.CharacterPrefab.GetComponent<EntityBase>() as Character;
 
-        entity.FullName = CharacterInfo.FullName;
+        character.Health = CharacterInfo.CurrentHealth;
 
-        EntityCard.FillInfo(entity);
+        character.FullName = CharacterInfo.FullName;
+
+        character.Weapon = CharacterInfo.Weapon;
+
+        character.Tool = CharacterInfo.Tool;
+
+        EntityCard.FillInfo(character);
     }
 
     public void OnPointerExit(PointerEventData eventData)

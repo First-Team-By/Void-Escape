@@ -47,6 +47,11 @@ public class DoorContainer : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (Global.UIIntersect)
+        {
+            return;
+        }
+
         _anim.SetBool("isOpen", true);
 
         StartCoroutine(WindowsLoading());

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    [SerializeField] private Image _image;
+
     private CanvasGroup _canvasGroup;
 
     private Canvas _mainCanvas;
@@ -17,11 +19,24 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public SlotType SlotType => _slotType;
 
-    public Equipment Equipment { get; set; }
-
     public GameObject OldParent { get; set; }
 
     private Transform _rootPanel;
+
+    private Equipment _equipment;
+
+    public Image Image => _image;
+
+    public Equipment Equipment
+    {
+        get { return _equipment; }
+
+        set
+        {  
+            _equipment = value;
+            
+        }
+    }
 
     private void Start()
     {
@@ -50,8 +65,6 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public void OnDrag(PointerEventData eventData)
     {
         gameObject.transform.position = eventData.position;
-
-        //_rectTransform.anchoredPosition += eventData.delta / _mainCanvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)

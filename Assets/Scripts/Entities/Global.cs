@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,21 @@ public static class Global
     private static GameObject characterPrefabContainer;
 
     public static CharacterPrefabs CharacterPrefabs { get; }
+
     public static EnemyPrefabs EnemyPrefabs { get; }
 
+    public static List<Equipment> inventory;
+
+    public static CommonPrefabs CommonPrefabs { get; }
+
+    public static bool UIIntersect { get; set; } = false; 
     static Global()
     {
+        inventory = new List<Equipment>() { new Pistol() };
+
         enemyPrefabContainer = Resources.Load<GameObject>("EnemyPrefabs");
         EnemyPrefabs = enemyPrefabContainer.GetComponent<EnemyPrefabs>();
+        CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
         currentGroup = new CurrentCharacterGroup();
 
         characterPrefabContainer = Resources.Load<GameObject>("CharacterPrefabs");

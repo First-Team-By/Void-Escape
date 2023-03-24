@@ -10,4 +10,6 @@ public class Scalpel : EntityWeapon
     {
         Type = WeaponType.Scalpel;
     }
+
+    public override string IconName => "coagulatorcommand_sprite";
 }

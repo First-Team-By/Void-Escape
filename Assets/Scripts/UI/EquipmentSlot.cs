@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler ,
     private UIItem _newItem;
 
     public SlotType Type => _type;
+
+    public event Action<Equipment> OnEquipped;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -64,6 +67,7 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler ,
 
             _mountedItem = _newItem;
         }
+        OnEquipped?.Invoke(_mountedItem.Equipment);
     }
 
 

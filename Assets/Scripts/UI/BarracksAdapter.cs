@@ -41,5 +41,10 @@ public class BarracksAdapter : MonoBehaviour
 
             uiBarracksCharSlot.EntityCard = _entityCard;
         }
+        if (_content.childCount > 0)
+        {
+            _content.GetChild(0).GetComponent<UIBarracksCharSlot>().DoSelect();
+        }
+        
     }
 }

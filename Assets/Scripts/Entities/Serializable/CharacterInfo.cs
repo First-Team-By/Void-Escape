@@ -11,6 +11,8 @@ using UnityEngine;
     [SerializeField] protected float _currentHealth;
     [SerializeField] protected GameObject _characterPrefab;
     [SerializeField] private EntityConditions _conditions;
+    public EntityWeapon Weapon { set; get; }
+    public EntityTool Tool { set; get; }
     public string FullName { get; set; }
 
     public float CurrentHealth

@@ -9,17 +9,17 @@ using UnityEngine.UIElements;
 
 public static class CharacterFactory
 {
-    public static CharacterInfo CreateCharacterInfo(GameObject prefab, int id)
-    {
-        var characterInfo = new CharacterInfo();
+    //public static CharacterInfo CreateCharacterInfo(GameObject prefab, int id)
+    //{
+    //    var characterInfo = new CharacterInfo();
 
-        characterInfo.CharacterPrefab = prefab;
-        characterInfo.Id = id;
-        characterInfo.CurrentHealth = prefab.GetComponent<Character>().EntityChars.MaxHealth;
+    //    characterInfo.CharacterPrefab = prefab;
+    //    characterInfo.Id = id;
+    //    characterInfo.CurrentHealth = prefab.GetComponent<Character>().EntityChars.MaxHealth;
 
-        return characterInfo;
+    //    return characterInfo;
 
-    }
+    //}
 
     public static CharacterInfo CreateCharacterInfo(Character character)
     {
@@ -36,7 +36,9 @@ public static class CharacterFactory
         characterInfo.Id = id;
         characterInfo.CurrentHealth = character.Prefab.GetComponent<Character>().EntityChars.MaxHealth;
 
+        characterInfo.Weapon = character.Weapon;
 
+        characterInfo.Tool = character.Tool;
 
         return characterInfo;
     }

@@ -9,4 +9,6 @@ public class Pistol : EntityWeapon
     {
         Type = WeaponType.Pistol;
     }
+
+    public override string IconName => "Pistol";
 }

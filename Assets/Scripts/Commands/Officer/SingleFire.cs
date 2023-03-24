@@ -15,9 +15,11 @@ public class SingleFire : CharacterCommand
         SelfPositions = new List<int>() { 1, 2, 3 };
         EnemyPositions = new List<int>() { 1, 2, 3 };
 
-        Name = "Single fire";
+        Name = "<size=30><color=#ffa500ff>Одиночный выстрел</color></size>";
 
-        Description = "\n(Персонаж обязан находиться во второй линии.)\nНаносит урон по любому противнику из первого\nряда.";
+        Description = "\n<color=#0000ffff>(Персонаж обязан находиться во второй линии.)</color>\nНаносит урон по любому противнику из первого\nряда.";
+
+        FullDescription = Name + "\n" + Description;
 
         Conditioning.SetBleeding(1f, 2, 3);
         Conditioning.SetPoisoning(1f, 2, 1);
@@ -38,7 +40,7 @@ public class SingleFire : CharacterCommand
     {
         if (entity is Character)
         {
-            return (entity as Character).Weapon.Type == WeaponType.Pistol;
+            return (entity as Character).Weapon != null && (entity as Character).Weapon.Type == WeaponType.Pistol;
         }
 
         return true;

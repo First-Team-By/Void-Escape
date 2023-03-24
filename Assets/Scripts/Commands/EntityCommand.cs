@@ -7,6 +7,7 @@ public abstract class EntityCommand
 {
     public string Name { get; set; }
     public string Description { get; set; }
+    public string FullDescription { get; set; }
     public abstract string IconName { get; }
     public Sprite Icon { set; get; }
     public Sprite Effect { set; get; }

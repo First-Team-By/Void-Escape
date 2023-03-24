@@ -8,7 +8,10 @@ public class Gate : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        StartCoroutine(SceneLoading());
+        if (!Global.UIIntersect)
+        {
+            StartCoroutine(SceneLoading());
+        }
     }
 
     private IEnumerator SceneLoading()

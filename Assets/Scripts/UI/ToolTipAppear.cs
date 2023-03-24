@@ -10,6 +10,10 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 {
     [SerializeField] private GameObject _toolTipPanelPref;
 
+    [SerializeField] private string _toolTip;
+
+    private RectTransform _icon;
+
     private GameObject _toolTipPanel;
 
     private RectTransform _canvas;
@@ -22,9 +26,8 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
     private float _widthToolTipPanel;
 
-    [SerializeField] private string _toolTip;
 
-    public string ToolTip 
+    public string ToolTipString 
     {
         set { _toolTip = value; }
     }
@@ -59,6 +62,8 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
         _toolTipText = _toolTipPanel.transform.GetComponentInChildren<TMP_Text>();
 
+        _icon = _toolTipPanel.transform.GetChild(1).GetComponent<RectTransform>();
+
         ShowToolTip();
         
         _canvasGroup = _toolTipPanel.GetComponent<CanvasGroup>();
@@ -79,11 +84,13 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
         }
 
         _toolTipPanel.transform.position = _toolTipPosition;
+
+        _icon.transform.position = new Vector2(-30f, _toolTipText.preferredHeight + 10f) + _toolTipPosition;
     }
 
     public virtual void ShowToolTip()
     {
 
-        _toolTipText.text =_toolTip;
+        _toolTipText.text = _toolTip;
     }
 }

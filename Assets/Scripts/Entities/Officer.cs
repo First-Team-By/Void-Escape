@@ -14,7 +14,7 @@ public class Officer : Character
 
     protected override void Init()
     {
-        Weapon = new Pistol();
+        Weapon = new Scalpel();
 
         Prefab = Global.CharacterPrefabs.Officer;
 

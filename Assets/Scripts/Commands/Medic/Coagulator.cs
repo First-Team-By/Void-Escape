@@ -13,9 +13,11 @@ public class Coagulator : CharacterCommand
 
         SelfPositions = new List<int>() { 4, 5 };
 
-        Name = "Coagulator";
+        Name = "<size=30><color=#ffa500ff>Коагулятор</color></size>";
 
-        Description = "\nЛечит любого союзника\nпри условии что на нем\nвисит debuff 'Кровотечение'";
+        Description = "\nСнимает <color=#ff0000ff>Кровотечение</color>";
+
+        FullDescription = Name + "\n" + Description;
     }
     public override string IconName => "coagulatorcommand_sprite";
     public override string EffectName => "coagulatoreffect_sprite";

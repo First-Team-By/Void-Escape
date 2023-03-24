@@ -11,16 +11,18 @@ public class DoubleTap : CharacterCommand
     {
         SelfPositions = new List<int>() { 1, 2, 3 };
 
-        Name = "Double tap";
+        Name = "<size=30><color=#ffa500ff>Двойной выстрел</color></size>";
 
-        Description = "\n(Персонаж обязан находиться в первой линии.)\nНаносит урон одной из двух ближайших целей.";
+        Description = "\n<color=#0000ffff>(Персонаж обязан находиться в первой линии.)</color>\nНаносит урон одной из двух ближайших целей.";
+
+        FullDescription = Name + "\n" + Description;
     }
 
     public override bool IsAvaliable(EntityBase entity)
     {
         if (entity is Character)
         {
-            return (entity as Character).Weapon.Type == WeaponType.Pistol;
+            return (entity as Character).Weapon != null && (entity as Character).Weapon.Type == WeaponType.Pistol;
         }
 
         return true;

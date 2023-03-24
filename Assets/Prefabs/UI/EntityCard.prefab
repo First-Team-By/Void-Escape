@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &841060416619596881
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   _entityType: {fileID: 8494038634577779200}
   _initiative: {fileID: 3830315060967500455}
   _fullName: {fileID: 7402529034339867868}
+  _weaponSlot: {fileID: 5314900889104217471}
 --- !u!1 &1662628518375760879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &3367861221029707011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &3563420560196804005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,6 +2264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &4559075070877215119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,6 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &5246464409507173403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,6 +2831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &6112645589542586511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,6 +3418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &7970923828033047178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,6 +3509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toolTipPanelPref: {fileID: 5834117581224288047, guid: 1d6124ddb97fbbb479d51c980eb17bb1, type: 3}
+  _toolTip: 
 --- !u!1 &8416754765598298894
 GameObject:
   m_ObjectHideFlags: 0
