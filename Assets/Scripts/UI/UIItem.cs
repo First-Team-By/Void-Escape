@@ -15,9 +15,10 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     private RectTransform _rectTransform;
 
-    [SerializeField] private SlotType _slotType;
-
-    public SlotType SlotType => _slotType;
+    public SlotType SlotType
+    {
+        get { return Equipment.SlotType; }
+    }
 
     public GameObject OldParent { get; set; }
 
@@ -31,11 +32,7 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     {
         get { return _equipment; }
 
-        set
-        {  
-            _equipment = value;
-            
-        }
+        set{ _equipment = value; }
     }
 
     private void Start()

@@ -14,13 +14,11 @@ public class Officer : Character
 
     protected override void Init()
     {
-        Weapon = new Scalpel();
+        //Weapon = new Pistol();
 
         Prefab = Global.CharacterPrefabs.Officer;
 
        // GetBleeded(3, 10);
-
-        
     }
 
     public override Sprite GetCustomPose(string pose)

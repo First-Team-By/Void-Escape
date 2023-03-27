@@ -34,7 +34,7 @@ public static class Global
     public static bool UIIntersect { get; set; } = false; 
     static Global()
     {
-        inventory = new List<Equipment>() { new Pistol() };
+        inventory = new List<Equipment>() { new Pistol(), new Scalpel(), new Blade(), new FirstAidKit() };
 
         enemyPrefabContainer = Resources.Load<GameObject>("EnemyPrefabs");
         EnemyPrefabs = enemyPrefabContainer.GetComponent<EnemyPrefabs>();

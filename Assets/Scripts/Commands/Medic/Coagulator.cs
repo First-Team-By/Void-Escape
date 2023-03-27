@@ -35,6 +35,11 @@ public class Coagulator : CharacterCommand
 
     public override bool IsAvaliable(EntityBase entity)
     {
+        if (entity is Character)
+        {
+            return (entity as Character).Device?.Type == DeviceType.FirstAidKit;
+        }
+
         return true;
     }
 

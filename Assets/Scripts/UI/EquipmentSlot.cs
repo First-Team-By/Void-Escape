@@ -13,7 +13,7 @@ public enum SlotType
     Inventory
 }
 
-public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler , IPointerExitHandler
+public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private SlotType _type;
 
@@ -22,6 +22,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler ,
     private UIItem _mountedItem;
 
     private UIItem _newItem;
+
+    private Image _equipSlotImage;
 
     public SlotType Type => _type;
 
@@ -67,18 +69,11 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler ,
 
             _mountedItem = _newItem;
         }
+
         OnEquipped?.Invoke(_mountedItem.Equipment);
-    }
 
+        _equipSlotImage = gameObject.GetComponent<Image>();
 
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
+        _equipSlotImage.sprite = null;
     }
 }

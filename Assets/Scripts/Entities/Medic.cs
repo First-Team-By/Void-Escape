@@ -19,6 +19,6 @@ public class Medic : Character
     {
         Prefab = Global.CharacterPrefabs.Medic;
 
-        Weapon = new Scalpel();
+        //Weapon = new Scalpel();
     }
 }

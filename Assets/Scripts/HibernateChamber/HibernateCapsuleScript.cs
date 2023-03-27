@@ -37,17 +37,12 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         }
 
         Global.allCharacters.CharacterInfos.Add(CharacterFactory.CreateCharacterInfo(capsuleInfo.Character));
+        StartCoroutine(OnEnableUIPopUpWinCor(capsuleInfo.Character.ClassName));
         capsuleInfo.Character = null;
         capsuleInfo.Status = CapsuleStatus.Empty;
         _hibernaiteChamber.SaveToGlobal();
         _entityCardScript.FillInfo(capsuleInfo.Character);
         _topAnimator.SetTrigger("Extract");
-
-        //UIPopUPWindow.OnEnableUIPopUpWindow();
-
-        StartCoroutine(OnEnableUIPopUpWinCor());
-
-        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -104,11 +99,11 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    private IEnumerator OnEnableUIPopUpWinCor()
+    private IEnumerator OnEnableUIPopUpWinCor(string identifier)
     {
         yield return new WaitForSeconds(1.6f);
 
-        _uIPopUPWindow.OnEnableUIPopUpWindow();
+        _uIPopUPWindow.OnEnableUIPopUpWindow(identifier);
     }
 }
 

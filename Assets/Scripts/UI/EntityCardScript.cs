@@ -10,6 +10,8 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityCardScript : EntityCardBase
 {
+    private EntityBase _entity;
+
     [SerializeField] private Image _image;
 
     [SerializeField] private Image _currentHealth;
@@ -24,7 +26,7 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] private EquipmentSlot _weaponSlot;
 
-    private EntityBase _entity;
+    [SerializeField] private EquipmentSlot _deviceSlot;
 
     [SerializeField] private GameObject _inventoryPanel;
 
@@ -39,6 +41,7 @@ public class EntityCardScript : EntityCardBase
     private void Start()
     {
         _weaponSlot.OnEquipped += Equip;
+        _deviceSlot.OnEquipped += Equip;
 
         if (_inventoryPanel != null )
         {
@@ -53,6 +56,11 @@ public class EntityCardScript : EntityCardBase
             ((Character)_entity).Weapon = null;//оружие по умолчанию
         }
 
+        if (equipment is EntityDevice)
+        {
+            ((Character)_entity).Device = null;//оружие по умолчанию
+        }
+
         Global.inventory.Add(equipment);
 
         RefreshCommands();
@@ -63,6 +71,10 @@ public class EntityCardScript : EntityCardBase
         if (equipment is EntityWeapon)
         {
             ((Character)_entity).Weapon = equipment as EntityWeapon;
+        }
+        if (equipment is EntityDevice)
+        {
+            ((Character)_entity).Device = equipment as EntityDevice;
         }
 
         Global.inventory.Remove(equipment);

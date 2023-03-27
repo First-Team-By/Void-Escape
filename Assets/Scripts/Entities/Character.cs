@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public abstract class Character : EntityBase
 {
     public EntityWeapon Weapon { set; get; }
-    public EntityTool Tool { set; get; }
+    public EntityDevice Device { set; get; }
     public abstract List<CharacterCommand> NativeCommands { get; }
 
     public override List<EntityCommand> Commands

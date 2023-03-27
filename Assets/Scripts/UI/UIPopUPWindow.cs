@@ -11,15 +11,11 @@ public class UIPopUPWindow : MonoBehaviour
 
     [SerializeField] private EntityCardScript _entityCardScript;
 
-    private string _className;
-
-    public void OnEnableUIPopUpWindow()
+    public void OnEnableUIPopUpWindow(string identifier)
     {
         gameObject.SetActive(true);
 
-        _className = _entityCardScript.EntityType.text;
-
-        _uiPopUpText.text = $"{_className} присоединился к команде!";
+        _uiPopUpText.text = $"{identifier} присоединился к команде!";
     }
 
     public void CloseWindow()

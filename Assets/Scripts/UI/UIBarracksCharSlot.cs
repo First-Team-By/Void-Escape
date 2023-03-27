@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointerExitHandler
+public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 {
     [SerializeField] private GameObject _characterPrefab;
 
@@ -33,11 +33,6 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointer
         set { _characterPrefab = value; }
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         DoSelect();
@@ -53,13 +48,8 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler, IPointer
 
         character.Weapon = CharacterInfo.Weapon;
 
-        character.Tool = CharacterInfo.Tool;
+        character.Device = CharacterInfo.Device;
 
         EntityCard.FillInfo(character);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
     }
 }

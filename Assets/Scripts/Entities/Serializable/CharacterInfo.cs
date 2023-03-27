@@ -12,7 +12,7 @@ using UnityEngine;
     [SerializeField] protected GameObject _characterPrefab;
     [SerializeField] private EntityConditions _conditions;
     public EntityWeapon Weapon { set; get; }
-    public EntityTool Tool { set; get; }
+    public EntityDevice Device { set; get; }
     public string FullName { get; set; }
 
     public float CurrentHealth

@@ -479,7 +479,10 @@ MonoBehaviour:
   _entityType: {fileID: 8494038634577779200}
   _initiative: {fileID: 3830315060967500455}
   _fullName: {fileID: 7402529034339867868}
-  _weaponSlot: {fileID: 5314900889104217471}
+  _weaponSlot: {fileID: 2037465212701772344}
+  _deviceSlot: {fileID: 5314900889104217471}
+  _inventoryPanel: {fileID: 0}
+  _inventorySlot: {fileID: 0}
 --- !u!1 &1662628518375760879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,7 +2848,7 @@ GameObject:
   - component: {fileID: 3543147163791094546}
   - component: {fileID: 5314900889104217471}
   m_Layer: 5
-  m_Name: MainWeapon
+  m_Name: Device
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3793,7 +3796,7 @@ GameObject:
   - component: {fileID: 7590161177637831839}
   - component: {fileID: 2037465212701772344}
   m_Layer: 5
-  m_Name: AdditionalWeapon
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

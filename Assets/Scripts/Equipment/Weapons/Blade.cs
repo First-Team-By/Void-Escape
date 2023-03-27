@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Scalpel : EntityWeapon
+
+public class Blade : EntityWeapon
 {
-    public Scalpel()
+    public Blade()
     {
-        Type = WeaponType.Scalpel;
+        Type = WeaponType.Blade;
 
         SlotType = SlotType.Weapon;
     }
 
-    public override string IconName => "Scalpel";
+    public override string IconName => "Blade"; 
 }
+

@@ -38,7 +38,7 @@ public static class CharacterFactory
 
         characterInfo.Weapon = character.Weapon;
 
-        characterInfo.Tool = character.Tool;
+        characterInfo.Device = character.Device;
 
         return characterInfo;
     }

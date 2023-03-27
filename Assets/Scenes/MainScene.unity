@@ -1104,6 +1104,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1662628518140657426, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
+      propertyPath: _deviceSlot
+      value: 
+      objectReference: {fileID: 488219227}
+    - target: {fileID: 1662628518140657426, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
       propertyPath: _weaponSlot
       value: 
       objectReference: {fileID: 1799032874}
@@ -3465,6 +3469,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6112645589542586511, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
   m_PrefabInstance: {fileID: 169227705}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &488219227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5314900889104217471, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
+  m_PrefabInstance: {fileID: 169227705}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488219225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46988b701abf4b648a72a780e846e49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &502406493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,10 +4528,6 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.4392157
       objectReference: {fileID: 0}
-    - target: {fileID: 1662628518140657426, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
-      propertyPath: _weaponSlot
-      value: 
-      objectReference: {fileID: 1047053074}
     - target: {fileID: 1662628518140657427, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6005,17 +6016,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043488804}
   m_CullTransparentMesh: 1
---- !u!114 &1047053074 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5314900889104217471, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
-  m_PrefabInstance: {fileID: 874747892}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46988b701abf4b648a72a780e846e49c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1113683774
 GameObject:
   m_ObjectHideFlags: 0
