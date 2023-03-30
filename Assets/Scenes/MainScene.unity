@@ -8862,6 +8862,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule_1
       objectReference: {fileID: 0}
+    - target: {fileID: 7741636951804908066, guid: 1e3c5666267c65544b1cd1bddc535da6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741636951804908066, guid: 1e3c5666267c65544b1cd1bddc535da6, type: 3}
+      propertyPath: m_ShowMaskGraphic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7741636951804908071, guid: 1e3c5666267c65544b1cd1bddc535da6, type: 3}
       propertyPath: m_IsActive
       value: 1

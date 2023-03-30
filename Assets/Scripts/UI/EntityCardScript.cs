@@ -53,11 +53,19 @@ public class EntityCardScript : EntityCardBase
     {
         if (equipment is EntityWeapon)
         {
+            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
+
+            characterInfo.Weapon = null;
+
             ((Character)_entity).Weapon = null;//оружие по умолчанию
         }
 
         if (equipment is EntityDevice)
         {
+            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
+
+            characterInfo.Device = null;
+
             ((Character)_entity).Device = null;//оружие по умолчанию
         }
 
@@ -70,10 +78,18 @@ public class EntityCardScript : EntityCardBase
     {
         if (equipment is EntityWeapon)
         {
+            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
+
+            characterInfo.Weapon = equipment as EntityWeapon;
+
             ((Character)_entity).Weapon = equipment as EntityWeapon;
         }
         if (equipment is EntityDevice)
         {
+            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
+
+            characterInfo.Device = equipment as EntityDevice;
+
             ((Character)_entity).Device = equipment as EntityDevice;
         }
 
@@ -98,9 +114,38 @@ public class EntityCardScript : EntityCardBase
 
         _fullName.text = entity.FullName;
 
+        RefreshEquipments();
+
         RefreshCommands();
 
         RefreshInventory();
+    }
+
+    private void RefreshEquipments()
+    {
+        if (_weaponSlot.gameObject.transform.childCount > 0)
+        {
+            Destroy(_weaponSlot.gameObject.transform.GetChild(0).gameObject);
+        }
+        
+        if (((Character)_entity).Weapon != null)
+        {
+            var weapon = EquipmentFactory.CreateItem(((Character)_entity).Weapon, _weaponSlot.gameObject.transform);
+
+            weapon.transform.localPosition = Vector3.zero;
+        }
+
+        if (_deviceSlot.gameObject.transform.childCount > 0)
+        {
+            Destroy(_deviceSlot.gameObject.transform.GetChild(0).gameObject);
+        }
+
+        if (((Character)_entity).Device != null)
+        {
+            var device = EquipmentFactory.CreateItem(((Character)_entity).Device, _deviceSlot.gameObject.transform);
+
+            device.transform.localPosition = Vector3.zero;
+        }
     }
 
     private void RefreshCommands()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Serializable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
- public class CharacterInfo
+ public class CharacterInfo : EntityInfo
  {
     [SerializeField] protected float _currentHealth;
     [SerializeField] protected GameObject _characterPrefab;

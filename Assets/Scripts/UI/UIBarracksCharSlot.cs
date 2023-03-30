@@ -50,6 +50,9 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 
         character.Device = CharacterInfo.Device;
 
+        character.EntityInfo = CharacterInfo;
+
         EntityCard.FillInfo(character);
+
     }
 }

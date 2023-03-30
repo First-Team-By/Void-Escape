@@ -1,3 +1,4 @@
+using Assets.Scripts.Entities.Serializable;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ public abstract class EntityBase : MonoBehaviour
     public Sprite AttackPose => attackPose;
     public Sprite Portrait => portrait;
     public Sprite DeathDoorSprite => deathDoorSprite;
+
+    public EntityInfo EntityInfo { get; set; }
 
     private string _fullName;
 
