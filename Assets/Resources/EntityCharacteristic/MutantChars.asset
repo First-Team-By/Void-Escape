@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
-  m_Name: MegaMutantCharacteristics
+  m_Name: MutantChars
   m_EditorClassIdentifier: 
-  _maxHealth: 30
+  _entityClass: 2
+  _maxHealth: 10
   _meleeDamage: 10
-  _critChance: 0.342
-  _critMultiplier: 1.262
-  _evadeChance: 0.11
-  _accuracy: 0.598
-  _defence: 0.091
-  _initiative: 3
-  _value: 3
+  _critChance: 0.085
+  _critMultiplier: 1.459
+  _evadeChance: 0.13
+  _accuracy: 0.379
+  _defence: 0.14
+  _initiative: 1
+  _value: 1

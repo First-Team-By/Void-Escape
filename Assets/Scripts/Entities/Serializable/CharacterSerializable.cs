@@ -9,7 +9,7 @@ using UnityEngine;
 [Serializable]
 public class CharacterSerializable
 {
-    [SerializeField] private static List<CurrentCharacterInfo> _characterInfos = new List<CurrentCharacterInfo>();
+    [SerializeField] private static List<CharacterInfo> _characterInfos = new List<CharacterInfo>();
      
     private static void SetCharactersInfo()
     {
@@ -23,21 +23,23 @@ public class CharacterSerializable
 
     public static void SerializeCurrentInfo()
     {
-        SetCharactersInfo();
-        TextAsset saveFile = Resources.Load<TextAsset>("Saves/CurrentGroupSave");
+        //SetCharactersInfo();
+        //TextAsset saveFile = Resources.Load<TextAsset>("Saves/CurrentGroupSave");
         
-        var serialized = JsonUtility.ToJson(_characterInfos);
-        File.WriteAllText(AssetDatabase.GetAssetPath(saveFile), serialized);
+        //var serialized = JsonUtility.ToJson(_characterInfos);
+        //File.WriteAllText(AssetDatabase.GetAssetPath(saveFile), serialized);
     }
 
-    public static List<CurrentCharacterInfo> DeserializeCurrentInfo()
+    public static List<CharacterInfo> DeserializeCurrentInfo()
     {
-        TextAsset saveFile = Resources.Load<TextAsset>("Saves/CurrentGroupSave");
-        var deserializedString = File.ReadAllText(AssetDatabase.GetAssetPath(saveFile));
+        //TextAsset saveFile = Resources.Load<TextAsset>("Saves/CurrentGroupSave");
+        //var deserializedString = File.ReadAllText(AssetDatabase.GetAssetPath(saveFile));
 
-        List<CurrentCharacterInfo> deserialized = JsonUtility.FromJson<List<CurrentCharacterInfo>>(deserializedString);
-        _characterInfos = deserialized;
+        //List<CharacterInfo> deserialized = JsonUtility.FromJson<List<CharacterInfo>>(deserializedString);
+        //_characterInfos = deserialized;
 
-        return _characterInfos;
+        //return _characterInfos;
+
+        return null;
     }
 }

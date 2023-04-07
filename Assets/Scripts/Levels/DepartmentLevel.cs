@@ -10,29 +10,23 @@ using Random = UnityEngine.Random;
 
 public class DepartmentLevel 
 {
-    public List<EnemyInfo> CreateEnemies(int difficulty, List<EnemyInfo> possibleEnemies)
+    public List<EnemyInfo> CreateEnemies(int difficulty, List<CharsTemplate> possibleEnemies)
     {
-        var enemyPrefabs = possibleEnemies.Select(x => x.EnemyPrefab);
-
         var enemyValues = GetEnemyValues(difficulty);
 
         List<EnemyInfo> enemiesInfos = new List<EnemyInfo>(enemyValues.Length);
         for (int i = 0; i < enemyValues.Length; i++)
         {
-            //var enemyGO = GameObject.Instantiate(enemyPrefabs.FirstOrDefault(x => x.gameObject.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]));
-            //enemies.Add(enemyGO.GetComponent<Enemy>());
-            var enemyInfo = new EnemyInfo();
             try
             {
-                enemyInfo.EnemyPrefab =
-                enemyPrefabs.First(x => x.GetComponent<Enemy>().EntityChars.Value == enemyValues[i]);
+                var _class = possibleEnemies.First(x => x.EntityChars.Value == enemyValues[i]).GetEntityClass();
+                var enemyInfo = (EnemyInfo)Activator.CreateInstance(_class);
+                enemiesInfos.Add(enemyInfo);
             }
             catch
             {
                 Debug.LogError("Несуществующий уровень сложности: " + enemyValues[i]);
             }
-            
-            enemiesInfos.Add(enemyInfo);
         }
         return enemiesInfos;
     }

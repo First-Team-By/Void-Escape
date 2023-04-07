@@ -5,12 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemyInfo
+public abstract class EnemyInfo : EntityInfo
 {
-    [SerializeField] private GameObject _enemyPrefab;
-    public GameObject EnemyPrefab
-    {
-        get => _enemyPrefab;
-        set => _enemyPrefab = value;
-    }
+    public override List<EntityCommand> Commands => throw new NotImplementedException();
 }

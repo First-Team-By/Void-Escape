@@ -1,12 +1,267 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace Assets.Scripts.Entities.Serializable
+public abstract class EntityInfo
 {
-    public class EntityInfo
+    //[SerializeField] private EntityCharacteristics entityChars;
+    //[SerializeField] private Sprite portrait;
+    //[SerializeField] private EntityConditions _conditions = new EntityConditions();
+    //[SerializeField] private Sprite sufferingPose;
+    //[SerializeField] private Sprite attackPose;
+    //[SerializeField] private Sprite evadePose;
+    //[SerializeField] private Sprite deathDoorSprite;
+    //[SerializeField] private EntityClass entityClass;
+
+    public string Name { get; set; }
+    public Sprite SufferingPose { get; private set; }
+    public Sprite AttackPose { get; private set; }
+    public Sprite Portrait { get; private set; }
+    public Sprite DeathDoorSprite { get; private set; }
+    public Sprite FullFaceSprite { get; private set; }
+    public Sprite EvadePose { get; private set; }
+    public abstract string SufferingPoseName { get; }
+    public abstract string AttackPoseName { get; }
+    public abstract string PortraitName { get; }
+    public abstract string DeathDoorSpriteName { get; }
+    public abstract string FullFaceSpriteName { get; }
+    public abstract string EvadePoseName { get; }
+    public EntityClass EntityClass { get; protected set; }
+    public EntityCharacteristics EntityChars { get; protected set; }
+
+    protected EntityConditions _conditions = new EntityConditions();
+    public EntityConditions Conditions
     {
+        get => _conditions;
+        set => _conditions = value;
+    }
+
+
+    private string _fullName;
+
+    public bool OnDeathDoor { get; set; }
+    
+
+
+    public float Health
+    {
+        get => _health;
+        set
+        {
+            _health = Mathf.Clamp(value, 0, EntityChars.MaxHealth);
+            if (_health <= 0)
+            {
+                OnDeathDoor = true;
+                HealthOver?.Invoke(this);
+                //GetComponent<SpriteRenderer>().sprite = DeathDoorSprite;
+            }
+        }
+    }
+
+    private static string[] entityClassNames = new string[] { "Офицер", "Медик", "Мутант" };
+
+    public string ClassName => GetClassName(EntityClass);
+
+    
+
+    public string FullName
+    {
+        get
+        {
+            return _fullName;
+        }
+        set
+        {
+            _fullName = value;
+        }
+    }
+
+    public int Position { get; set; }
+    public bool IsActive { get; set; }
+    public abstract List<EntityCommand> Commands { get; }
+    public event Action<EntityInfo> HealthOver;
+
+
+    public int CurrentInitiative => EntityChars.Initiative;
+    private float _health;
+
+    public EntityInfo()
+    {
+        EntityChars = CharsTemplate.GetCharacteristics(EntityClass);
+        _health = EntityChars.MaxHealth;
+        AttackPose = Resources.Load<Sprite>("Sprites/Entities/" + AttackPoseName);
+        EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);
+        FullFaceSprite = Resources.Load<Sprite>("Sprites/Entities/" + FullFaceSpriteName);
+        Portrait = Resources.Load<Sprite>("Sprites/Entities/" + PortraitName);
+        DeathDoorSprite = Resources.Load<Sprite>("Sprites/Entities/" + DeathDoorSpriteName);
+        SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
+    }
+
+    public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
+    {
+        var result = new TargetState();
+        if (Random.Range(0, 1f) < Mathf.Clamp(EntityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
+        {
+            //result.Pose = EntityPose.EvadePose;
+            result.PoseName = Poses.Evade;
+            return result;
+        }
+
+        var finalDamage = damage;
+        if (Random.Range(0, 1f) < provokerChars.CritChance)
+        {
+            finalDamage *= provokerChars.CritMultiplier;
+        }
+
+        finalDamage *= EntityChars.Defence;
+
+        if (finalDamage > 0 && conditioning.CanGetBleed)
+        {
+            var chance = Random.Range(0, 1f);
+            if (chance <= conditioning.Bleeding.Chance)
+            {
+                GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
+            }
+        }
+
+        if (finalDamage > 0 && conditioning.CanGetPoison)
+        {
+            var chance = Random.Range(0, 1f);
+            if (chance <= conditioning.Poisoning.Chance)
+            {
+                GetPoisoned(conditioning.Poisoning.Damage, conditioning.Poisoning.Duration);
+            }
+        }
+
+        if (finalDamage > 0 && conditioning.CanGetArson)
+        {
+            var chance = Random.Range(0, 1f);
+            if (chance <= conditioning.Arsoning.Chance)
+            {
+                GetArsoned(conditioning.Arsoning.Damage, conditioning.Arsoning.Duration);
+            }
+        }
+
+        Health -= finalDamage;
+        //result.Pose = EntityPose.SufferingPose;
+        result.PoseName = Poses.Suffering;
+        result.HealthChanged = -finalDamage;
+        result.Target = this;
+        result.Effect = effect;
+        return result;
+    }
+
+    private TargetState TakeDamage(float damage, string reason, Sprite effect = null)
+    {
+        Health -= damage;
+
+        var result = new TargetState();
+        //result.Pose = EntityPose.SufferingPose;
+        result.PoseName = Poses.Suffering;
+        result.HealthChanged = -damage;
+        result.Target = this;
+        result.Effect = effect;
+        result.ConditionName = reason;
+
+        return result;
+    }
+
+    public TargetState GetHealth(float health, Sprite effect)
+    {
+        var result = new TargetState();
+        Health += health;
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
+        result.HealthChanged = health;
+        result.Target = this;
+        result.Effect = effect;
+        return result;
+    }
+
+    public void GetPoisoned(float damage, int duration)
+    {
+        _conditions.poisoning.poisonDamage = damage;
+        _conditions.poisoning.duration = duration;
+    }
+    public void GetBleeded(float damage, int duration)
+    {
+        _conditions.bleeding.bleedDamage = damage;
+        _conditions.bleeding.duration = duration;
+    }
+
+    private void GetArsoned(float damage, int duration)
+    {
+        _conditions.arsoning.arsonDamage = damage;
+        _conditions.arsoning.duration = duration;
+    }
+
+    public TargetState StopBleeding(Sprite effect)
+    {
+        var result = new TargetState();
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
+        result.Target = this;
+        result.Effect = effect;
+        _conditions.bleeding.duration = 0;
+
+        return result;
+    }
+
+    public TargetState StopPoisoning(Sprite effect)
+    {
+        var result = new TargetState();
+        //result.Pose = EntityPose.ReinforcedPose;
+        result.PoseName = Poses.Reinforced;
+        result.Target = this;
+        result.Effect = effect;
+        _conditions.poisoning.duration = 0;
+
+        return result;
+    }
+
+    public List<TargetState> ProcessConditions()
+    {
+        List<TargetState> results = new List<TargetState>();
+        if (_conditions.IsBleeding)
+        {
+            results.Add(TakeDamage(_conditions.bleeding.bleedDamage, "Кровотечение"));
+            _conditions.bleeding.duration--;
+        }
+
+        if (_conditions.IsPoisoned)
+        {
+            results.Add(TakeDamage(_conditions.poisoning.poisonDamage, "Яд"));
+            _conditions.poisoning.duration--;
+        }
+
+        if (_conditions.IsArsoned)
+        {
+            results.Add(TakeDamage(_conditions.arsoning.arsonDamage, "Поджог"));
+            _conditions.arsoning.duration--;
+        }
+        return results;
+    }
+
+    public virtual Sprite GetPose(string pose)
+    {
+        switch (pose)
+        {
+            case Poses.Evade: return EvadePose;
+
+            case Poses.Suffering: return SufferingPose;
+
+            default: return GetCustomPose(pose);
+        }
+    }
+
+    public virtual Sprite GetCustomPose(string pose)
+    {
+        return null;
+    }
+    public static string GetClassName(EntityClass entityClass)
+    {
+        return entityClassNames[Convert.ToInt32(entityClass)];
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Serializable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,14 +11,14 @@ public class CommandResult
 {
     public Dictionary<int, TargetState> TargetStates { get; set; } = new Dictionary<int, TargetState>();
     public string ActorPoseName { get; set; }
-    public EntityBase Actor { get; set; }
+    public EntityInfo Actor { get; set; }
 }
 
 public class TargetState
 {
     public float HealthChanged { get; set; }
     public string PoseName { get; set; }
-    public EntityBase Target { get; set; }
+    public EntityInfo Target { get; set; }
     public Sprite Effect { get; set; }
     public string ConditionName { get; set; }
 }

@@ -31,7 +31,7 @@ public class TeamInitHandler : MonoBehaviour
         Global.currentMapInfo = new MapInfo()
         {
             Size = new Vector2(5, 5),
-            possibleEnemies = Global.EnemyPrefabs.EnemyPrefabsList.Select(x => new EnemyInfo() { EnemyPrefab = x}).ToList()
+            possibleEnemies = Global.AllEnemiesClasses
         };
 
         Global.currentMapInfo.currentRoomNumber = 0;

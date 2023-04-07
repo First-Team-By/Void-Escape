@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Entity Characteristics", menuName = "Game/Entities/Entity Characteristics")]
 public class EntityCharacteristics : ScriptableObject
 {
+    
+    [SerializeField] private EntityClass _entityClass;
+    [SerializeField] private Type _entityType;
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _meleeDamage;
 
@@ -35,4 +39,6 @@ public class EntityCharacteristics : ScriptableObject
     public float Defence => _defence;
     public int Initiative => _initiative;
     public int Value => _value;
+    public EntityClass EntityClass => _entityClass;
+    public Type EntityType => _entityType;
 }

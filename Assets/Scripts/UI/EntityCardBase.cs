@@ -18,7 +18,7 @@ public abstract class EntityCardBase : MonoBehaviour
 
     [SerializeField] private TMP_Text _defence;
 
-    public void FillInfo(EntityBase entity)
+    public void FillInfo(EntityInfo entity)
     {
         if (entity is null)
         {
@@ -42,5 +42,5 @@ public abstract class EntityCardBase : MonoBehaviour
         FillAdditional(entity);
     }
 
-    public abstract void FillAdditional(EntityBase entity);
+    public abstract void FillAdditional(EntityInfo entity);
 }

@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mutant : Enemy
+public class Mutant : EnemyInfo
 {
-    public override List<EntityCommand> Commands { get; }
+    public override string SufferingPoseName => "";
 
-    protected override void Init()
+    public override string AttackPoseName => "";
+
+    public override string PortraitName => "";
+
+    public override string DeathDoorSpriteName => "";
+
+    public override string FullFaceSpriteName => "enemy_placeholder";
+
+    public override string EvadePoseName => "";
+
+    public Mutant()
     {
-        Name = "Mutant";
+        EntityClass = EntityClass.Mutant;
     }
 }

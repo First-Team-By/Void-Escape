@@ -16,9 +16,9 @@ public enum CapsuleStatus
 
 public class HibernateCapsule
 {
-    private Character _character;
+    private CharacterInfo _character;
 
-    public Character Character
+    public CharacterInfo Character
     {
         get { return _character; }
         set { _character = value; }

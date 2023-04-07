@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 
- public class CharacterInfo : EntityInfo
+ public abstract class CharacterInfo : EntityInfo
  {
-    [SerializeField] protected float _currentHealth;
-    [SerializeField] protected GameObject _characterPrefab;
-    [SerializeField] private EntityConditions _conditions;
+    protected float _currentHealth;
     public EntityWeapon Weapon { set; get; }
     public EntityDevice Device { set; get; }
-    public string FullName { get; set; }
 
     public float CurrentHealth
     {
@@ -22,17 +19,27 @@ using UnityEngine;
         set => _currentHealth = value;
     }
 
-    public GameObject CharacterPrefab
+    //public GameObject CharacterPrefab
+    //{
+    //    get => _characterPrefab;
+    //    set => _characterPrefab = value;
+    //}
+
+    public abstract List<CharacterCommand> NativeCommands { get; }
+
+    public override List<EntityCommand> Commands
     {
-        get => _characterPrefab;
-        set => _characterPrefab = value;
+        get
+        {
+            return NativeCommands.Where(x => x.IsAvaliable(this)).Select(x => x as EntityCommand).ToList();
+        }
     }
 
-    public EntityConditions Conditions
-    {
-        get => _conditions;
-        set => _conditions = value;
-    }
     public int Id { get; set; }
+
+    public CharacterInfo() : base()
+    {
+        FullName = NameGenerator.CreateFullName();
+    }
 }
 

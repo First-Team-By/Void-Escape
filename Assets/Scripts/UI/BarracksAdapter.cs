@@ -23,17 +23,13 @@ public class BarracksAdapter : MonoBehaviour
 
             var uiBarracksCharSlot = barracksCharSlot.GetComponent<UIBarracksCharSlot>();
 
-            uiBarracksCharSlot.Portrait.sprite = characterInfo.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
-
-            uiBarracksCharSlot.CharacterPrefab = characterInfo.CharacterPrefab;
+            uiBarracksCharSlot.Portrait.sprite = characterInfo.FullFaceSprite;
 
             uiBarracksCharSlot.CharacterId = characterInfo.Id;
 
             barracksCharSlot.transform.SetParent(_content, false);
 
-            var character = characterInfo.CharacterPrefab.GetComponent<EntityBase>();
-
-            uiBarracksCharSlot.CharacterClass.text = EntityBase.GetClassName(character.EntityClass);
+            uiBarracksCharSlot.CharacterClass.text = characterInfo.ClassName;
 
             uiBarracksCharSlot.CharacterFullName.text = characterInfo.FullName;
 

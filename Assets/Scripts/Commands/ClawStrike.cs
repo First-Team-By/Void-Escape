@@ -18,7 +18,7 @@ public class ClawStrike : EntityCommand
 
     }
 
-    private bool ClawStrikeEnabled(EntityBase entity)
+    private bool ClawStrikeEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }
@@ -27,7 +27,7 @@ public class ClawStrike : EntityCommand
     public override string IconName { get; }
     public override string EffectName { get; }
 
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         throw new System.NotImplementedException();
     }

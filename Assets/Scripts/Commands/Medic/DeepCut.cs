@@ -25,7 +25,7 @@ public class DeepCut : CharacterCommand
 
         Conditioning.SetBleeding(.5f, 3, 3);
     }
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();
         foreach (var target in targets)
@@ -39,21 +39,21 @@ public class DeepCut : CharacterCommand
         return result;
     }
 
-    public override bool IsAvaliable(EntityBase entity)
+    public override bool IsAvaliable(EntityInfo entity)
     {
-        if (entity is Character)
+        if (entity is CharacterInfo)
         {
-            return (entity as Character).Weapon?.Type == WeaponType.Scalpel;
+            return (entity as CharacterInfo).Weapon?.Type == WeaponType.Scalpel;
         }
 
         return false;
     }
 
-    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
+    public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
         if (selfPosition > 3)
         {
-            return new List<EntityBase>();
+            return new List<EntityInfo>();
         }
         if (selfPosition == 1)
         {

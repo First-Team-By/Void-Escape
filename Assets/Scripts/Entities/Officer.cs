@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Officer : Character
+public class Officer : CharacterInfo
 {
     public override List<CharacterCommand> NativeCommands => new List<CharacterCommand>()
     {
@@ -12,13 +13,23 @@ public class Officer : Character
         new SingleFire()
     };
 
-    protected override void Init()
+    public override string SufferingPoseName => "";
+
+    public override string AttackPoseName => "officerattackpose_sprite";
+
+    public override string PortraitName => "officerportrait_sprite";
+
+    public override string DeathDoorSpriteName => "";
+
+    public override string FullFaceSpriteName => "officericon_sprite";
+
+    public override string EvadePoseName => "";
+
+    public Officer() : base()
     {
-        //Weapon = new Pistol();
+        Weapon = new Pistol();
 
-        Prefab = Global.CharacterPrefabs.Officer;
-
-       // GetBleeded(3, 10);
+        EntityClass = EntityClass.Officer;
     }
 
     public override Sprite GetCustomPose(string pose)

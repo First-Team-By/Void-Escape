@@ -10,7 +10,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityCardScript : EntityCardBase
 {
-    private EntityBase _entity;
+    private EntityInfo _entity;
 
     [SerializeField] private Image _image;
 
@@ -51,22 +51,17 @@ public class EntityCardScript : EntityCardBase
 
     private void UnEquip(Equipment equipment)
     {
+
+        var characterInfo = _entity as CharacterInfo;
+
         if (equipment is EntityWeapon)
         {
-            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
-
             characterInfo.Weapon = null;
-
-            ((Character)_entity).Weapon = null;//оружие по умолчанию
         }
 
         if (equipment is EntityDevice)
         {
-            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
-
             characterInfo.Device = null;
-
-            ((Character)_entity).Device = null;//оружие по умолчанию
         }
 
         Global.inventory.Add(equipment);
@@ -76,21 +71,17 @@ public class EntityCardScript : EntityCardBase
 
     private void Equip(Equipment equipment)
     {
+
+        var characterInfo = _entity as CharacterInfo;
+
         if (equipment is EntityWeapon)
         {
-            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
-
             characterInfo.Weapon = equipment as EntityWeapon;
-
-            ((Character)_entity).Weapon = equipment as EntityWeapon;
         }
+
         if (equipment is EntityDevice)
         {
-            var characterInfo = ((Character)_entity).EntityInfo as CharacterInfo;
-
             characterInfo.Device = equipment as EntityDevice;
-
-            ((Character)_entity).Device = equipment as EntityDevice;
         }
 
         Global.inventory.Remove(equipment);
@@ -98,13 +89,13 @@ public class EntityCardScript : EntityCardBase
         RefreshCommands();
     }
 
-    public override void FillAdditional(EntityBase entity)
+    public override void FillAdditional(EntityInfo entity)
     {
         _entity = entity;
 
         gameObject.SetActive(true);
 
-        _image.sprite = entity.ProfileSprite;
+        _image.sprite = entity.FullFaceSprite;
 
         EntityType.text = entity.ClassName;
 
@@ -128,9 +119,9 @@ public class EntityCardScript : EntityCardBase
             Destroy(_weaponSlot.gameObject.transform.GetChild(0).gameObject);
         }
         
-        if (((Character)_entity).Weapon != null)
+        if (((CharacterInfo)_entity).Weapon != null)
         {
-            var weapon = EquipmentFactory.CreateItem(((Character)_entity).Weapon, _weaponSlot.gameObject.transform);
+            var weapon = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Weapon, _weaponSlot.gameObject.transform);
 
             weapon.transform.localPosition = Vector3.zero;
         }
@@ -140,9 +131,9 @@ public class EntityCardScript : EntityCardBase
             Destroy(_deviceSlot.gameObject.transform.GetChild(0).gameObject);
         }
 
-        if (((Character)_entity).Device != null)
+        if (((CharacterInfo)_entity).Device != null)
         {
-            var device = EquipmentFactory.CreateItem(((Character)_entity).Device, _deviceSlot.gameObject.transform);
+            var device = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
 
             device.transform.localPosition = Vector3.zero;
         }
@@ -161,7 +152,7 @@ public class EntityCardScript : EntityCardBase
             image.color = Color.white;
         }
 
-        foreach (var command in ((Character)_entity).NativeCommands)
+        foreach (var command in ((CharacterInfo)_entity).NativeCommands)
         {
             var image = _characterSkills[i].GetComponent<Image>();
 

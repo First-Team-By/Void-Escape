@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 public class SingleFire : CharacterCommand
 {
-    private float damage = 15;
-    public SingleFire()
+    
+    public SingleFire() : base()
     {
+        damage = 15;
         OnExecute = SingleFireExec;
         IsEnabled = SingleFireEnabled;
 
@@ -26,37 +27,39 @@ public class SingleFire : CharacterCommand
         Conditioning.SetArsoning(1f, 4, 1);
     }
 
+
+
     private void SingleFireExec()
     {
         
     }
 
-    private bool SingleFireEnabled(EntityBase entity)
+    private bool SingleFireEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }
 
-    public override bool IsAvaliable(EntityBase entity)
+    public override bool IsAvaliable(EntityInfo entity)
     {
-        if (entity is Character)
+        if (entity is CharacterInfo)
         {
-            return (entity as Character).Weapon != null && (entity as Character).Weapon.Type == WeaponType.Pistol;
+            return (entity as CharacterInfo).Weapon != null && (entity as CharacterInfo).Weapon.Type == WeaponType.Pistol;
         }
 
         return true;
     }
 
-    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
+    public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
         if (selfPosition < 4)
         {
-            return new List<EntityBase>();
+            return new List<EntityInfo>();
         }
 
         return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
     }
 
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();
         var target = targets.FirstOrDefault();

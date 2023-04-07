@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class UICharacterSlot : UIDragAndDrop
 {
-    [SerializeField] private GameObject characterPrefab;
+    [SerializeField] private CharacterInfo characterInfo;
     [SerializeField] private Button infoButton;
     [SerializeField] private Image _portrait;
     [SerializeField] private GameObject _serviceImagePanel;
@@ -26,10 +26,10 @@ public class UICharacterSlot : UIDragAndDrop
 
     public Image Portrait => _portrait;
 
-    public GameObject CharacterPrefab
+    public CharacterInfo CharacterInfo
     {
-        get { return characterPrefab; }
-        set { characterPrefab = value; }
+        get { return characterInfo; }
+        set { characterInfo = value; }
     }
     void Start()
     {

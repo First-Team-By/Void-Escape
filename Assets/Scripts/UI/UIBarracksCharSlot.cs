@@ -7,8 +7,6 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 {
-    [SerializeField] private GameObject _characterPrefab;
-
     [SerializeField] private Image _portrait;
 
     [SerializeField] private Text _characterClass;
@@ -27,12 +25,6 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 
     public Image Portrait => _portrait;
 
-    public GameObject CharacterPrefab
-    {
-        get { return _characterPrefab; }
-        set { _characterPrefab = value; }
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         DoSelect();
@@ -40,19 +32,9 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 
     public void DoSelect()
     {
-        var character = CharacterInfo.CharacterPrefab.GetComponent<EntityBase>() as Character;
+        
+        EntityCard.FillInfo(CharacterInfo);
 
-        character.Health = CharacterInfo.CurrentHealth;
-
-        character.FullName = CharacterInfo.FullName;
-
-        character.Weapon = CharacterInfo.Weapon;
-
-        character.Device = CharacterInfo.Device;
-
-        character.EntityInfo = CharacterInfo;
-
-        EntityCard.FillInfo(character);
 
     }
 }

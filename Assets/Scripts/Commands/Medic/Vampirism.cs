@@ -14,17 +14,17 @@ internal class Vampirism : CharacterCommand
     {
         
     }
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         throw new NotImplementedException();
     }
 
-    public override bool IsAvaliable(EntityBase entity)
+    public override bool IsAvaliable(EntityInfo entity)
     {
         throw new NotImplementedException();
     }
 
-    private bool VampirismEnabled(EntityBase entity)
+    private bool VampirismEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }

@@ -66,7 +66,7 @@ public class BattlePosition : MonoBehaviour
     public void SetHealth(float percent)
     {
         _healthBar.fillAmount = percent;
-        var character = GetComponentInChildren<EntityBase>();
+        var character = GetComponentInChildren<EntityContainer>();
         if (character)
         {
             _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y);

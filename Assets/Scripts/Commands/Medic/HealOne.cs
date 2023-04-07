@@ -1,3 +1,4 @@
+using Assets.Scripts.Entities.Serializable;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ public class HealOne : CharacterCommand
 
     public override string IconName => "healonecommand_sprite";
     public override string EffectName => "healoneeffect_sprite";
-    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
+    public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
         return targetPositions.Where(x => x.Position < 6 && !x.OnDeathDoor).ToList();
     }
@@ -31,12 +32,12 @@ public class HealOne : CharacterCommand
         return base.GetSelectedTargets(targetPosition);
     }
 
-    private bool HealOneEnabled(EntityBase entity)
+    private bool HealOneEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }
 
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();
         var target = targets.FirstOrDefault();
@@ -48,11 +49,11 @@ public class HealOne : CharacterCommand
         return result;
     }
 
-    public override bool IsAvaliable(EntityBase entity)
+    public override bool IsAvaliable(EntityInfo entity)
     {
-        if (entity is Character)
+        if (entity is CharacterInfo)
         {
-            return (entity as Character).Device?.Type == DeviceType.FirstAidKit;
+            return (entity as CharacterInfo).Device?.Type == DeviceType.FirstAidKit;
         }
 
         return true;

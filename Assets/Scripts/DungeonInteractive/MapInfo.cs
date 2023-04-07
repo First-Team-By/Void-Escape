@@ -14,7 +14,7 @@ public class MapInfo
 
     public MissionState missionState;
 
-    public List<EnemyInfo> possibleEnemies { get; set; }
+    public List<CharsTemplate> possibleEnemies { get; set; }
     public Vector2 Size { get; set; }
     public RoomInfo GetCurrentRoomInfo()
     {
@@ -23,7 +23,7 @@ public class MapInfo
 
     public int GetNormalizedDifficulty(int roomNumber)
     {
-        var maxvalue = possibleEnemies.Max(x => x.EnemyPrefab.GetComponent<Enemy>().EntityChars.Value);
+        var maxvalue = possibleEnemies.Max(x => x.EntityChars.Value);
         
 
         var normalized = (float)roomNumber /

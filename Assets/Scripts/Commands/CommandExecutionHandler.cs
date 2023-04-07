@@ -14,7 +14,7 @@ public class CommandExecutionHandler : MonoBehaviour
             //.Where(x => x.gameObject.TryGetComponent<CommandButton>(out _))
             .ToArray();
     }
-    public void SetCommands(EntityBase entity)
+    public void SetCommands(EntityInfo entity)
     {
         HideBattleButtons();
 

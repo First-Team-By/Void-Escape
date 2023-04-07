@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Serializable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ public class Coagulator : CharacterCommand
     }
     public override string IconName => "coagulatorcommand_sprite";
     public override string EffectName => "coagulatoreffect_sprite";
-    public override CommandResult Execute(EntityBase actor, List<EntityBase> targets)
+    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();
         var target = targets.FirstOrDefault();
@@ -33,22 +34,22 @@ public class Coagulator : CharacterCommand
         return result;
     }
 
-    public override bool IsAvaliable(EntityBase entity)
+    public override bool IsAvaliable(EntityInfo entity)
     {
-        if (entity is Character)
+        if (entity is CharacterInfo)
         {
-            return (entity as Character).Device?.Type == DeviceType.FirstAidKit;
+            return (entity as CharacterInfo).Device?.Type == DeviceType.FirstAidKit;
         }
 
         return true;
     }
 
-    public override List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
+    public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
         return targetPositions.Where(x => x.Position < 6 && x.Conditions.IsBleeding).ToList();
     }
 
-    private bool CoagulatorEnabled(EntityBase entity)
+    private bool CoagulatorEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }

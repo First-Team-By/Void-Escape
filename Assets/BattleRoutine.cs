@@ -17,8 +17,8 @@ public class BattleRoutine : MonoBehaviour
     [SerializeField] private UIActionPanel actionPanel;
     [SerializeField] private EntityBattleCard battleCard;
     public int roundCounter { get; private set; }
-    public List<EntityBase> EntitiesRoute => EnemyList
-        .Cast<EntityBase>()
+    public List<EntityInfo> EntitiesRoute => EnemyList
+        .Cast<EntityInfo>()
         .Concat(characterList)
         .OrderByDescending(i => i.CurrentInitiative)
         .ToList();
@@ -27,10 +27,10 @@ public class BattleRoutine : MonoBehaviour
 
 
     private DepartmentLevel level;
-    public List<Enemy> EnemyList { get; } = new List<Enemy>();
-    private List<Character> characterList;
-    private List<EntityBase> inactiveEntitiesList = new List<EntityBase>();
-    private EntityBase currentEntity;
+    public List<EnemyInfo> EnemyList { get; } = new List<EnemyInfo>();
+    private List<CharacterInfo> characterList;
+    private List<EntityInfo> inactiveEntitiesList = new List<EntityInfo>();
+    private EntityInfo currentEntity;
 
     private CurrentCharacterGroup group;
     
@@ -40,7 +40,7 @@ public class BattleRoutine : MonoBehaviour
 
     private bool isCharacterTurn;
 
-    private EntityBase CurrentEntity
+    private EntityInfo CurrentEntity
     {
         get
         {
@@ -107,7 +107,7 @@ public class BattleRoutine : MonoBehaviour
             RefreshHealthBars();
         }
 
-        if (CurrentEntity is Character)
+        if (CurrentEntity is CharacterInfo)
         {
             commandExecutor.SetCommands(currentEntity);
             isCharacterTurn = true;
@@ -127,12 +127,10 @@ public class BattleRoutine : MonoBehaviour
         List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
         for (int i = 0; i < enemyInfos.Count; i++)
         {
-            var enemy = GameObject.Instantiate(enemyInfos[i].EnemyPrefab).GetComponent<Enemy>();
-            enemy.transform.SetParent(enemyPositions[i].transform);
-            enemy.transform.localPosition = Vector2.zero;
-            enemy.Position = i + 6;
-            enemy.HealthOver += OnHealthOver;
-            EnemyList.Add(enemy);
+            var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i]);
+            enemy.EntityInfo.Position = i + 6;
+            enemy.EntityInfo.HealthOver += OnHealthOver;
+            EnemyList.Add((EnemyInfo)enemy.EntityInfo);
         }
     }
 
@@ -147,12 +145,12 @@ public class BattleRoutine : MonoBehaviour
         }
         battlePosition.ClearCondition();
     }
-    private void OnHealthOver(EntityBase entity)
+    private void OnHealthOver(EntityInfo entity)
     {
         CheckBattleResult();
     }
 
-    private bool IsActive(EntityBase entity)
+    private bool IsActive(EntityInfo entity)
     {
         return !(entity.OnDeathDoor || inactiveEntitiesList.Contains(entity));
     }
@@ -162,16 +160,11 @@ public class BattleRoutine : MonoBehaviour
         group = Global.currentGroup;
         foreach (var character in group.CurrentCharacterInfos)
         {
-            var characterInst = Instantiate(character.CharacterPrefab, characterPositions[character.Position - 1].transform);
-            
-            characterInst.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
-            characterInst.transform.localPosition = Vector2.zero;
-            //characterInst.transform.localScale = Vector2.one;
-            var _characterInst = characterInst.GetComponent<Character>();
-            _characterInst.Position = character.Position;
-            _characterInst.Health = character.CurrentHealth;
-            characterList.Add(_characterInst);
-            _characterInst.HealthOver += OnHealthOver;
+            var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1]);
+
+            characterInstance.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
+            characterList.Add(character);
+            character.HealthOver += OnHealthOver;
         }
     }
 
@@ -199,7 +192,7 @@ public class BattleRoutine : MonoBehaviour
         }
     }
 
-    private BattlePosition GetBattlePosition(EntityBase entity)
+    private BattlePosition GetBattlePosition(EntityInfo entity)
     {
         var position = entity.Position;
         return GetBattlePosition(position);
@@ -282,10 +275,10 @@ public class BattleRoutine : MonoBehaviour
             LoseBattle();   
         }
 
-        if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
-        {
-            WinBattle();
-        }
+        //if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
+        //{
+        //    WinBattle();
+        //}
     }
 
     private void WinBattle()
@@ -302,7 +295,7 @@ public class BattleRoutine : MonoBehaviour
 
     void Start()
     {
-        characterList = new List<Character>();
+        characterList = new List<CharacterInfo>();
         InitBattle();
     }
 

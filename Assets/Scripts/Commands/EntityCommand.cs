@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Entities.Serializable;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +14,7 @@ public abstract class EntityCommand
     public Sprite Effect { set; get; }
     public abstract string EffectName { get; }
     public UnityAction OnExecute { set; get; }
-    public Predicate<EntityBase> IsEnabled { set; get; }
+    public Predicate<EntityInfo> IsEnabled { set; get; }
 
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
@@ -29,7 +30,7 @@ public abstract class EntityCommand
         Conditioning = new Conditioning();
     }
 
-    public IEnumerator<EntityBase> GetAccessibleEntities(List<EntityBase> entityList)
+    public IEnumerator<EntityInfo> GetAccessibleEntities(List<EntityInfo> entityList)
     {
         foreach (var entity in entityList)
         {
@@ -40,9 +41,9 @@ public abstract class EntityCommand
         }
     }
 
-    public virtual List<EntityBase> GetAvaliableTargets(int selfPosition, List<EntityBase> targetPositions)
+    public virtual List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
-        return new List<EntityBase>();
+        return new List<EntityInfo>();
     }
 
     public virtual List<int> GetSelectedTargets(int targetPosition)
@@ -50,9 +51,9 @@ public abstract class EntityCommand
         return new List<int>() { targetPosition };
     }
 
-    public abstract CommandResult Execute(EntityBase actor, List<EntityBase> targets);
+    public abstract CommandResult Execute(EntityInfo actor, List<EntityInfo> targets);
 
-    protected virtual bool IsCommandEnabled(EntityBase entity)
+    protected virtual bool IsCommandEnabled(EntityInfo entity)
     {
         return SelfPositions.Contains(entity.Position);
     }

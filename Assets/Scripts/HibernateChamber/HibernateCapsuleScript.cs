@@ -36,7 +36,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
             return;
         }
 
-        Global.allCharacters.CharacterInfos.Add(CharacterFactory.CreateCharacterInfo(capsuleInfo.Character));
+        Global.allCharacters.CharacterInfos.Add(capsuleInfo.Character);
         StartCoroutine(OnEnableUIPopUpWinCor(capsuleInfo.Character.ClassName));
         capsuleInfo.Character = null;
         capsuleInfo.Status = CapsuleStatus.Empty;
@@ -65,8 +65,8 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
     {
         if (capsuleInfo.Status == CapsuleStatus.UnFreezed)
         {
-            var index = new System.Random().Next(0, Global.availableClasses.Count);
-            capsuleInfo.Character = GameObject.Instantiate(Global.availableClasses[index]).GetComponent<Character>();
+            
+            capsuleInfo.Character = CharacterFactory.CreateRandomCharacter();
             capsuleInfo.Status = CapsuleStatus.Opened;
             _hibernaiteChamber.SaveToGlobal();
 

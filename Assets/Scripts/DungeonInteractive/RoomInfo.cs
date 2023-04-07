@@ -37,7 +37,7 @@ public class RoomInfo
         
     }
 
-    public void InitEnemies(int difficulty, List<EnemyInfo> possibleEnemiyInfos)
+    public void InitEnemies(int difficulty, List<CharsTemplate> possibleEnemiyInfos)
     {
         _enemyInfos = new DepartmentLevel().CreateEnemies(difficulty, possibleEnemiyInfos);
     }

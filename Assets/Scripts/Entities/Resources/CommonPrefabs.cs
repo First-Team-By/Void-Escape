@@ -10,6 +10,9 @@ namespace Assets.Scripts.Entities.Resources
     public class CommonPrefabs : MonoBehaviour
     {
         [SerializeField] private GameObject _itemContainer;
+        [SerializeField] private GameObject _entityPrefab;
+        
         public GameObject ItemContainer => _itemContainer;
+        public GameObject EntityPrefab => _entityPrefab;
     }
 }

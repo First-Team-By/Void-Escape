@@ -73,7 +73,7 @@ public class UIPartyBuildPosition : UIDragAndDrop, IDropHandler
         if (characterSlot != null && IsFree)
         {
             CharacterSlot = characterSlot;
-            CharacterImage.sprite = characterSlot.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
+            CharacterImage.sprite = characterSlot.CharacterInfo.FullFaceSprite;
             CharacterImage.color = new Color(255, 255, 255, 255);
             gameManager.CharacterSlots.Add(characterSlot);
             characterSlot.transform.gameObject.SetActive(false);
@@ -81,8 +81,9 @@ public class UIPartyBuildPosition : UIDragAndDrop, IDropHandler
 
             var currentCharacter =
                 Global.allCharacters.CharacterInfos.FirstOrDefault(x => x.Id == characterSlot.CharacterId);
-            Global.currentGroup.CurrentCharacterInfos.Add(
-                CharacterFactory.CreateCurrentCharacterInfo(currentCharacter, Position));
+
+            currentCharacter.Position = Position;
+            Global.currentGroup.CurrentCharacterInfos.Add(currentCharacter);
         }
     }
 }
