@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InventoryPanel : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private GameObject _contentWeaponPanel;
+    [SerializeField] private GameObject _contentItemPanel;
 
     public event Action<Equipment> OnUnEquip;
 
@@ -14,7 +14,7 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
     {
         var otherItemTransform = eventData.pointerDrag.transform;
 
-        otherItemTransform.SetParent(_contentWeaponPanel.transform);
+        otherItemTransform.SetParent(_contentItemPanel.transform);
 
         var item = eventData.pointerDrag.GetComponent<UIItem>().Equipment;
 

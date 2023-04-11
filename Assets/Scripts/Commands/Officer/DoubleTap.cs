@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class DoubleTap : CharacterCommand
 {
-    
     public DoubleTap()
     {
         damage = 10;

@@ -30,7 +30,9 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] private GameObject _inventoryPanel;
 
-    [SerializeField] private InventoryPanel _inventorySlot; 
+    [SerializeField] private InventoryPanel _inventorySlot;
+
+    private bool InventoryPresent { get => _inventoryPanel != null; }
 
     public TMP_Text EntityType
     { 
@@ -40,11 +42,14 @@ public class EntityCardScript : EntityCardBase
 
     private void Start()
     {
-        _weaponSlot.OnEquipped += Equip;
-        _deviceSlot.OnEquipped += Equip;
-
-        if (_inventoryPanel != null )
+        if (InventoryPresent)
         {
+            _weaponSlot.OnEquipped += Equip;
+            _deviceSlot.OnEquipped += Equip;
+
+            _weaponSlot.OnUnEquip += UnEquip;
+            _deviceSlot.OnUnEquip += UnEquip;
+
             _inventorySlot.OnUnEquip += UnEquip;
         }
     }
@@ -57,11 +62,15 @@ public class EntityCardScript : EntityCardBase
         if (equipment is EntityWeapon)
         {
             characterInfo.Weapon = null;
+
+            _weaponSlot.SetDefaultImage();
         }
 
         if (equipment is EntityDevice)
         {
             characterInfo.Device = null;
+
+            _deviceSlot.SetDefaultImage();
         }
 
         Global.inventory.Add(equipment);
@@ -124,6 +133,8 @@ public class EntityCardScript : EntityCardBase
             var weapon = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Weapon, _weaponSlot.gameObject.transform);
 
             weapon.transform.localPosition = Vector3.zero;
+
+            weapon.GetComponent<Image>().raycastTarget = InventoryPresent;
         }
 
         if (_deviceSlot.gameObject.transform.childCount > 0)
@@ -136,6 +147,8 @@ public class EntityCardScript : EntityCardBase
             var device = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
 
             device.transform.localPosition = Vector3.zero;
+
+            device.GetComponent<Image>().raycastTarget = InventoryPresent;
         }
     }
 

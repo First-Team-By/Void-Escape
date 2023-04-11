@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] private Image _image;
@@ -14,11 +15,6 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     private Canvas _mainCanvas;
 
     private RectTransform _rectTransform;
-
-    public SlotType SlotType
-    {
-        get { return Equipment.SlotType; }
-    }
 
     public GameObject OldParent { get; set; }
 
@@ -33,6 +29,11 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         get { return _equipment; }
 
         set{ _equipment = value; }
+    }
+
+    public SlotType SlotType
+    {
+        get { return Equipment.SlotType; }
     }
 
     private void Start()
