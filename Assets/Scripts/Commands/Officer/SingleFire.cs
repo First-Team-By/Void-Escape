@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 public class SingleFire : CharacterCommand
 {
-    
+    public override string IconName => "Officer/command_singlefire_sprite";
+    public override string EffectName => "effect_singlefire_sprite";
     public SingleFire() : base()
     {
         damage = 15;
@@ -84,6 +85,5 @@ public class SingleFire : CharacterCommand
     //    return new List<int>() { 7 };
     //}
 
-    public override string IconName => "singlefirecommand_sprite";
-    public override string EffectName => "singlefireeffect_sprite";
+    
 }

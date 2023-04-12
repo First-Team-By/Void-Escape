@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\UI\BattlePosition.cs" />
     <Compile Include="Assets\Scripts\UI\ToolTipAppear.cs" />
     <Compile Include="Assets\Scripts\UI\EquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\DeepCut.cs" />
@@ -107,7 +108,6 @@
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />
-    <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />

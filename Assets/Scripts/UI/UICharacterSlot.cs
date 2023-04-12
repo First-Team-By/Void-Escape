@@ -16,6 +16,8 @@ public class UICharacterSlot : UIDragAndDrop
 
     public Text CharacterName => _characterName;
 
+    public CharacterInfo Character => characterInfo;
+
     private UIPartyBuildPosition lastSelectedPosition;
 
     private UIPartyBuildGameManager gameManager;

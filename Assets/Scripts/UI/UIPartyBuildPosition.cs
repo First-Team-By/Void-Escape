@@ -12,6 +12,7 @@ public class UIPartyBuildPosition : UIDragAndDrop, IDropHandler
     public UICharacterSlot CharacterSlot { get; set; }
     public Sprite CharacterSprite { get; set; }
     public Image CharacterImage { get; set; }
+    public CharacterInfo Character { get; set; }
     
     private RaycastResult currentRayCast;
     private UIPartyBuildGameManager gameManager;
@@ -58,6 +59,7 @@ public class UIPartyBuildPosition : UIDragAndDrop, IDropHandler
         if (position != null && IsFree)
         {
             CharacterSlot = position.CharacterSlot;
+            Character = CharacterSlot.Character;
             CharacterImage.sprite = position.CharacterImage.sprite;
             position.CharacterImage.color = new Color(255, 255, 255, 0);
             CharacterImage.color = new Color(255, 255, 255, 255);
@@ -73,6 +75,7 @@ public class UIPartyBuildPosition : UIDragAndDrop, IDropHandler
         if (characterSlot != null && IsFree)
         {
             CharacterSlot = characterSlot;
+            Character = CharacterSlot.Character;
             CharacterImage.sprite = characterSlot.CharacterInfo.FullFaceSprite;
             CharacterImage.color = new Color(255, 255, 255, 255);
             gameManager.CharacterSlots.Add(characterSlot);

@@ -15,13 +15,13 @@ public class Officer : CharacterInfo
 
     public override string SufferingPoseName => "";
 
-    public override string AttackPoseName => "officerattackpose_sprite";
+    public override string AttackPoseName => "Characters/Officer/officer_attackpose_sprite";
 
-    public override string PortraitName => "officerportrait_sprite";
+    public override string PortraitName => "Characters/Officer/officer_portrait_sprite";
 
     public override string DeathDoorSpriteName => "";
 
-    public override string FullFaceSpriteName => "officericon_sprite";
+    public override string FullFaceSpriteName => "Characters/Officer/officer_fullface_sprite";
 
     public override string EvadePoseName => "";
 

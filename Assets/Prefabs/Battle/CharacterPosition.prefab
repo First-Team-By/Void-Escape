@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6350830900877852200, guid: 2130378acf6363b4baa64ed7a3684510, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.73
+      objectReference: {fileID: 0}
     - target: {fileID: 8150962727494757855, guid: 2130378acf6363b4baa64ed7a3684510, type: 3}
       propertyPath: m_FillAmount
       value: 1

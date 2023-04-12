@@ -24,8 +24,8 @@ public abstract class EntityCommand
     {
         IsEnabled = IsCommandEnabled;
         
-        Icon = Resources.Load<Sprite>("Sprites/" + IconName);
-        Effect = Resources.Load<Sprite>("Sprites/" + EffectName);
+        Icon = Resources.Load<Sprite>("Sprites/Commands/" + IconName);
+        Effect = Resources.Load<Sprite>("Sprites/Effects/Commands/" + EffectName);
 
         Conditioning = new Conditioning();
     }

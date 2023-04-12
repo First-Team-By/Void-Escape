@@ -43,10 +43,10 @@ public static class CharacterFactory
     //    return characterInfo;
     //}
 
-    //public static CurrentCharacterInfo CreateCurrentCharacterInfo(CharacterInfo characterInfo, int position)
+    //public static CharacterInfo CreateCurrentCharacterInfo(CharacterInfo characterInfo, int position)
     //{
     //    var currentCharacterInfo = new CurrentCharacterInfo();
-    //    //currentCharacterInfo.CharacterPrefab = characterInfo.CharacterPrefab;
+    //    currentCharacterInfo.CharacterPrefab = characterInfo.CharacterPrefab;
     //    currentCharacterInfo.CurrentHealth = characterInfo.CurrentHealth;
     //    currentCharacterInfo.Conditions = characterInfo.Conditions;
     //    currentCharacterInfo.Position = position;

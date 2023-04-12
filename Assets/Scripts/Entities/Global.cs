@@ -55,14 +55,15 @@ public static class Global
     {
         return currentMapInfo.GetCurrentRoomInfo();
     }
-    //public static void SaveCharactersInfo(List<Character> characters)
-    //{
-    //    currentGroup.CurrentCharacterInfos.Clear();
-    //    foreach (var character in characters)
-    //    {
-    //        currentGroup.CurrentCharacterInfos.Add(CharacterFactory.CreateCurrentCharacterInfo(character));
-    //    }
-    //}
+
+    public static void SaveCharactersInfo(List<CharacterInfo> characters)
+    {
+        currentGroup.CurrentCharacterInfos.Clear();
+        foreach (var character in characters)
+        {
+            currentGroup.CurrentCharacterInfos.Add(character);
+        }
+    }
 
     private static void LoadCharTemplates()
     {

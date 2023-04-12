@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Coagulator : CharacterCommand
 {
+    public override string IconName => "Medic/command_coagulator_sprite";
+    public override string EffectName => "effect_coagulator_sprite";
     public Coagulator()
     {
         IsEnabled = CoagulatorEnabled;
@@ -20,8 +22,7 @@ public class Coagulator : CharacterCommand
 
         FullDescription = Name + "\n" + Description;
     }
-    public override string IconName => "coagulatorcommand_sprite";
-    public override string EffectName => "coagulatoreffect_sprite";
+    
     public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();

@@ -14,6 +14,6 @@ public class Blade : EntityWeapon
         SlotType = SlotType.Weapon;
     }
 
-    public override string IconName => "Blade"; 
+    public override string IconName => "equipment_blade_sprite"; 
 }
 

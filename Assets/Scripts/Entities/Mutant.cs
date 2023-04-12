@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mutant : EnemyInfo
 {
-    public override string SufferingPoseName => "";
+    public override string SufferingPoseName => "Enemies/Mutant/mutant_sufferingpose_sprite";
 
     public override string AttackPoseName => "";
 
@@ -12,7 +12,7 @@ public class Mutant : EnemyInfo
 
     public override string DeathDoorSpriteName => "";
 
-    public override string FullFaceSpriteName => "enemy_placeholder";
+    public override string FullFaceSpriteName => "Enemies/Mutant/mutant_fullface_sprite";
 
     public override string EvadePoseName => "";
 

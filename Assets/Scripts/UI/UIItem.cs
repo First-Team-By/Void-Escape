@@ -63,6 +63,7 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public void OnDrag(PointerEventData eventData)
     {
         gameObject.transform.position = eventData.position;
+
     }
 
     public void OnEndDrag(PointerEventData eventData)

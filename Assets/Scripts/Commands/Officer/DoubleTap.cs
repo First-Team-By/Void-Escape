@@ -29,8 +29,8 @@ public class DoubleTap : CharacterCommand
         return true;
     }
 
-    public override string IconName => "doubletap_sprite";
-    public override string EffectName => "doubletapeffect_sprite";
+    public override string IconName => "Officer/command_doubletap_sprite";
+    public override string EffectName => "effect_doubletap_sprite";
 
     public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {

@@ -38,8 +38,8 @@ public class BattleRoutine : MonoBehaviour
     public List<int> CurrentAvaliableTargets { get; set; }
     public List<int> CurrentSelectedTargets { get; set; }
 
-    private bool isCharacterTurn;
-
+    private bool IsCharacterTurn => CurrentEntity != null && CurrentEntity is CharacterInfo;
+    private bool isTurnProcessing;
     private EntityInfo CurrentEntity
     {
         get
@@ -65,13 +65,22 @@ public class BattleRoutine : MonoBehaviour
 
     private void Update()
     {
-        if (!isCharacterTurn)
+        if (!isTurnProcessing)
+        {
             MainBattleProcess();
+
+        }
     }
+
+    //private IEnumerator Wait1Sec()
+    //{
+    //    yield return new WaitForSeconds(1);
+
+    //    isTurnProcessing = false;
+    //}
 
     private void MainBattleProcess()
     {
-        RefreshConditions();
         RefreshHealthBars();
         CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
         if (CurrentEntity is null)
@@ -83,25 +92,33 @@ public class BattleRoutine : MonoBehaviour
             SetBattlePositionOn();
         }
 
-        NextEntityTurn();
-
-    }
-
-    private void NextEntityTurn()
-    {
         OnEntityTurn();
+
     }
+
+    public void SkipTurn()
+    {
+        if (CurrentEntity != null)
+        {
+            inactiveEntitiesList.Add(CurrentEntity);
+        }
+        isTurnProcessing = false;
+    }
+
 
     private void NextRound()
     {
         inactiveEntitiesList.Clear();
         CheckBattleResult();
+        RefreshConditions();
     }
 
     private void OnEntityTurn()
     {
+        
         if (CurrentEntity != null)
         {
+            isTurnProcessing = true;
             var conditionsResult = CurrentEntity.ProcessConditions();
             StartCoroutine(conditionsProcess(conditionsResult, CurrentEntity.Position));
             RefreshHealthBars();
@@ -110,14 +127,15 @@ public class BattleRoutine : MonoBehaviour
         if (CurrentEntity is CharacterInfo)
         {
             commandExecutor.SetCommands(currentEntity);
-            isCharacterTurn = true;
         }
         else
         {
-            isCharacterTurn = false;
             if (CurrentEntity != null)
             {
+                //StartCoroutine(Wait1Sec());
                 inactiveEntitiesList.Add(currentEntity);
+
+                isTurnProcessing = false;
             }
         }
     }
@@ -244,6 +262,7 @@ public class BattleRoutine : MonoBehaviour
         CheckBattleResult();
         DeSelectTargets();
         inactiveEntitiesList.Add(CurrentEntity);
+        isTurnProcessing = false;
     }
 
     public void RefreshHealthBars()
@@ -264,7 +283,7 @@ public class BattleRoutine : MonoBehaviour
         foreach (var entity in EntitiesRoute)
         {
             var position = GetBattlePosition(entity);
-            position.SetConditions(entity.Conditions);
+            position.ShowConditions(entity.Conditions);
         }
     }
 
@@ -296,13 +315,14 @@ public class BattleRoutine : MonoBehaviour
     void Start()
     {
         characterList = new List<CharacterInfo>();
+        CurrentSelectedTargets = new List<int>();
         InitBattle();
     }
 
     void Awake()
     {
         actionPanel.ActionEnd += ClearSelectedTargets;
-        actionPanel.ActionEnd += () => isCharacterTurn = false;
+        actionPanel.ActionEnd += () => isTurnProcessing = false;
     }
 
 }

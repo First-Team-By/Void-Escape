@@ -16,6 +16,6 @@ public abstract class Equipment
 
     public Equipment()
     {
-        Icon = Resources.Load<Sprite>("Sprites/" + IconName);
+        Icon = Resources.Load<Sprite>("Sprites/Items/Equipment/" + IconName);
     }
 }

@@ -7,26 +7,27 @@ using UnityEngine.SceneManagement;
 
 public class TeamInitHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject[] characterPositions;
+    [SerializeField] private UIPartyBuildPosition[] characterPositions;
     public void SetTeam()
     {
 
-        //List<Character> characters = new List<Character>();
-        //for (int i = 0; i < characterPositions.Length; i++)
-        //{
-        //    Character character = characterPositions[i].GetComponentInChildren<Character>();
-        //    if (character != null)
-        //    {
-        //        characters.Add(character);
-        //    }
-        //}
+        List<CharacterInfo> characters = new List<CharacterInfo>();
+        for (int i = 0; i < characterPositions.Length; i++)
+        {
+            CharacterInfo character = characterPositions[i].Character;
+            if (character != null)
+            {
+                character.Position = characterPositions[i].Position;
+                characters.Add(character);
+            }
+        }
 
-        //if (characters.Count == 0)
-        //{
-        //    throw new InvalidOperationException("The group is null or fuck you");
-        //}
+        if (characters.Count == 0)
+        {
+            throw new InvalidOperationException("The group is null or fuck you");
+        }
 
-        //Global.SaveCharactersInfo(characters);
+        Global.SaveCharactersInfo(characters);
 
         Global.currentMapInfo = new MapInfo()
         {

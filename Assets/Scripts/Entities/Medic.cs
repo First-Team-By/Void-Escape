@@ -12,11 +12,11 @@ public class Medic : CharacterInfo
 
     public override string AttackPoseName => "";
 
-    public override string PortraitName => "medicportrait_sprite";
+    public override string PortraitName => "Characters/Medic/medic_portrait_sprite";
 
     public override string DeathDoorSpriteName => "";
 
-    public override string FullFaceSpriteName => "medic_sprite";
+    public override string FullFaceSpriteName => "Characters/Medic/medic_fullface_sprite";
 
     public override string EvadePoseName => "";
 

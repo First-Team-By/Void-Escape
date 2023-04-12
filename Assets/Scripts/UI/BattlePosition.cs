@@ -69,13 +69,13 @@ public class BattlePosition : MonoBehaviour
         var character = GetComponentInChildren<EntityContainer>();
         if (character)
         {
-            _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y);
+            _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y + 0.15f);
            
         }
         _healthBar.gameObject.SetActive(percent > 0);
     }
 
-    public void SetConditions(EntityConditions conditions)
+    public void ShowConditions(EntityConditions conditions)
     {
         _bloodConditionIcon.gameObject.SetActive(conditions.IsBleeding);
         _poisonConditionIcon.gameObject.SetActive(conditions.IsPoisoned);

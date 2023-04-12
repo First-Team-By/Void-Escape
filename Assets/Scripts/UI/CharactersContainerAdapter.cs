@@ -15,18 +15,14 @@ public class CharactersContainerAdapter : MonoBehaviour
         {
             var characterSlot = GameObject.Instantiate(_characterSlotPrefab.gameObject) as GameObject;
             var uiCharacterSlot = characterSlot.GetComponent<UICharacterSlot>();
+            uiCharacterSlot.CharacterInfo = characterInfo;
 
-            //uiCharacterSlot.Portrait.sprite = characterInfo.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
-
-            //uiCharacterSlot.CharacterPrefab = characterInfo.CharacterPrefab;
+            uiCharacterSlot.Portrait.sprite = characterInfo.FullFaceSprite;
 
             uiCharacterSlot.CharacterId = characterInfo.Id;
             characterSlot.transform.SetParent(_content, false);
 
-            //var character = characterInfo.CharacterPrefab.GetComponent<EntityBase>();
-
-
-            //uiCharacterSlot.CharacterName.text = EnemyInfo.GetClassName(character.EntityClass);
+            uiCharacterSlot.CharacterName.text = EnemyInfo.GetClassName(characterInfo.EntityClass);
         }
     }
 }

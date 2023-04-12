@@ -102,6 +102,8 @@ public abstract class EntityInfo
     public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
     {
         var result = new TargetState();
+        result.Target = this;
+
         if (Random.Range(0, 1f) < Mathf.Clamp(EntityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
         {
             //result.Pose = EntityPose.EvadePose;
@@ -148,7 +150,6 @@ public abstract class EntityInfo
         //result.Pose = EntityPose.SufferingPose;
         result.PoseName = Poses.Suffering;
         result.HealthChanged = -finalDamage;
-        result.Target = this;
         result.Effect = effect;
         return result;
     }

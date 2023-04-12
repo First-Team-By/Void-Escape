@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 public class DeepCut : CharacterCommand
 {
-    public override string IconName => "deepcut_sprite";
-    public override string EffectName => "deepcuteffect_sprite";
+    public override string IconName => "Medic/command_deepcut_sprite";
+    public override string EffectName => "effect_deepcut_sprite";
 
     public DeepCut()
     {

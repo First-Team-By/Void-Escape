@@ -12,5 +12,5 @@ public class Pistol : EntityWeapon
         SlotType = SlotType.Weapon;
     }
 
-    public override string IconName => "Pistol";
+    public override string IconName => "equipment_pistol_sprite";
 }

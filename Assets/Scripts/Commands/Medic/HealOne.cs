@@ -14,14 +14,14 @@ public class HealOne : CharacterCommand
         SelfPositions = new List<int>() { 4, 5 };
 
         Name = "<size=30><color=#ffa500ff>Лечение</color></size>";
-
+        
         Description = "\nЛечит любого союзника\nвключая самого медика";
 
         FullDescription = Name + "\n" + Description;
     }
 
-    public override string IconName => "healonecommand_sprite";
-    public override string EffectName => "healoneeffect_sprite";
+    public override string IconName => "Medic/command_healone_sprite";
+    public override string EffectName => "effect_healone_sprite";
     public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
     {
         return targetPositions.Where(x => x.Position < 6 && !x.OnDeathDoor).ToList();
