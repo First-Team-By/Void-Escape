@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum MissionState
 {
@@ -129,5 +130,10 @@ public class GameController : MonoBehaviour
 
         //result[0].GetComponent<Collider2D>().enabled = false;
         return result;
+    }
+
+    public void AbortMission()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
