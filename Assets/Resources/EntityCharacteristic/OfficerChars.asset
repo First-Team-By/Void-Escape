@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
   m_Name: OfficerChars
   m_EditorClassIdentifier: 
+  _entityClass: 0
   _maxHealth: 32
-  _meleeDamage: 10
+  _meleeDamage: 100
   _critChance: 0.3
   _critMultiplier: 1.5
   _evadeChance: 0.591

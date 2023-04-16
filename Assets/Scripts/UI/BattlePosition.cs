@@ -41,6 +41,7 @@ public class BattlePosition : MonoBehaviour
     private void OnMouseExit()
     {
         battleRoutine.DeSelectTargets();
+        battleRoutine.CurrentSelectedTargets.Clear();
     }
 
     private void OnMouseDown()
@@ -79,7 +80,7 @@ public class BattlePosition : MonoBehaviour
     {
         _bloodConditionIcon.gameObject.SetActive(conditions.IsBleeding);
         _poisonConditionIcon.gameObject.SetActive(conditions.IsPoisoned);
-        _arsoningConditionIcon.gameObject.SetActive(conditions.IsArsoned);
+        _arsoningConditionIcon.gameObject.SetActive(conditions.IsBurning);
     }
 
     public void ShowConditionHealthChanging(float changed, string reason)

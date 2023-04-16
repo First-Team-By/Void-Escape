@@ -257,12 +257,12 @@ public class BattleRoutine : MonoBehaviour
         if (selectedTargets.Any())
         {
             actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
+
+            CheckBattleResult();
+            DeSelectTargets();
+            inactiveEntitiesList.Add(CurrentEntity);
+            isTurnProcessing = false;
         }
-        
-        CheckBattleResult();
-        DeSelectTargets();
-        inactiveEntitiesList.Add(CurrentEntity);
-        isTurnProcessing = false;
     }
 
     public void RefreshHealthBars()
@@ -294,10 +294,10 @@ public class BattleRoutine : MonoBehaviour
             LoseBattle();   
         }
 
-        //if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
-        //{
-        //    WinBattle();
-        //}
+        if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
+        {
+            WinBattle();
+        }
     }
 
     private void WinBattle()

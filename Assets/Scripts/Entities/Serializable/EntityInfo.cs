@@ -194,8 +194,8 @@ public abstract class EntityInfo
 
     private void GetArsoned(float damage, int duration)
     {
-        _conditions.arsoning.arsonDamage = damage;
-        _conditions.arsoning.duration = duration;
+        _conditions.burning.arsonDamage = damage;
+        _conditions.burning.duration = duration;
     }
 
     public TargetState StopBleeding(Sprite effect)
@@ -237,10 +237,10 @@ public abstract class EntityInfo
             _conditions.poisoning.duration--;
         }
 
-        if (_conditions.IsArsoned)
+        if (_conditions.IsBurning)
         {
-            results.Add(TakeDamage(_conditions.arsoning.arsonDamage, "Поджог"));
-            _conditions.arsoning.duration--;
+            results.Add(TakeDamage(_conditions.burning.arsonDamage, "Поджог"));
+            _conditions.burning.duration--;
         }
         return results;
     }

@@ -12,7 +12,6 @@ public class Officer : CharacterInfo
         new DoubleTap(),
         new SingleFire()
     };
-
     public override string SufferingPoseName => "";
 
     public override string AttackPoseName => "Characters/Officer/officer_attackpose_sprite";
@@ -30,6 +29,8 @@ public class Officer : CharacterInfo
         Weapon = new Pistol();
 
         EntityClass = EntityClass.Officer;
+
+        GetBleeded(0.1f, 100);
     }
 
     public override Sprite GetCustomPose(string pose)
