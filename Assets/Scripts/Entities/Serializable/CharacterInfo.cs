@@ -12,6 +12,20 @@ using UnityEngine;
     protected float _currentHealth;
     public EntityWeapon Weapon { set; get; }
     public EntityDevice Device { set; get; }
+    public EntityArmor Armor { set; get; }
+
+    public override EntityResistances Resistances 
+    {
+        get 
+        {
+            var result = NaturalResistance;
+            result.DamageResistance += Armor.Resistances.DamageResistance;
+            result.BleedResistance += Armor.Resistances.BleedResistance;
+
+            return result;
+        }
+    }
+
 
     public float CurrentHealth
     {

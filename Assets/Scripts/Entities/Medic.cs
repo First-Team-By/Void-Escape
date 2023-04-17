@@ -35,6 +35,10 @@ public class Medic : CharacterInfo
     {
         Weapon = new Scalpel();
 
+        Device = new FirstAidKit();
+
+        Armor = new BodyArmorLigth();
+
         EntityClass = EntityClass.Medic;
     }
 

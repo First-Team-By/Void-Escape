@@ -28,6 +28,8 @@ public class Officer : CharacterInfo
     {
         Weapon = new Pistol();
 
+        Armor = new BodyArmorLigth();
+
         EntityClass = EntityClass.Officer;
 
         GetBleeded(0.1f, 100);

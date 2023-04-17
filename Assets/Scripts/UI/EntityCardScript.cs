@@ -28,6 +28,8 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] private EquipmentSlot _deviceSlot;
 
+    [SerializeField] private EquipmentSlot _armorSlot;
+
     [SerializeField] private GameObject _inventoryPanel;
 
     [SerializeField] private InventoryPanel _inventorySlot;
@@ -46,9 +48,11 @@ public class EntityCardScript : EntityCardBase
         {
             _weaponSlot.OnEquipped += Equip;
             _deviceSlot.OnEquipped += Equip;
+            _armorSlot.OnEquipped += Equip;
 
             _weaponSlot.OnUnEquip += UnEquip;
             _deviceSlot.OnUnEquip += UnEquip;
+            _armorSlot.OnUnEquip += UnEquip;
 
             _inventorySlot.OnUnEquip += UnEquip;
         }
@@ -56,7 +60,6 @@ public class EntityCardScript : EntityCardBase
 
     private void UnEquip(Equipment equipment)
     {
-
         var characterInfo = _entity as CharacterInfo;
 
         if (equipment is EntityWeapon)
@@ -71,6 +74,13 @@ public class EntityCardScript : EntityCardBase
             characterInfo.Device = null;
 
             _deviceSlot.SetDefaultImage();
+        }
+
+        if (equipment is EntityArmor)
+        {
+            characterInfo.Armor = null;
+
+            _armorSlot.SetDefaultImage();
         }
 
         Global.inventory.Add(equipment);
@@ -91,6 +101,11 @@ public class EntityCardScript : EntityCardBase
         if (equipment is EntityDevice)
         {
             characterInfo.Device = equipment as EntityDevice;
+        }
+
+        if (equipment is EntityArmor)
+        {
+            characterInfo.Armor = equipment as EntityArmor;
         }
 
         Global.inventory.Remove(equipment);
@@ -145,6 +160,20 @@ public class EntityCardScript : EntityCardBase
         if (((CharacterInfo)_entity).Device != null)
         {
             var device = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
+
+            device.transform.localPosition = Vector3.zero;
+
+            device.GetComponent<Image>().raycastTarget = InventoryPresent;
+        }
+
+        if (_armorSlot.gameObject.transform.childCount > 0)
+        {
+            Destroy(_armorSlot.gameObject.transform.GetChild(0).gameObject);
+        }
+
+        if (((CharacterInfo)_entity).Armor != null)
+        {
+            var device = EquipmentFactory.CreateItem(((CharacterInfo)_entity).Armor, _armorSlot.gameObject.transform);
 
             device.transform.localPosition = Vector3.zero;
 

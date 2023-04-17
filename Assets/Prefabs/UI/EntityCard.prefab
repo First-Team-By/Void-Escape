@@ -481,6 +481,7 @@ MonoBehaviour:
   _fullName: {fileID: 7402529034339867868}
   _weaponSlot: {fileID: 2037465212701772344}
   _deviceSlot: {fileID: 5314900889104217471}
+  _armorSlot: {fileID: 9137202293257015012}
   _inventoryPanel: {fileID: 0}
   _inventorySlot: {fileID: 0}
 --- !u!1 &1662628518375760879
@@ -1245,7 +1246,7 @@ MonoBehaviour:
   _type: 0
   _uiSlot: {fileID: 2875956382025451749}
   _inventoryContent: {fileID: 0}
-  _defaulImage: {fileID: 0}
+  _defaulImage: {fileID: 21300000, guid: f933f2fd4d43a0c499c7b0affacbaeae, type: 3}
 --- !u!1 &3345170651697545480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,7 +2563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u0449\u0438\u0442\u0430:"
+  m_text: "\u0418\u043D\u0438\u0446\u0438\u0430\u0442\u0438\u0432\u0430:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

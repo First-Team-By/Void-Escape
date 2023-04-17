@@ -43,7 +43,9 @@ public abstract class EntityInfo
 
     public bool OnDeathDoor { get; set; }
     
+    public EntityResistances NaturalResistance { get; set; }
 
+    public virtual EntityResistances Resistances { get => NaturalResistance; }
 
     public float Health
     {
@@ -97,6 +99,8 @@ public abstract class EntityInfo
         Portrait = Resources.Load<Sprite>("Sprites/Entities/" + PortraitName);
         DeathDoorSprite = Resources.Load<Sprite>("Sprites/Entities/" + DeathDoorSpriteName);
         SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
+
+        NaturalResistance = new EntityResistances();
     }
 
     public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
@@ -109,7 +113,7 @@ public abstract class EntityInfo
             //result.Pose = EntityPose.EvadePose;
             result.PoseName = Poses.Evade;
             return result;
-        }
+        } 
 
         var finalDamage = damage;
         if (Random.Range(0, 1f) < provokerChars.CritChance)
@@ -117,12 +121,12 @@ public abstract class EntityInfo
             finalDamage *= provokerChars.CritMultiplier;
         }
 
-        finalDamage *= EntityChars.Defence;
+        finalDamage -= finalDamage * Resistances.DamageResistance / 100;
 
         if (finalDamage > 0 && conditioning.CanGetBleed)
         {
             var chance = Random.Range(0, 1f);
-            if (chance <= conditioning.Bleeding.Chance)
+            if (chance <= conditioning.Bleeding.Chance - conditioning.Bleeding.Chance * Resistances.BleedResistance / 100)
             {
                 GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
             }

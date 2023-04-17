@@ -25,7 +25,7 @@ public class EntityCharacteristics : ScriptableObject
     [SerializeField] private float _accuracy;
 
     [Range(0, 0.8f)] 
-    [SerializeField] private float _defence;
+    [SerializeField] private float _protection;
 
     [SerializeField] private int _initiative;
     [SerializeField] private int _value;
@@ -36,7 +36,7 @@ public class EntityCharacteristics : ScriptableObject
     public float CritMultiplier => _critMultiplier;
     public float EvadeChance => _evadeChance;
     public float Accuracy => _accuracy;
-    public float Defence => _defence;
+    public float Defence => _protection;
     public int Initiative => _initiative;
     public int Value => _value;
     public EntityClass EntityClass => _entityClass;
