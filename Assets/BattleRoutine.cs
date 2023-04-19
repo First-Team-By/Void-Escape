@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,7 +9,6 @@ public class BattleRoutine : MonoBehaviour
 {
     [SerializeField] private GameObject[] characterPositions;
     [SerializeField] private GameObject[] enemyPositions;
-    [SerializeField] private Image characterImage;
     [SerializeField] private CommandExecutionHandler commandExecutor;
     [SerializeField] private UIActionPanel actionPanel;
     [SerializeField] private EntityBattleCard battleCard;
@@ -33,7 +29,7 @@ public class BattleRoutine : MonoBehaviour
     private EntityInfo currentEntity;
 
     private CurrentCharacterGroup group;
-    
+
     public EntityCommand CurrentCommand { get; set; }
     public List<int> CurrentAvaliableTargets { get; set; }
     public List<int> CurrentSelectedTargets { get; set; }
@@ -42,18 +38,8 @@ public class BattleRoutine : MonoBehaviour
     private bool isTurnProcessing;
     private EntityInfo CurrentEntity
     {
-        get
-        {
-            return currentEntity;
-        }
-        set
-        {
-            currentEntity = value;
-            if (currentEntity != null)
-            {
-                characterImage.sprite = currentEntity.Portrait;
-            }
-        }
+        get => currentEntity;
+        set => currentEntity = value;
     }
 
     private void InitBattle()
@@ -115,7 +101,7 @@ public class BattleRoutine : MonoBehaviour
 
     private void OnEntityTurn()
     {
-        
+
         if (CurrentEntity != null)
         {
             isTurnProcessing = true;
@@ -139,7 +125,7 @@ public class BattleRoutine : MonoBehaviour
             }
         }
     }
-    
+
     private void SetEnemiesInPositions()
     {
         List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
@@ -226,7 +212,7 @@ public class BattleRoutine : MonoBehaviour
     {
         foreach (var enemyPosition in enemyPositions)
         {
-            enemyPosition.GetComponent<BattlePosition>().Show(false);   
+            enemyPosition.GetComponent<BattlePosition>().Show(false);
         }
 
         foreach (var characterPosition in characterPositions)
@@ -291,7 +277,7 @@ public class BattleRoutine : MonoBehaviour
     {
         if (!characterList.Any())
         {
-            LoseBattle();   
+            LoseBattle();
         }
 
         if (!EnemyList.Where(x => !x.OnDeathDoor).Any())

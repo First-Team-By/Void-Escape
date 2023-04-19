@@ -62,7 +62,6 @@
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\UI\UIDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\CharacterPrefabs.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildCharacterHolder.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitHandler.cs" />
@@ -70,6 +69,7 @@
     <Compile Include="Assets\Scripts\Equipment\Device\EntityDevice.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterInfo.cs" />
+    <Compile Include="Assets\Scripts\GameManager\MainSceneController.cs" />
     <Compile Include="Assets\Scripts\UI\EntityBattleCard.cs" />
     <Compile Include="Assets\Scripts\Dungeon\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
+    <Compile Include="Assets\Scripts\Entities\Resources\EntityResistances.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\DoorContainer.cs" />
     <Compile Include="Assets\Scripts\Entities\Mutant.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorHidden.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\DeepCut.cs" />
     <Compile Include="Assets\Scripts\UI\UIElement.cs" />
     <Compile Include="Assets\Scripts\UI\EntityCardScript.cs" />
@@ -107,17 +109,19 @@
     <Compile Include="Assets\Scripts\Entities\Serializable\EnemyInfo.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorSapper.cs" />
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\EnemyPrefabs.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterFactory.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Coagulator.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Armor\EntityArmor.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EquipmentFactory.cs" />
     <Compile Include="Assets\Scripts\CharacterNameCreation\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
     <Compile Include="Assets\Scripts\Equipment\Device\FirstAidKit.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorLigth.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharsTemplate.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandType.cs" />
@@ -144,7 +148,6 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\GameManager\MainSceneController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

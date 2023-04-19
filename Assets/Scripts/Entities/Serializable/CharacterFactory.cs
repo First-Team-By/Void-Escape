@@ -65,8 +65,9 @@ public static class CharacterFactory
     public static CharacterInfo CreateRandomCharacter()
     {
         var index = new System.Random().Next(0, Global.AllCharacterClasses.Count);
+        var character = Global.AllCharacterClasses[index].CreateInstance() as CharacterInfo;
 
-        return Global.AllCharacterClasses[index].CreateInstance() as CharacterInfo;
+        return character;
     }
 
     public static CharacterInfo CreateCharacter(CharsTemplate template)
