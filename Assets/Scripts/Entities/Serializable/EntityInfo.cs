@@ -91,7 +91,7 @@ public abstract class EntityInfo
 
     public EntityInfo()
     {
-        EntityChars = CharsTemplate.GetCharacteristics(EntityClass);
+        EntityChars = CharsTemplate.GetCharacteristics(this.GetType());
         _health = EntityChars.MaxHealth;
         AttackPose = Resources.Load<Sprite>("Sprites/Entities/" + AttackPoseName);
         EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);

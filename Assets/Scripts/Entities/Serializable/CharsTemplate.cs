@@ -37,6 +37,11 @@ public class CharsTemplate
         return Global.AllEntityTemplates.FirstOrDefault(x => x.EntityChars.EntityClass == entityClass).EntityChars;
     }
 
+    public static EntityCharacteristics GetCharacteristics(Type entityType)
+    {
+        return Global.AllEntityTemplates.FirstOrDefault(x => x.EntityType == entityType).EntityChars;
+    }
+
     public Type GetEntityClass()
     {
         return GetEntityClass(EntityChars.EntityClass);
