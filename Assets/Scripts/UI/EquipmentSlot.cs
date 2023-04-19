@@ -22,14 +22,13 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
 
     private Image _equipSlotImage;
 
-    
-
     public Image EquipSlotImage
     {
         get { return _equipSlotImage; }
 
         set { _equipSlotImage = value; }
     }
+
     public SlotType Type => _type;
 
     public event Action<Equipment> OnEquipped;
@@ -102,5 +101,6 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
         OnEquipped?.Invoke(_mountedItem.Equipment);
 
         _equipSlotImage.sprite = null;
+
     }
 }

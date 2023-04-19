@@ -135,7 +135,7 @@ public abstract class EntityInfo
         if (finalDamage > 0 && conditioning.CanGetPoison)
         {
             var chance = Random.Range(0, 1f);
-            if (chance <= conditioning.Poisoning.Chance)
+            if (chance <= conditioning.Poisoning.Chance - conditioning.Poisoning.Chance * Resistances.PoisonResistance / 100)
             {
                 GetPoisoned(conditioning.Poisoning.Damage, conditioning.Poisoning.Duration);
             }
@@ -144,7 +144,7 @@ public abstract class EntityInfo
         if (finalDamage > 0 && conditioning.CanGetArson)
         {
             var chance = Random.Range(0, 1f);
-            if (chance <= conditioning.Arsoning.Chance)
+            if (chance <= conditioning.Arsoning.Chance - conditioning.Arsoning.Chance * Resistances.BurnResistance / 100)
             {
                 GetArsoned(conditioning.Arsoning.Damage, conditioning.Arsoning.Duration);
             }

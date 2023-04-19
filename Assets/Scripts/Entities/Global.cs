@@ -29,7 +29,8 @@ public static class Global
     public static List<CharsTemplate> AllEntityTemplates { get; set; }
     static Global()
     {
-        inventory = new List<Equipment>() { new Pistol(), new Scalpel(), new Blade(), new FirstAidKit(), new BodyArmorLigth() };
+        inventory = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
+            new FirstAidKit()  };
 
         CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
         currentGroup = new CurrentCharacterGroup();

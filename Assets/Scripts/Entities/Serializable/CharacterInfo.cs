@@ -21,6 +21,8 @@ using UnityEngine;
             var result = NaturalResistance;
             result.DamageResistance += Armor.Resistances.DamageResistance;
             result.BleedResistance += Armor.Resistances.BleedResistance;
+            result.BurnResistance += Armor.Resistances.BurnResistance;
+            result.PoisonResistance += Armor.Resistances.PoisonResistance;
 
             return result;
         }

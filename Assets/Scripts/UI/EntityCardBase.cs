@@ -18,6 +18,11 @@ public abstract class EntityCardBase : MonoBehaviour
 
     [SerializeField] private TMP_Text _defence;
 
+    [SerializeField] private TMP_Text _damageResistance;
+    [SerializeField] private TMP_Text _bleedResistance;
+    [SerializeField] private TMP_Text _burnResistance;
+    [SerializeField] private TMP_Text _poisonResistance;
+
     public void FillInfo(EntityInfo entity)
     {
         if (entity is null)
@@ -38,6 +43,11 @@ public abstract class EntityCardBase : MonoBehaviour
         _accuracy.text = entity.EntityChars.Accuracy.ToString();
 
         _defence.text = entity.EntityChars.Defence.ToString();
+
+        _damageResistance.text = entity.Resistances.DamageResistance.ToString();
+        _bleedResistance.text = entity.Resistances.BleedResistance.ToString();
+        _burnResistance.text = entity.Resistances.BurnResistance.ToString();
+        _poisonResistance.text = entity.Resistances.PoisonResistance.ToString();
 
         FillAdditional(entity);
     }
