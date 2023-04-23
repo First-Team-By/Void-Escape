@@ -15,6 +15,7 @@ public class MapInfo
     public MissionState missionState;
 
     public List<CharsTemplate> possibleEnemies { get; set; }
+    public List<LootItemInfo> possibleLoot { get; set; }
     public Vector2 Size { get; set; }
     public RoomInfo GetCurrentRoomInfo()
     {
@@ -39,5 +40,10 @@ public class MapInfo
     public void InitEnemyForRoom(RoomInfo roomInfo)
     {
         roomInfo.InitEnemies(GetNormalizedDifficulty(roomInfo.RoomNumber), possibleEnemies);
+    }
+
+    public void InitLootForRoom(RoomInfo roomInfo)
+    {
+        roomInfo.CreateLoot(roomInfo.RoomNumber / RoomInfos.Count, possibleLoot);
     }
 }

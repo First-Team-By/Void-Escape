@@ -83,7 +83,7 @@ public class EntityCardScript : EntityCardBase
             _armorSlot.SetDefaultImage();
         }
 
-        Global.inventory.Add(equipment);
+        Global.inventory.Equipments.Add(equipment);
 
         RefreshCommands();
     }
@@ -108,7 +108,7 @@ public class EntityCardScript : EntityCardBase
             characterInfo.Armor = equipment as EntityArmor;
         }
 
-        Global.inventory.Remove(equipment);
+        Global.inventory.Equipments.Remove(equipment);
 
         FillInfo(_entity);
 
@@ -229,7 +229,7 @@ public class EntityCardScript : EntityCardBase
             Destroy(item.gameObject);
         }
 
-        foreach (var item in Global.inventory)
+        foreach (var item in Global.inventory.Equipments)
         {
             EquipmentFactory.CreateItem(item, _inventoryPanel.transform);
         }

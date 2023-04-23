@@ -32,7 +32,8 @@ public class TeamInitHandler : MonoBehaviour
         Global.currentMapInfo = new MapInfo()
         {
             Size = new Vector2(5, 5),
-            possibleEnemies = Global.AllEnemiesClasses
+            possibleEnemies = Global.AllEnemiesClasses,
+            possibleLoot = new List<LootItemInfo>() { new LootItemInfo(typeof(Pistol), 1f), new LootItemInfo(typeof(Battery), 0.9f) }
         };
 
         Global.currentMapInfo.currentRoomNumber = 0;

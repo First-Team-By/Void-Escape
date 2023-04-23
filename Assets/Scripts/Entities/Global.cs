@@ -20,9 +20,7 @@ public static class Global
 
     public static MapInfo currentMapInfo;
 
-    public static List<Equipment> inventory;
-
-    public static Inventory _inventory;
+    public static Inventory inventory;
 
     public static CommonPrefabs CommonPrefabs { get; }
 
@@ -31,9 +29,9 @@ public static class Global
     public static List<CharsTemplate> AllEntityTemplates { get; set; }
     static Global()
     {
-        _inventory = new Inventory();
+        inventory = new Inventory();
 
-        inventory = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
+        inventory.Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
             new FirstAidKit()  };
 
         CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();

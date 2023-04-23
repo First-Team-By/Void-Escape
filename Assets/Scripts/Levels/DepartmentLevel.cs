@@ -10,6 +10,31 @@ using Random = UnityEngine.Random;
 
 public class DepartmentLevel 
 {
+    public Loot CreateLoot(float currentMapProgress, List<LootItemInfo> possibleLoot)
+    {
+        var result = new Loot();
+
+        foreach (var item in possibleLoot) 
+        {
+            float amount = 1;
+            var value = Random.Range(0, 1f);
+            if (item.Type == typeof(Equipment))
+            {
+                value *= currentMapProgress;
+            }
+            else
+            {
+                amount = currentMapProgress * item.Rarity * 5;
+            }
+
+            if (value <= item.Rarity)
+            {
+                var battery = Activator.CreateInstance(item.Type);
+                result.Items.Add((LootItem)battery);
+            }
+        }
+        return result;
+    }
     public List<EnemyInfo> CreateEnemies(int difficulty, List<CharsTemplate> possibleEnemies)
     {
         var enemyValues = GetEnemyValues(difficulty);

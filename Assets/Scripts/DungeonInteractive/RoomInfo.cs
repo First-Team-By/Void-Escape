@@ -6,6 +6,8 @@ using UnityEngine;
 public class RoomInfo
 {
     private List<EnemyInfo> _enemyInfos;
+    public Loot Loot { get; private set; }
+
 
     public bool[] status = new bool[4];
 
@@ -40,5 +42,10 @@ public class RoomInfo
     public void InitEnemies(int difficulty, List<CharsTemplate> possibleEnemiyInfos)
     {
         _enemyInfos = new DepartmentLevel().CreateEnemies(difficulty, possibleEnemiyInfos);
+    }
+
+    public void CreateLoot(float currentMapProgress, List<LootItemInfo> possibleLoot)
+    {
+        Loot = new DepartmentLevel().CreateLoot(currentMapProgress, possibleLoot);
     }
 }

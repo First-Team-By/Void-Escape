@@ -128,6 +128,7 @@ public class DungeonGenerator
             if (i > 0)
             {
                 Global.currentMapInfo.InitEnemyForRoom(roomInfos[i]);
+                Global.currentMapInfo.InitLootForRoom(roomInfos[i]);
             }
         }
         
