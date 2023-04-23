@@ -43,7 +43,13 @@ public abstract class EntityInfo
 
     public bool OnDeathDoor { get; set; }
     
-    public EntityResistances NaturalResistance { get; set; }
+    public EntityResistances NaturalResistance
+    {
+        get => _naturalResistance;
+        set => _naturalResistance = value;
+    }
+
+    private EntityResistances _naturalResistance;
 
     public virtual EntityResistances Resistances { get => NaturalResistance; }
 

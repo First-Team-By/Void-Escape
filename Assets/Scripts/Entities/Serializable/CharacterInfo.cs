@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using UnityEngine;
 
 
@@ -18,13 +19,7 @@ using UnityEngine;
     {
         get 
         {
-            var result = NaturalResistance;
-            result.DamageResistance += Armor.Resistances.DamageResistance;
-            result.BleedResistance += Armor.Resistances.BleedResistance;
-            result.BurnResistance += Armor.Resistances.BurnResistance;
-            result.PoisonResistance += Armor.Resistances.PoisonResistance;
-
-            return result;
+            return NaturalResistance + Armor.Resistances;
         }
     }
 

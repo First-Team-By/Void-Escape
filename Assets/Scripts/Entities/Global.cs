@@ -22,6 +22,8 @@ public static class Global
 
     public static List<Equipment> inventory;
 
+    public static Inventory _inventory;
+
     public static CommonPrefabs CommonPrefabs { get; }
 
     public static bool UIIntersect { get; set; } = false;
@@ -29,6 +31,8 @@ public static class Global
     public static List<CharsTemplate> AllEntityTemplates { get; set; }
     static Global()
     {
+        _inventory = new Inventory();
+
         inventory = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
             new FirstAidKit()  };
 
