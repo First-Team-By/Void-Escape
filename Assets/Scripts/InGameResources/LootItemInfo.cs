@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static UnityEditor.Progress;
 
 
 public class LootItemInfo
 {
     public Type Type { get; }
     public float Rarity { get; }
+    public LootItem CreateLootItem(int amount = 1)
+    {
+       return new LootItem(Type, amount);
+    }
     public LootItemInfo(Type type, float rarity = 1f)
     {
         Type = type;

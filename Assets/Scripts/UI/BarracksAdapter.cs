@@ -19,7 +19,7 @@ public class BarracksAdapter : MonoBehaviour
 
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)
         {
-            var barracksCharSlot = GameObject.Instantiate(_barracksCharSlotPref.gameObject) as GameObject;
+            var barracksCharSlot = Instantiate(_barracksCharSlotPref.gameObject);
 
             var uiBarracksCharSlot = barracksCharSlot.GetComponent<UIBarracksCharSlot>();
 

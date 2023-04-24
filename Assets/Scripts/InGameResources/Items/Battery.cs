@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class Battery : LootItem
+public class Battery : ResourceItem
 {
     public Battery()
     {

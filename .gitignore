@@ -88,3 +88,4 @@ UnityEngine.TestRunner.Player.csproj
 UnityEngine.UI.csproj
 UnityEngine.UI.Player.csproj
 Void-Escape.sln
+*.csproj

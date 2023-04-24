@@ -14,23 +14,23 @@ public class DepartmentLevel
     {
         var result = new Loot();
 
-        foreach (var item in possibleLoot) 
+        foreach (var itemInfo in possibleLoot) 
         {
-            float amount = 1;
             var value = Random.Range(0, 1f);
-            if (item.Type == typeof(Equipment))
-            {
-                value *= currentMapProgress;
-            }
-            else
-            {
-                amount = currentMapProgress * item.Rarity * 5;
-            }
+            //float amount = 1;
+            //if (item.Type == typeof(Equipment))
+            //{
+            //    value *= currentMapProgress;
+            //}
+            //else
+            //{
+            //    amount = currentMapProgress * item.Rarity * 5;
+            //}
 
-            if (value <= item.Rarity)
+            if (value <= itemInfo.Rarity)
             {
-                var battery = Activator.CreateInstance(item.Type);
-                result.Items.Add((LootItem)battery);
+                var item = itemInfo.CreateLootItem();
+                result.Items.Add(item);
             }
         }
         return result;

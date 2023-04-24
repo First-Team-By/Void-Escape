@@ -1,12 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 public class LootItem
 {
-    public Resource Resources { get; set; } = new Resource();
-    public List<Equipment> Equipments { get; set; } = new List<Equipment>();
+    public Type Type { get; set; }
+    public int Amount { get; set; }
+
+    public object GetItem()
+    {
+        return Activator.CreateInstance(Type);
+    }
+
+    public void AddToInventory(Inventory inventory)
+    {
+        var item = GetItem();
+        if (item is ResourceItem)
+        {
+            inventory.AddResource((item as ResourceItem).Resources);
+        }
+        else
+            if(item is Equipment)
+        {
+            inventory.AddEquipment(item as Equipment);
+        }
+    }
+
+    public LootItem(Type type, int amount = 1)
+    {
+        Type = type; 
+        Amount = amount;
+    }
+
 }
