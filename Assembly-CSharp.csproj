@@ -60,7 +60,9 @@
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
     <Compile Include="Assets\Scripts\UI\UIDragAndDrop.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\LootItem.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildCharacterHolder.cs" />
@@ -103,7 +105,9 @@
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\UI\UIPopUPWindow.cs" />
     <Compile Include="Assets\Scripts\Equipment\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\RoomInfo.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\LootItemInfo.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EnemyInfo.cs" />
@@ -113,16 +117,20 @@
     <Compile Include="Assets\UICharacterSlotsContainer.cs" />
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
+    <Compile Include="Assets\Scripts\Tools\Components\UI\FlexibleGridLayout.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterFactory.cs" />
+    <Compile Include="Assets\Scripts\Loot.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Coagulator.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\EntityArmor.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\ResourceType.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EquipmentFactory.cs" />
     <Compile Include="Assets\Scripts\CharacterNameCreation\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
     <Compile Include="Assets\Scripts\Equipment\Device\FirstAidKit.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorLigth.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\Items\ResourceItem.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharsTemplate.cs" />
     <Compile Include="Assets\Scripts\Commands\CommandType.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
@@ -149,12 +157,9 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Resource.cs" />
-    <Compile Include="Assets\Scripts\Loot.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\ResourceType.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\LootItemInfo.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\LootItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIBattleResultCard.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIResourceCard.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIEquipmentCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

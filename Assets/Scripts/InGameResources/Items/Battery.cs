@@ -11,4 +11,6 @@ public class Battery : ResourceItem
     {
         Resources.Energy = 20;
     }
+
+    protected override string IconName => "ui_energybattery_sprite";
 }

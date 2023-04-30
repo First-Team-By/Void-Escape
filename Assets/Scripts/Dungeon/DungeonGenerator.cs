@@ -125,6 +125,7 @@ public class DungeonGenerator
         {
             roomInfos[i].RoomNumber = i;
             roomInfos[i].GlobalRoomNumber = roomInfos[i].x + roomInfos[i].y * (int)size.x;
+            // было if i > 0 
             if (i > 0)
             {
                 Global.currentMapInfo.InitEnemyForRoom(roomInfos[i]);

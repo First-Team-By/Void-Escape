@@ -12,6 +12,7 @@ public class BattleRoutine : MonoBehaviour
     [SerializeField] private CommandExecutionHandler commandExecutor;
     [SerializeField] private UIActionPanel actionPanel;
     [SerializeField] private EntityBattleCard battleCard;
+    [SerializeField] private UIBattleResultCard resultCard;
     public int roundCounter { get; private set; }
     public List<EntityInfo> EntitiesRoute => EnemyList
         .Cast<EntityInfo>()
@@ -290,7 +291,8 @@ public class BattleRoutine : MonoBehaviour
     {
         Global.GetCurrentRoomInfo().EnemyInfos.Clear();
         Global.currentMapInfo.missionState = MissionState.ReturnFromBattle;
-        SceneManager.LoadScene("SceneDungeonGenerator");
+        resultCard.FillBattleResultInfo(true, Global.GetCurrentRoomInfo().Loot);
+        //SceneManager.LoadScene("SceneDungeonGenerator");
     }
 
     private void LoseBattle()
