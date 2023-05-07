@@ -32,12 +32,19 @@ public class UIBattleResultCard : MonoBehaviour
             _battleResultText.text = "Lose";
         }
 
-        var resources = loot.Items.Where(x => x.Type.IsSubclassOf(typeof(ResourceItem)));
-        foreach (var resource in resources)
+        var lootedResources = loot.Items.Where(x => x.Type.IsSubclassOf(typeof(ResourceItem))).ToList();
+        foreach (var resource in lootedResources)
         {
             var instance = GameObject.Instantiate(_resourceCardPrefab, _resourceCardsContainer);
             instance.Amount = resource.Amount.ToString();
             instance.Icon = (resource.GetItem() as ResourceItem).Icon;
+        }
+
+        var lootedEquipment = loot.Items.Where(x => x.Type.IsSubclassOf(typeof(Equipment))).ToList();
+        foreach (var equipment in lootedEquipment)
+        {
+            var instance = GameObject.Instantiate(_equipmentCardPrefab, _equipmentCardsContainer);
+            instance.Icon = (equipment.GetItem() as Equipment).Icon;
         }
     }
 }

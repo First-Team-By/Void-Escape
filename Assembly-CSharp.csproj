@@ -59,11 +59,13 @@
     <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIResourceCard.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
     <Compile Include="Assets\Scripts\UI\UIDragAndDrop.cs" />
     <Compile Include="Assets\Scripts\InGameResources\LootItem.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIBattleResultCard.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildCharacterHolder.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitHandler.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Assets\Scripts\Commands\CommandResult.cs" />
     <Compile Include="Assets\Scripts\Entities\Medic.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Scalpel.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIEquipmentCard.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\CharactersContainerAdapter.cs" />
     <Compile Include="Assets\Scripts\UI\BarracksAdapter.cs" />
@@ -157,9 +160,6 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\Battle\UIBattleResultCard.cs" />
-    <Compile Include="Assets\Scripts\UI\Battle\UIResourceCard.cs" />
-    <Compile Include="Assets\Scripts\UI\Battle\UIEquipmentCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -21,7 +21,7 @@ public class BattleRoutine : MonoBehaviour
         .ToList();
 
     public List<GameObject> AllPositions => characterPositions.Concat(enemyPositions).ToList();
-
+    public RoomInfo currentRoomInfo => Global.GetCurrentRoomInfo();
 
     private DepartmentLevel level;
     public List<EnemyInfo> EnemyList { get; } = new List<EnemyInfo>();
@@ -96,7 +96,6 @@ public class BattleRoutine : MonoBehaviour
     private void NextRound()
     {
         inactiveEntitiesList.Clear();
-        CheckBattleResult();
         RefreshConditions();
     }
 
@@ -244,8 +243,6 @@ public class BattleRoutine : MonoBehaviour
         if (selectedTargets.Any())
         {
             actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
-
-            CheckBattleResult();
             DeSelectTargets();
             inactiveEntitiesList.Add(CurrentEntity);
             isTurnProcessing = false;
@@ -291,7 +288,9 @@ public class BattleRoutine : MonoBehaviour
     {
         Global.GetCurrentRoomInfo().EnemyInfos.Clear();
         Global.currentMapInfo.missionState = MissionState.ReturnFromBattle;
-        resultCard.FillBattleResultInfo(true, Global.GetCurrentRoomInfo().Loot);
+
+        resultCard.FillBattleResultInfo(true, currentRoomInfo.Loot);
+        Global.inventory.AddToInventory(currentRoomInfo.Loot.Items);
         //SceneManager.LoadScene("SceneDungeonGenerator");
     }
 

@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIEquipmentCard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image _icon;
 
-    // Update is called once per frame
-    void Update()
+    public Sprite Icon
     {
-        
+        get => _icon.sprite;
+        set => _icon.sprite = value;
     }
 }

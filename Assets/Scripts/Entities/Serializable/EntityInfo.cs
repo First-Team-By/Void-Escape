@@ -63,7 +63,6 @@ public abstract class EntityInfo
             {
                 OnDeathDoor = true;
                 HealthOver?.Invoke(this);
-                //GetComponent<SpriteRenderer>().sprite = DeathDoorSprite;
             }
         }
     }

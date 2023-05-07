@@ -4,19 +4,38 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Inventory
 {
-    public Resource Resources { get; set; }
+    public List<ResourceItem> ResourceItems { get; set; }
     public List<Equipment> Equipments { get; set; }
 
-    public void AddResource(Resource resource)
+    public void AddResourceItem(ResourceItem resourceItem)
     {
-        Resources.Energy += resource.Energy;
-        Resources.Medicine += resource.Medicine;
-        Resources.Metal += resource.Metal;
-        Resources.Electronics += resource.Electronics;
+        ResourceItems.Add(resourceItem);
     }
 
     internal void AddEquipment(Equipment equipment)
     {
         Equipments.Add(equipment);
+    }
+
+    public void AddToInventory(LootItem lootItem)
+    {
+        var item = lootItem.GetItem();
+        if (item is ResourceItem)
+        {
+            AddResourceItem(item as ResourceItem);
+        }
+        else
+            if (item is Equipment)
+        {
+            AddEquipment(item as Equipment);
+        }
+    }
+
+    public void AddToInventory(List<LootItem> loot)
+    {
+        foreach (var lootItem in loot)
+        {
+            AddToInventory(lootItem);
+        }
     }
 }
