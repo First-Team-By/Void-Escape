@@ -34,7 +34,7 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
     private void Start()
     {
-        _canvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
+        _canvas = GameObject.Find("UICanvas").GetComponent<RectTransform>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -63,6 +63,8 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
         _toolTipText = _toolTipPanel.transform.GetComponentInChildren<TMP_Text>();
 
         _icon = _toolTipPanel.transform.GetChild(1).GetComponent<RectTransform>();
+
+        var back = _toolTipPanel.transform.GetChild(0).GetComponent<RectTransform>();
 
         ShowToolTip();
         

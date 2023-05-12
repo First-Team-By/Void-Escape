@@ -7,6 +7,13 @@ public class Inventory
     public List<ResourceItem> ResourceItems { get; set; }
     public List<Equipment> Equipments { get; set; }
 
+
+    public Inventory()
+    {
+        Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
+            new FirstAidKit()  };
+        ResourceItems = new List<ResourceItem>();
+    }
     public void AddResourceItem(ResourceItem resourceItem)
     {
         ResourceItems.Add(resourceItem);
@@ -37,5 +44,11 @@ public class Inventory
         {
             AddToInventory(lootItem);
         }
+    }
+
+    public void Clear()
+    {
+        ResourceItems.Clear();
+        Equipments.Clear();
     }
 }

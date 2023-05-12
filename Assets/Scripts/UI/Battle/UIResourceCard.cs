@@ -18,6 +18,6 @@ public class UIResourceCard : MonoBehaviour
     public string Amount
     {
         get => _amountText.text;
-        set => _amountText.text = $"+{value}";
+        set => _amountText.text = value.ToString();
     }
 }

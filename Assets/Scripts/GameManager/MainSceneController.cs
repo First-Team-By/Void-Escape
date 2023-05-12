@@ -20,7 +20,7 @@ public class MainSceneController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void LoadAfterBattle()

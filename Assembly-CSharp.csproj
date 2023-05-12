@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
+    <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Battle\UIResourceCard.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\Scripts\Commands\Medic\Coagulator.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\EntityArmor.cs" />
     <Compile Include="Assets\Scripts\InGameResources\ResourceType.cs" />
+    <Compile Include="Assets\Scripts\Inventories\Storage.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EquipmentFactory.cs" />
     <Compile Include="Assets\Scripts\CharacterNameCreation\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
@@ -153,7 +155,7 @@
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
     <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Inventories\Inventory.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Blade.cs" />
     <Compile Include="Assets\Scripts\UI\UIItem.cs" />

@@ -312,4 +312,8 @@ public class BattleRoutine : MonoBehaviour
         actionPanel.ActionEnd += () => isTurnProcessing = false;
     }
 
+    public void ReturnToDungeon()
+    {
+        SceneManager.LoadScene("SceneDungeonGenerator");
+    }
 }

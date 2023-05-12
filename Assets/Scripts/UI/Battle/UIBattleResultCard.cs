@@ -7,11 +7,7 @@ using UnityEngine;
 public class UIBattleResultCard : MonoBehaviour
 {
     [SerializeField] private UIResourceCard _resourceCardPrefab;
-    [SerializeField] private UIEquipmentCard _equipmentCardPrefab;
-
     [SerializeField] private Transform _resourceCardsContainer;
-    [SerializeField] private Transform _equipmentCardsContainer;
-
     [SerializeField] private TMP_Text _battleResultText;
 
     private void Start()
@@ -43,8 +39,9 @@ public class UIBattleResultCard : MonoBehaviour
         var lootedEquipment = loot.Items.Where(x => x.Type.IsSubclassOf(typeof(Equipment))).ToList();
         foreach (var equipment in lootedEquipment)
         {
-            var instance = GameObject.Instantiate(_equipmentCardPrefab, _equipmentCardsContainer);
+            var instance = GameObject.Instantiate(_resourceCardPrefab, _resourceCardsContainer);
             instance.Icon = (equipment.GetItem() as Equipment).Icon;
+            instance.Amount = "1";
         }
     }
 }
