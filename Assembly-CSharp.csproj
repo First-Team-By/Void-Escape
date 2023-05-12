@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\Tools\Components\UI\FlexibleGridLayout.cs" />
+    <Compile Include="Assets\Scripts\Tools\Components\UI\FlexibleContentFitter.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterFactory.cs" />
     <Compile Include="Assets\Scripts\Loot.cs" />

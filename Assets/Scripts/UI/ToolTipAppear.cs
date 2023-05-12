@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -56,43 +57,53 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
     {
         yield return new WaitForSeconds(1f);
 
-        _toolTipPosition = Input.mousePosition;
+        var mousePosition = Input.mousePosition;
+        _toolTipPosition = mousePosition;
+
+        var screenToLocal = mousePosition / _canvas.GetComponent<Canvas>().scaleFactor;
+
         _toolTipPanel = Instantiate(_toolTipPanelPref, _toolTipPosition, Quaternion.identity);
         _toolTipPanel.transform.SetParent(_canvas);
+        
 
         _toolTipText = _toolTipPanel.transform.GetComponentInChildren<TMP_Text>();
 
-        _icon = _toolTipPanel.transform.GetChild(1).GetComponent<RectTransform>();
+        var background = _toolTipPanel.transform.GetChild(0).GetComponent<RectTransform>();
 
-        var back = _toolTipPanel.transform.GetChild(0).GetComponent<RectTransform>();
+        _icon = background.transform.GetChild(1).GetComponent<RectTransform>();
+        var padding = background.GetComponent<VerticalLayoutGroup>().padding;
+        var iconSize = _icon.sizeDelta;
 
         ShowToolTip();
         
         _canvasGroup = _toolTipPanel.GetComponent<CanvasGroup>();
         _canvasGroup.blocksRaycasts = false;
 
-        
-        if (_toolTipPosition.x + _toolTipText.preferredWidth > _canvas.rect.width)
-        {
-            _widthToolTipPanel = _toolTipText.preferredWidth;
+        var backgroundSize = new Vector2(
+            _toolTipText.preferredWidth + padding.right + padding.left,
+            _toolTipText.preferredHeight + padding.top + padding.bottom
+            );
 
-            _toolTipPosition.x -= _widthToolTipPanel;
-        }
-        if(_toolTipPosition.y + _toolTipText.preferredHeight > _canvas.rect.height)
-        {
-            _widthToolTipPanel = _toolTipText.preferredHeight;
+        var overflow = new Vector2(
+            screenToLocal.x + backgroundSize.x + iconSize.x / 2,
+            screenToLocal.y + backgroundSize.y + iconSize.y / 2
+            );
 
-            _toolTipPosition.y -= _widthToolTipPanel;
+        if (overflow.x > _canvas.rect.width || overflow.y > _canvas.rect.height)
+        {
+            background.pivot = Vector2.one;
         }
 
         _toolTipPanel.transform.position = _toolTipPosition;
-
-        _icon.transform.position = new Vector2(-30f, _toolTipText.preferredHeight + 10f) + _toolTipPosition;
     }
-
     public virtual void ShowToolTip()
     {
 
         _toolTipText.text = _toolTip;
+    }
+
+    void Update()
+    {
+        Debug.Log(Input.mousePosition / _canvas.GetComponent<Canvas>().scaleFactor);
     }
 }
