@@ -75,7 +75,7 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
         var iconSize = _icon.sizeDelta;
 
         ShowToolTip();
-        
+
         _canvasGroup = _toolTipPanel.GetComponent<CanvasGroup>();
         _canvasGroup.blocksRaycasts = false;
 
@@ -104,6 +104,6 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
     void Update()
     {
-        Debug.Log(Input.mousePosition / _canvas.GetComponent<Canvas>().scaleFactor);
+        
     }
 }

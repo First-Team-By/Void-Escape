@@ -11,12 +11,14 @@ public class Storage : Inventory
 
     public Storage() : base()
     {
+        Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
+            new FirstAidKit()  };
         Resources = new Resource() { Electronics = 20 };
     }
 
-    private void ConvertToResources()
+    private void ConvertToResources(List<ResourceItem> resourceItems)
     {
-        foreach (var item in ResourceItems)
+        foreach (var item in resourceItems)
         {
             Resources += item.Resources;
         }
@@ -24,9 +26,8 @@ public class Storage : Inventory
 
     public void TransferFromInventory()
     {
-        ResourceItems = Global.inventory.ResourceItems;
-        Equipments = Global.inventory.Equipments;
+        Equipments.AddRange(Global.inventory.Equipments);
+        ConvertToResources(Global.inventory.ResourceItems);
         Global.inventory.Clear();
-        ConvertToResources();
     }
 }

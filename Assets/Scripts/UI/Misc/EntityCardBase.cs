@@ -23,6 +23,13 @@ public abstract class EntityCardBase : MonoBehaviour
     [SerializeField] private TMP_Text _burnResistance;
     [SerializeField] private TMP_Text _poisonResistance;
 
+    private void Start()
+    {
+        Init();
+    }
+
+    protected abstract void Init();
+
     public void FillInfo(EntityInfo entity)
     {
         if (entity is null)

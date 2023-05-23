@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MainSceneController : MonoBehaviour
 {
+    [SerializeField] private InventoryPanel inventoryPanel;
+
     void Start()
     {
         foreach (var character in Global.currentGroup.CurrentCharacterInfos)
@@ -16,6 +18,10 @@ public class MainSceneController : MonoBehaviour
         }
 
         Global.currentGroup.CurrentCharacterInfos.Clear();
+
+        Global.storage.TransferFromInventory();
+
+        inventoryPanel.Inventory = Global.storage;
     }
 
     void Update()

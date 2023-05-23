@@ -32,9 +32,6 @@ public class UIBarracksCharSlot : MonoBehaviour , IPointerClickHandler
 
     public void DoSelect()
     {
-        
         EntityCard.FillInfo(CharacterInfo);
-
-
     }
 }

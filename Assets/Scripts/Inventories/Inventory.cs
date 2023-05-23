@@ -10,16 +10,15 @@ public class Inventory
 
     public Inventory()
     {
-        Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
-            new FirstAidKit()  };
+        Equipments = new List<Equipment>();
         ResourceItems = new List<ResourceItem>();
     }
-    public void AddResourceItem(ResourceItem resourceItem)
+    private void AddResourceItem(ResourceItem resourceItem)
     {
         ResourceItems.Add(resourceItem);
     }
 
-    internal void AddEquipment(Equipment equipment)
+    private void AddEquipment(Equipment equipment)
     {
         Equipments.Add(equipment);
     }

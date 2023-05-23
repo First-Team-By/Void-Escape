@@ -38,6 +38,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Transform roomNest;
 
+    [SerializeField] private InventoryPanel inventoryPanel;
+
     public Vector2 Size { get; set; }
 
     void Start()
@@ -63,6 +65,8 @@ public class GameController : MonoBehaviour
             _groupMarker.transform.SetParent(_rooms.First(x => x.NumberRoom == Global.currentMapInfo.currentRoomNumber).transform);
             _groupMarker.transform.localPosition = Vector3.zero;
         }
+
+        inventoryPanel.Inventory = Global.inventory;
         
     }
 

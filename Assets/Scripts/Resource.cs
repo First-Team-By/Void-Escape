@@ -19,10 +19,10 @@ public class Resource
 
         foreach (PropertyInfo property in properties)
         {
-            if (property.PropertyType == typeof(float))
+            if (property.PropertyType == typeof(int))
             {
-                float value1 = (float)property.GetValue(resources1);
-                float value2 = (float)property.GetValue(resources2);
+                int value1 = (int)property.GetValue(resources1);
+                int value2 = (int)property.GetValue(resources2);
 
                 property.SetValue(result, value1 + value2);
             }

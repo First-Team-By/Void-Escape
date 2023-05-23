@@ -1,3 +1,4 @@
+using Assets.Scripts.Entities.Serializable;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +8,15 @@ using UnityEngine.EventSystems;
 public class InventoryPanel : MonoBehaviour, IDropHandler
 {
     [SerializeField] private GameObject _contentItemPanel;
+    [SerializeField] private DepotType _depotType;
 
-    public event Action<Equipment> OnUnEquip;
+    public Inventory Inventory { get; set; }
+    public event Action<Equipment> OnItemDrop;
+
+    void Start()
+    {
+        Refresh();
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -18,6 +26,27 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
 
         var item = eventData.pointerDrag.GetComponent<UIItem>().Equipment;
 
-        OnUnEquip?.Invoke(item);
+        OnItemDrop?.Invoke(item);
+    }
+
+    public void Refresh()
+    {
+        if (_contentItemPanel == null)
+        {
+            return;
+        }
+
+        foreach (Transform item in _contentItemPanel.GetComponentInChildren<Transform>())
+        {
+            Destroy(item.gameObject);
+        }
+
+        List<Equipment> equipmentSource = Inventory.Equipments;
+
+
+        foreach (var item in equipmentSource)
+        {
+            EquipmentFactory.CreateItem(item, _contentItemPanel.transform);
+        }
     }
 }

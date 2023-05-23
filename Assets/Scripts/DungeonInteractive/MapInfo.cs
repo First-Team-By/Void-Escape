@@ -17,6 +17,7 @@ public class MapInfo
     public List<CharsTemplate> possibleEnemies { get; set; }
     public List<LootItemInfo> possibleLoot { get; set; }
     public Vector2 Size { get; set; }
+    public Quest MapQuest { get; set; }
     public RoomInfo GetCurrentRoomInfo()
     {
         return RoomInfos[currentRoomNumber];
@@ -26,14 +27,10 @@ public class MapInfo
     {
         var maxvalue = possibleEnemies.Max(x => x.EntityChars.Value);
         
-
         var normalized = (float)roomNumber /
                          (RoomInfos.Count - 1) *
                          maxvalue;
 
-        Debug.Log("(float)roomNumber =" + (float)roomNumber);
-        Debug.Log("RoomInfos.Count =" + RoomInfos.Count);
-        Debug.Log("maxvalue =" + maxvalue);
         return Mathf.CeilToInt(normalized);
     }
 

@@ -21,7 +21,7 @@ public static class Global
     public static MapInfo currentMapInfo;
 
     public static Inventory inventory;
-    public static Storage storage;
+    public static Storage storage { get; set; }
 
     public static CommonPrefabs CommonPrefabs { get; }
 

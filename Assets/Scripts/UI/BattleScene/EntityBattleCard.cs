@@ -14,4 +14,9 @@ public class EntityBattleCard : EntityCardBase
         _healthAmount.text = $"{entity.Health} / {entity.EntityChars.MaxHealth}";
         _entityPortrait.sprite = entity.Portrait;
     }
+
+    protected override void Init()
+    {
+        throw new System.NotImplementedException();
+    }
 }
