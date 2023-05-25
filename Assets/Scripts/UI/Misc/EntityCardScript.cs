@@ -29,6 +29,7 @@ public class EntityCardScript : EntityCardBase
     [SerializeField] protected EquipmentSlot _deviceSlot;
 
     [SerializeField] protected EquipmentSlot _armorSlot;
+
     [SerializeField] protected bool _interactable;
 
     public TMP_Text EntityClassCaption

@@ -655,10 +655,10 @@ MonoBehaviour:
   _evadeChance: {fileID: 8287690372652075053}
   _accuracy: {fileID: 2380829741972657519}
   _defence: {fileID: 5940642351909972631}
-  _damageResistance: {fileID: 0}
-  _bleedResistance: {fileID: 0}
-  _burnResistance: {fileID: 0}
-  _poisonResistance: {fileID: 0}
+  _damageResistance: {fileID: 7200116533876592398}
+  _bleedResistance: {fileID: 6913923020715517823}
+  _burnResistance: {fileID: 2923709971902245249}
+  _poisonResistance: {fileID: 7108424181132542346}
   _image: {fileID: 1662628518375760877}
   _currentHealth: {fileID: 5891155688916598015}
   _characterSkills:
@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46988b701abf4b648a72a780e846e49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 2
   _uiSlot: {fileID: 2875956382025451749}
   _inventoryContent: {fileID: 0}
   _defaulImage: {fileID: 21300000, guid: f933f2fd4d43a0c499c7b0affacbaeae, type: 3}
@@ -3857,7 +3857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46988b701abf4b648a72a780e846e49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 1
   _uiSlot: {fileID: 6112645589542586511}
   _inventoryContent: {fileID: 0}
   _defaulImage: {fileID: 21300000, guid: 621828d95883a8e43b98f3bae1819465, type: 3}
