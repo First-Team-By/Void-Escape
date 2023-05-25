@@ -17,6 +17,6 @@ public class EntityBattleCard : EntityCardBase
 
     protected override void Init()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
