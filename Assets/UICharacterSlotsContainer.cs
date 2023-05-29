@@ -26,11 +26,14 @@ public class UICharacterSlotsContainer : MonoBehaviour, IDropHandler
             uiPosition.CharacterImage.color = new Color(255, 255, 255, 0);
             uiPosition.CharacterImage.sprite = null;
             uiPosition.IsFree = true;
+            uiPosition.DropHandler.Container.raycastTarget = true;
 
             var currentCharacter =
                 Global.currentGroup.CurrentCharacterInfos.FirstOrDefault(x => x.Position == uiPosition.Position);
 
             Global.currentGroup.CurrentCharacterInfos.Remove(currentCharacter);
+
+            
         }
     }
 }

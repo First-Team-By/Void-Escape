@@ -81,7 +81,7 @@
     <Compile Include="Assets\Scripts\Entities\EntityClass.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
-    <Compile Include="Assets\Scripts\UI\UIPartyBuildPosition.cs" />
+    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
     <Compile Include="Assets\Scripts\QuestSystem\Quests\KillMonsterQuest.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityResistances.cs" />
@@ -169,6 +169,7 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIDropHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
