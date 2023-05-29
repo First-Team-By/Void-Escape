@@ -20,16 +20,9 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     private Transform _rootPanel;
 
-    private Equipment _equipment;
-
     public Image Image => _image;
 
-    public Equipment Equipment
-    {
-        get { return _equipment; }
-
-        set{ _equipment = value; }
-    }
+    public Equipment Equipment { get; set; }
 
     public SlotType SlotType
     {

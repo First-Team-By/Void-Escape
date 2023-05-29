@@ -1,4 +1,3 @@
-using Assets.Scripts.Entities.Serializable;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -133,7 +132,7 @@ public class EntityCardScript : EntityCardBase
 
     private void CreateItem(Equipment equipment, Transform transform)
     {
-        var item = EquipmentFactory.CreateItem(equipment, transform);
+        var item = ItemFactory.CreateItem(equipment, transform);
         item.GetComponent<CanvasGroup>().blocksRaycasts = _interactable;
 
         item.transform.localPosition = Vector3.zero;

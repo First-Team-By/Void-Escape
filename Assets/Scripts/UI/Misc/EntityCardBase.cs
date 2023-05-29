@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -34,9 +35,7 @@ public abstract class EntityCardBase : MonoBehaviour
     {
         if (entity is null)
         {
-            gameObject.SetActive(false);
-
-            return;
+            throw new ArgumentNullException(nameof(entity));
         }
 
         _meleeDamage.text = entity.EntityChars.MeleeDamage.ToString();

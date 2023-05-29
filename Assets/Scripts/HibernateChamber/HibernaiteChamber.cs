@@ -20,7 +20,7 @@ public class HibernaiteChamber : MonoBehaviour
             capsules[i].CheckStatus();
         }
 
-        _card.FillInfo(null);
+        _card.gameObject.SetActive(false);
     }
 
     public void SaveToGlobal()

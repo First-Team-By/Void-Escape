@@ -1,10 +1,5 @@
-﻿using Assets.Scripts.Entities.Serializable;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 public class Coagulator : CharacterCommand
 {
@@ -22,7 +17,7 @@ public class Coagulator : CharacterCommand
 
         FullDescription = Name + "\n" + Description;
     }
-    
+
     public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
     {
         var result = new CommandResult();

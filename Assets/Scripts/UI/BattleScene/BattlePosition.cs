@@ -70,8 +70,7 @@ public class BattlePosition : MonoBehaviour
         var character = GetComponentInChildren<EntityContainer>();
         if (character)
         {
-            _healthBar.transform.localPosition = new Vector2(0, character.GetComponent<SpriteRenderer>().bounds.size.y + 0.15f);
-           
+            _healthBar.transform.localPosition = new Vector2(0, character.EntityInfo.FullFaceSprite.bounds.center.y * 2 + 0.15f);
         }
         _healthBar.gameObject.SetActive(percent > 0);
     }

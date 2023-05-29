@@ -31,6 +31,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
     public void Extract()
     {
+        Debug.Log("extracted");
         if  (capsuleInfo.Status == CapsuleStatus.Empty || capsuleInfo.Status == CapsuleStatus.Freezed)
         {
             return;
@@ -41,7 +42,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         capsuleInfo.Character = null;
         capsuleInfo.Status = CapsuleStatus.Empty;
         _hibernaiteChamber.SaveToGlobal();
-        _entityCardScript.FillInfo(capsuleInfo.Character);
+        _entityCardScript.gameObject.SetActive(false);
         _topAnimator.SetTrigger("Extract");
     }
 
@@ -57,8 +58,10 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         //{
         //    _characterName.text = "Пусто !";
         //}
-
-        _entityCardScript.FillInfo(capsuleInfo.Character);
+        if (capsuleInfo.Character != null)
+        {
+            _entityCardScript.FillInfo(capsuleInfo.Character);
+        }
     }
 
     public void CheckStatus()

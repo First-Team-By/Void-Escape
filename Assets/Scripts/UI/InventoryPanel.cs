@@ -1,6 +1,4 @@
-using Assets.Scripts.Entities.Serializable;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -41,12 +39,14 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
             Destroy(item.gameObject);
         }
 
-        List<Equipment> equipmentSource = Inventory.Equipments;
+        List<Equipment> equipments = Inventory.Equipments;
+        List<ResourceItem> resources = Inventory.ResourceItems;
 
 
-        foreach (var item in equipmentSource)
+
+        foreach (var item in equipments)
         {
-            EquipmentFactory.CreateItem(item, _contentItemPanel.transform);
+            ItemFactory.CreateItem(item, _contentItemPanel.transform);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Entities.Serializable;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,12 +17,12 @@ public abstract class EntityCommand
 
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
-    
+
     public Conditioning Conditioning { get; set; }
     public EntityCommand()
     {
         IsEnabled = IsCommandEnabled;
-        
+
         Icon = Resources.Load<Sprite>("Sprites/Commands/" + IconName);
         Effect = Resources.Load<Sprite>("Sprites/Effects/Commands/" + EffectName);
 

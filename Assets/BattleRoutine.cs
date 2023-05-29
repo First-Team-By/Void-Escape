@@ -55,7 +55,6 @@ public class BattleRoutine : MonoBehaviour
         if (!isTurnProcessing)
         {
             MainBattleProcess();
-
         }
     }
 
@@ -70,6 +69,7 @@ public class BattleRoutine : MonoBehaviour
     {
         RefreshHealthBars();
         CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
+
         if (CurrentEntity is null)
         {
             NextRound();
@@ -77,6 +77,7 @@ public class BattleRoutine : MonoBehaviour
         else
         {
             SetBattlePositionOn();
+            battleCard.FillInfo(CurrentEntity);
         }
 
         OnEntityTurn();
@@ -304,6 +305,7 @@ public class BattleRoutine : MonoBehaviour
         characterList = new List<CharacterInfo>();
         CurrentSelectedTargets = new List<int>();
         InitBattle();
+        
     }
 
     void Awake()
@@ -314,6 +316,6 @@ public class BattleRoutine : MonoBehaviour
 
     public void ReturnToDungeon()
     {
-        SceneManager.LoadScene("SceneDungeonGenerator");
+        SceneManager.LoadScene("DungeonScene");
     }
 }

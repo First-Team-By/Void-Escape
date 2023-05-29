@@ -1,8 +1,5 @@
-using Assets.Scripts.Entities.Serializable;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class HealOne : CharacterCommand
 {
@@ -14,7 +11,7 @@ public class HealOne : CharacterCommand
         SelfPositions = new List<int>() { 4, 5 };
 
         Name = "<size=30><color=#ffa500ff>Лечение</color></size>";
-        
+
         Description = "\nЛечит любого союзника\nвключая самого медика";
 
         FullDescription = Name + "\n" + Description;

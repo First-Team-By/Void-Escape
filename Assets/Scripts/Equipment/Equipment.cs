@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class Equipment 
+public abstract class Equipment : IItem
 {
     [SerializeField] private SlotType _slotType;
     public SlotType SlotType

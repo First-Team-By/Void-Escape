@@ -1,23 +1,17 @@
-﻿using Assets.Scripts.Entities.Serializable;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using UnityEngine;
 
 
- public abstract class CharacterInfo : EntityInfo
- {
+public abstract class CharacterInfo : EntityInfo
+{
     protected float _currentHealth;
     public EntityWeapon Weapon { set; get; }
     public EntityDevice Device { set; get; }
     public EntityArmor Armor { set; get; }
 
-    public override EntityResistances Resistances 
+    public override EntityResistances Resistances
     {
-        get 
+        get
         {
             return NaturalResistance + Armor.Resistances;
         }

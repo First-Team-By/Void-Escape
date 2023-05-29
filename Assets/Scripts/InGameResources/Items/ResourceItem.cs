@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ResourceItem 
+public abstract class ResourceItem : IItem 
 {
     public Resource Resources { get; private set; }
 
