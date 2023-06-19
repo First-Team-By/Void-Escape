@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\Items\IItem.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Assets\Scripts\UI\CharactersContainerAdapter.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\BarracksAdapter.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
+    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIDropHandler.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
     <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
     <Compile Include="Assets\Scripts\Inventories\Inventory.cs" />
@@ -169,8 +171,6 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIDropHandler.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\Items\IItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
