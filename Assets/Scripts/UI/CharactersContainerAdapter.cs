@@ -14,7 +14,7 @@ public class CharactersContainerAdapter : MonoBehaviour
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)
         {
             var characterSlot = GameObject.Instantiate(_characterSlotPrefab.gameObject) as GameObject;
-            var uiCharacterSlot = characterSlot.GetComponent<UICharacterSlot>();
+            var uiCharacterSlot = characterSlot.GetComponent<UICharacterSlot>();    
             uiCharacterSlot.CharacterInfo = characterInfo;
 
             uiCharacterSlot.Portrait.sprite = characterInfo.FullFaceSprite;
