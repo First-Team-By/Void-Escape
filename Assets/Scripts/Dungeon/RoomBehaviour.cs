@@ -19,7 +19,7 @@ public class RoomBehaviour : MonoBehaviour
     [Header("Ќомера соседних комнат в которые можно пройти")]
     public List<int> neighbors = new List<int>();
 
-    GameController _controller;
+    DungeonMapController _controller;
     public event Action GroupInteract;
 
     private RoomInfo roomInfo;
@@ -29,7 +29,7 @@ public class RoomBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _controller = GameObject.Find("GameController").GetComponent<GameController>();
+        _controller = GameObject.Find("DungeonMapController").GetComponent<DungeonMapController>();
     }
 
     public void UpdateRoom(RoomInfo roomInfo, Vector2 size)

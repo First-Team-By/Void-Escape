@@ -30,7 +30,10 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
     public string ToolTipString 
     {
-        set { _toolTip = value; }
+        set 
+        { 
+            _toolTip = value; 
+        }
     }
 
     private void Start()

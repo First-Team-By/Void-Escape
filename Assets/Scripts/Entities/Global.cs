@@ -24,6 +24,7 @@ public static class Global
     public static Storage storage { get; set; }
 
     public static CommonPrefabs CommonPrefabs { get; }
+    public static List<Quest> avaliableQuests { get; set; }
 
     public static bool UIIntersect { get; set; } = false;
 
@@ -32,7 +33,7 @@ public static class Global
     {
         storage = new Storage();
         inventory = new Inventory();
-
+        avaliableQuests = new List<Quest>();
         
 
         CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
