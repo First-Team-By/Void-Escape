@@ -9,9 +9,11 @@ public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.transform.SetParent(gameObject.transform);
+            var dragChar = eventData.pointerDrag;
 
-            eventData.pointerDrag.GetComponent<RectTransform>().localPosition = Vector2.zero;
+            dragChar.transform.SetParent(gameObject.transform);
+
+            dragChar.GetComponent<RectTransform>().localPosition = Vector2.zero;
         }
     }
 }

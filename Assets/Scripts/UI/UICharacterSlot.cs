@@ -14,6 +14,10 @@ public class UICharacterSlot : UIDragAndDrop
     [SerializeField] private GameObject _serviceImagePanel;
     [SerializeField] private Text _characterName;
 
+    public GameObject OldParent { get; set; }
+
+    private Transform _rootPanel;
+
     public Text CharacterName => _characterName;
 
     public CharacterInfo Character => characterInfo;
@@ -41,6 +45,8 @@ public class UICharacterSlot : UIDragAndDrop
 
         gameManager = GameObject.FindObjectOfType<UIPartyBuildGameManager>();
 
+        _rootPanel = GameObject.Find("RootPanel").transform;
+
         //infoButton.onClick.AddListener(gameManager.InfoImageOn);
     }
     public override void OnDrag(PointerEventData eventData)
@@ -66,6 +72,16 @@ public class UICharacterSlot : UIDragAndDrop
         GetComponent<Image>().color = color;
 
         ServiceImagePanel.SetActive(false);
+
+
+
+        OldParent = gameObject.transform.parent.gameObject;
+
+        canvasGroup.alpha = 0.8f;
+
+        canvasGroup.blocksRaycasts = false;
+
+        gameObject.transform.SetParent(_rootPanel);
     }
 
     public override void OnEndDrag(PointerEventData eventData)
@@ -81,5 +97,19 @@ public class UICharacterSlot : UIDragAndDrop
         ServiceImagePanel.SetActive(true);
 
         lastSelectedPosition = null;
+
+        gameObject.transform.localPosition = Vector3.zero;
+
+
+        if (gameObject.transform.parent == _rootPanel)
+        {
+            gameObject.transform.SetParent(OldParent.transform);
+
+            gameObject.transform.localPosition = Vector3.zero;
+        }
+
+        canvasGroup.alpha = 1f;
+
+        canvasGroup.blocksRaycasts = true;
     }
 }
