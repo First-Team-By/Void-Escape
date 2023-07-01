@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
 {
+    [SerializeField] private GameObject _cplPanel;
+
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -14,6 +17,8 @@ public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
             dragChar.transform.SetParent(gameObject.transform);
 
             dragChar.GetComponent<RectTransform>().localPosition = Vector2.zero;
+
+            _cplPanel.SetActive(true);
         }
     }
 }
