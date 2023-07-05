@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Controllers\MainSceneController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\EntityBattleCard.cs" />
     <Compile Include="Assets\Scripts\Dungeon\RoomBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\MedicalBay\OnDropMedCharPanel.cs" />
     <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityClass.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Pistol.cs" />
@@ -178,7 +179,6 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\MedicalBay\OnDropMedCharPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -197,6 +197,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Animations\Characters\Officer\officer.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -934,10 +935,6 @@
     <ProjectReference Include="spine-unity-examples.csproj">
       <Project>{D81F3E5E-BC63-19C8-41FA-D4726A1AC71D}</Project>
       <Name>spine-unity-examples</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-csharp.csproj">
-      <Project>{19A6AEB6-AE15-DA3E-0147-40B63B393FB4}</Project>
-      <Name>spine-csharp</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-examples-editor.csproj">
       <Project>{4F0854CF-010E-E46B-C01E-9B3E0D95F708}</Project>

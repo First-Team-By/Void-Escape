@@ -1,0 +1,62 @@
+
+officer.png
+size: 1961,1009
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bullet
+  rotate: true
+  xy: 1884, 673
+  size: 334, 44
+  orig: 334, 44
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 797, 2
+  size: 225, 284
+  orig: 225, 284
+  offset: 0, 0
+  index: -1
+left-arm
+  rotate: false
+  xy: 1063, 61
+  size: 717, 425
+  orig: 717, 425
+  offset: 0, 0
+  index: -1
+left-leg
+  rotate: true
+  xy: 2, 591
+  size: 416, 1059
+  orig: 416, 1059
+  offset: 0, 0
+  index: -1
+muzzle
+  rotate: true
+  xy: 1782, 194
+  size: 292, 177
+  orig: 292, 177
+  offset: 0, 0
+  index: -1
+right-arm
+  rotate: true
+  xy: 2, 18
+  size: 268, 793
+  orig: 268, 793
+  offset: 0, 0
+  index: -1
+right-leg
+  rotate: true
+  xy: 2, 288
+  size: 301, 1059
+  orig: 301, 1059
+  offset: 0, 0
+  index: -1
+torso
+  rotate: true
+  xy: 1063, 488
+  size: 519, 819
+  orig: 519, 819
+  offset: 0, 0
+  index: -1
