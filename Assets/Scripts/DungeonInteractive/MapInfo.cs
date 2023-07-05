@@ -17,7 +17,7 @@ public class MapInfo
     public List<CharsTemplate> possibleEnemies { get; set; }
     public List<LootItemInfo> possibleLoot { get; set; }
     public Vector2 Size { get; set; }
-    public Quest MapQuest { get; set; }
+    //public Quest MapQuest { get; set; }
     public RoomInfo GetCurrentRoomInfo()
     {
         return RoomInfos[currentRoomNumber];

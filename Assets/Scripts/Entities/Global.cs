@@ -19,6 +19,7 @@ public static class Global
     public static CharacterGroup allCharacters;
 
     public static MapInfo currentMapInfo;
+    public static Quest currentQuest;
 
     public static Inventory inventory;
     public static Storage storage { get; set; }
