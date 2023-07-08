@@ -292,7 +292,7 @@ public class BattleRoutine : MonoBehaviour
 
         resultCard.FillBattleResultInfo(true, currentRoomInfo.Loot);
         Global.inventory.AddToInventory(currentRoomInfo.Loot.Items);
-        //SceneManager.LoadScene("SceneDungeonGenerator");
+        ReturnToDungeon();
     }
 
     private void LoseBattle()
@@ -304,8 +304,7 @@ public class BattleRoutine : MonoBehaviour
     {
         characterList = new List<CharacterInfo>();
         CurrentSelectedTargets = new List<int>();
-        InitBattle();
-        
+        InitBattle();     
     }
 
     void Awake()

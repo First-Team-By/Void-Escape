@@ -15,6 +15,8 @@ public abstract class EntityInfo
     //[SerializeField] private Sprite deathDoorSprite;
     //[SerializeField] private EntityClass entityClass;
 
+    private EntityCharacteristics _entityChars;
+
     public string Name { get; set; }
     public Sprite SufferingPose { get; private set; }
     public Sprite AttackPose { get; private set; }
@@ -29,7 +31,15 @@ public abstract class EntityInfo
     public abstract string FullFaceSpriteName { get; }
     public abstract string EvadePoseName { get; }
     public EntityClass EntityClass { get; protected set; }
-    public EntityCharacteristics EntityChars { get; protected set; }
+    public EntityCharacteristics EntityChars 
+    {
+        get
+        {
+            return ApplyConditions(_entityChars);
+        }          
+    }
+
+    public EntityCharacteristics OriginalEntityChars => _entityChars;
 
     protected EntityConditions _conditions = new EntityConditions();
     public EntityConditions Conditions
@@ -69,9 +79,7 @@ public abstract class EntityInfo
 
     private static string[] entityClassNames = new string[] { "Офицер", "Медик", "Мутант" };
 
-    public string ClassName => GetClassName(EntityClass);
-
-    
+    public string ClassName => GetClassName(EntityClass);  
 
     public string FullName
     {
@@ -90,13 +98,12 @@ public abstract class EntityInfo
     public abstract List<EntityCommand> Commands { get; }
     public event Action<EntityInfo> HealthOver;
 
-
     public int CurrentInitiative => EntityChars.Initiative;
     private float _health;
 
     public EntityInfo()
     {
-        EntityChars = CharsTemplate.GetCharacteristics(this.GetType());
+        _entityChars = CharsTemplate.GetCharacteristics(this.GetType());
         _health = EntityChars.MaxHealth;
         AttackPose = Resources.Load<Sprite>("Sprites/Entities/" + AttackPoseName);
         EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);
@@ -106,6 +113,25 @@ public abstract class EntityInfo
         SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
 
         NaturalResistance = new EntityResistances();
+    }
+
+    public EntityCharacteristics ApplyConditions(EntityCharacteristics entityChars)
+    {
+        var result = entityChars.Clone();
+
+        if (_conditions.ArmBroken)
+        {
+            result.MeleeDamage *= 0.7f;
+            result.Accuracy *= 0.7f;
+        }
+
+        if (_conditions.LegBroken)
+        {
+            result.Initiative /= 2;
+            result.EvadeChance /= 2;
+        }
+
+        return result;
     }
 
     public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
@@ -183,7 +209,7 @@ public abstract class EntityInfo
         var result = new TargetState();
         Health += health;
         //result.Pose = EntityPose.ReinforcedPose;
-        result.PoseName = Poses.Reinforced;
+        result.PoseName = Poses.Buffed;
         result.HealthChanged = health;
         result.Target = this;
         result.Effect = effect;
@@ -203,15 +229,14 @@ public abstract class EntityInfo
 
     private void GetArsoned(float damage, int duration)
     {
-        _conditions.burning.arsonDamage = damage;
+        _conditions.burning.burningDamage = damage;
         _conditions.burning.duration = duration;
     }
 
     public TargetState StopBleeding(Sprite effect)
     {
         var result = new TargetState();
-        //result.Pose = EntityPose.ReinforcedPose;
-        result.PoseName = Poses.Reinforced;
+        result.PoseName = Poses.Buffed;
         result.Target = this;
         result.Effect = effect;
         _conditions.bleeding.duration = 0;
@@ -222,8 +247,7 @@ public abstract class EntityInfo
     public TargetState StopPoisoning(Sprite effect)
     {
         var result = new TargetState();
-        //result.Pose = EntityPose.ReinforcedPose;
-        result.PoseName = Poses.Reinforced;
+        result.PoseName = Poses.Buffed;
         result.Target = this;
         result.Effect = effect;
         _conditions.poisoning.duration = 0;
@@ -248,7 +272,7 @@ public abstract class EntityInfo
 
         if (_conditions.IsBurning)
         {
-            results.Add(TakeDamage(_conditions.burning.arsonDamage, "Поджог"));
+            results.Add(TakeDamage(_conditions.burning.burningDamage, "Поджог"));
             _conditions.burning.duration--;
         }
         return results;

@@ -24,6 +24,6 @@ public static class Poses
     public const string Buffing = "Buffing";
     public const string Evade = "Evade";
     public const string Suffering = "Suffering";
-    public const string Reinforced = "Reinforced";
+    public const string Buffed = "Buffed";
 }
 

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharactersContainerAdapter : MonoBehaviour
 {
@@ -9,8 +6,13 @@ public class CharactersContainerAdapter : MonoBehaviour
 
     [SerializeField] private RectTransform _content;
 
-    private void Start()
+    private void OnEnable()
     {
+        foreach (Transform item in _content.GetComponentInChildren<Transform>())
+        {
+            Destroy(item.gameObject);
+        }
+
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)
         {
             var characterSlot = GameObject.Instantiate(_characterSlotPrefab.gameObject) as GameObject;

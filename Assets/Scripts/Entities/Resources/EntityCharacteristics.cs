@@ -25,20 +25,111 @@ public class EntityCharacteristics : ScriptableObject
     [SerializeField] private float _accuracy;
 
     [Range(0, 0.8f)] 
-    [SerializeField] private float _protection;
+    [SerializeField] private float _defence;
 
     [SerializeField] private int _initiative;
     [SerializeField] private int _value;
 
-    public float MaxHealth => _maxHealth;
-    public float MeleeDamage => _meleeDamage;
-    public float CritChance => _critChance;
-    public float CritMultiplier => _critMultiplier;
-    public float EvadeChance => _evadeChance;
-    public float Accuracy => _accuracy;
-    public float Defence => _protection;
-    public int Initiative => _initiative;
+    public float MaxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+        set
+        {
+            _maxHealth = value;
+        }
+    }
+
+    public float MeleeDamage
+    {   get 
+        { 
+            return _meleeDamage;
+        }
+        set
+        {
+            _meleeDamage = value;
+        }
+    }
+    public float CritChance
+    {
+        get
+        {
+            return _critChance;
+        }
+        set
+        {
+            _critChance = value;
+        }
+    }
+
+    public float CritMultiplier
+    {
+        get
+        {
+            return _evadeChance;
+        }
+        set
+        {
+            _evadeChance = value;
+        }
+    }
+
+    public float EvadeChance
+    {
+        get
+        {
+            return _evadeChance;
+        }
+        set
+        {
+            _evadeChance = value;
+        }
+    }
+
+    public float Accuracy
+    {
+        get
+        {
+            return _accuracy;
+        }
+        set
+        {
+            _accuracy = value;
+        }
+    }
+
+    public float Defence
+    {
+        get
+        {
+            return _defence;
+        }
+        set
+        {
+            _defence = value;
+        }
+    }
+
+    public int Initiative
+    {
+        get
+        {
+            return _initiative;
+        }
+        set
+        {
+            _initiative = value;
+        }
+    }
+
     public int Value => _value;
     public EntityClass EntityClass => _entityClass;
     public Type EntityType => _entityType;
+
+    public EntityCharacteristics Clone()
+    {
+        return MemberwiseClone() as EntityCharacteristics;
+    }
 }

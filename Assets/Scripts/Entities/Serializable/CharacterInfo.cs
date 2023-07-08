@@ -24,12 +24,6 @@ public abstract class CharacterInfo : EntityInfo
         set => _currentHealth = value;
     }
 
-    //public GameObject CharacterPrefab
-    //{
-    //    get => _characterPrefab;
-    //    set => _characterPrefab = value;
-    //}
-
     public abstract List<CharacterCommand> NativeCommands { get; }
 
     public override List<EntityCommand> Commands
