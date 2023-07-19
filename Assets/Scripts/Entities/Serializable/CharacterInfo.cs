@@ -1,13 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+public enum Rarity
+{
+    Unique = 0,
+    Common = 1,
+    Rare = 2,
+    Epic = 3,
+    Legendary = 4,
+    Mythical = 5,  
+}
 
 public abstract class CharacterInfo : EntityInfo
 {
+    public static string[] RarityNames = new string[6]
+    {
+        "Уникальный",
+        "Обычный",
+        "Редкий",
+        "Эпический",
+        "Легендарный",
+        "Мифический"
+    };
+
     protected float _currentHealth;
     public EntityWeapon Weapon { set; get; }
     public EntityDevice Device { set; get; }
     public EntityArmor Armor { set; get; }
+    public Rarity Rarity { set; get; } = Rarity.Common;
+    public string RarityToString => RarityNames[(int)Rarity];
 
     public override EntityResistances Resistances
     {
@@ -16,7 +37,6 @@ public abstract class CharacterInfo : EntityInfo
             return NaturalResistance + Armor.Resistances;
         }
     }
-
 
     public float CurrentHealth
     {

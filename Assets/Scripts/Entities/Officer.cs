@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Officer : CharacterInfo
 {
@@ -32,7 +28,9 @@ public class Officer : CharacterInfo
 
         EntityClass = EntityClass.Officer;
 
-        GetBleeded(0.1f, 100);
+        Rarity = Rarity.Rare;
+
+        //GetBleeded(0.1f, 100);
     }
 
     public override Sprite GetCustomPose(string pose)
