@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,17 +7,11 @@ public class MainSceneController : MonoBehaviour
 
     void Start()
     {
-        foreach (var character in Global.currentGroup.CurrentCharacterInfos)
+        if (Global.Stage == GameStage.InMission)
         {
-            var currentCharacter = Global.allCharacters.CharacterInfos.FirstOrDefault(x => x.Id == character.Id);
-
-            currentCharacter = character;
-            currentCharacter.Conditions.DropTemporaryConditions();
+            LoadAfterMission();
+            Global.Stage = GameStage.OnBase;
         }
-
-        Global.currentGroup.CurrentCharacterInfos.Clear();
-
-        Global.storage.TransferFromInventory();
 
         inventoryPanel.Inventory = Global.storage;
     }
@@ -29,8 +21,28 @@ public class MainSceneController : MonoBehaviour
 
     }
 
-    private void LoadAfterBattle()
+    private void LoadAfterMission()
     {
+        foreach (var character in Global.currentGroup.CurrentCharacterInfos)
+        {
+            var currentCharacter = Global.allCharacters.CharacterInfos.FirstOrDefault(x => x.Id == character.Id);
 
+            currentCharacter = character;
+            currentCharacter.Conditions.DropTemporaryConditions();
+            
+        }
+
+        var idleCaracters = Global.allCharacters.CharacterInfos
+                                            .Where(x =>
+                                            !Global.currentGroup.CurrentCharacterInfos.Select(y => y.Id).Contains(x.Id)
+                                             );
+        foreach (var character in idleCaracters)
+        {
+            character.Conditions.DecreaseConstantCondition();
+        }
+
+        Global.currentGroup.CurrentCharacterInfos.Clear();
+
+        Global.storage.TransferFromInventory();
     }
 }

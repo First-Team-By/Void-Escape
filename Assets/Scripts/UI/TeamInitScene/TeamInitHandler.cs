@@ -37,6 +37,7 @@ public class TeamInitHandler : MonoBehaviour
         };
 
         Global.currentMapInfo.currentRoomNumber = 0;
+        Global.Stage = GameStage.InMission;
         SceneManager.LoadScene("DungeonScene");
     }
 }

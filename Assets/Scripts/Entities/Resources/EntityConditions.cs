@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class EntityConditions
 {
     public (int duration, float bleedDamage) bleeding;
@@ -16,6 +21,24 @@ public class EntityConditions
     public bool ArmBroken => brokenArm > 0;
     public bool LegBroken => brokenLeg > 0;
 
+
+    public List<EntityMutilation> Mutilations = new List<EntityMutilation> ();
+
+    public void AddMutilation(EntityMutilation mutilation)
+    {
+        Mutilations.Add(mutilation);
+    }
+
+    public void RemoveMutilation(EntityMutilation mutilation)
+    {
+        Mutilations.Remove(mutilation);
+    }
+
+    public void ClearMutilation()
+    {
+        Mutilations.Clear();
+    }
+
     public void DropTemporaryConditions()
     {
         bleeding.duration = 0;
@@ -33,6 +56,10 @@ public class EntityConditions
         if (brokenLeg > 0)
         {
             brokenLeg--;
+            if (Random.Range(0, 1) <= 0.2f)
+            {
+                AddMutilation(new Limping());   //Хромота
+            }
         }
     }
 

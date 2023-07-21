@@ -8,8 +8,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum GameStage
+{
+    StartNewGame = 0,
+    InMission = 1,
+    OnBase = 2,
+}
 public static class Global
 {
+    public static GameStage Stage;
     public static List<CharsTemplate> AllCharacterClasses;
     public static List<CharsTemplate> AllEnemiesClasses;
     public static HibernateCapsule[] capsules;

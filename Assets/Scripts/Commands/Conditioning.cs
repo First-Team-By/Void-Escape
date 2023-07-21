@@ -21,8 +21,8 @@ public class Conditioning
 {
     public ConditionInfo Bleeding { get; set; }
     public ConditionInfo Poisoning { get; set; }
-    public ConditionInfo Arsoning { get; set; }
-    public bool CanGetArson => Arsoning != null && Arsoning.Chance > 0;
+    public ConditionInfo Burning { get; set; }
+    public bool CanGetArson => Burning != null && Burning.Chance > 0;
     public bool CanGetBleed => Bleeding != null && Bleeding.Chance > 0;
     public bool CanGetPoison => Poisoning != null && Poisoning.Chance > 0;
 
@@ -36,9 +36,9 @@ public class Conditioning
         Poisoning = new ConditionInfo(chance, duration, damage);
     }
 
-    public void SetArsoning(float chance, int duration, float damage)
+    public void SetBurning(float chance, int duration, float damage)
     {
-        Arsoning = new ConditionInfo(chance, duration, damage);
+        Burning = new ConditionInfo(chance, duration, damage);
     }
 }
 

@@ -48,7 +48,6 @@ public abstract class EntityInfo
         set => _conditions = value;
     }
 
-
     private string _fullName;
 
     public bool OnDeathDoor { get; set; }
@@ -131,6 +130,11 @@ public abstract class EntityInfo
             result.EvadeChance /= 2;
         }
 
+        foreach (var mutilation in _conditions.Mutilations)
+        {
+            mutilation.Affect(result);
+        }
+
         return result;
     }
 
@@ -175,14 +179,13 @@ public abstract class EntityInfo
         if (finalDamage > 0 && conditioning.CanGetArson)
         {
             var chance = Random.Range(0, 1f);
-            if (chance <= conditioning.Arsoning.Chance - conditioning.Arsoning.Chance * Resistances.BurnResistance / 100)
+            if (chance <= conditioning.Burning.Chance - conditioning.Burning.Chance * Resistances.BurnResistance / 100)
             {
-                GetArsoned(conditioning.Arsoning.Damage, conditioning.Arsoning.Duration);
+                GetBurn(conditioning.Burning.Damage, conditioning.Burning.Duration);
             }
         }
 
         Health -= finalDamage;
-        //result.Pose = EntityPose.SufferingPose;
         result.PoseName = Poses.Suffering;
         result.HealthChanged = -finalDamage;
         result.Effect = effect;
@@ -194,7 +197,6 @@ public abstract class EntityInfo
         Health -= damage;
 
         var result = new TargetState();
-        //result.Pose = EntityPose.SufferingPose;
         result.PoseName = Poses.Suffering;
         result.HealthChanged = -damage;
         result.Target = this;
@@ -208,7 +210,6 @@ public abstract class EntityInfo
     {
         var result = new TargetState();
         Health += health;
-        //result.Pose = EntityPose.ReinforcedPose;
         result.PoseName = Poses.Buffed;
         result.HealthChanged = health;
         result.Target = this;
@@ -227,7 +228,7 @@ public abstract class EntityInfo
         _conditions.bleeding.duration = duration;
     }
 
-    private void GetArsoned(float damage, int duration)
+    private void GetBurn(float damage, int duration)
     {
         _conditions.burning.burningDamage = damage;
         _conditions.burning.duration = duration;

@@ -25,7 +25,7 @@ public class SingleFire : CharacterCommand
 
         Conditioning.SetBleeding(1f, 2, 3);
         Conditioning.SetPoisoning(1f, 2, 1);
-        Conditioning.SetArsoning(1f, 4, 1);
+        Conditioning.SetBurning(1f, 4, 1);
     }
 
 
