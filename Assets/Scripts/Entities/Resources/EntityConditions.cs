@@ -26,7 +26,8 @@ public class EntityConditions
 
     public void AddMutilation(EntityMutilation mutilation)
     {
-        Mutilations.Add(mutilation);
+        if (!Mutilations.Contains (mutilation))
+            Mutilations.Add(mutilation);
     }
 
     public void RemoveMutilation(EntityMutilation mutilation)

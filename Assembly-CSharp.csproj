@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Commands\Buttons\CommandButton.cs" />
     <Compile Include="Assets\Scripts\Equipment\Device\EntityDevice.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
+    <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\Limping.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterInfo.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainSceneController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\EntityBattleCard.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Assets\Scripts\CharacterNameCreation\NameGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
     <Compile Include="Assets\Scripts\Equipment\Device\FirstAidKit.cs" />
+    <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\EntityMutilation.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorLigth.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ResourceItem.cs" />
@@ -179,8 +181,6 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\EntityMutilation.cs" />
-    <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\Limping.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
