@@ -35,7 +35,8 @@ public abstract class EntityCardBase : MonoBehaviour
     {
         if (entity is null)
         {
-            throw new ArgumentNullException(nameof(entity));
+            gameObject.SetActive(false);
+            return;
         }
 
         _meleeDamage.text = entity.EntityChars.MeleeDamage.ToString();

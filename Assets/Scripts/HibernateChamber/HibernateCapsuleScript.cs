@@ -48,20 +48,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //if (capsuleInfo.Character != null)
-        //{
-        //    _characterName.text = capsuleInfo.Character.ClassName;
-
-
-        //}
-        //else
-        //{
-        //    _characterName.text = "Пусто !";
-        //}
-        if (capsuleInfo.Character != null)
-        {
-            _entityCardScript.FillInfo(capsuleInfo.Character);
-        }
+        _entityCardScript.FillInfo(capsuleInfo.Character);
     }
 
     public void CheckStatus()
