@@ -18,6 +18,7 @@ public class EntityCardScript : EntityCardBase
     [SerializeField] protected List<GameObject> _characterSkills; 
 
     [SerializeField] protected TMP_Text _entityType;
+    [SerializeField] protected TMP_Text _entityRarity;
 
     [SerializeField] protected TMP_Text _initiative;
 
@@ -51,6 +52,11 @@ public class EntityCardScript : EntityCardBase
         _image.sprite = entity.FullFaceSprite;
 
         EntityClassCaption.text = entity.ClassName;
+        var character = entity as CharacterInfo;
+        if (character != null)
+        {
+            _entityRarity.text = character.RarityToString;
+        }     
 
         _initiative.text = entity.EntityChars.Initiative.ToString();
 
