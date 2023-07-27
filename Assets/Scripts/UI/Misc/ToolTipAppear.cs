@@ -25,8 +25,6 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
 
     private CanvasGroup _canvasGroup;
 
-    private float _widthToolTipPanel;
-
 
     public string ToolTipString 
     {
@@ -103,10 +101,5 @@ public class ToolTipAppear : MonoBehaviour , IPointerExitHandler, IPointerEnterH
     {
 
         _toolTipText.text = _toolTip;
-    }
-
-    void Update()
-    {
-        
     }
 }

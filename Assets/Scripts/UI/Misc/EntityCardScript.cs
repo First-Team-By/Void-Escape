@@ -19,6 +19,8 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] protected TMP_Text _entityType;
 
+    [SerializeField] protected TMP_Text _rarityName;
+
     [SerializeField] protected TMP_Text _initiative;
 
     [SerializeField] protected TMP_Text _fullName;
@@ -35,6 +37,12 @@ public class EntityCardScript : EntityCardBase
     { 
         get { return _entityType; } 
         set { _entityType = value; } 
+    }
+
+    public TMP_Text EntityClassRarity
+    {
+        get { return _rarityName; }
+        set { _rarityName = value;}
     }
 
     protected override void Init()
@@ -57,6 +65,13 @@ public class EntityCardScript : EntityCardBase
         _currentHealth.fillAmount = entity.Health / entity.EntityChars.MaxHealth;
 
         _fullName.text = entity.FullName;
+
+        var character = entity as CharacterInfo;
+
+        if (character != null)
+        {
+            EntityClassRarity.text = character.RarityToString;
+        }
 
         RefreshEquipments();
 

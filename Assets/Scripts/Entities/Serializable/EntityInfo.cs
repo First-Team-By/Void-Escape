@@ -78,7 +78,7 @@ public abstract class EntityInfo
 
     private static string[] entityClassNames = new string[] { "Офицер", "Медик", "Мутант" };
 
-    public string ClassName => GetClassName(EntityClass);  
+    public string ClassName => GetClassName(EntityClass);
 
     public string FullName
     {

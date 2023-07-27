@@ -16,8 +16,8 @@ public abstract class CharacterInfo : EntityInfo
     public static string[] RarityNames = new string[6]
     {
         "Уникальный",
-        "Обычный",
-        "Редкий",
+        "<color=#ffffffff>Обычный</color>",
+        "<color=#0000ffff>Редкий</color>",
         "Эпический",
         "Легендарный",
         "Мифический"
