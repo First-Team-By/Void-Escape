@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityCardScript : EntityCardBase
 {
@@ -19,7 +15,7 @@ public class EntityCardScript : EntityCardBase
 
     [SerializeField] protected TMP_Text _entityType;
 
-    [SerializeField] protected TMP_Text _rarityName;
+    [SerializeField] protected TMP_Text _rarity;
 
     [SerializeField] protected TMP_Text _initiative;
 
@@ -41,8 +37,8 @@ public class EntityCardScript : EntityCardBase
 
     public TMP_Text EntityClassRarity
     {
-        get { return _rarityName; }
-        set { _rarityName = value;}
+        get { return _rarity; }
+        set { _rarity = value;}
     }
 
     protected override void Init()

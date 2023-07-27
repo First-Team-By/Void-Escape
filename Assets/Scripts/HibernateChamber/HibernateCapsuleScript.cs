@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
+public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public HibernateCapsule capsuleInfo;
 
@@ -38,7 +38,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         }
 
         Global.allCharacters.CharacterInfos.Add(capsuleInfo.Character);
-        StartCoroutine(OnEnableUIPopUpWinCor(capsuleInfo.Character.ClassName));
+        StartCoroutine(OnEnableUIPopUpWinCor($"{capsuleInfo.Character.FullName} ({capsuleInfo.Character.ClassName})"));
         capsuleInfo.Character = null;
         capsuleInfo.Status = CapsuleStatus.Empty;
         _hibernaiteChamber.SaveToGlobal();
@@ -49,6 +49,11 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         _entityCardScript.FillInfo(capsuleInfo.Character);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _entityCardScript.FillInfo(null);
     }
 
     public void CheckStatus()

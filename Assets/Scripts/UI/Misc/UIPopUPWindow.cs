@@ -15,7 +15,7 @@ public class UIPopUPWindow : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        _uiPopUpText.text = $"{identifier} присоединился к команде! Редкость персонажа ({CharacterInfo.RarityNames[1]})";
+        _uiPopUpText.text = $"{identifier} присоединился к команде!";
     }
 
     public void CloseWindow()
