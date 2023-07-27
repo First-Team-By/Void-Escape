@@ -11,7 +11,7 @@ public class UIPopUPWindow : MonoBehaviour
 
     [SerializeField] private EntityCardScript _entityCardScript;
 
-    public void OnEnableUIPopUpWindow(string identifier)
+    public void OnEnableUIPopUpWindow(string identifier, string rarity)
     {
         gameObject.SetActive(true);
 

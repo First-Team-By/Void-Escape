@@ -94,11 +94,11 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler, IPoin
         }
     }
 
-    private IEnumerator OnEnableUIPopUpWinCor(string identifier)
+    private IEnumerator OnEnableUIPopUpWinCor(string identifier, string rarity)
     {
         yield return new WaitForSeconds(1.6f);
 
-        _uIPopUPWindow.OnEnableUIPopUpWindow(identifier);
+        _uIPopUPWindow.OnEnableUIPopUpWindow(identifier, rarity);
     }
 }
 
