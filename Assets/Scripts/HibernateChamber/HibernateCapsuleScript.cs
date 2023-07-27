@@ -38,7 +38,7 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         }
 
         Global.allCharacters.CharacterInfos.Add(capsuleInfo.Character);
-        StartCoroutine(OnEnableUIPopUpWinCor(capsuleInfo.Character.ClassName));
+        StartCoroutine(OnEnableUIPopUpWinCor(capsuleInfo.Character.ClassName, capsuleInfo.Character.RarityToString));
         capsuleInfo.Character = null;
         capsuleInfo.Status = CapsuleStatus.Empty;
         _hibernaiteChamber.SaveToGlobal();
@@ -89,11 +89,11 @@ public class HibernateCapsuleScript : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    private IEnumerator OnEnableUIPopUpWinCor(string identifier)
+    private IEnumerator OnEnableUIPopUpWinCor(string identifier, string rarity)
     {
         yield return new WaitForSeconds(1.6f);
 
-        _uIPopUPWindow.OnEnableUIPopUpWindow(identifier);
+        _uIPopUPWindow.OnEnableUIPopUpWindow(identifier, rarity);
     }
 }
 
