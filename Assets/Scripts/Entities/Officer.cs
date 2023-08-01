@@ -30,6 +30,8 @@ public class Officer : CharacterInfo
 
         Rarity = Rarity.Rare;
 
+        Conditions.AddMutilation(new Limping());
+
         //GetBleeded(0.1f, 100);
     }
 

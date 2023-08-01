@@ -40,6 +40,10 @@ public class Medic : CharacterInfo
         Armor = new BodyArmorLigth();
 
         EntityClass = EntityClass.Medic;
+
+        Conditions.brokenArm = 1;
+
+        Conditions.brokenLeg = 1;
     }
 
     

@@ -7,6 +7,8 @@ public class EntityCardScript : EntityCardBase
 {
     protected EntityInfo _entity;
 
+    [SerializeField] protected TMP_Text _disabilities;
+
     [SerializeField] protected Image _image;
 
     [SerializeField] protected Image _currentHealth;
@@ -72,6 +74,13 @@ public class EntityCardScript : EntityCardBase
         RefreshEquipments();
 
         RefreshCommands();
+
+        RefreshDisabilities();
+    }
+
+    protected void RefreshDisabilities()
+    {
+        _disabilities.text = _entity.Conditions.GetDisabilities();
     }
 
     protected void RefreshEquipments()

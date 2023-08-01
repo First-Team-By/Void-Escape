@@ -24,6 +24,28 @@ public class EntityConditions
 
     public List<EntityMutilation> Mutilations = new List<EntityMutilation> ();
 
+    public string GetDisabilities()
+    {
+        var result = "";
+
+        if (ArmBroken)
+        {
+            result += "Перелом руки\n";
+        }
+
+        if (LegBroken)
+        {
+            result += "Перелом ноги\n";
+        }
+
+        foreach(var mutilation in Mutilations)
+        {
+            result += mutilation.Name + "\n";
+        }
+
+        return result;
+    }
+
     public void AddMutilation(EntityMutilation mutilation)
     {
         if (!Mutilations.Contains (mutilation))
