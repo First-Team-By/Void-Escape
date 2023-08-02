@@ -30,12 +30,12 @@ public class EntityConditions
 
         if (ArmBroken)
         {
-            result += "Перелом руки\n";
+            result += "<color=#800000ff>Перелом руки</color>\n";
         }
 
         if (LegBroken)
         {
-            result += "Перелом ноги\n";
+            result += "<color=#800000ff>Перелом ноги</color>\n";
         }
 
         foreach(var mutilation in Mutilations)

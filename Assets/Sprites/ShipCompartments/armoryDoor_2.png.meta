@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b52472812055ec1408de024b4c01019a
+guid: aa723ad9be64b4943b9f6d9761a5a276
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: armoryDoor_1_0
+      name: armoryDoor_2_0
       rect:
         serializedVersion: 2
         x: 11
@@ -119,19 +119,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7825935c0992c74687148b63db37633
-      internalID: 30534899
+      spriteID: 4bc82389e7df66b4d887d104b9ade6ca
+      internalID: -1682436216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: armoryDoor_1_1
+      name: armoryDoor_2_1
       rect:
         serializedVersion: 2
-        x: 239
+        x: 240
         y: 36
-        width: 272
+        width: 271
         height: 983
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9440d3a31faf2ab4bb002a25ee12fba9
-      internalID: -1070451347
+      spriteID: 6f115ecdcda229345821c2d42ecc4a4a
+      internalID: 716194257
       vertices: []
       indices: 
       edges: []
@@ -157,8 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      armoryDoor_1_0: 30534899
-      armoryDoor_1_1: -1070451347
+      armoryDoor_2_0: -1682436216
+      armoryDoor_2_1: 716194257
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

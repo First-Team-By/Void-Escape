@@ -11,7 +11,7 @@
 
     public Limping()
     {
-        Name = "Хромота";
+        Name = "<color=#ff0000ff>Хромота</color>";
         CostToHeal.Energy = 100;
         CostToHeal.Medicine = 200;
         CostToHeal.Metal = 10;
