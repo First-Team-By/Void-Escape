@@ -29,7 +29,7 @@ public class RoomBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _controller = GameObject.Find("DungeonMapController").GetComponent<DungeonMapController>();
+        _controller = GameObject.Find("GameController").GetComponent<DungeonMapController>();
     }
 
     public void UpdateRoom(RoomInfo roomInfo, Vector2 size)

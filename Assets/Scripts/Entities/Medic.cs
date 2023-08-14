@@ -41,9 +41,9 @@ public class Medic : CharacterInfo
 
         EntityClass = EntityClass.Medic;
 
-        Conditions.brokenArm = 1;
+        //Conditions.brokenArm = 1;
 
-        Conditions.brokenLeg = 1;
+        //Conditions.brokenLeg = 1;
     }
 
     
