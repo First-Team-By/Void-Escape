@@ -80,7 +80,8 @@ public class EntityCardScript : EntityCardBase
 
     protected void RefreshDisabilities()
     {
-        _disabilities.text = _entity.Conditions.GetDisabilities();
+        if (_disabilities != null) 
+            _disabilities.text = _entity.Conditions.GetDisabilities();
     }
 
     protected void RefreshEquipments()

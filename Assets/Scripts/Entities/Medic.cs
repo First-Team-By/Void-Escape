@@ -43,7 +43,8 @@ public class Medic : CharacterInfo
 
         //Conditions.brokenArm = 1;
 
-        //Conditions.brokenLeg = 1;
+        Conditions.brokenLeg = 1;
+        Health = Health / 2;
     }
 
     

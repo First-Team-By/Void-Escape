@@ -21,6 +21,7 @@ public class EntityConditions
     public bool ArmBroken => brokenArm > 0;
     public bool LegBroken => brokenLeg > 0;
 
+    public bool HasTrauma => brokenArm + brokenLeg > 0;
 
     public List<EntityMutilation> Mutilations = new List<EntityMutilation> ();
 
