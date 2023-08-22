@@ -138,6 +138,6 @@ public class DungeonMapController : MonoBehaviour
 
     public void AbortMission()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(1); // MainScene
     }
 }

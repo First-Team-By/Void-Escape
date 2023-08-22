@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/BattleScene.unity
-    guid: 7e4c26af93e6e2a49b1cd82017fe734e
-  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: a06e090d2f4276048b4d24411d458c69
   - enabled: 1
@@ -20,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DungeonScene.unity
     guid: 4082695266750c54396b605cbce1eb16
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: 7e4c26af93e6e2a49b1cd82017fe734e
   m_configObjects: {}

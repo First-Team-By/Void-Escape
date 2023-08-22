@@ -18,6 +18,6 @@ public class Gate : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        SceneManager.LoadScene("TeamInitScene");
+        SceneManager.LoadScene(2); // TeamInitScene
     }
 }

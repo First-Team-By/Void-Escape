@@ -24,7 +24,7 @@ public class TeamInitHandler : MonoBehaviour
 
         if (characters.Count == 0)
         {
-            throw new InvalidOperationException("The group is null or fuck you");
+            throw new InvalidOperationException("The group list is empty");
         }
 
         Global.SaveCharactersInfo(characters);
@@ -38,6 +38,7 @@ public class TeamInitHandler : MonoBehaviour
 
         Global.currentMapInfo.currentRoomNumber = 0;
         Global.Stage = GameStage.InMission;
-        SceneManager.LoadScene("DungeonScene");
+
+        SceneManager.LoadScene(3); // DungeonScene
     }
 }

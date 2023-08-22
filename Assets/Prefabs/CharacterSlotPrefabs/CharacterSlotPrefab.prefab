@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9b872be8761574593aa694a9e309c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoButton: {fileID: 8880411784251031803}
+  _infoButton: {fileID: 0}
   _portrait: {fileID: 8880411785099886660}
   _serviceImagePanel: {fileID: 643011167780109518}
   _characterName: {fileID: 8880411784484980303}

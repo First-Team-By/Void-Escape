@@ -315,6 +315,6 @@ public class BattleRoutine : MonoBehaviour
 
     public void ReturnToDungeon()
     {
-        SceneManager.LoadScene("DungeonScene");
+        SceneManager.LoadScene(3); // DungeonScene
     }
 }

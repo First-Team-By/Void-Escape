@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class UICharacterSlot : UIDragAndDrop
 {
-    [SerializeField] private CharacterInfo characterInfo;
-    [SerializeField] private Button infoButton;
+    [SerializeField] private CharacterInfo _characterInfo;
+    [SerializeField] private Button _infoButton;
     [SerializeField] private Image _portrait;
     [SerializeField] private GameObject _serviceImagePanel;
     [SerializeField] private Text _characterName;
@@ -20,7 +20,7 @@ public class UICharacterSlot : UIDragAndDrop
 
     public Text CharacterName => _characterName;
 
-    public CharacterInfo Character => characterInfo;
+    public CharacterInfo Character => _characterInfo;
 
     private UIPartyBuildPosition lastSelectedPosition;
 
@@ -34,8 +34,8 @@ public class UICharacterSlot : UIDragAndDrop
 
     public CharacterInfo CharacterInfo
     {
-        get { return characterInfo; }
-        set { characterInfo = value; }
+        get { return _characterInfo; }
+        set { _characterInfo = value; }
     }
     void Start()
     {
@@ -65,6 +65,8 @@ public class UICharacterSlot : UIDragAndDrop
     {
         base.OnBeginDrag(eventData);
 
+        Debug.Log("On begin drag");
+
         var color = GetComponent<Image>().color;
 
         color.a = 0;
@@ -87,6 +89,8 @@ public class UICharacterSlot : UIDragAndDrop
     public override void OnEndDrag(PointerEventData eventData)
     {
         base.OnEndDrag(eventData);
+
+        Debug.Log("On end drag");
 
         var color = GetComponent<Image>().color;
 
