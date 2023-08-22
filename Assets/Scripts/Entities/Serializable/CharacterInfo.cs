@@ -11,6 +11,16 @@ public enum Rarity
     Mythical = 5,  
 }
 
+public enum MedicalState
+{
+    Idle = 0,
+    RestoreHealth = 1, 
+    CureTrauma = 2,
+    CureMutilation = 3,
+    Implantation = 4
+
+}
+
 public abstract class CharacterInfo : EntityInfo
 {
     public static string[] RarityNames = new string[6]
@@ -29,6 +39,7 @@ public abstract class CharacterInfo : EntityInfo
     public EntityArmor Armor { set; get; }
     public Rarity Rarity { set; get; } = Rarity.Common;
     public string RarityToString => RarityNames[(int)Rarity];
+    public MedicalState MedicalState { set; get; }
 
     public override EntityResistances Resistances
     {
