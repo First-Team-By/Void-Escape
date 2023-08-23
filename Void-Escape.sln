@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-examples-editor", "spine-unity-examples-editor.csproj", "{4F0854CF-010E-E46B-C01E-9B3E0D95F708}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{18BED6DB-CF77-F9C2-8B90-AC3116B6E669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{4F0854CF-010E-E46B-C01E-9B3E0D95F708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F0854CF-010E-E46B-C01E-9B3E0D95F708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F0854CF-010E-E46B-C01E-9B3E0D95F708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18BED6DB-CF77-F9C2-8B90-AC3116B6E669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18BED6DB-CF77-F9C2-8B90-AC3116B6E669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18BED6DB-CF77-F9C2-8B90-AC3116B6E669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18BED6DB-CF77-F9C2-8B90-AC3116B6E669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
