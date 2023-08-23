@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class CharactersContainerAdapter : MonoBehaviour
@@ -13,7 +14,7 @@ public class CharactersContainerAdapter : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        foreach (var characterInfo in Global.allCharacters.CharacterInfos)
+        foreach (var characterInfo in Global.allCharacters.CharacterInfos.Where(x => x.MedicalState == MedicalState.Idle))
         {
             var characterSlot = GameObject.Instantiate(_characterSlotPrefab.gameObject) as GameObject;
             var uiCharacterSlot = characterSlot.GetComponent<UICharacterSlot>();    

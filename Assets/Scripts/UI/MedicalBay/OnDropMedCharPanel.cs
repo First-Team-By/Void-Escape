@@ -13,6 +13,12 @@ public class OnDropMedCharPanel : MonoBehaviour, IDropHandler
 
         if(dragChar.pointerDrag != null)
         {
+            var characterSlot = dragChar.pointerDrag.GetComponent<UICharacterSlot>();
+
+            var capsule = characterSlot.OldParent.GetComponent<UIMedCapsuleSlot>();
+
+            capsule.ButtonPanel.SetActive(false);
+
             dragChar.pointerDrag.transform.SetParent(_medCharPanelContent.transform);
 
             dragChar.pointerDrag.GetComponent<RectTransform>().localPosition = Vector2.zero;
