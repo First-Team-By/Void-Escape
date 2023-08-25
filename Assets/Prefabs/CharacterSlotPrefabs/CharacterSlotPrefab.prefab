@@ -32,9 +32,8 @@ RectTransform:
   m_Children:
   - {fileID: 8880411785484581745}
   - {fileID: 8880411784490742810}
-  - {fileID: 8880411784251031804}
   m_Father: {fileID: 8880411784242653863}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -348,13 +347,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8880411785099886662}
+  - {fileID: 8880411784251031804}
   - {fileID: 6561708414763231451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -87.5, y: -67.5}
+  m_AnchoredPosition: {x: -102.1, y: -61.6}
   m_SizeDelta: {x: 175, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8880411784242653861
@@ -411,6 +411,7 @@ MonoBehaviour:
   _portrait: {fileID: 8880411785099886660}
   _serviceImagePanel: {fileID: 643011167780109518}
   _characterName: {fileID: 8880411784484980303}
+  _scalePortret: {fileID: 8880411785099886665}
 --- !u!225 &4008070097827483510
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -455,8 +456,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8880411783948205490}
-  m_Father: {fileID: 6561708414763231451}
-  m_RootOrder: 2
+  m_Father: {fileID: 8880411784242653863}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}

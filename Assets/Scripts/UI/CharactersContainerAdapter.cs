@@ -5,11 +5,11 @@ public class CharactersContainerAdapter : MonoBehaviour
 {
     [SerializeField] private GameObject _characterSlotPrefab;
 
-    [SerializeField] private RectTransform _content;
+    [SerializeField] private RectTransform _contentMedCharPanel;
 
     private void OnEnable()
     {
-        foreach (Transform item in _content.GetComponentInChildren<Transform>())
+        foreach (Transform item in _contentMedCharPanel.GetComponentInChildren<Transform>())
         {
             Destroy(item.gameObject);
         }
@@ -23,7 +23,7 @@ public class CharactersContainerAdapter : MonoBehaviour
             uiCharacterSlot.Portrait.sprite = characterInfo.FullFaceSprite;
 
             uiCharacterSlot.CharacterId = characterInfo.Id;
-            characterSlot.transform.SetParent(_content, false);
+            characterSlot.transform.SetParent(_contentMedCharPanel, false);
 
             uiCharacterSlot.CharacterName.text = EnemyInfo.GetClassName(characterInfo.EntityClass);
         }

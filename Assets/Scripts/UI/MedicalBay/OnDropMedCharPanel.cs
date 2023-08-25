@@ -22,6 +22,8 @@ public class OnDropMedCharPanel : MonoBehaviour, IDropHandler
             dragChar.pointerDrag.transform.SetParent(_medCharPanelContent.transform);
 
             dragChar.pointerDrag.GetComponent<RectTransform>().localPosition = Vector2.zero;
+
+            Debug.Log("OnDrop");
         }
     }
 }

@@ -7,8 +7,11 @@ using UnityEngine.UI;
 
 public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
 {
+    //[SerializeField] private Transform _medicalCharacterPanel;
+    //[SerializeField] private GameObject _medCapsuleSlot;
+
     private CharacterInfo characterInfo;
-    private UICharacterSlot characterSlot;
+    private UICharacterSlot _characterSlot;
 
     [SerializeField] private GameObject _cplPanel;
     [SerializeField] private Button _healthButton;
@@ -23,11 +26,18 @@ public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
         {
             var dragChar = eventData.pointerDrag;
 
-            characterSlot = dragChar.GetComponent<UICharacterSlot>();
+            _characterSlot = dragChar.GetComponent<UICharacterSlot>();
 
-            if (characterSlot != null)
+
+            //if (_medCapsuleSlot.transform.childCount == 2)
+            //{
+            //    _characterSlot.transform.SetParent(_medicalCharacterPanel.transform);
+            //}
+
+
+            if (_characterSlot != null)
             {
-                characterInfo = characterSlot.CharacterInfo;
+                characterInfo = _characterSlot.CharacterInfo;
                 _healthButton.gameObject.SetActive(characterInfo.Health < characterInfo.EntityChars.MaxHealth);
                 _traumaButton.gameObject.SetActive(characterInfo.Conditions.HasTrauma);
                 _mutilationButton.gameObject.SetActive(characterInfo.Conditions.Mutilations.Count > 0);
@@ -38,6 +48,8 @@ public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
             dragChar.GetComponent<RectTransform>().localPosition = Vector2.zero;
 
             _cplPanel.SetActive(true);
+
+            Debug.Log("OnDrop");
         }
     }
 
@@ -47,6 +59,35 @@ public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
 
         _cplPanel.SetActive(false);
 
-        characterSlot.enabled = false;
+        _characterSlot.enabled = false;
+    }
+
+    public void SetMedTrauma(int state)
+
+    {
+        characterInfo.MedicalState = (MedicalState)state;
+
+        _cplPanel.SetActive(false);
+
+        _characterSlot.enabled = false;
+    }
+
+    public void SetMutilation(int state)
+    {
+        characterInfo.MedicalState = (MedicalState)state;
+
+        _cplPanel.SetActive(false);
+
+        _characterSlot.enabled = false;
+    }
+
+    public void SetImplant(int state)
+    {
+        characterInfo.MedicalState = (MedicalState)state;
+
+        _cplPanel.SetActive(false);
+
+        _characterSlot.enabled = false;
     }
 }
+
