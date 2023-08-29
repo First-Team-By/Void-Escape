@@ -15,7 +15,6 @@ public class ScenesHotbarWindow : EditorWindow
         ScenesHotbarWindow window = (ScenesHotbarWindow)GetWindow(typeof(ScenesHotbarWindow));
         window.minSize = new Vector2(100, 100);
         window.maxSize = new Vector2(300, 300);
-
     }
 
     private void OnGUI()
@@ -37,7 +36,7 @@ public class ScenesHotbarWindow : EditorWindow
     {
         int slashIndex = path.LastIndexOf('/');
         int dotIndex = path.LastIndexOf('.');
-        //
+
         string nameWithoutExtension = path.Substring(0, dotIndex);
         string name = nameWithoutExtension.Substring(slashIndex + 1, nameWithoutExtension.Length - slashIndex - 1);
         return name;

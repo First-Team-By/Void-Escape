@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,89 +6,61 @@ using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class UIMedCapsuleSlot : MonoBehaviour, IDropHandler
+public class UIMedCapsuleSlot : UISlot
 {
     //[SerializeField] private Transform _medicalCharacterPanel;
     //[SerializeField] private GameObject _medCapsuleSlot;
 
-    private CharacterInfo characterInfo;
-    private UICharacterSlot _characterSlot;
+    private CharacterInfo _characterInfo;
+    private UICharacterContainer _characterContainer;
 
-    [SerializeField] private GameObject _cplPanel;
+    [SerializeField] private GameObject _buttonPanel;
     [SerializeField] private Button _healthButton;
     [SerializeField] private Button _traumaButton;
     [SerializeField] private Button _mutilationButton;
 
-    public GameObject ButtonPanel { get { return _cplPanel; } }
-
-    public void OnDrop(PointerEventData eventData)
+    public GameObject ButtonPanel => _buttonPanel;
+    public CharacterInfo Character
     {
-        if (eventData.pointerDrag != null)
+        get => _characterInfo;
+        set => _characterInfo = value;
+    } 
+
+    public override Type ContainerType => typeof(UICharacterContainer);
+
+    public override void ProcessDrop(UIDragContainer container)
+    {
+        if (Character != null)
         {
-            var dragChar = eventData.pointerDrag;
+            container.ReturnToOldParent();
+            return;
+        }
+        
+        _characterContainer = container as UICharacterContainer;
+        
+        if (_characterContainer != null)
+        {
+            Character = _characterContainer.Character;
+            _healthButton.gameObject.SetActive(Character.Health < Character.EntityChars.MaxHealth);
+            _traumaButton.gameObject.SetActive(Character.Conditions.HasTrauma);
+            _mutilationButton.gameObject.SetActive(Character.Conditions.Mutilations.Count > 0);
+            _buttonPanel.SetActive(true);
 
-            _characterSlot = dragChar.GetComponent<UICharacterSlot>();
-
-
-            //if (_medCapsuleSlot.transform.childCount == 2)
-            //{
-            //    _characterSlot.transform.SetParent(_medicalCharacterPanel.transform);
-            //}
-
-
-            if (_characterSlot != null)
+            if (_characterContainer.OldParent.TryGetComponent<UIMedCapsuleSlot>(out UIMedCapsuleSlot slot))
             {
-                characterInfo = _characterSlot.CharacterInfo;
-                _healthButton.gameObject.SetActive(characterInfo.Health < characterInfo.EntityChars.MaxHealth);
-                _traumaButton.gameObject.SetActive(characterInfo.Conditions.HasTrauma);
-                _mutilationButton.gameObject.SetActive(characterInfo.Conditions.Mutilations.Count > 0);
+                slot.ButtonPanel.SetActive(false);
+                slot.Character = null;
             }
-
-            dragChar.transform.SetParent(gameObject.transform);
-
-            dragChar.GetComponent<RectTransform>().localPosition = Vector2.zero;
-
-            _cplPanel.SetActive(true);
-
-            Debug.Log("OnDrop");
         }
     }
 
     public void SetMedicalState(int state)
     {
-        characterInfo.MedicalState = (MedicalState)state;
+        _characterInfo.MedicalState = (MedicalState)state;
 
-        _cplPanel.SetActive(false);
+        _buttonPanel.SetActive(false);
 
-        _characterSlot.enabled = false;
-    }
-
-    public void SetMedTrauma(int state)
-
-    {
-        characterInfo.MedicalState = (MedicalState)state;
-
-        _cplPanel.SetActive(false);
-
-        _characterSlot.enabled = false;
-    }
-
-    public void SetMutilation(int state)
-    {
-        characterInfo.MedicalState = (MedicalState)state;
-
-        _cplPanel.SetActive(false);
-
-        _characterSlot.enabled = false;
-    }
-
-    public void SetImplant(int state)
-    {
-        characterInfo.MedicalState = (MedicalState)state;
-
-        _cplPanel.SetActive(false);
-
-        _characterSlot.enabled = false;
+        _characterContainer.enabled = false;
     }
 }
 

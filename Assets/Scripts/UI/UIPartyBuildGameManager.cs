@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIPartyBuildGameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _infoPanel;
-    public List<UICharacterSlot> CharacterSlots { get; set; } = new List<UICharacterSlot>();
+    public List<UICharacterContainer> CharacterSlots { get; set; } = new List<UICharacterContainer>();
 
     public void InfoImageOn()
     {

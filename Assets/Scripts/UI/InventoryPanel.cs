@@ -19,11 +19,9 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         var otherItemTransform = eventData.pointerDrag.transform;
-
         otherItemTransform.SetParent(_contentItemPanel.transform);
 
         var item = eventData.pointerDrag.GetComponent<UIItem>().Equipment;
-
         OnItemDrop?.Invoke(item);
     }
 
@@ -31,7 +29,7 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
     {
         if (_contentItemPanel == null)
         {
-            return;
+            throw new NullReferenceException("Content item panel is null");
         }
 
         foreach (Transform item in _contentItemPanel.GetComponentInChildren<Transform>())
@@ -41,8 +39,6 @@ public class InventoryPanel : MonoBehaviour, IDropHandler
 
         List<Equipment> equipments = Inventory.Equipments;
         List<ResourceItem> resources = Inventory.ResourceItems;
-
-
 
         foreach (var item in equipments)
         {

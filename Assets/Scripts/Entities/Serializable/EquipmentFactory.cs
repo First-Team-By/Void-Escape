@@ -8,7 +8,7 @@ public static class ItemFactory
 
         item.Equipment = equipment;
 
-        item.Image.sprite = equipment.Icon;
+        item.Icon.sprite = equipment.Icon;
 
         return item;
     }

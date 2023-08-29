@@ -63,9 +63,10 @@
     <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UICharacterSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
-    <Compile Include="Assets\Scripts\UI\Misc\UIDragAndDrop.cs" />
+    <Compile Include="Assets\Scripts\UI\Misc\UIDragContainer.cs" />
     <Compile Include="Assets\Scripts\Inventories\DepotType.cs" />
     <Compile Include="Assets\Scripts\InGameResources\LootItem.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="Assets\Scripts\Equipment\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitScene\UIPartyBuildPosition.cs" />
-    <Compile Include="Assets\Scripts\UI\UICharacterSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\UICharacterContainer.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityResistances.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\DoorContainer.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\KillMonsterQuest.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\CharacterPosition.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIActiveCharacterListController.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\EventResolver.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\ToolTipAppear.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\BattlePosition.cs" />
@@ -128,9 +130,10 @@
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorSapper.cs" />
-    <Compile Include="Assets\UICharacterSlotsContainer.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UISlot.cs" />
     <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIList.cs" />
     <Compile Include="Assets\Scripts\Tools\Components\UI\FlexibleGridLayout.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestDifficulty.cs" />
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
@@ -167,7 +170,7 @@
     <Compile Include="Assets\Scripts\Equipment\Weapons\Scalpel.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIEquipmentCard.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\CharactersContainerAdapter.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIListController.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\BarracksAdapter.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitScene\UIDropHandler.cs" />
@@ -181,6 +184,7 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIMedicalIdleCharacterList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -190,6 +194,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\UI\Test\Test.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -205,6 +210,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\UI\Test\Test_stylesheet.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

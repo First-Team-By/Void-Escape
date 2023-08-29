@@ -5,9 +5,7 @@ using UnityEngine;
 public class BarracksAdapter : MonoBehaviour
 {
     [SerializeField] private GameObject _barracksCharSlotPref;
-
     [SerializeField] private RectTransform _content;
-
     [SerializeField] private EntityCardScript _entityCard;
 
     private void OnEnable()
@@ -20,27 +18,21 @@ public class BarracksAdapter : MonoBehaviour
         foreach (var characterInfo in Global.allCharacters.CharacterInfos)
         {
             var barracksCharSlot = Instantiate(_barracksCharSlotPref.gameObject);
-
             var uiBarracksCharSlot = barracksCharSlot.GetComponent<UIBarracksCharSlot>();
 
             uiBarracksCharSlot.Portrait.sprite = characterInfo.FullFaceSprite;
-
             uiBarracksCharSlot.CharacterId = characterInfo.Id;
+            uiBarracksCharSlot.CharacterClass.text = characterInfo.ClassName;
+            uiBarracksCharSlot.CharacterFullName.text = characterInfo.FullName;
+            uiBarracksCharSlot.CharacterInfo = characterInfo;
+            uiBarracksCharSlot.EntityCard = _entityCard;
 
             barracksCharSlot.transform.SetParent(_content, false);
-
-            uiBarracksCharSlot.CharacterClass.text = characterInfo.ClassName;
-
-            uiBarracksCharSlot.CharacterFullName.text = characterInfo.FullName;
-
-            uiBarracksCharSlot.CharacterInfo = characterInfo;
-
-            uiBarracksCharSlot.EntityCard = _entityCard;
         }
+
         if (_content.childCount > 0)
         {
             _content.GetChild(0).GetComponent<UIBarracksCharSlot>().DoSelect();
         }
-        
     }
 }

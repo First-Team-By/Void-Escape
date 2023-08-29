@@ -10,7 +10,6 @@ public class TeamInitHandler : MonoBehaviour
     [SerializeField] private UIPartyBuildPosition[] characterPositions;
     public void SetTeam()
     {
-
         List<CharacterInfo> characters = new List<CharacterInfo>();
         for (int i = 0; i < characterPositions.Length; i++)
         {

@@ -13,7 +13,7 @@ public class OnDropMedCharPanel : MonoBehaviour, IDropHandler
 
         if(dragChar.pointerDrag != null)
         {
-            var characterSlot = dragChar.pointerDrag.GetComponent<UICharacterSlot>();
+            var characterSlot = dragChar.pointerDrag.GetComponent<UICharacterContainer>();
 
             var capsule = characterSlot.OldParent.GetComponent<UIMedCapsuleSlot>();
 

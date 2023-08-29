@@ -8,35 +8,22 @@ using UnityEngine.UI;
 
 public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    [SerializeField] private Image _image;
-
+    [SerializeField] private Image _icon;
     private CanvasGroup _canvasGroup;
-
     private Canvas _mainCanvas;
-
     private RectTransform _rectTransform;
-
-    public GameObject OldParent { get; set; }
-
     private Transform _rootPanel;
 
-    public Image Image => _image;
-
+    public GameObject OldParent { get; set; }
     public Equipment Equipment { get; set; }
-
-    public SlotType SlotType
-    {
-        get { return Equipment.SlotType; }
-    }
+    public Image Icon => _icon;
+    public SlotType SlotType => Equipment.SlotType;
 
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
-
         _mainCanvas = GetComponentInParent<Canvas>();
-
         _canvasGroup = GetComponent<CanvasGroup>();
-
         _rootPanel = GameObject.Find("RootPanel").transform;
     }
 
@@ -45,18 +32,15 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         OldParent = transform.parent.gameObject;
 
         var slotTransform = _rectTransform.parent;
-
         slotTransform.SetAsLastSibling();
 
         _canvasGroup.blocksRaycasts = false;
-
         transform.SetParent(_rootPanel);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        gameObject.transform.position = eventData.position;
-
+        transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -67,7 +51,6 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         }
 
         transform.localPosition = Vector3.zero;
-
         _canvasGroup.blocksRaycasts = true;
     }
 }
