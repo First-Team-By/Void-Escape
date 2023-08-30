@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\InGameResources\Items\IItem.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIAllCharactersListController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UICharacterSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitScene\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterContainer.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIMedicalIdleCharacterList.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityResistances.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\DoorContainer.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\KillMonsterQuest.cs" />
@@ -181,10 +183,12 @@
     <Compile Include="Assets\Scripts\Equipment\Weapons\Blade.cs" />
     <Compile Include="Assets\Scripts\Quests\UIQuestButton.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIItemListController.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UIMedicalIdleCharacterList.cs" />
+    <Compile Include="Assets\Scripts\UI\UIEquipmentContainer.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

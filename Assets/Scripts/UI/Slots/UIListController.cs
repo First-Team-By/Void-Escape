@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class UIListController<T> : UIList
 {
     [SerializeField] private GameObject _objectContainerPrefab;
+    [SerializeField] private bool isDraggable = true;
 
     public abstract List<T> Objects { get; }
 
@@ -23,10 +24,7 @@ public abstract class UIListController<T> : UIList
             BindObject(uiDragContainer, obj);
             objectContainer.transform.SetParent(transform, false);
 
-            //uiDragContainer.CharacterInfo = characterInfo;
-            //uiDragContainer.Portrait.sprite = characterInfo.FullFaceSprite;
-            //uiDragContainer.CharacterId = characterInfo.Id;
-            //uiCharacterSlot.CharacterName.text = EnemyInfo.GetClassName(characterInfo.EntityClass);
+            uiDragContainer.enabled = isDraggable;
         }
     }
 

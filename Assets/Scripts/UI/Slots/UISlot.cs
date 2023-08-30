@@ -17,7 +17,7 @@ public abstract class UISlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag.TryGetComponent<UIDragContainer>(out UIDragContainer container))
         {
             //RefreshCurrentGroup(uiPosition.Position);
-            if (container.GetType() != ContainerType)
+            if (!IsAcceptable(container))
             {
                 return;
             }
@@ -27,6 +27,12 @@ public abstract class UISlot : MonoBehaviour, IDropHandler
 
             ProcessDrop(container);
         }
+    }
+
+    protected virtual bool IsAcceptable(UIDragContainer container)
+    {
+        bool result = container.GetType() == ContainerType;
+        return result;
     }
 
     public abstract void ProcessDrop(UIDragContainer container);

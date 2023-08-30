@@ -11,9 +11,9 @@ using UnityEngine.UI;
 public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField] protected GameObject _backPanel;
-    [SerializeField] protected GameObject _dragPanel;
+    [SerializeField] protected GameObject _frontPanel;
     [SerializeField] protected Image _backImage; 
-    [SerializeField] protected Image _dragImage;
+    [SerializeField] protected Image _frontImage;
     [SerializeField] private Vector2 _onDragScale; 
 
     protected RectTransform _rectTransform;
@@ -46,22 +46,24 @@ public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragH
     {
         transform.SetParent(OldParent);
         transform.localPosition = Vector2.zero;
+        
 
         if (OldParent.TryGetComponent<UIList>(out UIList uiList))
         {
             ToggleImagePanels(false);
+            transform.localScale = Vector2.one;
         }
     }
 
     public void ToggleImagePanels(bool isDrag)
     {
         _backPanel.SetActive(!isDrag);
-        _dragPanel.SetActive(isDrag);
+        _frontPanel.SetActive(isDrag);
     }
 
     public void SetPanelImages(Sprite backSprite, Sprite dragSprite)
     {
-        _dragImage.sprite = dragSprite;
+        _frontImage.sprite = dragSprite;
         _backImage.sprite = backSprite;
     }
 

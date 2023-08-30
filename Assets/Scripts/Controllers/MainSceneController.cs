@@ -13,7 +13,7 @@ public class MainSceneController : MonoBehaviour
             Global.Stage = GameStage.OnBase;
         }
 
-        inventoryPanel.Inventory = Global.storage;
+        //inventoryPanel.Inventory = Global.storage;
     }
 
     void Update()

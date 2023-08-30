@@ -23,7 +23,14 @@ public class UIMedCapsuleSlot : UISlot
     public CharacterInfo Character
     {
         get => _characterInfo;
-        set => _characterInfo = value;
+        set
+        {
+            _characterInfo = value; 
+            if (value == null)
+            {
+                _buttonPanel.SetActive(false);
+            }
+        }
     } 
 
     public override Type ContainerType => typeof(UICharacterContainer);
@@ -61,6 +68,15 @@ public class UIMedCapsuleSlot : UISlot
         _buttonPanel.SetActive(false);
 
         _characterContainer.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        if (Character != null && Character.MedicalState == MedicalState.Idle)
+        {
+            Destroy(_characterContainer.gameObject);
+            Character = null;
+        }
     }
 }
 
