@@ -8,8 +8,10 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
-public abstract class UISlot : MonoBehaviour, IDropHandler
+public abstract class UISlot : MonoBehaviour, IDropHandler, IContainerHolder
 {
+    [SerializeField] private float _contentScale = 1;
+    public Vector2 ContentScale => Vector2.one * _contentScale;
     public abstract Type ContainerType { get; }
 
     public void OnDrop(PointerEventData eventData)
@@ -22,8 +24,8 @@ public abstract class UISlot : MonoBehaviour, IDropHandler
                 return;
             }
 
-            container.transform.SetParent(transform);
-            container.transform.localPosition = Vector2.zero;
+            container.ParentTo(transform);
+            container.transform.localScale = ContentScale;
 
             ProcessDrop(container);
         }

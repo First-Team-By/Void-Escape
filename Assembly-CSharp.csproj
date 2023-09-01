@@ -64,7 +64,7 @@
     <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIAllCharactersListController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UICharacterSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UICharacterListSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIDragContainer.cs" />
@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\Quests\Instances\ExplorationQuest.cs" />
     <Compile Include="Assets\Scripts\UI\EquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\CollectItemQuest.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets\Scripts\UI\UIPartyBuildGameManager.cs" />
     <Compile Include="Assets\Scripts\Tools\Components\UI\FlexibleContentFitter.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharacterFactory.cs" />
+    <Compile Include="Assets\Scripts\UI\UIEquipmentContainer.cs" />
     <Compile Include="Assets\Scripts\Loot.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Coagulator.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\EntityArmor.cs" />
@@ -187,8 +189,9 @@
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\UI\UIEquipmentContainer.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentListSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\IContainerHolder.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UICharacterListBarrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

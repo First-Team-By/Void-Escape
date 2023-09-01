@@ -1504,6 +1504,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &437126428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3152225034147227381, guid: f7267cc8e1e466f48aa13a57b381782e, type: 3}
+  m_PrefabInstance: {fileID: 1135540718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6672bdd69f1ff41bd6f63f5473e22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443975448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,6 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f158cc491445b1488a8748c3b67bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1.3
   _slotType: 1
 --- !u!1 &472509916
 GameObject:
@@ -2653,6 +2665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64947d92b3b13c04f8939d28f284b33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1
   _objectContainerPrefab: {fileID: 8880411784242653862, guid: ebb555e3c357d424d9c4141aa814e50b, type: 3}
   isDraggable: 1
 --- !u!1001 &805833163
@@ -8070,6 +8083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba572fc5448786d40a5f3b070cf1d8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1
   _objectContainerPrefab: {fileID: 8880411784242653862, guid: 052484bd9086ff74b8eaf96f0d34ad19, type: 3}
   isDraggable: 1
 --- !u!1 &1572413276
@@ -8387,6 +8401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f158cc491445b1488a8748c3b67bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 2
   _slotType: 2
 --- !u!1 &1670584240
 GameObject:
@@ -8451,6 +8466,7 @@ GameObject:
   - component: {fileID: 1680993419}
   - component: {fileID: 1680993421}
   - component: {fileID: 1680993423}
+  - component: {fileID: 1680993424}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -8560,6 +8576,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1680993424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680993417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c686abd43fe634badaf5bae3aa97ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _contentScale: 1
+  _contentPanel: {fileID: 785319192}
 --- !u!1 &1690204635
 GameObject:
   m_ObjectHideFlags: 0
@@ -9273,6 +9303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f158cc491445b1488a8748c3b67bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1.3
   _slotType: 0
 --- !u!1 &1908282260
 GameObject:
@@ -9402,11 +9433,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1908282260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c37dfcdc3e8e26f4c982ab78af31930f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b8b341a84c692d4485d9e0ce8423c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1
   _objectContainerPrefab: {fileID: 8880411784242653862, guid: 052484bd9086ff74b8eaf96f0d34ad19, type: 3}
   isDraggable: 0
+  _card: {fileID: 437126428}
 --- !u!114 &1914243941 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7087486683918682027, guid: 7fb359ef388f097449b9c530b8cf5b67, type: 3}
@@ -9823,6 +9856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39eb93caa44cd543b815378d9165b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 1
   _contentPanel: {fileID: 1489917848}
 --- !u!1 &2069935880
 GameObject:

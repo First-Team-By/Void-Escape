@@ -4,13 +4,24 @@ using UnityEngine;
 public class UIEquipmentSlot : UISlot
 {
     [SerializeField] private SlotType _slotType; 
+    private UIDragContainer _equipmentContainer;
     public override Type ContainerType => typeof(UIEquipmentContainer);
 
     public override void ProcessDrop(UIDragContainer container)
     {
         container.ToggleImagePanels(true);
 
-        //container.transform.localScale = Vector2.one;
+        if (_equipmentContainer != null)
+        {
+            _equipmentContainer.ParentTo(container.OldParent);
+        }
+
+        _equipmentContainer = container;
+    }
+
+    public void RemoveEquipmentContainer()
+    {
+        _equipmentContainer = null;
     }
 
     protected override bool IsAcceptable(UIDragContainer container)

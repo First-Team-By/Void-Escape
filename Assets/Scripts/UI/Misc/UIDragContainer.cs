@@ -14,7 +14,7 @@ public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragH
     [SerializeField] protected GameObject _frontPanel;
     [SerializeField] protected Image _backImage; 
     [SerializeField] protected Image _frontImage;
-    [SerializeField] private Vector2 _onDragScale; 
+    [SerializeField] private float _onDragScale = 1; 
 
     protected RectTransform _rectTransform;
     protected Canvas _mainCanvas;
@@ -30,6 +30,8 @@ public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragH
         set => _oldParent = value;
     }
 
+    public Vector2 OnDragScale => Vector2.one * _onDragScale;
+
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -44,15 +46,19 @@ public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragH
 
     public void ReturnToOldParent()
     {
-        transform.SetParent(OldParent);
-        transform.localPosition = Vector2.zero;
-        
+        ParentTo(OldParent);
+    }
 
-        if (OldParent.TryGetComponent<UIList>(out UIList uiList))
+    public void ParentTo(Transform to)
+    {
+        if (to.TryGetComponent<IContainerHolder>(out IContainerHolder uiSlot))
         {
-            ToggleImagePanels(false);
-            transform.localScale = Vector2.one;
+            transform.localScale = uiSlot.ContentScale;
         }
+        
+        transform.SetParent(to);
+        transform.localPosition = Vector2.zero;
+        ToggleImagePanels(!OldParent.TryGetComponent<UIList>(out UIList uiList));
     }
 
     public void ToggleImagePanels(bool isDrag)
@@ -75,7 +81,7 @@ public abstract class UIDragContainer : MonoBehaviour, IDragHandler, IBeginDragH
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
         _originPosition = transform.localPosition;
-        transform.localScale = _onDragScale;
+        transform.localScale = OnDragScale;
     }
 
     public virtual void OnEndDrag(PointerEventData eventData)

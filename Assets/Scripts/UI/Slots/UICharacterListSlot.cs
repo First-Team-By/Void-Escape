@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class UICharacterSlot : UISlot
+public class UICharacterListSlot : UISlot
 {
     [SerializeField] private Transform _contentPanel;
     public override Type ContainerType => typeof(UICharacterContainer);
@@ -17,7 +17,5 @@ public class UICharacterSlot : UISlot
             slot.ButtonPanel.SetActive(false);
             slot.Character = null;
         }
-
-        container.transform.localScale = Vector2.one;
     }
 }
