@@ -6,16 +6,10 @@ public class UIItemListController : UIListController<Equipment>
 {
     public override List<Equipment> Objects => Global.storage.Equipments;
 
-    public override void BindObject(UIDragContainer container, Equipment obj)
+    public override void BindObject(UIContainer container, Equipment obj)
     {
-        var objectContainer = container as UIEquipmentContainer;
-
-        if (objectContainer == null)
-        {
-            Debug.LogError($"{typeof(UIEquipmentContainer)}: bind object invalid argument");
-        }
-
-        objectContainer.Equipment = obj;
-        objectContainer.SetPanelImages(obj.Icon, obj.Icon);
+        base.BindObject(container, obj);
+        
+        container.SetPanelImages(obj.Icon, obj.Icon);
     }
 }

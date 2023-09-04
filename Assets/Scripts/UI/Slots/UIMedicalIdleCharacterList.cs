@@ -8,16 +8,10 @@ public class UIMedicalIdleCharacterList : UIListController<CharacterInfo>
     public override List<CharacterInfo> Objects => Global.allCharacters.CharacterInfos
                                                     .Where(x => x.MedicalState == MedicalState.Idle).ToList();
 
-    public override void BindObject(UIDragContainer container, CharacterInfo obj)
+    public override void BindObject(UIContainer container, CharacterInfo obj)
     {
-        var objectContainer = container as UICharacterContainer;
+        base.BindObject(container, obj);
         
-        if (objectContainer == null)
-        {
-            Debug.LogError($"{typeof(UICharacterContainer)}: bind object invalid argument");
-        }
-
-        objectContainer.Character = obj;
-        objectContainer.SetPanelImages(obj.FullFaceSprite, obj.FullFaceSprite);
+        container.SetPanelImages(obj.FullFaceSprite, obj.FullFaceSprite);
     }
 }

@@ -924,6 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab46e3a66f7a2c43a07209173edb83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _contentScale: 2.5
   _buttonPanel: {fileID: 2080543090048249984}
   _healthButton: {fileID: 2080543090167491613}
   _traumaButton: {fileID: 2080543089661521048}

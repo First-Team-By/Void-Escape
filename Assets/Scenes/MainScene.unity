@@ -2531,7 +2531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85452086, y: 0.0046296297}
   m_AnchorMax: {x: 0.95900005, y: 0.994}
-  m_AnchoredPosition: {x: -1, y: 1}
+  m_AnchoredPosition: {x: -1, y: 1.0000305}
   m_SizeDelta: {x: -2.000061, y: 1}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &785319192
@@ -2667,7 +2667,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contentScale: 1
   _objectContainerPrefab: {fileID: 8880411784242653862, guid: ebb555e3c357d424d9c4141aa814e50b, type: 3}
-  isDraggable: 1
 --- !u!1001 &805833163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8084,8 +8083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentScale: 1
-  _objectContainerPrefab: {fileID: 8880411784242653862, guid: 052484bd9086ff74b8eaf96f0d34ad19, type: 3}
-  isDraggable: 1
+  _objectContainerPrefab: {fileID: 8880411784242653862, guid: 9354385da20866447bf84b5244ef0f21, type: 3}
 --- !u!1 &1572413276
 GameObject:
   m_ObjectHideFlags: 0
@@ -9437,8 +9435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentScale: 1
-  _objectContainerPrefab: {fileID: 8880411784242653862, guid: 052484bd9086ff74b8eaf96f0d34ad19, type: 3}
-  isDraggable: 0
+  _objectContainerPrefab: {fileID: 8880411784242653862, guid: d947efb4ff566cb4ba8176a7705c9303, type: 3}
   _card: {fileID: 437126428}
 --- !u!114 &1914243941 stripped
 MonoBehaviour:

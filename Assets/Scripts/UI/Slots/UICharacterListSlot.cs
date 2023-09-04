@@ -4,7 +4,7 @@ using UnityEngine;
 public class UICharacterListSlot : UISlot
 {
     [SerializeField] private Transform _contentPanel;
-    public override Type ContainerType => typeof(UICharacterContainer);
+    public override Type ContainerType => typeof(UIDragCharacterContainer);
 
     public override void ProcessDrop(UIDragContainer container)
     {

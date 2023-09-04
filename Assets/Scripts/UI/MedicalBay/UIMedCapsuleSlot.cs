@@ -12,7 +12,7 @@ public class UIMedCapsuleSlot : UISlot
     //[SerializeField] private GameObject _medCapsuleSlot;
 
     private CharacterInfo _characterInfo;
-    private UICharacterContainer _characterContainer;
+    private UIDragCharacterContainer _characterContainer;
 
     [SerializeField] private GameObject _buttonPanel;
     [SerializeField] private Button _healthButton;
@@ -33,7 +33,7 @@ public class UIMedCapsuleSlot : UISlot
         }
     } 
 
-    public override Type ContainerType => typeof(UICharacterContainer);
+    public override Type ContainerType => typeof(UIDragCharacterContainer);
 
     public override void ProcessDrop(UIDragContainer container)
     {
@@ -43,7 +43,7 @@ public class UIMedCapsuleSlot : UISlot
             return;
         }
         
-        _characterContainer = container as UICharacterContainer;
+        _characterContainer = container as UIDragCharacterContainer;
         
         if (_characterContainer != null)
         {

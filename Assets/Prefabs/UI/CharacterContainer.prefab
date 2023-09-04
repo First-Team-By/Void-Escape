@@ -1154,8 +1154,8 @@ GameObject:
   - component: {fileID: 8880411784242653863}
   - component: {fileID: 8880411784242653861}
   - component: {fileID: 8880411784242653860}
-  - component: {fileID: 5288437151835243584}
   - component: {fileID: 4008070097827483510}
+  - component: {fileID: 640454726394384643}
   m_Layer: 5
   m_Name: CharacterContainer
   m_TagString: Untagged
@@ -1223,23 +1223,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5288437151835243584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880411784242653862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9b872be8761574593aa694a9e309c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _backPanel: {fileID: 7865852716761455307}
-  _frontPanel: {fileID: 7250557478242546113}
-  _backImage: {fileID: 8880411785099886660}
-  _frontImage: {fileID: 5927768361023380314}
-  _onDragScale: {x: 2.5, y: 2.5}
 --- !u!225 &4008070097827483510
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1252,6 +1235,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &640454726394384643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880411784242653862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3751a41f795e0348a036d0e49138f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backPanel: {fileID: 7865852716761455307}
+  _frontPanel: {fileID: 7250557478242546113}
+  _backImage: {fileID: 8880411785099886660}
+  _frontImage: {fileID: 5927768361023380314}
 --- !u!1 &8880411784251031807
 GameObject:
   m_ObjectHideFlags: 0

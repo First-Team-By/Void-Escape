@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class UIListController<T> : UIList
 {
     [SerializeField] private GameObject _objectContainerPrefab;
-    [SerializeField] private bool isDraggable = true;
 
     public abstract List<T> Objects { get; }
 
@@ -19,14 +18,15 @@ public abstract class UIListController<T> : UIList
         foreach (var obj in Objects)
         {
             var objectContainer = GameObject.Instantiate(_objectContainerPrefab.gameObject) as GameObject;
-            var uiDragContainer = objectContainer.GetComponent<UIDragContainer>();
+            var uiContainer = objectContainer.GetComponent<UIContainer>();
 
-            BindObject(uiDragContainer, obj);
+            BindObject(uiContainer, obj);
             objectContainer.transform.SetParent(transform, false);
-
-            uiDragContainer.enabled = isDraggable;
         }
     }
 
-    public abstract void BindObject(UIDragContainer container, T obj);
+    public virtual void BindObject(UIContainer container, T obj)
+    {
+        container.SetBusinessObject(obj);
+    }
 }

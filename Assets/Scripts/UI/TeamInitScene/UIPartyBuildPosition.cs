@@ -13,7 +13,7 @@ public class UIPartyBuildPosition : UISlot, IPointerEnterHandler, IPointerExitHa
     public int Position => position;
     public CharacterInfo Character { get; set; }
     public bool IsFree => Character == null;
-    public override Type ContainerType => typeof(UICharacterContainer);
+    public override Type ContainerType => typeof(UIDragCharacterContainer);
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class UIPartyBuildPosition : UISlot, IPointerEnterHandler, IPointerExitHa
 
     public override void ProcessDrop(UIDragContainer container)
     {
-        Character = (container as UICharacterContainer).Character;
+        Character = (container as UIDragCharacterContainer).Character;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
