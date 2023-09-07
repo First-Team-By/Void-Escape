@@ -57,15 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\MedicalBay\UIMedCapsuleSlot.cs" />
-    <Compile Include="Assets\Scripts\HibernateChamber\HibernaiteChamber.cs" />
+    <Compile Include="Assets\Scripts\Hibernation\HibernationChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\IItem.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
-    <Compile Include="Assets\Scripts\UI\InventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIAllCharactersListController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UICharacterListSlot.cs" />
-    <Compile Include="Assets\Scripts\Commands\CharacterCommand.cs" />
+    <Compile Include="Assets\Scripts\Commands\Model\CharacterCommand.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\Battery.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIDragContainer.cs" />
     <Compile Include="Assets\Scripts\Inventories\DepotType.cs" />
@@ -83,11 +82,10 @@
     <Compile Include="Assets\Scripts\UI\BattleScene\EntityBattleCard.cs" />
     <Compile Include="Assets\Scripts\Dungeon\RoomBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\MedicalBay\OnDropMedCharPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\UIBarracksCharSlot.cs" />
     <Compile Include="Assets\Scripts\Entities\EntityClass.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Pistol.cs" />
     <Compile Include="Assets\Scripts\Entities\Global.cs" />
-    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIPartyBuildPosition.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIPartyBuildPosition.cs" />
     <Compile Include="Assets\Scripts\UI\UIDragCharacterContainer.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIMedicalIdleCharacterList.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityResistances.cs" />
@@ -98,13 +96,11 @@
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardBase.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
-    <Compile Include="Assets\Scripts\UI\BattleScene\CharacterPosition.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIActiveCharacterListController.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\EventResolver.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\ToolTipAppear.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\BattlePosition.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\ExplorationQuest.cs" />
-    <Compile Include="Assets\Scripts\UI\EquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
@@ -115,12 +111,9 @@
     <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorHidden.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\DeepCut.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIElement.cs" />
-    <Compile Include="Assets\UIDungeonInventoryPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardScript.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EntityInfo.cs" />
     <Compile Include="Assets\Scripts\DoorAnimation\CompartmentButtons.cs" />
-    <Compile Include="Assets\Scripts\UI\UICharacterInterface.cs" />
-    <Compile Include="Assets\Scripts\Entities\Serializable\CharacterSerializable.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIPopUPWindow.cs" />
     <Compile Include="Assets\Scripts\Equipment\Equipment.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
@@ -129,13 +122,13 @@
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\UI\IContainerHolder.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestController.cs" />
-    <Compile Include="Assets\Scripts\Commands\CommandExecutionHandler.cs" />
+    <Compile Include="Assets\Scripts\Commands\Model\CommandExecutionHandler.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\EnemyInfo.cs" />
     <Compile Include="Assets\BattleRoutine.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityConditions.cs" />
     <Compile Include="Assets\Scripts\Equipment\Armor\BodyArmorSapper.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UISlot.cs" />
-    <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsule.cs" />
+    <Compile Include="Assets\Scripts\Hibernation\HibernationCapsuleInfo.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityCharacteristics.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIList.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestDifficulty.cs" />
@@ -158,17 +151,16 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ResourceItem.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\CharsTemplate.cs" />
-    <Compile Include="Assets\Scripts\Commands\CommandType.cs" />
+    <Compile Include="Assets\Scripts\Commands\Model\CommandType.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ChangingRotateStar.cs" />
-    <Compile Include="Assets\Scripts\HibernateChamber\HibernateCapsuleScript.cs" />
-    <Compile Include="Assets\Scripts\Commands\EntityCommand.cs" />
+    <Compile Include="Assets\Scripts\Hibernation\HibernationCapsule.cs" />
+    <Compile Include="Assets\Scripts\Commands\Model\EntityCommand.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityContainer.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIContainer.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\MapInfo.cs" />
-    <Compile Include="Assets\Scripts\UI\UICharacterInfoButton.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\DungeonMapController.cs" />
-    <Compile Include="Assets\Scripts\Commands\CommandResult.cs" />
+    <Compile Include="Assets\Scripts\Commands\Model\CommandResult.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Cell.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardInventoryInteract.cs" />
     <Compile Include="Assets\Scripts\Entities\Medic.cs" />
@@ -177,14 +169,12 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIListController.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
-    <Compile Include="Assets\Scripts\UI\TeamInitScene\UIDropHandler.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
     <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
     <Compile Include="Assets\Scripts\Inventories\Inventory.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\SingleFire.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\Blade.cs" />
     <Compile Include="Assets\Scripts\Quests\UIQuestButton.cs" />
-    <Compile Include="Assets\Scripts\UI\Misc\UIItem.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIItemListController.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\UI\UICharacterContainer.cs" />
@@ -199,7 +189,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\UI\Test\Test.uxml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -209,13 +198,12 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Animations\Characters\Officer\officer.atlas.txt" />
+    <None Include="Assets\Animations\Spine\Characters\Officer\officer.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\UI\Test\Test_stylesheet.uss" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -941,17 +929,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="spine-unity-examples-editor.csproj">
-      <Project>{4F0854CF-010E-E46B-C01E-9B3E0D95F708}</Project>
-      <Name>spine-unity-examples-editor</Name>
-    </ProjectReference>
     <ProjectReference Include="spine-unity.csproj">
       <Project>{2650CD68-9AC6-6A82-8638-3DE8F405F54A}</Project>
       <Name>spine-unity</Name>
-    </ProjectReference>
-    <ProjectReference Include="spine-unity-examples.csproj">
-      <Project>{D81F3E5E-BC63-19C8-41FA-D4726A1AC71D}</Project>
-      <Name>spine-unity-examples</Name>
     </ProjectReference>
     <ProjectReference Include="spine-unity-editor.csproj">
       <Project>{D2160F3C-0A4F-F4EC-3BB1-B43FEEAD7070}</Project>

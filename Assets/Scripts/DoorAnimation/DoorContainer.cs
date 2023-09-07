@@ -8,11 +8,9 @@ using UnityEngine.UI;
 public class DoorContainer : MonoBehaviour
 {
     [SerializeField] private GameObject[] _doorparts;
-
     [SerializeField] private GameObject _window;
 
     private List<SpriteRenderer> _doorPartsSR;
-
     private Animator _anim;
 
 	private void Start()
@@ -53,7 +51,6 @@ public class DoorContainer : MonoBehaviour
         }
 
         _anim.SetBool("isOpen", true);
-
         StartCoroutine(WindowsLoading());
     }
 

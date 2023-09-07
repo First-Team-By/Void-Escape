@@ -10,11 +10,11 @@ public class UIEquipmentListSlot : UISlot
 
     public override void ProcessDrop(UIDragContainer container)
     {
-        container.ParentTo(_contentPanel.transform);
         if (container.OldParent.TryGetComponent<UIEquipmentSlot>(out UIEquipmentSlot slot))
         {
             slot.RemoveEquipmentContainer();
         }
+        container.ParentTo(_contentPanel.transform);
 
         container.ToggleImagePanels(false);
     }

@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class MainSceneController : MonoBehaviour
 {
-    [SerializeField] private InventoryPanel inventoryPanel;
-
     void Start()
     {
         if (Global.Stage == GameStage.InMission)
@@ -12,13 +10,6 @@ public class MainSceneController : MonoBehaviour
             LoadAfterMission();
             Global.Stage = GameStage.OnBase;
         }
-
-        //inventoryPanel.Inventory = Global.storage;
-    }
-
-    void Update()
-    {
-
     }
 
     private void LoadAfterMission()

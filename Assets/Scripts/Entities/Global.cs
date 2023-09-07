@@ -19,7 +19,7 @@ public static class Global
     public static GameStage Stage;
     public static List<CharsTemplate> AllCharacterClasses;
     public static List<CharsTemplate> AllEnemiesClasses;
-    public static HibernateCapsule[] capsules;
+    public static HibernationCapsuleInfo[] capsules;
 
     public static CurrentCharacterGroup currentGroup;
 
@@ -53,11 +53,9 @@ public static class Global
         //     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
         //     });
 
-        capsules = new HibernateCapsule[] { new HibernateCapsule(), new HibernateCapsule()};
+        capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo()};
 
         LoadCharTemplates();
-
-
     }
 
     public static RoomInfo GetCurrentRoomInfo()
@@ -90,12 +88,12 @@ public static class Global
 
     private static void LoadCharacterCharTemplate(string entityCharName, Type type)
     {
-        EntityCharacteristics characteristics = Resources.Load<EntityCharacteristics>("EntityCharacteristic/" + entityCharName);
+        EntityCharacteristics characteristics = Resources.Load<EntityCharacteristics>("EntityCharacteristics/" + entityCharName);
         AllCharacterClasses.Add(new CharsTemplate(characteristics, type));
     }
     private static void LoadEnemyCharTemplate(string entityCharName, Type type)
     {
-        EntityCharacteristics characteristics = Resources.Load<EntityCharacteristics>("EntityCharacteristic/" + entityCharName);
+        EntityCharacteristics characteristics = Resources.Load<EntityCharacteristics>("EntityCharacteristics/" + entityCharName);
         AllEnemiesClasses.Add(new CharsTemplate(characteristics, type));
     }
 }

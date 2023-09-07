@@ -79,7 +79,7 @@ public class EntityCardScript : EntityCardBase
 
         if (((CharacterInfo)_entity).Weapon != null)
         {
-            CreateItem(((CharacterInfo)_entity).Weapon, _weaponSlot.gameObject.transform);
+            _weaponSlot.EquipmentContainer = CreateItem(((CharacterInfo)_entity).Weapon, _weaponSlot.gameObject.transform);
         }
 
         if (_deviceSlot.EquipmentContainer != null)
@@ -89,7 +89,7 @@ public class EntityCardScript : EntityCardBase
 
         if (((CharacterInfo)_entity).Device != null)
         {
-            CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
+            _deviceSlot.EquipmentContainer = CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
         }
 
         if (_armorSlot.EquipmentContainer != null)
@@ -99,7 +99,7 @@ public class EntityCardScript : EntityCardBase
 
         if (((CharacterInfo)_entity).Armor != null)
         {
-            CreateItem(((CharacterInfo)_entity).Armor, _armorSlot.gameObject.transform);
+            _armorSlot.EquipmentContainer = CreateItem(((CharacterInfo)_entity).Armor, _armorSlot.gameObject.transform);
         }
     }
 
@@ -137,7 +137,7 @@ public class EntityCardScript : EntityCardBase
         }
     }
 
-    private void CreateItem(Equipment equipment, Transform transform)
+    private UIEquipmentContainer CreateItem(Equipment equipment, Transform transform)
     {
         var item = ItemFactory.CreateItem(equipment, transform);
         item.ParentTo(transform);
@@ -145,6 +145,8 @@ public class EntityCardScript : EntityCardBase
         item.GetComponent<CanvasGroup>().blocksRaycasts = _interactable;
 
         item.transform.localPosition = Vector3.zero;
+
+        return item;
     }
 
 

@@ -54,10 +54,10 @@ public abstract class UIDragContainer : UIContainer, IDragHandler, IBeginDragHan
             transform.localScale = holder.ContentScale;
         }
 
-        if (to.TryGetComponent<UISlot>(out UISlot uiSlot))
-        {
-            uiSlot.Container = this;
-        }
+        //if (to.TryGetComponent<UISlot>(out UISlot uiSlot))
+        //{
+        //    uiSlot.Container = this;
+        //}
 
         transform.SetParent(to);
         transform.localPosition = Vector2.zero;
