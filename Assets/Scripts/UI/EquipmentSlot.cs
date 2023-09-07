@@ -9,30 +9,23 @@ using UnityEngine.UI;
 public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private SlotType _type;
-
     [SerializeField] private GameObject _uiSlot;
-
     [SerializeField] private RectTransform _inventoryContent;
-
     [SerializeField] private Sprite _defaulImage;
 
     private UIItem _mountedItem;
-
     private UIItem _newItem;
-
     private Image _equipSlotImage;
 
     public Image EquipSlotImage
     {
         get { return _equipSlotImage; }
-
         set { _equipSlotImage = value; }
     }
 
     public SlotType Type => _type;
 
     public event Action<Equipment> OnEquipped;
-
     public event Action<Equipment> OnUnEquip;
 
     private void Start()

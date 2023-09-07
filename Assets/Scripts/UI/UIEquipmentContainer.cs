@@ -8,15 +8,9 @@ using UnityEngine.UI;
 
 public class UIEquipmentContainer : UIDragContainer
 {
-    [SerializeField] private Equipment _equipment;
-
     public int CharacterId { get; set; }
 
-    public Equipment Equipment
-    {
-        get => _equipment;
-        set => _equipment = value;
-    }
+    public Equipment Equipment => (Equipment)_businessObject;
 
     public override void Initialize()
     {

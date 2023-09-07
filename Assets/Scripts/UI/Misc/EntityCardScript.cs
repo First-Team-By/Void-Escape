@@ -8,44 +8,33 @@ public class EntityCardScript : EntityCardBase
     protected EntityInfo _entity;
 
     [SerializeField] protected Image _image;
-
     [SerializeField] protected Image _currentHealth;
-
-    [SerializeField] protected List<GameObject> _characterSkills; 
-
+    [SerializeField] protected List<GameObject> _characterSkills;
     [SerializeField] protected TMP_Text _entityType;
-
     [SerializeField] protected TMP_Text _rarity;
-
     [SerializeField] protected TMP_Text _initiative;
-
     [SerializeField] protected TMP_Text _fullName;
-
     [SerializeField] protected TMP_Text _disabilities;
-
-    [SerializeField] protected EquipmentSlot _weaponSlot;
-
-    [SerializeField] protected EquipmentSlot _deviceSlot;
-
-    [SerializeField] protected EquipmentSlot _armorSlot;
-
+    [SerializeField] protected UIEquipmentSlot _weaponSlot;
+    [SerializeField] protected UIEquipmentSlot _deviceSlot;
+    [SerializeField] protected UIEquipmentSlot _armorSlot;
     [SerializeField] protected bool _interactable;
 
     public TMP_Text EntityClassCaption
-    { 
-        get { return _entityType; } 
-        set { _entityType = value; } 
+    {
+        get { return _entityType; }
+        set { _entityType = value; }
     }
 
     public TMP_Text EntityClassRarity
     {
         get { return _rarity; }
-        set { _rarity = value;}
+        set { _rarity = value; }
     }
 
     protected override void Init()
     {
-        
+
     }
 
     public override void FillAdditional(EntityInfo entity)
@@ -71,34 +60,31 @@ public class EntityCardScript : EntityCardBase
             EntityClassRarity.text = character.RarityToString;
         }
 
-        RefreshEquipments();
-
         RefreshCommands();
-
         RefreshDisabilities();
     }
 
     protected void RefreshDisabilities()
     {
-        if (_disabilities != null) 
+        if (_disabilities != null)
             _disabilities.text = _entity.Conditions.GetDisabilities();
     }
 
-    protected void RefreshEquipments()
+    public void RefreshEquipments()
     {
-        if (_weaponSlot.gameObject.transform.childCount > 0)
+        if (_weaponSlot.EquipmentContainer != null)
         {
-            Destroy(_weaponSlot.gameObject.transform.GetChild(0).gameObject);
+            Destroy(_weaponSlot.EquipmentContainer.gameObject);
         }
-        
+
         if (((CharacterInfo)_entity).Weapon != null)
         {
             CreateItem(((CharacterInfo)_entity).Weapon, _weaponSlot.gameObject.transform);
         }
 
-        if (_deviceSlot.gameObject.transform.childCount > 0)
+        if (_deviceSlot.EquipmentContainer != null)
         {
-            Destroy(_deviceSlot.gameObject.transform.GetChild(0).gameObject);
+            Destroy(_deviceSlot.EquipmentContainer.gameObject);
         }
 
         if (((CharacterInfo)_entity).Device != null)
@@ -106,9 +92,9 @@ public class EntityCardScript : EntityCardBase
             CreateItem(((CharacterInfo)_entity).Device, _deviceSlot.gameObject.transform);
         }
 
-        if (_armorSlot.gameObject.transform.childCount > 0)
+        if (_armorSlot.EquipmentContainer != null)
         {
-            Destroy(_armorSlot.gameObject.transform.GetChild(0).gameObject);
+            Destroy(_armorSlot.EquipmentContainer.gameObject);
         }
 
         if (((CharacterInfo)_entity).Armor != null)
@@ -154,10 +140,12 @@ public class EntityCardScript : EntityCardBase
     private void CreateItem(Equipment equipment, Transform transform)
     {
         var item = ItemFactory.CreateItem(equipment, transform);
+        item.ParentTo(transform);
+
         item.GetComponent<CanvasGroup>().blocksRaycasts = _interactable;
 
         item.transform.localPosition = Vector3.zero;
     }
 
-    
+
 }

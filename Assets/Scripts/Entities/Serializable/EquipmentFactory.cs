@@ -2,14 +2,13 @@
 
 public static class ItemFactory
 {
-    public static UIItem CreateItem(Equipment equipment, Transform parent)
+    public static UIEquipmentContainer CreateItem(Equipment equipment, Transform parent)
     {
-        var item = GameObject.Instantiate(Global.CommonPrefabs.ItemContainer, parent).GetComponent<UIItem>();
+        var container = GameObject.Instantiate(Global.CommonPrefabs.ItemContainer, parent).GetComponent<UIEquipmentContainer>();
 
-        item.Equipment = equipment;
+        container.SetBusinessObject(equipment);
+        container.SetPanelImages(equipment.Icon, equipment.Icon);
 
-        item.Icon.sprite = equipment.Icon;
-
-        return item;
+        return container;
     }
 }

@@ -20,5 +20,6 @@ public class UICharacterListBarrack : UIAllCharactersListController
         var characterContainer = container as UICharacterContainer;
 
         _card.FillInfo(characterContainer.Character);
+        _card.RefreshEquipments();
     }
 }

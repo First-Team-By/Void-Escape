@@ -49,9 +49,14 @@ public abstract class UIDragContainer : UIContainer, IDragHandler, IBeginDragHan
 
     public void ParentTo(Transform to)
     {
-        if (to.TryGetComponent<IContainerHolder>(out IContainerHolder uiSlot))
+        if (to.TryGetComponent<IContainerHolder>(out IContainerHolder holder))
         {
-            transform.localScale = uiSlot.ContentScale;
+            transform.localScale = holder.ContentScale;
+        }
+
+        if (to.TryGetComponent<UISlot>(out UISlot uiSlot))
+        {
+            uiSlot.Container = this;
         }
 
         transform.SetParent(to);

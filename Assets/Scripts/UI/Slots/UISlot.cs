@@ -11,8 +11,15 @@ using Image = UnityEngine.UI.Image;
 public abstract class UISlot : MonoBehaviour, IDropHandler, IContainerHolder
 {
     [SerializeField] private float _contentScale = 1;
+    private UIDragContainer _container;
+
     public Vector2 ContentScale => Vector2.one * _contentScale;
     public abstract Type ContainerType { get; }
+    public UIDragContainer Container
+    {
+        get => _container;
+        set => _container = value;
+    }
 
     public void OnDrop(PointerEventData eventData)
     {

@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 
 public class ScenesHotbarWindow : EditorWindow
 {
-    [MenuItem("Window/Hotbar")]
+    [MenuItem("Tools/Scene switch hotbar")]
     public static void ShowWindow()
     {
         ScenesHotbarWindow window = (ScenesHotbarWindow)GetWindow(typeof(ScenesHotbarWindow));
@@ -27,6 +27,7 @@ public class ScenesHotbarWindow : EditorWindow
 
             if (GUILayout.Button(GetSceneNameFromPath(path)))
             {
+                EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
                 EditorSceneManager.OpenScene(path);
             }
         }

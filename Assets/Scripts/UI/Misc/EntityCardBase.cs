@@ -8,23 +8,14 @@ using UnityEngine.UI;
 public abstract class EntityCardBase : MonoBehaviour
 {
     [SerializeField] private TMP_Text _meleeDamage;
-
     [SerializeField] private TMP_Text _critChance;
-
     [SerializeField] private TMP_Text _critMultiplier;
-
     [SerializeField] private TMP_Text _evadeChance;
-
     [SerializeField] private TMP_Text _accuracy;
-
     [SerializeField] private TMP_Text _defence;
-
     [SerializeField] private TMP_Text _damageResistance;
-
     [SerializeField] private TMP_Text _bleedResistance;
-
     [SerializeField] private TMP_Text _burnResistance;
-
     [SerializeField] private TMP_Text _poisonResistance;
 
     private void Start()
@@ -36,7 +27,7 @@ public abstract class EntityCardBase : MonoBehaviour
 
     public void FillInfo(EntityInfo entity)
     {
-        if (entity is null)
+        if (entity == null)
         {
             gameObject.SetActive(false);
             return;

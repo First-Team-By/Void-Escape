@@ -1,27 +1,41 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 public class UIEquipmentSlot : UISlot
 {
-    [SerializeField] private SlotType _slotType; 
-    private UIDragContainer _equipmentContainer;
+    [SerializeField] private SlotType _slotType;
+
+    public UIEquipmentContainer EquipmentContainer
+    {
+        get => Container as UIEquipmentContainer;
+        set => Container = value;
+    } 
     public override Type ContainerType => typeof(UIEquipmentContainer);
+
+    public event Action<Equipment> OnEquipped;
+    public event Action<Equipment> OnUnEquip;
 
     public override void ProcessDrop(UIDragContainer container)
     {
         container.ToggleImagePanels(true);
 
-        if (_equipmentContainer != null)
+        var newContainer = (UIEquipmentContainer)container;
+
+        if (EquipmentContainer != null)
         {
-            _equipmentContainer.ParentTo(container.OldParent);
+            EquipmentContainer.ParentTo(container.OldParent);
+            OnUnEquip?.Invoke(EquipmentContainer.Equipment);
         }
 
-        _equipmentContainer = container;
+        EquipmentContainer = newContainer;
+        OnEquipped?.Invoke(newContainer.Equipment);
     }
 
     public void RemoveEquipmentContainer()
     {
-        _equipmentContainer = null;
+        OnUnEquip?.Invoke(EquipmentContainer.Equipment);
+        EquipmentContainer = null;
     }
 
     protected override bool IsAcceptable(UIDragContainer container)
