@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 
 public enum Rarity
 {
@@ -55,6 +56,8 @@ public abstract class CharacterInfo : EntityInfo
         set => _currentHealth = value;
     }
 
+    public int Id { get; set; }
+
     public abstract List<CharacterCommand> NativeCommands { get; }
 
     public override List<EntityCommand> Commands
@@ -65,11 +68,31 @@ public abstract class CharacterInfo : EntityInfo
         }
     }
 
-    public int Id { get; set; }
-
     public CharacterInfo() : base()
     {
         FullName = NameGenerator.CreateFullName();
+    }
+
+    public void ApplyMedication()
+    {
+        switch (MedicalState)
+        {
+            case MedicalState.RestoreHealth:
+                    Health = EntityChars.MaxHealth;
+                break;
+
+            case MedicalState.CureTrauma: 
+                Conditions.ClearConstantCondition();
+                break;
+
+            case MedicalState.CureMutilation:
+                Conditions.ClearMutilation();
+                break;
+
+            default: break;
+        }
+
+        MedicalState = MedicalState.Idle;
     }
 }
 

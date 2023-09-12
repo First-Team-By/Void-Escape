@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Linq;
 using UnityEngine;
 
@@ -7,12 +8,12 @@ public class MainSceneController : MonoBehaviour
     {
         if (Global.Stage == GameStage.InMission)
         {
-            LoadAfterMission();
+            TimeTick();
             Global.Stage = GameStage.OnBase;
         }
     }
 
-    private void LoadAfterMission()
+    private void TimeTick()
     {
         foreach (var character in Global.currentGroup.CurrentCharacterInfos)
         {
@@ -20,20 +21,24 @@ public class MainSceneController : MonoBehaviour
 
             currentCharacter = character;
             currentCharacter.Conditions.DropTemporaryConditions();
-            
         }
 
-        var idleCaracters = Global.allCharacters.CharacterInfos
-                                            .Where(x =>
-                                            !Global.currentGroup.CurrentCharacterInfos.Select(y => y.Id).Contains(x.Id)
-                                             );
-        foreach (var character in idleCaracters)
+        var idleCharacters = Global.allCharacters.CharacterInfos
+                                .Where(x =>
+                                !Global.currentGroup.CurrentCharacterInfos.Select(y => y.Id).Contains(x.Id)
+                                ).ToList();
+        foreach (var character in idleCharacters)
         {
             character.Conditions.DecreaseConstantCondition();
         }
 
-        Global.currentGroup.CurrentCharacterInfos.Clear();
+        var patients = idleCharacters.Where(x => x.MedicalState != MedicalState.Idle).ToList();
+        foreach (var patient in patients)
+        {
+            patient.ApplyMedication();
+        }  
 
+        Global.currentGroup.CurrentCharacterInfos.Clear();
         Global.storage.TransferFromInventory();
     }
 }

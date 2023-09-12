@@ -72,6 +72,11 @@ public class EntityCardScript : EntityCardBase
 
     public void RefreshEquipments()
     {
+        if (_entity == null)
+        {
+            return;
+        }
+        
         if (_weaponSlot.EquipmentContainer != null)
         {
             Destroy(_weaponSlot.EquipmentContainer.gameObject);

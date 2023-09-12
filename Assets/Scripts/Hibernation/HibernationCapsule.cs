@@ -32,6 +32,16 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
             return;
         }
 
+
+        var lastCharacter = Global.allCharacters.CharacterInfos.OrderBy(x => x.Id).LastOrDefault();
+        if (lastCharacter != null)
+        {
+            _capsuleInfo.Character.Id = lastCharacter.Id + 1;
+        }
+        else
+        {
+            _capsuleInfo.Character.Id = 0;
+        }
         Global.allCharacters.CharacterInfos.Add(_capsuleInfo.Character);
         StartCoroutine(OnEnableUIPopUpWinCor($"{_capsuleInfo.Character.FullName} ({_capsuleInfo.Character.ClassName})"));
         _capsuleInfo.Character = null;
@@ -56,7 +66,6 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         if (_capsuleInfo.Status == CapsuleStatus.UnFreezed)
         {
-            
             _capsuleInfo.Character = CharacterFactory.CreateRandomCharacter();
             _capsuleInfo.Status = CapsuleStatus.Opened;
             _hibernaiteChamber.SaveToGlobal();
