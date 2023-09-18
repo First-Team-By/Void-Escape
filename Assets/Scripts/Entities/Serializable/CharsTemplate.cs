@@ -6,9 +6,6 @@ public class CharsTemplate
 {
     public EntityCharacteristics EntityChars { get; private set; }
     public Type EntityType { get; private set; }
-
-    
-
     public CharsTemplate(EntityCharacteristics entityChars, Type type)
     {
         EntityChars = entityChars;

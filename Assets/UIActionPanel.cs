@@ -15,7 +15,6 @@ public class UIActionPanel : MonoBehaviour
     [SerializeField] private Image[] _enemiesPoses;
     [SerializeField] private Image[] _enemiesEffects;
     [SerializeField] private Image[] _charactersEffects;
-
     [SerializeField] private Image actorPose;
     [SerializeField] private Image actorEffect;
     [SerializeField] private Text actorText;

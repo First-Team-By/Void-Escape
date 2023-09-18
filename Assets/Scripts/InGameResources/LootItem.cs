@@ -16,5 +16,4 @@ public class LootItem
         Type = type; 
         Amount = amount;
     }
-
 }

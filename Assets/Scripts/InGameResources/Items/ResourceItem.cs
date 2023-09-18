@@ -3,7 +3,6 @@
 public abstract class ResourceItem : IItem 
 {
     public Resource Resources { get; private set; }
-
     public Sprite Icon { get; private set; }
     protected abstract string IconName { get; }
 
