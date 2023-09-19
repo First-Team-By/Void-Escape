@@ -11,6 +11,11 @@ public class MainSceneController : MonoBehaviour
 			EndMission();
 			Global.Stage = GameStage.OnBase;
 		}
+		
+		if (Global.Stage == GameStage.StartNewGame)
+		{
+			Global.RefreshQuests();
+		}
 	}
 
 	private void TimeTick()
@@ -37,6 +42,8 @@ public class MainSceneController : MonoBehaviour
 		{
 			patient.ApplyMedication();
 		}
+		
+		Global.RefreshQuests();
 	}
 	
 	private void EndMission()

@@ -15,41 +15,20 @@ public class QuestController : MonoBehaviour
         typeof(ExplorationQuest),
     };
 
-
-    private void Start()
-    {
-        if (Global.avaliableQuests.Count != 0)
-        {
-            return;
-        }
-
-        SetQuest(expiditionQuestButton);
-        SetQuest(purificationQuestButton);
-    }
-
-    private void SetQuest(UIQuestButton button)
-    {
-        int rng = new Random().Next(0, QuestTypes.Count - 1);
-        Quest quest = (Quest)Activator.CreateInstance(QuestTypes[rng]);
-        button.Quest = quest;
-        var toolTip = button.GetComponent<ToolTipAppear>();
-        toolTip.ToolTipString = quest.Title + "\n\n" + quest.Description;
-
-        Global.avaliableQuests.Add(quest);
-    }
-
     public void AcceptQuest()
     {
-        if (expiditionQuestButton.enabled)
-        {
-            Global.currentQuest = expiditionQuestButton.Quest;
-            return;
-        }
+        //if (expiditionQuestButton.enabled)
+        //{
+        //    Global.currentQuest = expiditionQuestButton.Quest;
+        //    return;
+        //}
 
-        if (purificationQuestButton.enabled)
-        {
-            Global.currentQuest = expiditionQuestButton.Quest;
-            return;
-        }
+        //if (purificationQuestButton.enabled)
+        //{
+        //    Global.currentQuest = expiditionQuestButton.Quest;
+        //    return;
+        //}
+
+        Debug.Log("Выбран квест: " + Global.currentQuest.Title);
     }
 }

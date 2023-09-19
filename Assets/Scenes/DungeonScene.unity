@@ -1444,7 +1444,6 @@ MonoBehaviour:
   room: {fileID: 2964396252864003783, guid: 991a16a52f649c8458be43b1d9be30f4, type: 3}
   offSet: {x: 200, y: 200}
   roomNest: {fileID: 1500735902}
-  inventoryPanel: {fileID: 1983240999}
 --- !u!4 &1789667874
 Transform:
   m_ObjectHideFlags: 0
@@ -1777,7 +1776,6 @@ GameObject:
   - component: {fileID: 1983240996}
   - component: {fileID: 1983240998}
   - component: {fileID: 1983240997}
-  - component: {fileID: 1983240999}
   m_Layer: 5
   m_Name: InventoryContainer
   m_TagString: Untagged
@@ -1846,20 +1844,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983240995}
   m_CullTransparentMesh: 1
---- !u!114 &1983240999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983240995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0973e4c404403dd4181be0cc066ecfd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _contentItemPanel: {fileID: 1894550202}
-  _depotType: 1
 --- !u!1 &1983454597
 GameObject:
   m_ObjectHideFlags: 0

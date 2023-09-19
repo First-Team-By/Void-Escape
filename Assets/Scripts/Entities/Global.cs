@@ -16,10 +16,11 @@ public enum GameStage
 }
 public static class Global
 {
-	public static GameStage Stage;
+	public static GameStage Stage = GameStage.StartNewGame;
 	public static List<CharsTemplate> AllCharacterClasses;
 	public static List<CharsTemplate> AllEnemiesClasses;
 	public static HibernationCapsuleInfo[] capsules;
+	public static List<Compartment> compartments;
 
 	public static CurrentCharacterGroup currentGroup;
 
@@ -32,7 +33,6 @@ public static class Global
 	public static Storage storage { get; set; }
 
 	public static CommonPrefabs CommonPrefabs { get; }
-	public static List<Quest> avaliableQuests { get; set; }
 
 	public static bool UIIntersect { get; set; } = false;
 
@@ -41,7 +41,6 @@ public static class Global
 	{
 		storage = new Storage();
 		inventory = new Inventory();
-		avaliableQuests = new List<Quest>();
 		
 
 		CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
@@ -54,9 +53,11 @@ public static class Global
 		//     });
 
 		capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo()};
-
+		
 		LoadCharTemplates();
-	}
+
+        compartments = new List<Compartment>() { new CrewQuarters(), new ReactorChamber() };
+    }
 
 	public static RoomInfo GetCurrentRoomInfo()
 	{
@@ -96,5 +97,13 @@ public static class Global
 	{
 		EntityCharacteristics characteristics = Resources.Load<EntityCharacteristics>("EntityCharacteristics/" + entityCharName);
 		AllEnemiesClasses.Add(new CharsTemplate(characteristics, type));
+	}
+	
+	public static void RefreshQuests()
+	{
+		foreach(var compartment in compartments)
+		{
+			compartment.AvaliableQuests = QuestFactory.GetQuests();
+		}
 	}
 }
