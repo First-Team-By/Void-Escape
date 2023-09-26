@@ -29,6 +29,6 @@ public class QuestController : MonoBehaviour
         //    return;
         //}
 
-        Debug.Log("Выбран квест: " + Global.currentQuest.Title);
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: " + Global.currentMapInfo.MapQuest.Title);
     }
 }

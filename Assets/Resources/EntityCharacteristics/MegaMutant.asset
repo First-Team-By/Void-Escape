@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MegaMutant
   m_EditorClassIdentifier: 
   _entityClass: 2
-  _maxHealth: 30
+  _maxHealth: 10
   _meleeDamage: 10
   _critChance: 0.342
   _critMultiplier: 1.262
@@ -22,3 +22,4 @@ MonoBehaviour:
   _defence: 0.091
   _initiative: 3
   _value: 3
+  _isQuestEntity: 0

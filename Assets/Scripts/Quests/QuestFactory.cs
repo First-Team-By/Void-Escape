@@ -22,9 +22,21 @@ public static class QuestFactory
 		
 		return new List<Quest>() 
 		{
-            (Quest)Activator.CreateInstance(typeof(ExplorationQuest)),
-            (Quest)Activator.CreateInstance(_questTypes[random1]), 
-			(Quest)Activator.CreateInstance(_questTypes[random2])
+			CreateQuest(typeof(ExplorationQuest)),
+			CreateQuest(_questTypes[random1]),
+			CreateQuest(_questTypes[random2])
 		};
+	}
+	
+	private static Quest CreateQuest(Type type)
+	{
+		var result = Activator.CreateInstance(type);
+		
+		if (result is KillMonsterQuest)
+		{
+			((KillMonsterQuest)result).monsterType = typeof(MutantBoss);
+		}
+		
+		return result as Quest;
 	}
 }

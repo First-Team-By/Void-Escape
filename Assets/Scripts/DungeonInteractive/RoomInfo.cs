@@ -39,9 +39,9 @@ public class RoomInfo
         
     }
 
-    public void InitEnemies(int difficulty, List<CharsTemplate> possibleEnemiyInfos)
+    public void InitEnemies(int difficulty, List<CharsTemplate> possibleEnemyInfos)
     {
-        _enemyInfos = new DepartmentLevel().CreateEnemies(difficulty, possibleEnemiyInfos);
+        _enemyInfos = new DepartmentLevel().CreateEnemies(difficulty, possibleEnemyInfos);
     }
 
     public void CreateLoot(float currentMapProgress, List<LootItemInfo> possibleLoot)

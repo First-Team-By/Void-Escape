@@ -27,7 +27,6 @@ public static class Global
 	public static CharacterGroup allCharacters;
 
 	public static MapInfo currentMapInfo;
-	public static Quest currentQuest;
 
 	public static Inventory inventory;
 	public static Storage storage { get; set; }
@@ -83,6 +82,7 @@ public static class Global
 		LoadEnemyCharTemplate("MutantChars", typeof(Mutant));
 		LoadEnemyCharTemplate("MiddleMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
+		LoadEnemyCharTemplate("MutantBoss", typeof(MutantBoss));
 
 		AllEntityTemplates = AllEnemiesClasses.Concat(AllCharacterClasses).ToList();
 	}

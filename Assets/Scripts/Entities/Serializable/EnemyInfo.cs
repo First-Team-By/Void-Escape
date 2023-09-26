@@ -7,5 +7,5 @@ using UnityEngine;
 
 public abstract class EnemyInfo : EntityInfo
 {
-    public override List<EntityCommand> Commands => throw new NotImplementedException();
+	public override List<EntityCommand> Commands => throw new NotImplementedException();
 }

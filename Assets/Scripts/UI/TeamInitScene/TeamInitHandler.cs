@@ -14,10 +14,11 @@ public class TeamInitHandler : MonoBehaviour
 	[SerializeField] private ToolTipAppear _toolTip2;
 	[SerializeField] private UIPartyBuildPosition[] characterPositions;
 	private ContainmentController[] _containmentControllers; 
+	private Quest _selectedQuest;
 
 	private ContainmentController SelectedController
 	{
-        get => _containmentControllers.FirstOrDefault(x => x.IsSelected);
+		get => _containmentControllers.FirstOrDefault(x => x.IsSelected);
 	}
 	
 	private void Start()
@@ -31,7 +32,7 @@ public class TeamInitHandler : MonoBehaviour
 
 		OnContainmentSelected(_containmentControllers[0]);
 		SelectQuest(0);
-    }
+	}
 	
 	private void OnContainmentSelected(ContainmentController controller)
 	{
@@ -49,11 +50,11 @@ public class TeamInitHandler : MonoBehaviour
 		_toolTip1.ToolTipString = controller.Compartment.AvaliableQuests[1].Description;
 		_toolTip2.ToolTipString = controller.Compartment.AvaliableQuests[2].Description;
 
-    }
+	}
 
 	public void SelectQuest(int questIndex)
 	{
-		Global.currentQuest = SelectedController.Compartment.AvaliableQuests[questIndex];
+		_selectedQuest = SelectedController.Compartment.AvaliableQuests[questIndex];
 	}
 	
 	public void SetTeam()
@@ -79,10 +80,11 @@ public class TeamInitHandler : MonoBehaviour
 		Global.currentMapInfo = new MapInfo()
 		{
 			Size = new Vector2(5, 5),
-			possibleEnemies = Global.AllEnemiesClasses,
-			possibleLoot = new List<LootItemInfo>() { new LootItemInfo(typeof(Pistol), 1f), new LootItemInfo(typeof(Battery), 0.9f) }
+			possibleEnemies = Global.AllEnemiesClasses.Where(x => !x.EntityChars.IsQuestEntity).ToList(),
+			possibleLoot = new List<LootItemInfo>() { new LootItemInfo(typeof(Pistol), 1f), new LootItemInfo(typeof(Battery), 0.9f) },
+			MapQuest = _selectedQuest
 		};
-
+		
 		Global.currentMapInfo.currentRoomNumber = 0;
 		Global.Stage = GameStage.InMission;
 

@@ -9,4 +9,9 @@ public class RescueQuest : Quest
     public override string Description => "Спасти персонажа";
 
     public override QuestType Type { get; set; }
+
+    public override void Initialize(MapInfo mapInfo)
+    {
+        throw new System.NotImplementedException();
+    }
 }

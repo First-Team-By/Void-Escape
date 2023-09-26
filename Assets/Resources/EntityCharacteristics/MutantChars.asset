@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: MutantChars
   m_EditorClassIdentifier: 
   _entityClass: 2
-  _maxHealth: 100
+  _maxHealth: 10
   _meleeDamage: 10
   _critChance: 0.085
   _critMultiplier: 1.459
   _evadeChance: 0.13
   _accuracy: 0.379
-  _protection: 0
+  _defence: 0
   _initiative: 1
   _value: 1
+  _isQuestEntity: 0
