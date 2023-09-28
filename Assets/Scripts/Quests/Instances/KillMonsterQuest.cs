@@ -20,10 +20,7 @@ public class KillMonsterQuest : Quest
 		}
 		
 		var boss = (EnemyInfo)Activator.CreateInstance(monsterType);
-		var minRoomNumber = mapInfo.RoomInfos.Count / 4 * 3;
-		var maxRoomNumber = mapInfo.RoomInfos.Count;
-		
-		var roomNumber = 1; // Random.Range(minRoomNumber, maxRoomNumber);
+		var roomNumber = GetGoalRoom(mapInfo);
 		
 		boss.HealthOver += OnBossHealthOver;
 		mapInfo.AddBoss(roomNumber, boss);

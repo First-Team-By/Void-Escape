@@ -13,7 +13,7 @@ public class TeamInitHandler : MonoBehaviour
 	[SerializeField] private ToolTipAppear _toolTip1;
 	[SerializeField] private ToolTipAppear _toolTip2;
 	[SerializeField] private UIPartyBuildPosition[] characterPositions;
-	private ContainmentController[] _containmentControllers; 
+	[SerializeField] private ContainmentController[] _containmentControllers; 
 	private Quest _selectedQuest;
 
 	private ContainmentController SelectedController
@@ -23,13 +23,16 @@ public class TeamInitHandler : MonoBehaviour
 	
 	private void Start()
 	{
-		_containmentControllers = FindObjectsByType<ContainmentController>(FindObjectsSortMode.None);
+		// _containmentControllers = FindObjectsByType<ContainmentController>(FindObjectsSortMode.None);
 
 		foreach (var controller in _containmentControllers)
 		{
 			controller.Selected += OnContainmentSelected;
 		}
-
+	}
+	
+	private void OnEnable()
+	{
 		OnContainmentSelected(_containmentControllers[0]);
 		SelectQuest(0);
 	}

@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardBase.cs" />
+    <Compile Include="Assets\Scripts\Tools\CloseOnStart.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
     <Compile Include="Assets\Scripts\Compartment\CrewQuarters.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIActiveCharacterListController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Assets\Scripts\UI\BattleScene\UIEquipmentCard.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIListController.cs" />
+    <Compile Include="Assets\Scripts\Entities\MutantBoss.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
     <Compile Include="Assets\Scripts\Commands\Conditioning.cs" />
@@ -186,7 +188,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\MutantBoss.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Weapons\LaserPistol.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

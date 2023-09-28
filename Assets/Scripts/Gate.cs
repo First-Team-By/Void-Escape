@@ -6,18 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
-    private void OnMouseDown()
-    {
-        if (!Global.UIIntersect)
-        {
-            StartCoroutine(SceneLoading());
-        }
-    }
+	[SerializeField] private GameObject _teamInitWindow;
+	private void OnMouseDown()
+	{
+		if (!Global.UIIntersect)
+		{
+			StartCoroutine(SceneLoading());
+		}
+	}
 
-    private IEnumerator SceneLoading()
-    {
-        yield return new WaitForSeconds(0.5f);
+	private IEnumerator SceneLoading()
+	{
+		yield return new WaitForSeconds(0.5f);
 
-        SceneManager.LoadScene(2); // TeamInitScene
-    }
+		_teamInitWindow.SetActive(true);
+	}
 }

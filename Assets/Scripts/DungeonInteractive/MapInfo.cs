@@ -51,4 +51,10 @@ public class MapInfo
 		
 		roomInfo.EnemyInfos.Add(boss);
 	}
+	
+	public void AddQuestItem(int roomNumber, LootItem item)
+	{
+		var roomInfo = RoomInfos[roomNumber];
+		roomInfo.Loot.Items.Add(item);
+	}
 }

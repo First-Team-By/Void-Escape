@@ -37,6 +37,11 @@ public static class QuestFactory
 			((KillMonsterQuest)result).monsterType = typeof(MutantBoss);
 		}
 		
+		if (result is CollectItemQuest)
+		{
+			((CollectItemQuest)result).ItemType = typeof(LaserPistol);
+		}
+		
 		return result as Quest;
 	}
 }

@@ -40,8 +40,6 @@ public class DepartmentLevel
 		var enemyValues = GetEnemyValues(difficulty);
 		List<EnemyInfo> enemiesInfos = new List<EnemyInfo>();
 		
-		
-		
 		for (int i = 0; i < enemyValues.Count; i++)
 		{
 			try

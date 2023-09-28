@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainSceneController : MonoBehaviour
 {
-	void Start()
+	void Awake()
 	{
 		if (Global.Stage == GameStage.InMission)
 		{
