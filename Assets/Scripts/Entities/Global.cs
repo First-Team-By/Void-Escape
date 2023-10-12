@@ -79,6 +79,7 @@ public static class Global
 
 		LoadCharacterCharTemplate("OfficerChars", typeof(Officer));
 		LoadCharacterCharTemplate("MedicChars", typeof(Medic));
+		LoadCharacterCharTemplate("JosephSteelsChars", typeof(JosephSteels));
 		LoadEnemyCharTemplate("MutantChars", typeof(Mutant));
 		LoadEnemyCharTemplate("MiddleMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));

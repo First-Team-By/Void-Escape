@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class QuestFactory
 {
@@ -40,6 +41,11 @@ public static class QuestFactory
 		if (result is CollectItemQuest)
 		{
 			((CollectItemQuest)result).ItemType = typeof(LaserPistol);
+		}
+		
+		if (result is RescueQuest)
+		{
+			((RescueQuest)result).QuestCharacterTemplate = Global.AllEntityTemplates.FirstOrDefault(x => x.EntityChars.EntityClass == EntityClass.JosephSteels);
 		}
 		
 		return result as Quest;

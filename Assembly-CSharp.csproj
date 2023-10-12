@@ -50,7 +50,7 @@
     <UnityVersion>2021.3.27f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\fortp\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\fortp\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\MedicalBay\UIMedCapsuleSlot.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Inventories\DepotType.cs" />
     <Compile Include="Assets\Scripts\InGameResources\LootItem.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
+    <Compile Include="Assets\Scripts\Equipment\Weapons\LaserPistol.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIBattleResultCard.cs" />
     <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\RescueQuest.cs" />
@@ -188,7 +189,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Equipment\Weapons\LaserPistol.cs" />
+    <Compile Include="Assets\Scripts\Entities\JosephSteels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

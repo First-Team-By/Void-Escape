@@ -42,7 +42,7 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             _capsuleInfo.Character.Id = 0;
         }
-        Global.allCharacters.CharacterInfos.Add(_capsuleInfo.Character);
+        Global.allCharacters.AddCharacter(_capsuleInfo.Character);
         StartCoroutine(OnEnableUIPopUpWinCor($"{_capsuleInfo.Character.FullName} ({_capsuleInfo.Character.ClassName})"));
         _capsuleInfo.Character = null;
         _capsuleInfo.Status = CapsuleStatus.Empty;

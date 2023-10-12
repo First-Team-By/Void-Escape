@@ -289,6 +289,13 @@ public class BattleRoutine : MonoBehaviour
 
 		Global.inventory.AddToInventory(currentRoomInfo.Loot.Items);
 		currentRoomInfo.Loot.InvokeTakingToInventory();
+		
+		var mapQuest = Global.currentMapInfo.MapQuest as RescueQuest;
+		if (mapQuest != null && 
+		mapQuest.QuestRoomNumber == Global.GetCurrentRoomInfo().RoomNumber)
+		{
+			Global.allCharacters.AddCharacter(mapQuest.QuestCharacter);
+		}
 		// ReturnToDungeon();
 	}
 	
