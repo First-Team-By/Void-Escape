@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Officer : CharacterInfo
 {
-    public override List<CharacterCommand> NativeCommands => new List<CharacterCommand>()
+    public override List<CharacterCommand> NativeCommands {get;} = new List<CharacterCommand>()
     {
         new DoubleTap(),
         new SingleFire()

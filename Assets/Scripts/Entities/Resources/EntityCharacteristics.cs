@@ -30,6 +30,7 @@ public class EntityCharacteristics : ScriptableObject
 	[SerializeField] private int _initiative;
 	[SerializeField] private int _value;
 	[SerializeField] private bool _isQuestEntity;
+	[SerializeField] private bool _isGenerable = true;
 
 	public float MaxHealth
 	{
@@ -122,6 +123,18 @@ public class EntityCharacteristics : ScriptableObject
 		set
 		{
 			_initiative = value;
+		}
+	}
+	
+	public bool IsGenerable
+	{
+		get
+		{
+			return _isGenerable;
+		}
+		set
+		{
+			_isGenerable = value;
 		}
 	}
 	

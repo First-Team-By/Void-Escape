@@ -25,6 +25,13 @@ public static class Global
 	public static CurrentCharacterGroup currentGroup;
 
 	public static CharacterGroup allCharacters;
+	public static List<CharsTemplate> generableCharacterClasses 
+	{ 
+		get
+		{
+			return AllCharacterClasses.Where(x => x.EntityChars.IsGenerable).ToList();
+		}
+	}
 
 	public static MapInfo currentMapInfo;
 
@@ -55,8 +62,10 @@ public static class Global
 		
 		LoadCharTemplates();
 
-        compartments = new List<Compartment>() { new CrewQuarters(), new ReactorChamber() };
-    }
+		compartments = new List<Compartment>() { new CrewQuarters(), new ReactorChamber() };
+		
+		CreatePreConditions();
+	}
 
 	public static RoomInfo GetCurrentRoomInfo()
 	{
@@ -80,6 +89,7 @@ public static class Global
 		LoadCharacterCharTemplate("OfficerChars", typeof(Officer));
 		LoadCharacterCharTemplate("MedicChars", typeof(Medic));
 		LoadCharacterCharTemplate("JosephSteelsChars", typeof(JosephSteels));
+		LoadCharacterCharTemplate("EngineerChars", typeof(CombatEngineer));
 		LoadEnemyCharTemplate("MutantChars", typeof(Mutant));
 		LoadEnemyCharTemplate("MiddleMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
@@ -106,5 +116,11 @@ public static class Global
 		{
 			compartment.AvaliableQuests = QuestFactory.GetQuests();
 		}
+	}
+	
+	public static void CreatePreConditions()
+	{
+		var josephSteels = AllCharacterClasses.FirstOrDefault(x => x.EntityType == typeof(JosephSteels));
+		allCharacters.AddCharacter(CharacterFactory.CreateCharacter(josephSteels));
 	}
 }

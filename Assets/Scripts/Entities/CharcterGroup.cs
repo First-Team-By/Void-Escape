@@ -22,5 +22,10 @@ public class CharacterGroup
 		CharacterInfos.Add(character);
 		character.OnAddedToTeam();
 	}
+
+    internal object Where(Func<object, object> value)
+    {
+        throw new NotImplementedException();
+    }
 }
 

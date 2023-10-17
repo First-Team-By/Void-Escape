@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38a62cddd1719294a94b92ae36139b2a, type: 3}
-  m_Name: JosephSteelsChars
+  m_Name: EngineerChars
   m_EditorClassIdentifier: 
-  _entityClass: 4
+  _entityClass: 0
   _maxHealth: 32
   _meleeDamage: 1
   _critChance: 0.3
   _critMultiplier: 1.5
   _evadeChance: 0.591
   _accuracy: 0.32
-  _defence: 0
+  _protection: 0
   _initiative: 50
   _value: 0
-  _isQuestEntity: 0
-  _isGenerable: 0
