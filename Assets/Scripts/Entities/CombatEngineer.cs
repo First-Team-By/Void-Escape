@@ -32,4 +32,15 @@ public class CombatEngineer : CharacterInfo
 
 		Rarity = Rarity.Common;
 	}
+
+    public override Sprite GetCustomPose(string pose)
+    {
+        switch (pose)
+        {
+            case Poses.PistolFire:
+                return AttackPose;
+        }
+
+        return null;
+    }
 }
