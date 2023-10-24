@@ -90,10 +90,11 @@ public static class Global
 		LoadCharacterCharTemplate("MedicChars", typeof(Medic));
 		LoadCharacterCharTemplate("JosephSteelsChars", typeof(JosephSteels));
 		LoadCharacterCharTemplate("EngineerChars", typeof(CombatEngineer));
-		LoadEnemyCharTemplate("MutantChars", typeof(Mutant));
-		LoadEnemyCharTemplate("MiddleMutant", typeof(Mutant));
-		LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
+		// LoadEnemyCharTemplate("MutantChars", typeof(Mutant));
+		// LoadEnemyCharTemplate("MiddleMutant", typeof(Mutant));
+		// LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MutantBoss", typeof(MutantBoss));
+		LoadEnemyCharTemplate("MutantScoutChars", typeof(MutantScout));
 
 		AllEntityTemplates = AllEnemiesClasses.Concat(AllCharacterClasses).ToList();
 	}

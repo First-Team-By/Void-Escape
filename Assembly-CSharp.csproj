@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Commands\Medic\HealOne.cs" />
     <Compile Include="Assets\Scripts\Levels\DepartmentLevel.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\EntityCardBase.cs" />
+    <Compile Include="Assets\Scripts\Commands\DefendingShot.cs" />
     <Compile Include="Assets\Scripts\Tools\CloseOnStart.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
     <Compile Include="Assets\Scripts\Compartment\CrewQuarters.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
+    <Compile Include="Assets\Scripts\Entities\CombatEngineer.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ElectricalSpareParts.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UICharacterListBarrack.cs" />
@@ -190,8 +192,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\CombatEngineer.cs" />
-    <Compile Include="Assets\Scripts\Commands\DefendingShot.cs" />
+    <Compile Include="Assets\Scripts\Entities\MutantScout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -37,6 +37,8 @@ public class BattleRoutine : MonoBehaviour
 
 	private bool IsCharacterTurn => CurrentEntity != null && CurrentEntity is CharacterInfo;
 	private bool isTurnProcessing;
+	private bool isBattleEnded;
+	
 	private EntityInfo CurrentEntity
 	{
 		get => currentEntity;
@@ -269,14 +271,18 @@ public class BattleRoutine : MonoBehaviour
 
 	private void CheckBattleResult()
 	{
+		if (isBattleEnded) return;
+		
 		if (!characterList.Any())
 		{
 			LoseBattle();
+			isBattleEnded = true;
 		}
 
 		if (!EnemyList.Where(x => !x.OnDeathDoor).Any())
 		{
 			WinBattle();
+			isBattleEnded = true;
 		}
 	}
 
