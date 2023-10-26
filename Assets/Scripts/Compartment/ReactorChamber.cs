@@ -12,7 +12,9 @@ public class ReactorChamber : Compartment
 		
 		_avaliableLoot = new List<LootItemInfo>() 
 		{
-			new LootItemInfo(typeof(Battery), 3),
+			new LootItemInfo(typeof(Battery), 20),
+			new LootItemInfo(typeof(ElectricalSpareParts), 3),
+			new LootItemInfo(typeof(MetalScrap), 10),
 			new LootItemInfo(typeof(Pistol))
 		};
 	}

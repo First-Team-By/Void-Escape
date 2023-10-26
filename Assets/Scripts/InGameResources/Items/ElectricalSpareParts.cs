@@ -1,6 +1,6 @@
 public class ElectricalSpareParts : ResourceItem
 {
-	protected override string IconName => throw new System.NotImplementedException();
+	protected override string IconName => "Electronics/electric-spare-set-icon_sprite";
 	
 	public ElectricalSpareParts()
 	{

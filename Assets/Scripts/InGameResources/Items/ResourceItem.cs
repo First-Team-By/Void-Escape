@@ -9,7 +9,7 @@ public abstract class ResourceItem : IItem
     public ResourceItem()
     {
         Resources = new Resource();
-        Icon = UnityEngine.Resources.Load<Sprite>("Sprites/Items/Resources/Energy/" + IconName);
+        Icon = UnityEngine.Resources.Load<Sprite>("Sprites/Items/Resources/" + IconName);
     }
 }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MutantScout : Mutant
+public class Beater : Mutant
 {
 	public override string SufferingPoseName => "";
 
@@ -12,12 +12,11 @@ public class MutantScout : Mutant
 
 	public override string DeathDoorSpriteName => "";
 
-	public override string FullFaceSpriteName => "Enemies/Mutant/MutantScout/mutant-scout-fullface_sprite";
+	public override string FullFaceSpriteName => "Enemies/Mutant/Beater/mutant-beater-fullface_sprite";
 	public override string EvadePoseName => "";
-
-	public MutantScout()
+	
+	public Beater()
 	{
-		EntityClass = EntityClass.MutantScout;
+		EntityClass = EntityClass.MutantBeater;
 	}
-
 }

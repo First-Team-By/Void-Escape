@@ -27,7 +27,7 @@ public class DepartmentLevel
 			//    amount = currentMapProgress * item.Rarity * 5;
 			//}
 
-			if (value <= itemInfo.Rarity)
+			if (value <= itemInfo.Weight)
 			{
 				var item = itemInfo.CreateLootItem();
 				result.Items.Add(item);

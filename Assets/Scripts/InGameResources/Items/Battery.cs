@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class Battery : ResourceItem
 {
-	protected override string IconName => "ui_energybattery_sprite";
+	protected override string IconName => "Energy/ui_energybattery_sprite";
 	
 	public Battery()
 	{

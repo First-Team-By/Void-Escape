@@ -62,7 +62,7 @@ public static class Global
 		
 		LoadCharTemplates();
 
-		compartments = new List<Compartment>() { new CrewQuarters(), new ReactorChamber() };
+		compartments = new List<Compartment>() { new LowerDecks(), new ReactorChamber() };
 		
 		CreatePreConditions();
 	}
@@ -95,6 +95,7 @@ public static class Global
 		// LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MutantBoss", typeof(MutantBoss));
 		LoadEnemyCharTemplate("MutantScoutChars", typeof(MutantScout));
+		LoadEnemyCharTemplate("MutantBeaterChars", typeof(Beater));
 
 		AllEntityTemplates = AllEnemiesClasses.Concat(AllCharacterClasses).ToList();
 	}

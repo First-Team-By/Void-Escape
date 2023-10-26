@@ -83,8 +83,8 @@ public class TeamInitHandler : MonoBehaviour
 		Global.currentMapInfo = new MapInfo()
 		{
 			Size = new Vector2(5, 5),
-			possibleEnemies = Global.AllEnemiesClasses.Where(x => !x.EntityChars.IsQuestEntity).ToList(),
-			possibleLoot = new List<LootItemInfo>() { new LootItemInfo(typeof(Pistol), 1f), new LootItemInfo(typeof(Battery), 0.9f) },
+			possibleEnemies = SelectedController.Compartment.AvaliableEnemies,
+			possibleLoot = SelectedController.Compartment.AvaliableLoot,
 			MapQuest = _selectedQuest
 		};
 		

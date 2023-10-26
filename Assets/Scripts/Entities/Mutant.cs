@@ -18,6 +18,6 @@ public class Mutant : EnemyInfo
 
     public Mutant()
     {
-        EntityClass = EntityClass.Mutant;
+        
     }
 }

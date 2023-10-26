@@ -1,6 +1,6 @@
 public class MedicationSet : ResourceItem
 {
-	protected override string IconName => throw new System.NotImplementedException();
+	protected override string IconName => "Medicine/medication-set-icon_sprite";
 	
 	public MedicationSet()
 	{

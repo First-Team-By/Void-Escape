@@ -74,7 +74,6 @@ public class DungeonMapController : MonoBehaviour
 			completeMissionButton.gameObject.SetActive(Global.currentMapInfo.MapQuest.Status == QuestStatus.Completed);
 			abortMissionButton.gameObject.SetActive(!completeMissionButton.gameObject.activeSelf);
 		}
-		
 	}
 
 	void Update()

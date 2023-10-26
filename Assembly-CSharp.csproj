@@ -97,7 +97,7 @@
     <Compile Include="Assets\Scripts\Commands\DefendingShot.cs" />
     <Compile Include="Assets\Scripts\Tools\CloseOnStart.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\BGLoop.cs" />
-    <Compile Include="Assets\Scripts\Compartment\CrewQuarters.cs" />
+    <Compile Include="Assets\Scripts\Compartment\LowerDecks.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIActiveCharacterListController.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\EventResolver.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\ToolTipAppear.cs" />
@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Entities\CombatEngineer.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ElectricalSpareParts.cs" />
+    <Compile Include="Assets\Scripts\Entities\MutantScout.cs" />
     <Compile Include="Assets\Scripts\Gate.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UICharacterListBarrack.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\CollectItemQuest.cs" />
@@ -164,7 +165,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\EntityContainer.cs" />
     <Compile Include="Assets\Scripts\Compartment\CompartmentType.cs" />
     <Compile Include="Assets\Scripts\UI\Misc\UIContainer.cs" />
-    <Compile Include="Assets\Scripts\InGameResources\Items\CasingParts.cs" />
+    <Compile Include="Assets\Scripts\InGameResources\Items\MetalScrap.cs" />
     <Compile Include="Assets\Scripts\DungeonInteractive\MapInfo.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\DungeonMapController.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\MutantScout.cs" />
+    <Compile Include="Assets\Scripts\Entities\Beater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

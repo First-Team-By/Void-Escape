@@ -11,4 +11,7 @@ public class Compartment
 		get => _avaliableQuests;
 		set => _avaliableQuests = value;
 	}
+	
+	public List<CharsTemplate> AvaliableEnemies => _avaliableEnemies;
+	public List<LootItemInfo> AvaliableLoot => _avaliableLoot;
 }
