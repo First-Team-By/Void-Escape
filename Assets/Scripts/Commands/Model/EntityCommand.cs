@@ -50,7 +50,10 @@ public abstract class EntityCommand
         return new List<int>() { targetPosition };
     }
 
-    public abstract CommandResult Execute(EntityInfo actor, List<EntityInfo> targets);
+    public virtual CommandResult Execute(BattleCommandExecuteInfo executeInfo)
+    {
+    	return new CommandResult() { Actor = executeInfo.Actor };
+    }
 
     protected virtual bool IsCommandEnabled(EntityInfo entity)
     {

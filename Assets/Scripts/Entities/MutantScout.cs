@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MutantScout : Mutant
 {
-	public override string SufferingPoseName => "";
+	public override string SufferingPoseName => "Enemies/Mutant/MutantScout/mutant-scout-suffering-pose_sprite";
 
 	public override string AttackPoseName => "";
 

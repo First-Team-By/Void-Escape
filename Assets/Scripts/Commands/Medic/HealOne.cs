@@ -10,9 +10,9 @@ public class HealOne : CharacterCommand
 
         SelfPositions = new List<int>() { 4, 5 };
 
-        Name = "<size=30><color=#ffa500ff>Лечение</color></size>";
+        Name = "<size=30><color=#ffa500ff>пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</color></size>";
 
-        Description = "\nЛечит любого союзника\nвключая самого медика";
+        Description = "\nпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ";
 
         FullDescription = Name + "\n" + Description;
     }
@@ -34,12 +34,12 @@ public class HealOne : CharacterCommand
         return SelfPositions.Contains(entity.Position);
     }
 
-    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
+    public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
     {
-        var result = new CommandResult();
-        var target = targets.FirstOrDefault();
+        var result = base.Execute(executeInfo);
+        var target = executeInfo.Targets.FirstOrDefault();
         result.TargetStates.Add(target.Position, target.GetHealth(healthAddition, Effect));
-        result.Actor = actor;
+        result.Actor = executeInfo.Actor;
         //result.ActorPose = EntityPose.AttackPose;
         result.ActorPoseName = Poses.Buffing;
 

@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
 {
-	[SerializeField] private GameObject[] characterPositions;
-	[SerializeField] private GameObject[] enemyPositions;
+	[SerializeField] private BattlePosition[] characterPositions;
+	[SerializeField] private BattlePosition[] enemyPositions;
 	[SerializeField] private CommandExecutionHandler commandExecutor;
 	[SerializeField] private UIActionPanel actionPanel;
 	[SerializeField] private EntityBattleCard battleCard;
@@ -20,10 +21,9 @@ public class BattleRoutine : MonoBehaviour
 		.OrderByDescending(i => i.CurrentInitiative)
 		.ToList();
 
-	public List<GameObject> AllPositions => characterPositions.Concat(enemyPositions).ToList();
+	public List<BattlePosition> AllPositions => characterPositions.Concat(enemyPositions).ToList();
 	public RoomInfo currentRoomInfo => Global.GetCurrentRoomInfo();
 
-	private DepartmentLevel level;
 	public List<EnemyInfo> EnemyList { get; } = new List<EnemyInfo>();
 	private List<CharacterInfo> characterList;
 	private List<EntityInfo> inactiveEntitiesList = new List<EntityInfo>();
@@ -129,7 +129,7 @@ public class BattleRoutine : MonoBehaviour
 		List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
 		for (int i = 0; i < enemyInfos.Count; i++)
 		{
-			var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i]);
+			var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i].gameObject);
 			enemy.EntityInfo.Position = i + 6;
 			enemy.EntityInfo.HealthOver += OnHealthOver;
 			EnemyList.Add((EnemyInfo)enemy.EntityInfo);
@@ -162,7 +162,7 @@ public class BattleRoutine : MonoBehaviour
 		group = Global.currentGroup;
 		foreach (var character in group.CurrentCharacterInfos)
 		{
-			var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1]);
+			var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1].gameObject);
 
 			characterInstance.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
 			characterList.Add(character);
@@ -240,7 +240,22 @@ public class BattleRoutine : MonoBehaviour
 
 		if (selectedTargets.Any())
 		{
-			actionPanel.ShowCommandResult(CurrentCommand.Execute(currentEntity, selectedTargets));
+			var executeInfo = new BattleCommandExecuteInfo() 
+			{ 
+				Actor = currentEntity, 
+				Targets = selectedTargets, 
+				CharacterPositions = characterPositions,
+				EnemyPositions = enemyPositions 
+			};
+			
+			var commandResult = CurrentCommand.Execute(executeInfo);
+			
+			foreach (var targetState in commandResult.TargetStates)
+			{
+				targetState.Value.Effect = CurrentCommand.Effect;
+			}
+			
+			actionPanel.ShowCommandResult(commandResult);
 			DeSelectTargets();
 			inactiveEntitiesList.Add(CurrentEntity);
 			isTurnProcessing = false;

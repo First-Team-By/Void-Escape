@@ -14,7 +14,7 @@ internal class Vampirism : CharacterCommand
     {
         
     }
-    public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
+    public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
     {
         throw new NotImplementedException();
     }

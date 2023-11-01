@@ -33,45 +33,44 @@ public class DefendingShot : CharacterCommand
 		return SelfPositions.Contains(entity.Position);
 	}
 
-	public override CommandResult Execute(EntityInfo actor, List<EntityInfo> targets)
+	public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
 	{
-		var result = new CommandResult();
-        foreach (var target in targets)
-        {
-            result.TargetStates.Add(target.Position, target.TakeDamage(damage, actor.EntityChars, Effect, Conditioning));
-        }
-        result.Actor = actor;
-        //result.ActorPose = EntityPose.AttackPose;
-        result.ActorPoseName = Poses.PistolFire;
-        
-        return result;
+		var result = base.Execute(executeInfo);
+		foreach (var target in executeInfo.Targets)
+		{
+			var targetState = AttackResolver.ResolveAttack(damage, executeInfo.Actor, target, Conditioning);
+			result.TargetStates.Add(target.Position, targetState);
+		}
+		
+		result.ActorPoseName = Poses.PistolFire;
+		return result;
 	}
 
 	public override bool IsAvaliable(EntityInfo entity)
 	{
 		if (entity is CharacterInfo)
-        {
-            return (entity as CharacterInfo).Weapon != null && (entity as CharacterInfo).Weapon.Type == WeaponType.Pistol;
-        }
+		{
+			return (entity as CharacterInfo).Weapon != null && (entity as CharacterInfo).Weapon.Type == WeaponType.Pistol;
+		}
 
-        return true;
+		return true;
 	}
 
-    public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
-    {
-        if (selfPosition > 3)
-        {
-            return new List<EntityInfo>();
-        }
-        if (selfPosition == 1)
-        {
-            return targetPositions.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
-        }
-        if (selfPosition == 3)
-        {
-            return targetPositions.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
-        }
-        
-        return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
-    }
+	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
+	{
+		if (selfPosition > 3)
+		{
+			return new List<EntityInfo>();
+		}
+		if (selfPosition == 1)
+		{
+			return targetPositions.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
+		}
+		if (selfPosition == 3)
+		{
+			return targetPositions.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
+		}
+		
+		return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
+	}
 }

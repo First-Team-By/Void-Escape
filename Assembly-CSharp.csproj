@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Quests\Instances\RescueQuest.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitScene\TeamInitHandler.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\CommandButton.cs" />
+    <Compile Include="Assets\Scripts\Entities\Beater.cs" />
     <Compile Include="Assets\Scripts\Equipment\Device\EntityDevice.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\EntityDesease.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\Limping.cs" />
@@ -193,7 +194,8 @@
     <Compile Include="Assets\Scripts\Entities\Resources\CommonPrefabs.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Entities\Beater.cs" />
+    <Compile Include="Assets\Scripts\Battle\BattleCommandExecuteInfo.cs" />
+    <Compile Include="Assets\Scripts\Battle\AttackResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
