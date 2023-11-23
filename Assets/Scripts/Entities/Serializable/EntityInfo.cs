@@ -19,13 +19,13 @@ public abstract class EntityInfo
 
 	public string Name { get; set; }
 	public Sprite SufferingPose { get; private set; }
-	public Sprite AttackPose { get; private set; }
 	public Sprite Portrait { get; private set; }
 	public Sprite DeathDoorSprite { get; private set; }
 	public Sprite FullFaceSprite { get; private set; }
 	public Sprite EvadePose { get; private set; }
+
+	public List<Pose> Poses { get; private set; } = new List<Pose>();
 	public abstract string SufferingPoseName { get; }
-	public abstract string AttackPoseName { get; }
 	public abstract string PortraitName { get; }
 	public abstract string DeathDoorSpriteName { get; }
 	public abstract string FullFaceSpriteName { get; }
@@ -104,15 +104,27 @@ public abstract class EntityInfo
 	{
 		_entityChars = CharsTemplate.GetCharacteristics(this.GetType());
 		_health = EntityChars.MaxHealth;
-		AttackPose = Resources.Load<Sprite>("Sprites/Entities/" + AttackPoseName);
+
+        Portrait = Resources.Load<Sprite>("Sprites/Entities/" + PortraitName);
+
 		EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);
 		FullFaceSprite = Resources.Load<Sprite>("Sprites/Entities/" + FullFaceSpriteName);
-		Portrait = Resources.Load<Sprite>("Sprites/Entities/" + PortraitName);
 		DeathDoorSprite = Resources.Load<Sprite>("Sprites/Entities/" + DeathDoorSpriteName);
 		SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
 
 		NaturalResistance = new EntityResistances();
 	}
+
+	protected void AddPose(string name, string path)
+	{
+        var pose = Poses.FirstOrDefault(x => x.Name == name);
+		if (pose == null)
+		{
+            pose = new Pose(name, path);
+            Poses.Add(pose);
+		};
+        pose.Sprite = Resources.Load<Sprite>("Sprites/Entities/" + path);
+    }
 
 	public EntityCharacteristics ApplyConditions(EntityCharacteristics entityChars)
 	{
@@ -197,7 +209,7 @@ public abstract class EntityInfo
 		Health -= damage;
 
 		var result = new TargetState();
-		result.PoseName = Poses.Suffering;
+		result.PoseName = PosesConst.Suffering;
 		result.HealthChanged = -damage;
 		result.Target = this;
 		result.Effect = effect;
@@ -210,7 +222,7 @@ public abstract class EntityInfo
 	{
 		var result = new TargetState();
 		Health += health;
-		result.PoseName = Poses.Buffed;
+		result.PoseName = PosesConst.Buffed;
 		result.HealthChanged = health;
 		result.Target = this;
 		result.Effect = effect;
@@ -237,7 +249,7 @@ public abstract class EntityInfo
 	public TargetState StopBleeding(Sprite effect)
 	{
 		var result = new TargetState();
-		result.PoseName = Poses.Buffed;
+		result.PoseName = PosesConst.Buffed;
 		result.Target = this;
 		result.Effect = effect;
 		_conditions.bleeding.duration = 0;
@@ -248,7 +260,7 @@ public abstract class EntityInfo
 	public TargetState StopPoisoning(Sprite effect)
 	{
 		var result = new TargetState();
-		result.PoseName = Poses.Buffed;
+		result.PoseName = PosesConst.Buffed;
 		result.Target = this;
 		result.Effect = effect;
 		_conditions.poisoning.duration = 0;
@@ -283,13 +295,18 @@ public abstract class EntityInfo
 	{
 		switch (pose)
 		{
-			case Poses.Evade: return EvadePose;
+			case PosesConst.Evade: return EvadePose;
+			case PosesConst.Suffering: return SufferingPose;
+			case PosesConst.DeathDoor: return DeathDoorSprite;
 
-			case Poses.Suffering: return SufferingPose;
-
-			default: return GetCustomPose(pose);
+            default: return GetCustomPose(pose);
 		}
 	}
+
+	protected Sprite GetPoseInner(string poseName)
+	{
+        return Poses.First(x => x.Name == poseName).Sprite;
+    }
 
 	public virtual Sprite GetCustomPose(string pose)
 	{

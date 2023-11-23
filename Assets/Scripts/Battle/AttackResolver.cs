@@ -12,7 +12,7 @@ public class AttackResolver
 		
 		if (Random.Range(0, 1f) < Mathf.Clamp(targetChars.EvadeChance - attackerChars.Accuracy, 0, 1f))
 		{
-			result.PoseName = Poses.Evade;
+			result.PoseName = PosesConst.Evade;
 			return result;
 		} 
 
@@ -52,7 +52,7 @@ public class AttackResolver
 		}
 
 		target.Health -= finalDamage;
-		result.PoseName = Poses.Suffering;
+		result.PoseName = PosesConst.Suffering;
 		result.HealthChanged = -finalDamage;
 		result.Target = target;
 		return result;

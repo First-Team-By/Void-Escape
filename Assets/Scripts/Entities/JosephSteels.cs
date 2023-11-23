@@ -6,8 +6,6 @@ public class JosephSteels : Officer
 {
 	public override string SufferingPoseName => "";
 
-	public override string AttackPoseName => "Characters/JosephSteels/joseph-steels-attackpose_sprite";
-
 	public override string PortraitName => "Characters/JosephSteels/joseph-steels-portrait_sprite";
 
 	public override string DeathDoorSpriteName => "";
@@ -20,6 +18,9 @@ public class JosephSteels : Officer
 	{
 		EntityClass = EntityClass.JosephSteels;
 		FullName = "Джозеф Стилс";
-	}
+
+		AddPose("FirePistol", "Characters/JosephSteels/joseph-steels-attackpose_sprite");
+
+    }
 }
 	

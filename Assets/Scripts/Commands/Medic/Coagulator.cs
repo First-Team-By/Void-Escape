@@ -25,7 +25,7 @@ public class Coagulator : CharacterCommand
         result.TargetStates.Add(target.Position, target.StopBleeding(Effect));
         result.Actor = executeInfo.Actor;
         //result.ActorPose = EntityPose.AttackPose;
-        result.ActorPoseName = Poses.Buffing;
+        result.ActorPoseName = PosesConst.Buffing;
 
         return result;
     }

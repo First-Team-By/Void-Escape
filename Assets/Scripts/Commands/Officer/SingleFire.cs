@@ -67,7 +67,7 @@ public class SingleFire : CharacterCommand
 		
 		var targetState = AttackResolver.ResolveAttack(damage, executeInfo.Actor, target, Conditioning);
 		result.TargetStates.Add(target.Position, targetState);
-		result.ActorPoseName = Poses.PistolFire;
+		result.ActorPoseName = PosesConst.PistolFire;
 
 		return result;
 	}

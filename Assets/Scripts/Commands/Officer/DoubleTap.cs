@@ -60,7 +60,7 @@ public class DoubleTap : CharacterCommand
 			result.TargetStates.Add(target.Position, targetState);
 		}
 		
-		result.ActorPoseName = Poses.PistolFire;
+		result.ActorPoseName = PosesConst.PistolFire;
 		return result;
 	}
 }

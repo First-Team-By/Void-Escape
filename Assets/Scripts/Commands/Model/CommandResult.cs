@@ -17,13 +17,15 @@ public class TargetState
     public string ConditionName { get; set; }
 }
 
-public static class Poses
+public static class PosesConst
 {
+    public const string FullFace = "FullFace";
     public const string PistolFire = "PistolFire";
     public const string BladeStab = "BladeStab";
     public const string Buffing = "Buffing";
     public const string Evade = "Evade";
     public const string Suffering = "Suffering";
     public const string Buffed = "Buffed";
+    public const string DeathDoor = "DeathDoor";
 }
 

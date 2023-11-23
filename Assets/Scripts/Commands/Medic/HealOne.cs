@@ -41,7 +41,7 @@ public class HealOne : CharacterCommand
         result.TargetStates.Add(target.Position, target.GetHealth(healthAddition, Effect));
         result.Actor = executeInfo.Actor;
         //result.ActorPose = EntityPose.AttackPose;
-        result.ActorPoseName = Poses.Buffing;
+        result.ActorPoseName = PosesConst.Buffing;
 
         return result;
     }

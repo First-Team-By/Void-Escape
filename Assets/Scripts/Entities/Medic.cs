@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 
 public class Medic : CharacterInfo
 {
     public override string SufferingPoseName => "";
-
-    public override string AttackPoseName => "";
 
     public override string PortraitName => "Characters/Medic/medic_portrait_sprite";
 

@@ -6,8 +6,6 @@ public class MutantBoss : Mutant
 {
 	public override string SufferingPoseName => "Enemies/Mutant/mutant_sufferingpose_sprite";
 
-	public override string AttackPoseName => "";
-
 	public override string PortraitName => "";
 
 	public override string DeathDoorSpriteName => "";

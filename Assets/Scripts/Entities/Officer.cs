@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Officer : CharacterInfo
@@ -9,8 +10,6 @@ public class Officer : CharacterInfo
         new SingleFire()
     };
     public override string SufferingPoseName => "";
-
-    public override string AttackPoseName => "Characters/Officer/officer_attackpose_sprite";
 
     public override string PortraitName => "Characters/Officer/officer_portrait_sprite";
 
@@ -33,14 +32,16 @@ public class Officer : CharacterInfo
         Conditions.AddMutilation(new Limping());
 
         //GetBleeded(0.1f, 100);
+
+        AddPose("FirePistol", "Characters/Officer/officer_attackpose_sprite");
     }
 
     public override Sprite GetCustomPose(string pose)
     {
         switch (pose)
         {
-            case Poses.PistolFire:
-                return AttackPose;
+            case PosesConst.PistolFire:
+                return GetPoseInner("FirePistol");
         }
 
         return null;
