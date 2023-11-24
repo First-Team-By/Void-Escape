@@ -12,9 +12,8 @@ public class SingleFire : CharacterCommand
 	{
 		damage = 15;
 		OnExecute = SingleFireExec;
-		IsEnabled = SingleFireEnabled;
 
-		SelfPositions = new List<int>() { 1, 2, 3 };
+		SelfPositions = new List<int>() { 4, 5 };
 		EnemyPositions = new List<int>() { 1, 2, 3 };
 
 		Name = "<size=30><color=#ffa500ff>Одиночный выстрел</color></size>";
@@ -35,11 +34,6 @@ public class SingleFire : CharacterCommand
 		
 	}
 
-	private bool SingleFireEnabled(EntityInfo entity)
-	{
-		return SelfPositions.Contains(entity.Position);
-	}
-
 	public override bool IsAvaliable(EntityInfo entity)
 	{
 		if (entity is CharacterInfo)
@@ -50,14 +44,14 @@ public class SingleFire : CharacterCommand
 		return true;
 	}
 
-	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
+	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
 	{
 		if (selfPosition < 4)
 		{
 			return new List<EntityInfo>();
 		}
 
-		return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
+		return targets.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
 	}
 
 	public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)

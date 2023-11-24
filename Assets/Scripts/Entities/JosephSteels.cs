@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JosephSteels : Officer
 {
-	public override string SufferingPoseName => "";
+	public override string SufferingPoseName => "Characters/JosephSteels/joseph-steels-attackpose_sprite";
 
 	public override string PortraitName => "Characters/JosephSteels/joseph-steels-portrait_sprite";
 

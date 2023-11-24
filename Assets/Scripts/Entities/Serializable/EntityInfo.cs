@@ -18,11 +18,13 @@ public abstract class EntityInfo
 	private EntityCharacteristics _entityChars;
 
 	public string Name { get; set; }
-	public Sprite SufferingPose { get; private set; }
-	public Sprite Portrait { get; private set; }
-	public Sprite DeathDoorSprite { get; private set; }
-	public Sprite FullFaceSprite { get; private set; }
-	public Sprite EvadePose { get; private set; }
+
+    public Sprite Portrait { get; private set; }
+    public Sprite FullFaceSprite { get; private set; }
+
+    public Sprite SufferingPose { get; private set; }
+    public Sprite EvadePose { get; private set; }
+    public Sprite DeathDoorSprite { get; private set; }
 
 	public List<Pose> Poses { get; private set; } = new List<Pose>();
 	public abstract string SufferingPoseName { get; }
@@ -106,11 +108,12 @@ public abstract class EntityInfo
 		_health = EntityChars.MaxHealth;
 
         Portrait = Resources.Load<Sprite>("Sprites/Entities/" + PortraitName);
+        FullFaceSprite = Resources.Load<Sprite>("Sprites/Entities/" + FullFaceSpriteName);
 
-		EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);
-		FullFaceSprite = Resources.Load<Sprite>("Sprites/Entities/" + FullFaceSpriteName);
+        SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
+        EvadePose = Resources.Load<Sprite>("Sprites/Entities/" + EvadePoseName);
 		DeathDoorSprite = Resources.Load<Sprite>("Sprites/Entities/" + DeathDoorSpriteName);
-		SufferingPose = Resources.Load<Sprite>("Sprites/Entities/" + SufferingPoseName);
+
 
 		NaturalResistance = new EntityResistances();
 	}
@@ -120,7 +123,7 @@ public abstract class EntityInfo
         var pose = Poses.FirstOrDefault(x => x.Name == name);
 		if (pose == null)
 		{
-            pose = new Pose(name, path);
+            pose = new Pose(name);
             Poses.Add(pose);
 		};
         pose.Sprite = Resources.Load<Sprite>("Sprites/Entities/" + path);

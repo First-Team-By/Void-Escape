@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public abstract class EntityCommand
 {
@@ -13,7 +15,8 @@ public abstract class EntityCommand
     public Sprite Effect { set; get; }
     public abstract string EffectName { get; }
     public UnityAction OnExecute { set; get; }
-    public Predicate<EntityInfo> IsEnabled { set; get; }
+
+    protected float damage;
 
     public List<int> SelfPositions { set; get; }
     public List<int> EnemyPositions { set; get; }
@@ -21,8 +24,6 @@ public abstract class EntityCommand
     public Conditioning Conditioning { get; set; }
     public EntityCommand()
     {
-        IsEnabled = IsCommandEnabled;
-
         Icon = Resources.Load<Sprite>("Sprites/Commands/" + IconName);
         Effect = Resources.Load<Sprite>("Sprites/Effects/Commands/" + EffectName);
 
@@ -40,7 +41,7 @@ public abstract class EntityCommand
         }
     }
 
-    public virtual List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
+    public virtual List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
     {
         return new List<EntityInfo>();
     }
@@ -55,8 +56,8 @@ public abstract class EntityCommand
     	return new CommandResult() { Actor = executeInfo.Actor };
     }
 
-    protected virtual bool IsCommandEnabled(EntityInfo entity)
+    protected virtual bool IsCommandEnabled(EntityInfo entity, List<EntityInfo> targets)
     {
-        return SelfPositions.Contains(entity.Position);
+        return GetAvaliableTargets(entity.Position, targets).Any();
     }
 }

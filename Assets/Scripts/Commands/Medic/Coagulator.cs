@@ -7,8 +7,6 @@ public class Coagulator : CharacterCommand
     public override string EffectName => "effect_coagulator_sprite";
     public Coagulator()
     {
-        IsEnabled = CoagulatorEnabled;
-
         SelfPositions = new List<int>() { 4, 5 };
 
         Name = "<size=30><color=#ffa500ff>Коагулятор</color></size>";
@@ -45,8 +43,4 @@ public class Coagulator : CharacterCommand
         return targetPositions.Where(x => x.Position < 6 && x.Conditions.IsBleeding).ToList();
     }
 
-    private bool CoagulatorEnabled(EntityInfo entity)
-    {
-        return SelfPositions.Contains(entity.Position);
-    }
 }

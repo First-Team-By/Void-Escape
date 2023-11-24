@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class DefendingShot : CharacterCommand
 {
@@ -12,7 +10,6 @@ public class DefendingShot : CharacterCommand
 	public DefendingShot()
 	{
 		damage = 7;
-		IsEnabled = DefendingShotEnabled;
 
 		SelfPositions = new List<int>() { 1, 2, 3 };
 		EnemyPositions = new List<int>() { 1, 2, 3 };
@@ -28,11 +25,6 @@ public class DefendingShot : CharacterCommand
 		Conditioning.SetBurning(1f, 4, 1);
 	}
 	
-	private bool DefendingShotEnabled(EntityInfo entity)
-	{
-		return SelfPositions.Contains(entity.Position);
-	}
-
 	public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
 	{
 		var result = base.Execute(executeInfo);
@@ -56,7 +48,7 @@ public class DefendingShot : CharacterCommand
 		return true;
 	}
 
-	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
+	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
 	{
 		if (selfPosition > 3)
 		{
@@ -64,13 +56,13 @@ public class DefendingShot : CharacterCommand
 		}
 		if (selfPosition == 1)
 		{
-			return targetPositions.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
+			return targets.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
 		}
 		if (selfPosition == 3)
 		{
-			return targetPositions.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
+			return targets.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
 		}
 		
-		return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
+		return targets.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
 	}
 }

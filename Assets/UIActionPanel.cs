@@ -80,29 +80,9 @@ public class UIActionPanel : MonoBehaviour
                 if (index != commandResult.Actor.Position)
                 {
                     EntitiesPoses[i].sprite = state.Target.GetPose(state.PoseName);
-                    //switch (state.Pose)
-                    //{
-                    //    case EntityPose.SufferingPose:
-                    //        EntitiesPoses[i].sprite = state.Target.GetSufferingPose();
-                    //        break;
-
-                    //    case EntityPose.AttackPose:
-                    //        EntitiesPoses[i].sprite = state.Target.GetAttackPose();
-                    //        break;
-                    //}
                 }
 
                 actorPose.sprite = commandResult.Actor.GetPose(commandResult.ActorPoseName);
-                //switch (commandResult.ActorPose)
-                //{
-                //    case EntityPose.SufferingPose:
-                //        actorPose.sprite = commandResult.Actor.GetSufferingPose();
-                //        break;
-
-                //    case EntityPose.AttackPose:
-                //        actorPose.sprite = commandResult.Actor.GetAttackPose();
-                //        break;
-                //}
             }
         }
     }

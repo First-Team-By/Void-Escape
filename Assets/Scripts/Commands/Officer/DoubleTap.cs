@@ -32,7 +32,7 @@ public class DoubleTap : CharacterCommand
 	public override string IconName => "Officer/command_doubletap_sprite";
 	public override string EffectName => "effect_doubletap_sprite";
 
-	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targetPositions)
+	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
 	{
 		if (selfPosition > 3)
 		{
@@ -40,14 +40,14 @@ public class DoubleTap : CharacterCommand
 		}
 		if (selfPosition == 1)
 		{
-			return targetPositions.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
+			return targets.Where(x => x.Position == 6 || x.Position == 7 && !x.OnDeathDoor).ToList();
 		}
 		if (selfPosition == 3)
 		{
-			return targetPositions.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
+			return targets.Where(x => x.Position == 7 || x.Position == 8 && !x.OnDeathDoor).ToList();
 		}
 		
-		return targetPositions.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
+		return targets.Where(x => x.Position < 9 && x.Position > 5 && !x.OnDeathDoor).ToList();
 	}
 
 	public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)

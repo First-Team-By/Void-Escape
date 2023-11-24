@@ -6,8 +6,6 @@ public class HealOne : CharacterCommand
     private float healthAddition = 100;
     public HealOne()
     {
-        IsEnabled = HealOneEnabled;
-
         SelfPositions = new List<int>() { 4, 5 };
 
         Name = "<size=30><color=#ffa500ff>�������</color></size>";
@@ -27,11 +25,6 @@ public class HealOne : CharacterCommand
     public override List<int> GetSelectedTargets(int targetPosition)
     {
         return base.GetSelectedTargets(targetPosition);
-    }
-
-    private bool HealOneEnabled(EntityInfo entity)
-    {
-        return SelfPositions.Contains(entity.Position);
     }
 
     public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
