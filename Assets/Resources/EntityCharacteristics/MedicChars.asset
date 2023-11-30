@@ -15,10 +15,12 @@ MonoBehaviour:
   _entityClass: 1
   _maxHealth: 30
   _meleeDamage: 10
-  _critChance: 0.154
+  _critChance: 0.05
   _critMultiplier: 1.086
   _evadeChance: 0.198
   _accuracy: 0.209
   _defence: 0.218
   _initiative: 51
   _value: 0
+  _isQuestEntity: 0
+  _isGenerable: 1

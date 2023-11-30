@@ -9,11 +9,13 @@ public class AttackResolver
 		var result = new TargetState();
 		var attackerChars = attacker.EntityChars;
 		var targetChars = target.EntityChars;
-		
-		if (Random.Range(0, 1f) < Mathf.Clamp(targetChars.EvadeChance - attackerChars.Accuracy, 0, 1f))
+        result.Target = target;
+
+        if (Random.Range(0, 1f) < Mathf.Clamp(targetChars.EvadeChance - attackerChars.Accuracy, 0, 1f))
 		{
 			result.PoseName = PosesConst.Evade;
-			return result;
+            Debug.Log(target.ClassName + " уворачивается");
+            return result;
 		} 
 
 		var finalDamage = baseDamage;
@@ -52,9 +54,9 @@ public class AttackResolver
 		}
 
 		target.Health -= finalDamage;
-		result.PoseName = PosesConst.Suffering;
 		result.HealthChanged = -finalDamage;
-		result.Target = target;
-		return result;
+        result.PoseName = PosesConst.Suffering;
+        Debug.Log(target.ClassName + " получает " + finalDamage + " урона");
+        return result;
 	}
 }

@@ -9,10 +9,10 @@ public class MutantScout : Mutant
 
 	public override string PortraitName => "";
 
-	public override string DeathDoorSpriteName => "";
+	public override string DeathDoorSpriteName => "Enemies/Mutant/MutantScout/mutant-scout-dead-pose_sprite";
 
 	public override string FullFaceSpriteName => "Enemies/Mutant/MutantScout/mutant-scout-fullface_sprite";
-	public override string EvadePoseName => "";
+	public override string EvadePoseName => "Enemies/Mutant/MutantScout/mutant-scout-evade-pose_sprite";
 
 	public MutantScout()
 	{

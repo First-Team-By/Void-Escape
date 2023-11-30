@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
 {
@@ -46,6 +44,14 @@ public class BattleRoutine : MonoBehaviour
 		set => currentEntity = value;
 	}
 
+	private void RefreshEntitiesImages()
+	{
+		foreach(var position in AllPositions)
+		{
+			position.entityContainer?.RefreshImage();
+		}
+	}
+
 	private void InitBattle()
 	{
 		roundCounter = 1;
@@ -66,7 +72,9 @@ public class BattleRoutine : MonoBehaviour
 	private void MainBattleProcess()
 	{
 		RefreshHealthBars();
-		CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
+		RefreshEntitiesImages();
+
+        CurrentEntity = EntitiesRoute.FirstOrDefault(x => IsActive(x));
 
 		if (CurrentEntity is null)
 		{
@@ -132,7 +140,7 @@ public class BattleRoutine : MonoBehaviour
 				//StartCoroutine(Wait1Sec());
 				inactiveEntitiesList.Add(currentEntity);
 
-				isTurnProcessing = false;
+				//isTurnProcessing = false;
 			}
 		}
 	}
@@ -143,7 +151,9 @@ public class BattleRoutine : MonoBehaviour
 		for (int i = 0; i < enemyInfos.Count; i++)
 		{
 			var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i].gameObject);
-			enemy.EntityInfo.Position = i + 6;
+            enemyPositions[i].entityContainer = enemy;
+
+            enemy.EntityInfo.Position = i + 6;
 			enemy.EntityInfo.HealthOver += OnHealthOver;
 			EnemyList.Add((EnemyInfo)enemy.EntityInfo);
 		}
@@ -176,8 +186,9 @@ public class BattleRoutine : MonoBehaviour
 		foreach (var character in group.CurrentCharacterInfos)
 		{
 			var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1].gameObject);
+            characterPositions[character.Position - 1].entityContainer = characterInstance;
 
-			characterInstance.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
+            characterInstance.GetComponent<SpriteRenderer>().sortingOrder = character.Position;
 			CharacterList.Add(character);
 			character.HealthOver += OnHealthOver;
 		}
@@ -265,7 +276,7 @@ public class BattleRoutine : MonoBehaviour
 			ShowCommandResult(commandResult);
             DeSelectTargets();
 			inactiveEntitiesList.Add(CurrentEntity);
-			isTurnProcessing = false;
+			//isTurnProcessing = false;
 		}
 	}
 
@@ -334,7 +345,6 @@ public class BattleRoutine : MonoBehaviour
 		{
 			Global.allCharacters.AddCharacter(mapQuest.QuestCharacter);
 		}
-		// ReturnToDungeon();
 	}
 	
 	private IEnumerator ShowResult(float seconds = 2)

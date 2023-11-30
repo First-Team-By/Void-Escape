@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EntityContainer : MonoBehaviour
 {
+    private SpriteRenderer _spriteRenderer;
     public EntityInfo EntityInfo
     {
         get => _entityInfo;
@@ -12,6 +13,19 @@ public class EntityContainer : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = EntityInfo.FullFaceSprite;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = EntityInfo.FullFaceSprite;
+    }
+
+    public void RefreshImage()
+    {
+        if(EntityInfo.OnDeathDoor) 
+        {
+            _spriteRenderer.sprite = EntityInfo.DeathDoorSprite;
+        }
+        else
+        {
+            _spriteRenderer.sprite = EntityInfo.FullFaceSprite;
+        }
     }
 }

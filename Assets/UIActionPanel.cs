@@ -56,7 +56,7 @@ public class UIActionPanel : MonoBehaviour
                 }
                 if (commandResult.TargetStates[index].HealthChanged == 0)
                 {
-                    healthChanged = "";
+                  //  healthChanged = "";
                     EntitiesTexts[i].color = Color.gray;
                     actorText.color = Color.gray;
                 }
@@ -67,7 +67,7 @@ public class UIActionPanel : MonoBehaviour
                     EntitiesPoses[i].enabled = true;
                     EntitiesEffects[i].enabled = true;
                     EntitiesEffects[i].sprite = state.Effect;
-                    EntitiesPoses[i].sprite = state.Target.SufferingPose;
+                    EntitiesPoses[i].sprite = state.Target.GetPose(state.PoseName);
                     EntitiesTexts[i].text = healthChanged;
                 }
                 else
@@ -75,11 +75,6 @@ public class UIActionPanel : MonoBehaviour
                     actorEffect.enabled = true;
                     actorEffect.sprite = state.Effect;
                     actorText.text = healthChanged;
-                }
-
-                if (index != commandResult.Actor.Position)
-                {
-                    EntitiesPoses[i].sprite = state.Target.GetPose(state.PoseName);
                 }
 
                 actorPose.sprite = commandResult.Actor.GetPose(commandResult.ActorPoseName);

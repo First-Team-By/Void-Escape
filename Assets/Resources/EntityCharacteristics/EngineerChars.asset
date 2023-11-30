@@ -15,7 +15,7 @@ MonoBehaviour:
   _entityClass: 5
   _maxHealth: 32
   _meleeDamage: 1
-  _critChance: 0.3
+  _critChance: 0.1
   _critMultiplier: 1.5
   _evadeChance: 0.591
   _accuracy: 0.32

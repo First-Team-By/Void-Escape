@@ -15,16 +15,16 @@ public class EntityCharacteristics : ScriptableObject
 	[Range(0, 1)]
 	[SerializeField] private float _critChance;
 
-	[Range(1, 2)]
+	[Min(1)]
 	[SerializeField] private float _critMultiplier;
 
-	[Range(0,1)]
+	[Range(0, 0.99f)]
 	[SerializeField] private float _evadeChance;
 
-	[Range(0, 1)]
+	[Range(0, 0.99f)]
 	[SerializeField] private float _accuracy;
 
-	[Range(0, 0.8f)] 
+	[Range(0, 0.99f)] 
 	[SerializeField] private float _defence;
 
 	[SerializeField] private int _initiative;
@@ -70,11 +70,11 @@ public class EntityCharacteristics : ScriptableObject
 	{
 		get
 		{
-			return _evadeChance;
+			return _critMultiplier;
 		}
 		set
 		{
-			_evadeChance = value;
+            _critMultiplier = value;
 		}
 	}
 

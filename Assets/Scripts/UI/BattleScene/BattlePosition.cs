@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class BattlePosition : MonoBehaviour
 {
 	private BattleRoutine battleRoutine;
+	public EntityContainer entityContainer;
 	[SerializeField] private SpriteRenderer _flare;
 	[SerializeField] private int _position;
 	private SpriteRenderer spriteRenderer;
