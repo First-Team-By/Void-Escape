@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JosephSteels : Officer
 {
-	public override string SufferingPoseName => "Characters/JosephSteels/joseph-steels-attackpose_sprite";
+	public override string SufferingPoseName => "Characters/JosephSteels/joseph-steels-suffering_sprite";
 
 	public override string PortraitName => "Characters/JosephSteels/joseph-steels-portrait_sprite";
 
@@ -19,7 +19,7 @@ public class JosephSteels : Officer
 		EntityClass = EntityClass.JosephSteels;
 		FullName = "Джозеф Стилс";
 
-		AddPose("FirePistol", "Characters/JosephSteels/joseph-steels-attackpose_sprite");
+		AddPose("FirePistol", "Characters/JosephSteels/joseph-steels-firepistol_sprite");
 
     }
 }
