@@ -21,9 +21,9 @@ public class TeamInitHandler : MonoBehaviour
 		get => _containmentControllers.FirstOrDefault(x => x.IsSelected);
 	}
 	
-	private void Start()
+	private void Awake()
 	{
-		// _containmentControllers = FindObjectsByType<ContainmentController>(FindObjectsSortMode.None);
+		//_containmentControllers = FindObjectsByType<ContainmentController>(FindObjectsSortMode.None);
 
 		foreach (var controller in _containmentControllers)
 		{
@@ -80,17 +80,17 @@ public class TeamInitHandler : MonoBehaviour
 
 		Global.SaveCharactersInfo(characters);
 
-		Global.currentMapInfo = new MapInfo()
+		Global.CurrentMapInfo = new MapInfo()
 		{
 			Size = new Vector2(5, 5),
-			possibleEnemies = SelectedController.Compartment.AvaliableEnemies,
-			possibleLoot = SelectedController.Compartment.AvaliableLoot,
+			PossibleEnemies = SelectedController.Compartment.AvaliableEnemies,
+			PossibleLoot = SelectedController.Compartment.AvaliableLoot,
 			MapQuest = _selectedQuest
 		};
 		
-		Global.currentMapInfo.currentRoomNumber = 0;
+		Global.CurrentMapInfo.currentRoomNumber = 0;
 		Global.Stage = GameStage.InMission;
 
-		SceneManager.LoadScene(3); // DungeonScene
+		SceneManager.LoadScene("DungeonScene"); // DungeonScene
 	}
 }

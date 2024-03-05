@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BattleRoutine : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BattleRoutine : MonoBehaviour
 		.OrderByDescending(i => i.CurrentInitiative)
 		.ToList();
 
+	public BattlePosition[] EnemyPositions => enemyPositions;
 	public List<BattlePosition> AllPositions => characterPositions.Concat(enemyPositions).ToList();
 	public RoomInfo currentRoomInfo => Global.GetCurrentRoomInfo();
 
@@ -131,8 +133,7 @@ public class BattleRoutine : MonoBehaviour
 					var executeInfo = new BattleCommandExecuteInfo()
 					{
 						Actor = currentEntity,
-						AlliesPositions = enemyPositions,
-						EnemyPositions = characterPositions
+						Routine = this
 					};
 					var result = enemy.Act(executeInfo, CharacterList);
 					ShowCommandResult(result);
@@ -145,17 +146,27 @@ public class BattleRoutine : MonoBehaviour
 		}
 	}
 
+	public void SetEnemyAt(EnemyInfo enemyInfo, BattlePosition battlePosition)
+	{
+        var enemy = CharacterFactory.CreateEntity(enemyInfo, battlePosition.gameObject);
+        battlePosition.entityContainer = enemy;
+        enemy.EntityInfo.Position = battlePosition.Position;
+        enemy.EntityInfo.HealthOver += OnHealthOver;
+        EnemyList.Add((EnemyInfo)enemy.EntityInfo);
+    }
+
 	private void SetEnemiesInPositions()
 	{
 		List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
 		for (int i = 0; i < enemyInfos.Count; i++)
 		{
-			var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i].gameObject);
-            enemyPositions[i].entityContainer = enemy;
+			//var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i].gameObject);
+			//         enemyPositions[i].entityContainer = enemy;
 
-            enemy.EntityInfo.Position = i + 6;
-			enemy.EntityInfo.HealthOver += OnHealthOver;
-			EnemyList.Add((EnemyInfo)enemy.EntityInfo);
+			//         enemy.EntityInfo.Position = i + 6;
+			//enemy.EntityInfo.HealthOver += OnHealthOver;
+			//EnemyList.Add((EnemyInfo)enemy.EntityInfo);
+			SetEnemyAt(enemyInfos[i], enemyPositions[i]);
 		}
 	}
 
@@ -182,7 +193,7 @@ public class BattleRoutine : MonoBehaviour
 
 	private void SetCharactersInPositions()
 	{
-		group = Global.currentGroup;
+		group = Global.CurrentGroup;
 		foreach (var character in group.CurrentCharacterInfos)
 		{
 			var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1].gameObject);
@@ -267,10 +278,9 @@ public class BattleRoutine : MonoBehaviour
 			var executeInfo = new BattleCommandExecuteInfo() 
 			{ 
 				Actor = currentEntity, 
-				Targets = selectedTargets, 
-				AlliesPositions = characterPositions,
-				EnemyPositions = enemyPositions 
-			};
+				Targets = selectedTargets,
+                Routine = this
+            };
 			
 			var commandResult = CurrentCommand.Execute(executeInfo);
 			ShowCommandResult(commandResult);
@@ -332,20 +342,20 @@ public class BattleRoutine : MonoBehaviour
 	private void WinBattle()
 	{
 		Global.GetCurrentRoomInfo().EnemyInfos.Clear();
-		Global.currentMapInfo.missionState = MissionState.ReturnFromBattle;
+		Global.CurrentMapInfo.missionState = MissionState.ReturnFromBattle;
 
 		StartCoroutine(ShowResult());
 
 		Global.inventory.AddToInventory(currentRoomInfo.Loot.Items);
 		currentRoomInfo.Loot.InvokeTakingToInventory();
 		
-		var mapQuest = Global.currentMapInfo.MapQuest as RescueQuest;
+		var mapQuest = Global.CurrentMapInfo.MapQuest as RescueQuest;
 		if (mapQuest != null && 
 		mapQuest.QuestRoomNumber == Global.GetCurrentRoomInfo().RoomNumber)
 		{
-			Global.allCharacters.AddCharacter(mapQuest.QuestCharacter);
+			Global.AllCharacters.AddCharacter(mapQuest.QuestCharacter);
 		}
-	}
+    }
 	
 	private IEnumerator ShowResult(float seconds = 2)
 	{
@@ -372,6 +382,6 @@ public class BattleRoutine : MonoBehaviour
 
 	public void ReturnToDungeon()
 	{
-		SceneManager.LoadScene(3); // DungeonScene
+		SceneManager.LoadScene("DungeonScene"); // DungeonScene
 	}
 }

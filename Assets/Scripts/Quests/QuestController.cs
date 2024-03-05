@@ -29,6 +29,6 @@ public class QuestController : MonoBehaviour
         //    return;
         //}
 
-        Debug.Log("������ �����: " + Global.currentMapInfo.MapQuest.Title);
+        Debug.Log("������ �����: " + Global.CurrentMapInfo.MapQuest.Title);
     }
 }

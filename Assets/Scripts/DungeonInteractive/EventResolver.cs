@@ -9,7 +9,7 @@ public class EventResolver : MonoBehaviour
     {
         if (Global.GetCurrentRoomInfo().Inhabitable)
         {
-            SceneManager.LoadScene(4); // BattleScene
+            SceneManager.LoadScene("BattleScene"); // BattleScene
         }
     }
 }

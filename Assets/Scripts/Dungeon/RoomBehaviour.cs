@@ -52,7 +52,7 @@ public class RoomBehaviour : MonoBehaviour
     {
         Debug.Log("Выбрана комната номер " + _numberRoom);
 
-        if (CanPass(Global.currentMapInfo.RoomInfos[Global.currentMapInfo.currentRoomNumber].GlobalRoomNumber))
+        if (CanPass(Global.CurrentMapInfo.RoomInfos[Global.CurrentMapInfo.currentRoomNumber].GlobalRoomNumber))
         {
             _controller.SetGroupMarker(this);
         }

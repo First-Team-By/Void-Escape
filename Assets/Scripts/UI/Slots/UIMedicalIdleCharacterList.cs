@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIMedicalIdleCharacterList : UIListController<CharacterInfo>
 {
-    public override List<CharacterInfo> Objects => Global.allCharacters.CharacterInfos
+    public override List<CharacterInfo> Objects => Global.AllCharacters.CharacterInfos
                                                     .Where(x => x.MedicalState == MedicalState.Idle).ToList();
 
     public override void BindObject(UIContainer container, CharacterInfo obj)

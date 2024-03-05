@@ -829,7 +829,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.05
+  m_fontSize: 51.2
   m_fontSizeBase: 102.95
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 143.5
+  m_fontSize: 141.8
   m_fontSizeBase: 102.95
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4533,7 +4533,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.8
+  m_fontSize: 20.55
   m_fontSizeBase: 15.7
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5034,6 +5034,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -11181,7 +11182,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.05
+  m_fontSize: 51.2
   m_fontSizeBase: 102.95
   m_fontWeight: 400
   m_enableAutoSizing: 1

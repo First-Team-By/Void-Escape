@@ -26,7 +26,7 @@ public class HibernationChamber : MonoBehaviour
     {
         for (int i = 0; i < capsules.Length; i++)
         {
-            Global.capsules[i] = capsules[i].CapsuleInfo;
+            Global.Capsules[i] = capsules[i].CapsuleInfo;
         }
     }
 
@@ -34,7 +34,7 @@ public class HibernationChamber : MonoBehaviour
     {
         for (int i = 0; i < capsules.Length; i++)
         {
-            capsules[i].CapsuleInfo = Global.capsules[i];
+            capsules[i].CapsuleInfo = Global.Capsules[i];
         }
     }
 }

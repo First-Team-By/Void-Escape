@@ -12,6 +12,7 @@ public class Resource
     public int Metal { get; set; }  
     public int Electronics { get; set; }
 
+
     public static Resource operator +(Resource resources1, Resource resources2)
     {
         Resource result = new Resource();

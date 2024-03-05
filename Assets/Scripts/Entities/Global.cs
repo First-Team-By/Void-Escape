@@ -19,12 +19,12 @@ public static class Global
 	public static GameStage Stage = GameStage.StartNewGame;
 	public static List<CharsTemplate> AllCharacterClasses;
 	public static List<CharsTemplate> AllEnemiesClasses;
-	public static HibernationCapsuleInfo[] capsules;
-	public static List<Compartment> compartments;
+	public static HibernationCapsuleInfo[] Capsules;
+	public static List<Compartment> Compartments;
 
-	public static CurrentCharacterGroup currentGroup;
+	public static CurrentCharacterGroup CurrentGroup;
 
-	public static CharacterGroup allCharacters;
+	public static CharacterGroup AllCharacters;
 	public static List<CharsTemplate> generableCharacterClasses 
 	{ 
 		get
@@ -33,10 +33,10 @@ public static class Global
 		}
 	}
 
-	public static MapInfo currentMapInfo;
+	public static MapInfo CurrentMapInfo;
 
 	public static Inventory inventory;
-	public static Storage storage { get; set; }
+	public static Storage Storage { get; set; }
 
 	public static CommonPrefabs CommonPrefabs { get; }
 
@@ -45,39 +45,39 @@ public static class Global
 	public static List<CharsTemplate> AllEntityTemplates { get; set; }
 	static Global()
 	{
-		storage = new Storage();
+		Storage = new Storage();
 		inventory = new Inventory();
 		
 
 		CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
-		currentGroup = new CurrentCharacterGroup();
+		CurrentGroup = new CurrentCharacterGroup();
 
-		allCharacters = new CharacterGroup();
+		AllCharacters = new CharacterGroup();
 		//allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
 		//     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Officer, 1),
 		//     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
 		//     });
 
-		capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo()};
+		Capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo()};
 		
 		LoadCharTemplates();
 
-		compartments = new List<Compartment>() { new LowerDecks(), new ReactorChamber() };
+		Compartments = new List<Compartment>() { new LowerDecks(), new ReactorChamber() };
 		
 		CreatePreConditions();
 	}
 
 	public static RoomInfo GetCurrentRoomInfo()
 	{
-		return currentMapInfo.GetCurrentRoomInfo();
+		return CurrentMapInfo.GetCurrentRoomInfo();
 	}
 
 	public static void SaveCharactersInfo(List<CharacterInfo> characters)
 	{
-		currentGroup.CurrentCharacterInfos.Clear();
+		CurrentGroup.CurrentCharacterInfos.Clear();
 		foreach (var character in characters)
 		{
-			currentGroup.CurrentCharacterInfos.Add(character);
+			CurrentGroup.CurrentCharacterInfos.Add(character);
 		}
 	}
 
@@ -95,7 +95,7 @@ public static class Global
 		// LoadEnemyCharTemplate("MegaMutant", typeof(Mutant));
 		LoadEnemyCharTemplate("MutantBoss", typeof(MutantBoss));
 		LoadEnemyCharTemplate("MutantScoutChars", typeof(MutantScout));
-		LoadEnemyCharTemplate("MutantBeaterChars", typeof(Beater));
+		LoadEnemyCharTemplate("MutantBeaterChars", typeof(MutantBeater));
 
 		AllEntityTemplates = AllEnemiesClasses.Concat(AllCharacterClasses).ToList();
 	}
@@ -114,7 +114,7 @@ public static class Global
 	
 	public static void RefreshQuests()
 	{
-		foreach(var compartment in compartments)
+		foreach(var compartment in Compartments)
 		{
 			compartment.AvaliableQuests = QuestFactory.GetQuests();
 		}
@@ -123,6 +123,6 @@ public static class Global
 	public static void CreatePreConditions()
 	{
 		var josephSteels = AllCharacterClasses.FirstOrDefault(x => x.EntityType == typeof(JosephSteels));
-		allCharacters.AddCharacter(CharacterFactory.CreateCharacter(josephSteels));
+		AllCharacters.AddCharacter(CharacterFactory.CreateCharacter(josephSteels));
 	}
 }

@@ -5,7 +5,7 @@ using Debug = UnityEngine.Debug;
 
 public class KillMonsterQuest : Quest
 {
-	private int monstersAmount = 1;
+	//private int monstersAmount = 1;
 	public Type monsterType {get; set;}
 	public override string Title => "Убийство монстров";
 	public override string Description => $"Убейте монстра";

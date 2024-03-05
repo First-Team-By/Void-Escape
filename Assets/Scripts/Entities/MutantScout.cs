@@ -14,10 +14,14 @@ public class MutantScout : Mutant
 	public override string FullFaceSpriteName => "Enemies/Mutant/MutantScout/mutant-scout-fullface_sprite";
 	public override string EvadePoseName => "Enemies/Mutant/MutantScout/mutant-scout-evade-pose_sprite";
 
+    private bool AlreadyCallBeater = false;
+
 	public MutantScout()
 	{
 		EntityClass = EntityClass.MutantScout;
 		AddPose("ClawStrike", "Enemies/Mutant/MutantScout/mutant-scout-clawstrike_sprite");
+        AddPose("CallBeater", "Enemies/Mutant/MutantScout/mutant-scout-call-pose_sprite");
+        Actions.Add(TryCallBeater);
         Actions.Add(TryClawStrike);
     }
 
@@ -37,12 +41,29 @@ public class MutantScout : Mutant
 		return result != null;
 	}
 
+    private bool TryCallBeater(BattleCommandExecuteInfo executeInfo, List<CharacterInfo> possibleTargets, out CommandResult result)
+    {
+        result = null;
+        if (AlreadyCallBeater)
+            return false;
+        var callBeater = new CallBeater();
+        if (Random.Range(0, 100) <= 25)
+        {
+            result = callBeater.Execute(executeInfo);
+            AlreadyCallBeater = true;
+        }
+
+        return result != null && result.TargetStates.Count > 0;
+    }
+
     public override Sprite GetCustomPose(string pose)
     {
         switch (pose)
         {
             case PosesConst.ClawStrike:
                 return GetPoseInner("ClawStrike");
+            case PosesConst.Call:
+                return GetPoseInner("CallBeater");
         }
 
         return null;

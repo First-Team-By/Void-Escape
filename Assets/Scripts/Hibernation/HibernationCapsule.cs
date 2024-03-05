@@ -33,7 +33,7 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
         }
 
 
-        var lastCharacter = Global.allCharacters.CharacterInfos.OrderBy(x => x.Id).LastOrDefault();
+        var lastCharacter = Global.AllCharacters.CharacterInfos.OrderBy(x => x.Id).LastOrDefault();
         if (lastCharacter != null)
         {
             _capsuleInfo.Character.Id = lastCharacter.Id + 1;
@@ -42,7 +42,7 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             _capsuleInfo.Character.Id = 0;
         }
-        Global.allCharacters.AddCharacter(_capsuleInfo.Character);
+        Global.AllCharacters.AddCharacter(_capsuleInfo.Character);
         StartCoroutine(OnEnableUIPopUpWinCor($"{_capsuleInfo.Character.FullName} ({_capsuleInfo.Character.ClassName})"));
         _capsuleInfo.Character = null;
         _capsuleInfo.Status = CapsuleStatus.Empty;

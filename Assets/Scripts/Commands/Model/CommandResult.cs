@@ -28,5 +28,7 @@ public static class PosesConst
     public const string Buffed = "Buffed";
     public const string DeathDoor = "DeathDoor";
     public const string ClawStrike = "ClawStrike";
+    public const string Call = "Call";
+    public const string Scream = "Scream";
 }
 

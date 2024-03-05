@@ -49,11 +49,11 @@ public class DungeonMapController : MonoBehaviour
 
 	void Start()
 	{
-		Size = Global.currentMapInfo.Size;  
+		Size = Global.CurrentMapInfo.Size;  
 		
 		_groupMarker = Instantiate(_groupMarkerPrefab, Vector2.zero, Quaternion.identity);
 
-		if (Global.currentMapInfo.missionState == MissionState.Start)
+		if (Global.CurrentMapInfo.missionState == MissionState.Start)
 		{
 			var dungeonGenerator = new DungeonGenerator();
 
@@ -62,16 +62,16 @@ public class DungeonMapController : MonoBehaviour
 			_rooms = GenerateDungeon(roomInfos);
 			_groupMarker.transform.parent = _rooms[0].transform;
 			_groupMarker.transform.localPosition = Vector2.zero;
-			Global.currentMapInfo.MapQuest.Initialize(Global.currentMapInfo);
+			Global.CurrentMapInfo.MapQuest.Initialize(Global.CurrentMapInfo);
 		}
 		else
 		{
-			_rooms = GenerateDungeon(Global.currentMapInfo.RoomInfos);
+			_rooms = GenerateDungeon(Global.CurrentMapInfo.RoomInfos);
 			
-			_groupMarker.transform.SetParent(_rooms.First(x => x.NumberRoom == Global.currentMapInfo.currentRoomNumber).transform);
+			_groupMarker.transform.SetParent(_rooms.First(x => x.NumberRoom == Global.CurrentMapInfo.currentRoomNumber).transform);
 			_groupMarker.transform.localPosition = Vector3.zero;
 			
-			completeMissionButton.gameObject.SetActive(Global.currentMapInfo.MapQuest.Status == QuestStatus.Completed);
+			completeMissionButton.gameObject.SetActive(Global.CurrentMapInfo.MapQuest.Status == QuestStatus.Completed);
 			abortMissionButton.gameObject.SetActive(!completeMissionButton.gameObject.activeSelf);
 		}
 	}
@@ -91,7 +91,7 @@ public class DungeonMapController : MonoBehaviour
 	{
 		if (!_groupIsMoving)
 		{
-			Global.currentMapInfo.currentRoomNumber = room.NumberRoom;
+			Global.CurrentMapInfo.currentRoomNumber = room.NumberRoom;
 
 			StartCoroutine(MoveToTarget(_groupMarker.transform, room.gameObject.transform));
 		}    
@@ -146,6 +146,6 @@ public class DungeonMapController : MonoBehaviour
 
 	public void AbortMission()
 	{
-		SceneManager.LoadScene(1); // MainScene
+		SceneManager.LoadScene("MainScene"); // MainScene
 	}
 }

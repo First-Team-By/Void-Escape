@@ -119,7 +119,7 @@ public class DungeonGenerator
         }
 
         var roomInfos = board.Where(x => x.visited).Select(x => x.RoomInfo).ToList();
-        Global.currentMapInfo.RoomInfos = roomInfos;
+        Global.CurrentMapInfo.RoomInfos = roomInfos;
 
         for (int i = 0; i < roomInfos.Count; i++)
         {
@@ -128,8 +128,8 @@ public class DungeonGenerator
             // было if i > 0 
             if (i > 0)
             {
-                Global.currentMapInfo.InitEnemyForRoom(roomInfos[i]);
-                Global.currentMapInfo.InitLootForRoom(roomInfos[i]);
+                Global.CurrentMapInfo.InitEnemyForRoom(roomInfos[i]);
+                Global.CurrentMapInfo.InitLootForRoom(roomInfos[i]);
             }
         }
         

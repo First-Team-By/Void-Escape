@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIAllCharactersListController : UIListController<CharacterInfo>
 {
-    public override List<CharacterInfo> Objects => Global.allCharacters.CharacterInfos;
+    public override List<CharacterInfo> Objects => Global.AllCharacters.CharacterInfos;
 
     public override void BindObject(UIContainer container, CharacterInfo obj)
     {

@@ -21,11 +21,11 @@ public class ContainmentController : MonoBehaviour, IPointerEnterHandler, IPoint
 		switch (_compartmentType)
 		{
 			case CompartmentType.CrewQuarters:
-				_compartment = Global.compartments.First(x => x.GetType() == typeof(LowerDecks));
+				_compartment = Global.Compartments.First(x => x.GetType() == typeof(LowerDecks));
 				break;
 				
 			case CompartmentType.ReactorChamber:
-				_compartment = Global.compartments.First(x => x.GetType() == typeof(ReactorChamber));
+				_compartment = Global.Compartments.First(x => x.GetType() == typeof(ReactorChamber));
 				break;
 		}
 	}

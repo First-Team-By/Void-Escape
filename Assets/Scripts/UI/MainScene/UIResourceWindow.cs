@@ -16,7 +16,7 @@ public class UIResourceWindow : MonoBehaviour
 
     public void Refresh()
     {
-        var resources = Global.storage.Resources;
+        var resources = Global.Storage.Resources;
 
         energyCard.Amount = resources.Energy.ToString();
         metallCard.Amount = resources.Metal.ToString();

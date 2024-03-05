@@ -20,17 +20,17 @@ public class MainSceneController : MonoBehaviour
 
 	private void TimeTick()
 	{
-		foreach (var character in Global.currentGroup.CurrentCharacterInfos)
+		foreach (var character in Global.CurrentGroup.CurrentCharacterInfos)
 		{
-			var currentCharacter = Global.allCharacters.CharacterInfos.FirstOrDefault(x => x.Id == character.Id);
+			var currentCharacter = Global.AllCharacters.CharacterInfos.FirstOrDefault(x => x.Id == character.Id);
 
 			currentCharacter = character;
 			currentCharacter.Conditions.DropTemporaryConditions();
 		}
 
-		var idleCharacters = Global.allCharacters.CharacterInfos
+		var idleCharacters = Global.AllCharacters.CharacterInfos
 								.Where(x =>
-								!Global.currentGroup.CurrentCharacterInfos.Select(y => y.Id).Contains(x.Id)
+								!Global.CurrentGroup.CurrentCharacterInfos.Select(y => y.Id).Contains(x.Id)
 								).ToList();
 		foreach (var character in idleCharacters)
 		{
@@ -48,8 +48,8 @@ public class MainSceneController : MonoBehaviour
 	
 	private void EndMission()
 	{
-		Global.storage.TransferFromInventory();
-		Global.currentGroup.CurrentCharacterInfos.Clear();
+		Global.Storage.TransferFromInventory();
+		Global.CurrentGroup.CurrentCharacterInfos.Clear();
 		TimeTick();
 	}
 }
