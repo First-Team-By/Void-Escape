@@ -21,7 +21,7 @@ public class MutantScout : Mutant
 		EntityClass = EntityClass.MutantScout;
 		AddPose("ClawStrike", "Enemies/Mutant/MutantScout/mutant-scout-clawstrike_sprite");
         AddPose("CallBeater", "Enemies/Mutant/MutantScout/mutant-scout-call-pose_sprite");
-        Actions.Add(TryCallBeater);
+      //  Actions.Add(TryCallBeater);
         Actions.Add(TryClawStrike);
     }
 

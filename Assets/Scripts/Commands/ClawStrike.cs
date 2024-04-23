@@ -3,18 +3,14 @@ using System.Linq;
 
 public class ClawStrike : EntityCommand
 {
+    public override string EffectName => "effect_slash_sprite";
+    public override string IconName { get; }
     public ClawStrike()
     {
         damage = 5;
-        OnExecute = ClawStrikeExec;
 
-        SelfPositions = new List<int>() { 6, 7, 8 };
-        EnemyPositions = new List<int>() { 1, 2, 3 };
-    }
-
-    protected virtual void ClawStrikeExec()
-    {
-
+        //SelfPositions = new List<int>() { 6, 7, 8 };
+        //EnemyPositions = new List<int>() { 1, 2, 3 };
     }
 
     public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
@@ -34,9 +30,6 @@ public class ClawStrike : EntityCommand
 
         return targets.Where(x => x.Position < 4 && !x.OnDeathDoor).ToList();
     }
-
-    public override string IconName { get; }
-    public override string EffectName { get; }
 
     public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
     {

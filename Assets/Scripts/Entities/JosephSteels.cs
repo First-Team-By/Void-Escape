@@ -20,6 +20,7 @@ public class JosephSteels : Officer
 		FullName = "Джозеф Стилс";
 
 		AddPose("FirePistol", "Characters/JosephSteels/joseph-steels-firepistol_sprite");
+        AddPose("BladeSlash", "Characters/JosephSteels/joseph-steels-bladeslash_sprite");
 
     }
 }

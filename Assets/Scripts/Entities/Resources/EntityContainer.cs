@@ -19,6 +19,9 @@ public class EntityContainer : MonoBehaviour
 
     public void RefreshImage()
     {
+        if (_spriteRenderer == null)
+            return;
+
         if(EntityInfo.OnDeathDoor) 
         {
             _spriteRenderer.sprite = EntityInfo.DeathDoorSprite;
@@ -26,6 +29,7 @@ public class EntityContainer : MonoBehaviour
         else
         {
             _spriteRenderer.sprite = EntityInfo.FullFaceSprite;
+
         }
     }
 }

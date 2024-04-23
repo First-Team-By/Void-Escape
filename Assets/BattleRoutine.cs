@@ -138,10 +138,7 @@ public class BattleRoutine : MonoBehaviour
 					var result = enemy.Act(executeInfo, CharacterList);
 					ShowCommandResult(result);
 				}
-				//StartCoroutine(Wait1Sec());
 				inactiveEntitiesList.Add(currentEntity);
-
-				//isTurnProcessing = false;
 			}
 		}
 	}
@@ -160,12 +157,6 @@ public class BattleRoutine : MonoBehaviour
 		List<EnemyInfo> enemyInfos = Global.GetCurrentRoomInfo().EnemyInfos;
 		for (int i = 0; i < enemyInfos.Count; i++)
 		{
-			//var enemy = CharacterFactory.CreateEntity(enemyInfos[i], enemyPositions[i].gameObject);
-			//         enemyPositions[i].entityContainer = enemy;
-
-			//         enemy.EntityInfo.Position = i + 6;
-			//enemy.EntityInfo.HealthOver += OnHealthOver;
-			//EnemyList.Add((EnemyInfo)enemy.EntityInfo);
 			SetEnemyAt(enemyInfos[i], enemyPositions[i]);
 		}
 	}
@@ -222,7 +213,7 @@ public class BattleRoutine : MonoBehaviour
 		foreach (var position in AllPositions)
 		{
 			var bp = position.GetComponent<BattlePosition>();
-			if (CurrentSelectedTargets.Contains(bp.Position))
+			if (CurrentSelectedTargets.Contains(bp.Position) && bp.entityContainer != null)
 			{
 				bp.LightOn();
 			}

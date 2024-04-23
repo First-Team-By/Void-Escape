@@ -22,6 +22,7 @@ public static class PosesConst
     public const string FullFace = "FullFace";
     public const string PistolFire = "PistolFire";
     public const string BladeStab = "BladeStab";
+    public const string BladeSlash = "BladeStab";
     public const string Buffing = "Buffing";
     public const string Evade = "Evade";
     public const string Suffering = "Suffering";

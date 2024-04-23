@@ -7,7 +7,8 @@ public class Officer : CharacterInfo
     public override List<CharacterCommand> NativeCommands {get;} = new List<CharacterCommand>()
     {
         new DoubleTap(),
-        new SingleFire()
+        new SingleFire(),
+        new WideSlash()
     };
     public override string SufferingPoseName => "";
 
@@ -34,6 +35,7 @@ public class Officer : CharacterInfo
         //GetBleeded(0.1f, 100);
 
         AddPose("FirePistol", "Characters/Officer/officer_attackpose_sprite");
+        AddPose("BladeSlash", "Characters/Officer/officer_attackpose2_sprite");
     }
 
     public override Sprite GetCustomPose(string pose)
@@ -42,6 +44,8 @@ public class Officer : CharacterInfo
         {
             case PosesConst.PistolFire:
                 return GetPoseInner("FirePistol");
+            case PosesConst.BladeSlash:
+                return GetPoseInner("BladeSlash");
         }
 
         return null;

@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class DoubleTap : CharacterCommand
 {
-	public DoubleTap()
+    public override string IconName => "Officer/command_doubletap_sprite";
+    public override string EffectName => "effect_doubletap_sprite";
+    public DoubleTap()
 	{
 		damage = 10;
 
@@ -29,8 +31,6 @@ public class DoubleTap : CharacterCommand
 		return true;
 	}
 
-	public override string IconName => "Officer/command_doubletap_sprite";
-	public override string EffectName => "effect_doubletap_sprite";
 
 	public override List<EntityInfo> GetAvaliableTargets(int selfPosition, List<EntityInfo> targets)
 	{

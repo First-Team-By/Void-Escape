@@ -75,7 +75,6 @@
     <Compile Include="Assets\Scripts\Equipment\Weapons\EntityWeapon.cs" />
     <Compile Include="Assets\Scripts\Equipment\Weapons\LaserPistol.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIBattleResultCard.cs" />
-    <Compile Include="Assets\Scripts\Commands\Medic\Vampirism.cs" />
     <Compile Include="Assets\Scripts\Quests\Instances\RescueQuest.cs" />
     <Compile Include="Assets\Scripts\UI\TeamInitScene\TeamInitHandler.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\CommandButton.cs" />
@@ -133,6 +132,7 @@
     <Compile Include="Assets\Scripts\DungeonInteractive\RoomInfo.cs" />
     <Compile Include="Assets\UIActionPanel.cs" />
     <Compile Include="Assets\Scripts\InGameResources\LootItemInfo.cs" />
+    <Compile Include="Assets\Scripts\Commands\CallBeater.cs" />
     <Compile Include="Assets\Scripts\UI\IContainerHolder.cs" />
     <Compile Include="Assets\Scripts\Quests\QuestController.cs" />
     <Compile Include="Assets\Scripts\Commands\Model\CommandExecutionHandler.cs" />
@@ -202,7 +202,7 @@
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\Pose.cs" />
-    <Compile Include="Assets\Scripts\Commands\CallBeater.cs" />
+    <Compile Include="Assets\Scripts\Commands\Officer\WideSlash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -11,7 +11,6 @@ public class SingleFire : CharacterCommand
 	public SingleFire() : base()
 	{
 		damage = 15;
-		OnExecute = SingleFireExec;
 
 		SelfPositions = new List<int>() { 4, 5 };
 		EnemyPositions = new List<int>() { 1, 2, 3 };
@@ -22,16 +21,9 @@ public class SingleFire : CharacterCommand
 
 		FullDescription = Name + "\n" + Description;
 
-		Conditioning.SetBleeding(1f, 2, 3);
-		Conditioning.SetPoisoning(1f, 2, 1);
-		Conditioning.SetBurning(1f, 4, 1);
-	}
-
-
-
-	private void SingleFireExec()
-	{
-		
+		//Conditioning.SetBleeding(1f, 2, 3);
+		//Conditioning.SetPoisoning(1f, 2, 1);
+		//Conditioning.SetBurning(1f, 4, 1);
 	}
 
 	public override bool IsAvaliable(EntityInfo entity)
