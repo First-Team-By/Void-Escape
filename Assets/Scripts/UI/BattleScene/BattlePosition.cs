@@ -16,10 +16,11 @@ public class BattlePosition : MonoBehaviour
 	[SerializeField] private Text _conditionEffectText;
 	[SerializeField] private Image _bloodConditionIcon;
 	[SerializeField] private Image _poisonConditionIcon;
-	[SerializeField] private Image _arsoningConditionIcon;
+	[SerializeField] private Image _burningConditionIcon;
+    [SerializeField] private Image _fearedConditionIcon;
 
 
-	public int Position => _position;
+    public int Position => _position;
 	void Start()
 	{
 		battleRoutine = GameObject.FindObjectOfType<BattleRoutine>();
@@ -82,10 +83,11 @@ public class BattlePosition : MonoBehaviour
 	{
 		_bloodConditionIcon.gameObject.SetActive(conditions.IsBleeding);
 		_poisonConditionIcon.gameObject.SetActive(conditions.IsPoisoned);
-		_arsoningConditionIcon.gameObject.SetActive(conditions.IsBurning);
+		_burningConditionIcon.gameObject.SetActive(conditions.IsBurning);
+		_fearedConditionIcon.gameObject.SetActive(conditions.IsFeared);
 	}
 
-	public void ShowConditionHealthChanging(float changed, string reason)
+	public void ShowConditionEffect(float changed, string reason)
 	{
 		if (changed < 0) 
 		{
@@ -93,7 +95,12 @@ public class BattlePosition : MonoBehaviour
 		}
 		else
 			_conditionEffectText.color = Color.green;
-		_conditionEffectText.text = reason + " " + changed;        
+		_conditionEffectText.text = reason + " ";  
+		if (changed != 0)
+		{
+			_conditionEffectText.text += changed;
+
+        }
 	}
 
 	internal void ClearCondition()

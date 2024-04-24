@@ -9,6 +9,8 @@ public class ClawStrike : EntityCommand
     {
         damage = 5;
 
+        Name = "Удар когтями";
+
         //SelfPositions = new List<int>() { 6, 7, 8 };
         //EnemyPositions = new List<int>() { 1, 2, 3 };
     }
@@ -37,14 +39,15 @@ public class ClawStrike : EntityCommand
         var target = executeInfo.Targets.FirstOrDefault();
 
         var targetState = AttackResolver.ResolveAttack(damage, executeInfo.Actor, target, Conditioning);
+        targetState.Effect = Effect;
         result.TargetStates.Add(target.Position, targetState);
         result.ActorPoseName = PosesConst.ClawStrike;
 
         return result;
     }
 
-    public bool IsEnabled(EntityInfo entity, List<CharacterInfo> possibleTargets)
-    {
-        return GetAvaliableTargets(entity.Position, possibleTargets.Select(x => x as EntityInfo).ToList()).Any();
-    }
+    //public bool IsEnabled(EntityInfo entity, List<CharacterInfo> possibleTargets)
+    //{
+    //    return GetAvaliableTargets(entity.Position, possibleTargets.Select(x => x as EntityInfo).ToList()).Any();
+    //}
 }

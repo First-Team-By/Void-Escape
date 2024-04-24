@@ -3,7 +3,7 @@
 
 public class Medic : CharacterInfo
 {
-    public override string SufferingPoseName => "";
+    public override string SufferingPoseName => "Characters/Medic/medic_fullface_sprite";
 
     public override string PortraitName => "Characters/Medic/medic_portrait_sprite";
 

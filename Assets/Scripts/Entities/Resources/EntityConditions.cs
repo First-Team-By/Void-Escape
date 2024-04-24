@@ -10,10 +10,13 @@ public class EntityConditions
     public (int duration, float burningDamage) burning;
     public (bool isDeseased, EntityDesease desease) desease;
     public int stunned;
+    public bool feared;
+
     public bool IsBleeding => bleeding.duration > 0;
     public bool IsPoisoned => poisoning.duration > 0;
     public bool IsBurning => burning.duration > 0;
     public bool IsStunned => stunned > 0;
+    public bool IsFeared => feared;
 
     public int brokenArm;
     public int brokenLeg;
@@ -68,6 +71,7 @@ public class EntityConditions
         bleeding.duration = 0;
         poisoning.duration = 0;
         burning.duration = 0;
+        feared = false;
     }
 
     public void DecreaseConstantCondition()

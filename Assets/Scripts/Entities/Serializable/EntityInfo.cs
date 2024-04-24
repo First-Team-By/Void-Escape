@@ -153,60 +153,6 @@ public abstract class EntityInfo
 		return result;
 	}
 
-	// public TargetState TakeDamage(float damage, EntityCharacteristics provokerChars, Sprite effect, Conditioning conditioning)
-	// {
-	// 	// var result = new TargetState();
-	// 	// result.Target = this;
-
-	// 	// if (Random.Range(0, 1f) < Mathf.Clamp(EntityChars.EvadeChance - provokerChars.Accuracy, 0, 1f))
-	// 	// {
-	// 	//     //result.Pose = EntityPose.EvadePose;
-	// 	//     result.PoseName = Poses.Evade;
-	// 	//     return result;
-	// 	// } 
-
-	// 	// var finalDamage = damage;
-	// 	// if (Random.Range(0, 1f) < provokerChars.CritChance)
-	// 	// {
-	// 	//     finalDamage *= provokerChars.CritMultiplier;
-	// 	// }
-
-	// 	// finalDamage -= finalDamage * Resistances.DamageResistance / 100;
-
-	// 	// if (finalDamage > 0 && conditioning.CanGetBleed)
-	// 	// {
-	// 	//     var chance = Random.Range(0, 1f);
-	// 	//     if (chance <= conditioning.Bleeding.Chance - conditioning.Bleeding.Chance * Resistances.BleedResistance / 100)
-	// 	//     {
-	// 	//         GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
-	// 	//     }
-	// 	// }
-
-	// 	// if (finalDamage > 0 && conditioning.CanGetPoison)
-	// 	// {
-	// 	//     var chance = Random.Range(0, 1f);
-	// 	//     if (chance <= conditioning.Poisoning.Chance - conditioning.Poisoning.Chance * Resistances.PoisonResistance / 100)
-	// 	//     {
-	// 	//         GetPoisoned(conditioning.Poisoning.Damage, conditioning.Poisoning.Duration);
-	// 	//     }
-	// 	// }
-
-	// 	// if (finalDamage > 0 && conditioning.CanGetArson)
-	// 	// {
-	// 	//     var chance = Random.Range(0, 1f);
-	// 	//     if (chance <= conditioning.Burning.Chance - conditioning.Burning.Chance * Resistances.BurnResistance / 100)
-	// 	//     {
-	// 	//         GetBurn(conditioning.Burning.Damage, conditioning.Burning.Duration);
-	// 	//     }
-	// 	// }
-
-	// 	// Health -= finalDamage;
-	// 	// result.PoseName = Poses.Suffering;
-	// 	// result.HealthChanged = -finalDamage;
-	// 	// result.Effect = effect;
-	// 	// return result;
-	// }
-
 	private TargetState TakeDamage(float damage, string reason, Sprite effect = null)
 	{
 		Health -= damage;
@@ -247,6 +193,11 @@ public abstract class EntityInfo
 	{
 		_conditions.burning.burningDamage = damage;
 		_conditions.burning.duration = duration;
+	}
+
+	public void GetFeared()
+	{
+		_conditions.feared = true;
 	}
 
 	public TargetState StopBleeding(Sprite effect)
@@ -291,6 +242,7 @@ public abstract class EntityInfo
 			results.Add(TakeDamage(_conditions.burning.burningDamage, "Поджог"));
 			_conditions.burning.duration--;
 		}
+
 		return results;
 	}
 

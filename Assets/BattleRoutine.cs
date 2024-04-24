@@ -117,11 +117,19 @@ public class BattleRoutine : MonoBehaviour
 			var conditionsResult = CurrentEntity.ProcessConditions();
 			StartCoroutine(conditionsProcess(conditionsResult, CurrentEntity.Position));
 			RefreshHealthBars();
-		}
+            RefreshConditions();
+        }
 
 		if (CurrentEntity is CharacterInfo)
 		{
-			commandExecutor.SetCommands(currentEntity);
+			if (CurrentEntity.Conditions.IsFeared) 
+			{
+                CurrentEntity.Conditions.feared = false;
+                SkipTurn();
+                return;
+			}
+
+            commandExecutor.SetCommands(currentEntity);
 		}
 		else
 		{
@@ -136,7 +144,8 @@ public class BattleRoutine : MonoBehaviour
 						Routine = this
 					};
 					var result = enemy.Act(executeInfo, CharacterList);
-					ShowCommandResult(result);
+					if (result != null)
+						ShowCommandResult(result);
 				}
 				inactiveEntitiesList.Add(currentEntity);
 			}
@@ -167,7 +176,7 @@ public class BattleRoutine : MonoBehaviour
 		foreach (var state in states)
 		{
 			if (state.HealthChanged != 0)
-				battlePosition.ShowConditionHealthChanging(state.HealthChanged, state.ConditionName);
+				battlePosition.ShowConditionEffect(state.HealthChanged, state.ConditionName);
 			yield return new WaitForSeconds(1.5f);
 		}
 		battlePosition.ClearCondition();
@@ -274,20 +283,18 @@ public class BattleRoutine : MonoBehaviour
             };
 			
 			var commandResult = CurrentCommand.Execute(executeInfo);
-			ShowCommandResult(commandResult);
+            foreach (var targetState in commandResult.TargetStates)
+            {
+                targetState.Value.Effect = CurrentCommand.Effect;
+            }
+            ShowCommandResult(commandResult);
             DeSelectTargets();
 			inactiveEntitiesList.Add(CurrentEntity);
-			//isTurnProcessing = false;
 		}
 	}
 
 	private void ShowCommandResult(CommandResult commandResult)
 	{
-        foreach (var targetState in commandResult.TargetStates)
-        {
-            targetState.Value.Effect = CurrentCommand.Effect;
-        }
-
         actionPanel.ShowCommandResult(commandResult);
     }
 

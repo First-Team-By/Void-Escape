@@ -4,7 +4,12 @@ using Random = UnityEngine.Random;
 public class CallBeater : EntityCommand
 {
     public override string IconName { get; }
-    public override string EffectName { get; }
+    public override string EffectName => "effect_call_sprite";
+
+    public CallBeater()
+    {
+        Name = "Призыв загонщика";
+    }
 
     public override CommandResult Execute(BattleCommandExecuteInfo executeInfo)
     {
@@ -24,10 +29,12 @@ public class CallBeater : EntityCommand
 
             var targetState = new TargetState()
             {
+                HealthChanged = 0f,
                 Target = beater,
                 PoseName = PosesConst.Scream,
-                ConditionName = "Призыв"
-            };
+                ConditionName = "Призыв",
+                Effect = this.Effect
+        };
 
             result.TargetStates.Add(target.Position, targetState);
         }

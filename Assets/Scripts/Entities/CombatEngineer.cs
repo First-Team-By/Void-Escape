@@ -10,7 +10,7 @@ public class CombatEngineer : CharacterInfo
 		new DefendingShot()
 	};
 
-	public override string SufferingPoseName => "";
+	public override string SufferingPoseName => "Characters/Engineer/engineer-sufferingpose_sprite";
 
 	public override string PortraitName => "Characters/Engineer/engineer-portrait_sprite";
 
@@ -18,7 +18,7 @@ public class CombatEngineer : CharacterInfo
 
 	public override string FullFaceSpriteName => "Characters/Engineer/enginner-fullface_sprite";
 
-	public override string EvadePoseName => "";
+	public override string EvadePoseName => "Characters/Engineer/engineer-sufferingpose_sprite";
 	
 	public CombatEngineer()
 	{

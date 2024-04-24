@@ -21,7 +21,7 @@ public class MutantScout : Mutant
 		EntityClass = EntityClass.MutantScout;
 		AddPose("ClawStrike", "Enemies/Mutant/MutantScout/mutant-scout-clawstrike_sprite");
         AddPose("CallBeater", "Enemies/Mutant/MutantScout/mutant-scout-call-pose_sprite");
-      //  Actions.Add(TryCallBeater);
+        Actions.Add(TryCallBeater);
         Actions.Add(TryClawStrike);
     }
 
@@ -44,11 +44,10 @@ public class MutantScout : Mutant
     private bool TryCallBeater(BattleCommandExecuteInfo executeInfo, List<CharacterInfo> possibleTargets, out CommandResult result)
     {
         result = null;
-        if (AlreadyCallBeater)
-            return false;
-        var callBeater = new CallBeater();
-        if (Random.Range(0, 100) <= 25)
+
+        if (!AlreadyCallBeater && Random.Range(0, 100) <= 25)
         {
+            var callBeater = new CallBeater();
             result = callBeater.Execute(executeInfo);
             AlreadyCallBeater = true;
         }

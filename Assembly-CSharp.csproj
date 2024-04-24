@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Quests\Instances\ExplorationQuest.cs" />
     <Compile Include="Assets\Scripts\Enums\EnumSlotType.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentSlot.cs" />
+    <Compile Include="Assets\Scripts\Commands\Officer\WideSlash.cs" />
     <Compile Include="Assets\Scripts\Commands\Buttons\SkipButton.cs" />
     <Compile Include="Assets\Scripts\Entities\CombatEngineer.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ElectricalSpareParts.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Assets\Scripts\StartSceneScripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIEquipmentCard.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIListController.cs" />
+    <Compile Include="Assets\Scripts\Commands\FearingHowl.cs" />
     <Compile Include="Assets\Scripts\Entities\MutantBoss.cs" />
     <Compile Include="Assets\Scripts\Entities\Officer.cs" />
     <Compile Include="Assets\Scripts\Commands\Officer\DoubleTap.cs" />
@@ -202,7 +204,6 @@
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\Pose.cs" />
-    <Compile Include="Assets\Scripts\Commands\Officer\WideSlash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

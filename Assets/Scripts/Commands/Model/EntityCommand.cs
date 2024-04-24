@@ -53,7 +53,8 @@ public abstract class EntityCommand
 
     public virtual CommandResult Execute(BattleCommandExecuteInfo executeInfo)
     {
-    	return new CommandResult() { Actor = executeInfo.Actor };
+        Debug.Log(executeInfo.Actor.ClassName + " использует " + this.Name);
+        return new CommandResult() { Actor = executeInfo.Actor };
     }
 
     protected virtual bool IsCommandEnabled(EntityInfo entity, List<EntityInfo> targets)

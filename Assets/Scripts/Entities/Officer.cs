@@ -10,7 +10,7 @@ public class Officer : CharacterInfo
         new SingleFire(),
         new WideSlash()
     };
-    public override string SufferingPoseName => "";
+    public override string SufferingPoseName => "Characters/Officer/officer_fullface_sprite";
 
     public override string PortraitName => "Characters/Officer/officer_portrait_sprite";
 

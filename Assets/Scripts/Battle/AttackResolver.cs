@@ -14,6 +14,7 @@ public class AttackResolver
         if (Random.Range(0, 1f) < Mathf.Clamp(targetChars.EvadeChance - attackerChars.Accuracy, 0, 1f))
 		{
 			result.PoseName = PosesConst.Evade;
+			result.ConditionName = "Увернулся";
             Debug.Log(target.ClassName + " уворачивается");
             return result;
 		} 
@@ -32,7 +33,8 @@ public class AttackResolver
 			if (chance <= conditioning.Bleeding.Chance - conditioning.Bleeding.Chance * target.Resistances.BleedResistance / 100)
 			{
 				target.GetBleeded(conditioning.Bleeding.Damage, conditioning.Bleeding.Duration);
-			}
+                Debug.Log(target.ClassName + " получает кровотечение на " + conditioning.Bleeding.Duration + " хода");
+            }
 		}
 
 		if (finalDamage > 0 && conditioning.CanGetPoison)
@@ -44,7 +46,7 @@ public class AttackResolver
 			}
 		}
 
-		if (finalDamage > 0 && conditioning.CanGetArson)
+		if (finalDamage > 0 && conditioning.CanGetBurn)
 		{
 			var chance = Random.Range(0, 1f);
 			if (chance <= conditioning.Burning.Chance - conditioning.Burning.Chance * target.Resistances.BurnResistance / 100)
@@ -52,6 +54,16 @@ public class AttackResolver
 				target.GetBurn(conditioning.Burning.Damage, conditioning.Burning.Duration);
 			}
 		}
+
+		if (conditioning.CanGetFear)
+		{
+            var chance = Random.Range(0, 1f);
+			if (chance <= conditioning.Fearing.Chance)
+			{
+				target.GetFeared();
+			}
+            Debug.Log(target.ClassName + " получает страх");
+        }
 
 		target.Health -= finalDamage;
 		result.HealthChanged = -finalDamage;

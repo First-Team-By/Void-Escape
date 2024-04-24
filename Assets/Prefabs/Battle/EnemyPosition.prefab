@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5662028713340415585}
   - component: {fileID: 7766603442445391472}
   m_Layer: 0
-  m_Name: ArsonConditionIcon
+  m_Name: BurningConditionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3fed12a1a5e8ed546b7f18b99638d392, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0849645cd396e74bab0c4f756242f33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -227,6 +227,82 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e303c9942b3f0a241a3bd5d70b7915f2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5801271314061890148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3361386779690306441}
+  - component: {fileID: 4534698191612481521}
+  - component: {fileID: 2650463352314064819}
+  m_Layer: 0
+  m_Name: FearedConditionIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3361386779690306441
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801271314061890148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5784060058087367951}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 19.9, y: -5}
+  m_SizeDelta: {x: 7, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4534698191612481521
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801271314061890148}
+  m_CullTransparentMesh: 1
+--- !u!114 &2650463352314064819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801271314061890148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6bb09247170aed24595ddcc0f901fed2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -527,6 +603,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -603,6 +680,7 @@ RectTransform:
   - {fileID: 5481485511033613889}
   - {fileID: 2068852878345850579}
   - {fileID: 4566133030433223927}
+  - {fileID: 3361386779690306441}
   m_Father: {fileID: 6350830900877852200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,13 +813,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffea24fdaf65ded42b0a1c6d8d48c991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityContainer: {fileID: 0}
   _flare: {fileID: 3141542790981537788}
   _position: 0
   _healthBar: {fileID: 8150962727494757855}
   _conditionEffectText: {fileID: 6575774352132057841}
   _bloodConditionIcon: {fileID: 140314835679020706}
   _poisonConditionIcon: {fileID: 1844368963200802244}
-  _arsoningConditionIcon: {fileID: 7766603442445391472}
+  _burningConditionIcon: {fileID: 7766603442445391472}
+  _fearedConditionIcon: {fileID: 2650463352314064819}
 --- !u!61 &978684579396560747
 BoxCollider2D:
   m_ObjectHideFlags: 0

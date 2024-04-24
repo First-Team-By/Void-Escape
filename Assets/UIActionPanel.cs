@@ -68,13 +68,15 @@ public class UIActionPanel : MonoBehaviour
                     EntitiesEffects[i].enabled = true;
                     EntitiesEffects[i].sprite = state.Effect;
                     EntitiesPoses[i].sprite = state.Target.GetPose(state.PoseName);
-                    EntitiesTexts[i].text = healthChanged;
+                    if (state.HealthChanged != 0)
+                        EntitiesTexts[i].text = healthChanged;
                 }
                 else
                 {
                     actorEffect.enabled = true;
                     actorEffect.sprite = state.Effect;
-                    actorText.text = healthChanged;
+                    if (state.HealthChanged != 0)
+                        actorText.text = healthChanged;
                 }
 
                 actorPose.sprite = commandResult.Actor.GetPose(commandResult.ActorPoseName);

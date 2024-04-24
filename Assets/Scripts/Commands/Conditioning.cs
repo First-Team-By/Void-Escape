@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.Timeline;
-
-public class ConditionInfo
+﻿public class ConditionInfo
 {
     public ConditionInfo(float chance, int duration, float damage)
     {
@@ -22,9 +15,11 @@ public class Conditioning
     public ConditionInfo Bleeding { get; set; }
     public ConditionInfo Poisoning { get; set; }
     public ConditionInfo Burning { get; set; }
-    public bool CanGetArson => Burning != null && Burning.Chance > 0;
+    public ConditionInfo Fearing { get; set; }
+    public bool CanGetBurn => Burning != null && Burning.Chance > 0;
     public bool CanGetBleed => Bleeding != null && Bleeding.Chance > 0;
     public bool CanGetPoison => Poisoning != null && Poisoning.Chance > 0;
+    public bool CanGetFear => Fearing != null && Fearing.Chance > 0;
 
     public void SetBleeding(float chance, int duration, float damage)
     {
@@ -39,6 +34,11 @@ public class Conditioning
     public void SetBurning(float chance, int duration, float damage)
     {
         Burning = new ConditionInfo(chance, duration, damage);
+    }
+
+    public void SetFearing(float chance, int duration = 1, float damage = 0)
+    {
+        Fearing = new ConditionInfo(chance, duration, damage);
     }
 }
 
