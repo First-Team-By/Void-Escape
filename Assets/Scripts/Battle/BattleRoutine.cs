@@ -69,8 +69,6 @@ public class BattleRoutine : MonoBehaviour
 		}
 	}
 
-	
-
 	private void MainBattleProcess()
 	{
 		RefreshHealthBars();
@@ -154,7 +152,7 @@ public class BattleRoutine : MonoBehaviour
 
 	public void SetEnemyAt(EnemyInfo enemyInfo, BattlePosition battlePosition)
 	{
-        var enemy = CharacterFactory.CreateEntity(enemyInfo, battlePosition.gameObject);
+        var enemy = EntityFactory.CreateEntity(enemyInfo, battlePosition.gameObject);
         battlePosition.entityContainer = enemy;
         enemy.EntityInfo.Position = battlePosition.Position;
         enemy.EntityInfo.HealthOver += OnHealthOver;
@@ -196,7 +194,7 @@ public class BattleRoutine : MonoBehaviour
 		group = Global.CurrentGroup;
 		foreach (var character in group.CurrentCharacterInfos)
 		{
-			var characterInstance = CharacterFactory.CreateEntity(character, characterPositions[character.Position - 1].gameObject);
+			var characterInstance = EntityFactory.CreateEntity(character, characterPositions[character.Position - 1].gameObject);
             characterPositions[character.Position - 1].entityContainer = characterInstance;
 
             characterInstance.GetComponent<SpriteRenderer>().sortingOrder = character.Position;

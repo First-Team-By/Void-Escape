@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainSceneController : MonoBehaviour
 {
+	[SerializeField] UIResourceWindow _resourceWindow;
 	void Awake()
 	{
 		if (Global.Stage == GameStage.InMission)
@@ -43,6 +44,11 @@ public class MainSceneController : MonoBehaviour
 			patient.ApplyMedication();
 		}
 		
+		foreach (var capsule in Global.Capsules)
+		{
+			capsule.RollStatus();			
+		}
+
 		Global.RefreshQuests();
 	}
 	

@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemContainer: {fileID: 8880411784242653862, guid: ebb555e3c357d424d9c4141aa814e50b, type: 3}
   _entityPrefab: {fileID: 6252580374443619815, guid: 5efb4d8c0c412c646bdfcb60eda8d5f4, type: 3}
+  _uiTag: {fileID: 3616333548273207570, guid: f518aa12cd1f5544b8cd849bcdd08aad, type: 3}

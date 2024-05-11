@@ -11,8 +11,10 @@ namespace Assets.Scripts.Entities.Resources
     {
         [SerializeField] private GameObject _itemContainer;
         [SerializeField] private GameObject _entityPrefab;
+        [SerializeField] private GameObject _uiTag;
         
         public GameObject ItemContainer => _itemContainer;
         public GameObject EntityPrefab => _entityPrefab;
+        public GameObject UITag => _uiTag;
     }
 }

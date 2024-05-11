@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 public class Medic : CharacterInfo
@@ -34,11 +35,24 @@ public class Medic : CharacterInfo
 
         EntityClass = EntityClass.Medic;
 
+        AddPose("ScalpelSlash", "Characters/Medic/medic_attackpose_sprite");
+
+
         //Conditions.brokenArm = 1;
 
         Conditions.brokenLeg = 1;
         Health = Health / 2;
     }
 
-    
+    public override Sprite GetCustomPose(string pose)
+    {
+        switch (pose)
+        {
+            case PosesConst.BladeSlash:
+                return GetPoseInner("ScalpelSlash");
+        }
+
+        return null;
+    }
+
 }

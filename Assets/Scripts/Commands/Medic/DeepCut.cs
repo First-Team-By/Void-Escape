@@ -34,7 +34,7 @@ public class DeepCut : CharacterCommand
 			result.TargetStates.Add(target.Position, targetState);
 		}
 		
-		result.ActorPoseName = PosesConst.BladeStab;
+		result.ActorPoseName = PosesConst.BladeSlash;
 		return result;
 	}
 

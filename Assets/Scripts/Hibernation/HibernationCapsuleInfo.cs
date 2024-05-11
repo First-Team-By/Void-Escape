@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Mathematics;
-using UnityEngine;
-
-public enum CapsuleStatus
+﻿public enum CapsuleStatus
 {
     UnFreezed,
     Opened,
     Empty,
-    Freezed
+    Freezed,
+    UnPlugged,
+    Broken
 }
 
 public class HibernationCapsuleInfo
@@ -31,5 +25,12 @@ public class HibernationCapsuleInfo
         Status = CapsuleStatus.UnFreezed;
     }
  
+    public void RollStatus()
+    {
+        if (Status == CapsuleStatus.Freezed || Status == CapsuleStatus.Empty)
+        {
+            Status = CapsuleStatus.UnFreezed;
+        }
+    }
 }
 

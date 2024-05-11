@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -16,6 +11,9 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private Animator _animator;
     [SerializeField] private Animator _topAnimator;
     [SerializeField] private UIPopUPWindow _uIPopUPWindow;
+    [SerializeField] private Button _plugButton;
+    [SerializeField] private GameObject _hidePanel;
+    [SerializeField] private UIResourceWindow _resourceWindow;
     private HibernationCapsuleInfo _capsuleInfo;
 
     public HibernationCapsuleInfo CapsuleInfo
@@ -31,7 +29,6 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             return;
         }
-
 
         var lastCharacter = Global.AllCharacters.CharacterInfos.OrderBy(x => x.Id).LastOrDefault();
         if (lastCharacter != null)
@@ -53,6 +50,8 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_capsuleInfo.Status == CapsuleStatus.UnPlugged || _capsuleInfo.Status == CapsuleStatus.Broken)
+            _entityCardScript.FillInfo(null);
         _entityCardScript.FillInfo(_capsuleInfo.Character);
         _entityCardScript.RefreshEquipments();
     }
@@ -64,9 +63,16 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void CheckStatus()
     {
+        _plugButton.gameObject.SetActive(_capsuleInfo.Status == CapsuleStatus.UnPlugged);
+        _hidePanel.SetActive(_capsuleInfo.Status == CapsuleStatus.UnPlugged || _capsuleInfo.Status == CapsuleStatus.Broken);
+
+
+        if (_capsuleInfo.Status == CapsuleStatus.UnPlugged || _capsuleInfo.Status == CapsuleStatus.Broken)
+            return;
+
         if (_capsuleInfo.Status == CapsuleStatus.UnFreezed)
         {
-            _capsuleInfo.Character = CharacterFactory.CreateRandomCharacter();
+            _capsuleInfo.Character = EntityFactory.CreateRandomCharacter();
             _capsuleInfo.Status = CapsuleStatus.Opened;
             _hibernaiteChamber.SaveToGlobal();
 
@@ -98,12 +104,22 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
             _animator.SetTrigger("Close");
         }
     }
-
     private IEnumerator OnEnableUIPopUpWinCor(string identifier)
     {
         yield return new WaitForSeconds(1.6f);
 
         _uIPopUPWindow.OnEnableUIPopUpWindow(identifier);
+    }
+
+    public void ClickPlugButton(SpendButton button)
+    {
+        if (Global.Storage.Resources.IsEnought(button.Resource))
+        {
+            Global.Storage.Resources -= button.Resource;
+            _capsuleInfo.Status = CapsuleStatus.Freezed;
+            CheckStatus();
+            _resourceWindow.Refresh();
+        }
     }
 }
 

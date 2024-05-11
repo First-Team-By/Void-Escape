@@ -23,7 +23,7 @@ public class RescueQuest : Quest
 			return;
 		}
 		
-		_questCharacter = CharacterFactory.CreateCharacter(QuestCharacterTemplate);
+		_questCharacter = EntityFactory.CreateCharacter(QuestCharacterTemplate);
 		QuestRoomNumber = 1; //GetGoalRoom(mapInfo);
 		
 		_questCharacter.AddedToTeam += OnAddedToTeam;

@@ -3,7 +3,7 @@
 
 public class Storage : Inventory
 {
-    public Resource Resources { get; private set; }
+    public Resource Resources { get; set; }
 
     public Storage() : base()
     {

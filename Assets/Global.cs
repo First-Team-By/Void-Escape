@@ -43,14 +43,24 @@ public static class Global
 	public static bool UIIntersect { get; set; } = false;
 
 	public static List<CharsTemplate> AllEntityTemplates { get; set; }
+
+	public static Dictionary<string, Sprite> ResourceImages;
 	static Global()
 	{
 		Storage = new Storage();
+		Storage.Resources.Energy = 1000;
 		inventory = new Inventory();
 		
-
 		CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
-		CurrentGroup = new CurrentCharacterGroup();
+
+        ResourceImages = new Dictionary<string, Sprite>() {
+            {"energy", Resources.Load<Sprite>("Sprites/UI/resource_energy_sprite")},
+            {"medicine", Resources.Load<Sprite>("Sprites/UI/resource_meds_sprite")},
+            {"metal", Resources.Load<Sprite>("Sprites/UI/resource_metall_sprite")},
+            {"electronics", Resources.Load<Sprite>("Sprites/UI/resource_electronics_sprite")},
+        };
+
+        CurrentGroup = new CurrentCharacterGroup();
 
 		AllCharacters = new CharacterGroup();
 		//allCharacters.CharacterInfos.AddRange(new List<CharacterInfo>() {
@@ -58,7 +68,8 @@ public static class Global
 		//     CharacterFactory.CreateCharacterInfo(CharacterPrefabs.Medic, 2)
 		//     });
 
-		Capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo()};
+		Capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo(), 
+			new HibernationCapsuleInfo(){ Status = CapsuleStatus.UnPlugged} };
 		
 		LoadCharTemplates();
 
@@ -123,6 +134,6 @@ public static class Global
 	public static void CreatePreConditions()
 	{
 		var josephSteels = AllCharacterClasses.FirstOrDefault(x => x.EntityType == typeof(JosephSteels));
-		AllCharacters.AddCharacter(CharacterFactory.CreateCharacter(josephSteels));
+		AllCharacters.AddCharacter(EntityFactory.CreateCharacter(josephSteels));
 	}
 }
