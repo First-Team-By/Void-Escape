@@ -12,6 +12,7 @@ public class UIResourceWindow : MonoBehaviour
     private void Start()
     {
         Refresh();
+        Global.ResourcesCanged += Refresh;
     }
 
     public void Refresh()

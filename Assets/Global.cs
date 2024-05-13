@@ -45,11 +45,27 @@ public static class Global
 	public static List<CharsTemplate> AllEntityTemplates { get; set; }
 
 	public static Dictionary<string, Sprite> ResourceImages;
-	static Global()
+
+	public static event Action ResourcesCanged;
+	public static void AddResources(Resource value)
+	{
+		Storage.Resources += value;
+		ResourcesCanged?.Invoke();
+    }
+
+    public static void SpendResources(Resource value)
+    {
+        Storage.Resources -= value;
+        ResourcesCanged?.Invoke();
+    }
+
+    static Global()
 	{
 		Storage = new Storage();
 		Storage.Resources.Energy = 1000;
-		inventory = new Inventory();
+        Storage.Resources.Medicine = 200;
+		Storage.Resources.Metal = 20;
+        inventory = new Inventory();
 		
 		CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
 

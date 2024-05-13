@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,11 +10,12 @@ using UnityEngine.UI;
 public class UIDragCharacterContainer : UIDragContainer, IPointerClickHandler
 {
     public int CharacterId { get; set; }
+    [SerializeField] private TMP_Text NameText;
     public CharacterInfo Character => (CharacterInfo)_businessObject;
 
     public override void Initialize()
     {
-        return;
+        NameText.text = Character.FullName;
     }
 
     public override void OnBeginDrag(PointerEventData eventData)

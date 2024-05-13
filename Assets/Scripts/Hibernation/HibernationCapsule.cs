@@ -111,15 +111,10 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
         _uIPopUPWindow.OnEnableUIPopUpWindow(identifier);
     }
 
-    public void ClickPlugButton(SpendButton button)
+    public void ClickPlugButton()
     {
-        if (Global.Storage.Resources.IsEnought(button.Resource))
-        {
-            Global.Storage.Resources -= button.Resource;
-            _capsuleInfo.Status = CapsuleStatus.Freezed;
-            CheckStatus();
-            _resourceWindow.Refresh();
-        }
+        _capsuleInfo.Status = CapsuleStatus.Freezed;
+        CheckStatus();
     }
 }
 

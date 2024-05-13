@@ -14,4 +14,9 @@ public class UIMedicalIdleCharacterList : UIListController<CharacterInfo>
         
         container.SetPanelImages(obj.FullFaceSprite, obj.FullFaceSprite);
     }
+
+    protected override void Init()
+    {
+        return;
+    }
 }

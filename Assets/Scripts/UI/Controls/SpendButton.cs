@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpendButton : MonoBehaviour
 {
@@ -14,8 +15,21 @@ public class SpendButton : MonoBehaviour
         get => new Resource() { Energy = _energy, Medicine = _medicine, Metal = _metal, Electronics = _electronics }; 
     }
 
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(() => Global.SpendResources(Resource));
+        Global.ResourcesCanged += CheckEnabled;
+    }
+
     private void OnEnable()
     {
-        _resourcePanel.Init(Resource);
+        _resourcePanel.Init(Resource);        
     }
+
+    public void CheckEnabled()
+    {
+        GetComponent<Button>().interactable = Global.Storage.Resources.IsEnought(Resource);
+    }
+
+    
 }

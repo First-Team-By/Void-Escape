@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UICharacterListBarrack : UIAllCharactersListController
@@ -15,11 +14,22 @@ public class UICharacterListBarrack : UIAllCharactersListController
         }
     }
 
+    private void SelectCaracter(CharacterInfo character)
+    {
+        _card.FillInfo(character);
+        _card.RefreshEquipments();
+    }
+
     private void OnContainerClick(UIContainer container)
     {
-        var characterContainer = container as UICharacterContainer;
-
-        _card.FillInfo(characterContainer.Character);
-        _card.RefreshEquipments();
+        SelectCaracter((container as UICharacterContainer).Character);
+    }
+    protected override void Init()
+    {
+        var character = Objects.FirstOrDefault();
+        if (character != null) 
+        {
+            SelectCaracter(character);
+        }
     }
 }

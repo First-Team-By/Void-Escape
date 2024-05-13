@@ -1,23 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class UIMedCapsuleSlot : UISlot
 {
-    //[SerializeField] private Transform _medicalCharacterPanel;
-    //[SerializeField] private GameObject _medCapsuleSlot;
-
     private CharacterInfo _characterInfo;
     private UIDragCharacterContainer _characterContainer;
 
     [SerializeField] private GameObject _buttonPanel;
-    [SerializeField] private Button _healthButton;
-    [SerializeField] private Button _traumaButton;
-    [SerializeField] private Button _mutilationButton;
+    [SerializeField] private SpendButton _healthButton;
+    [SerializeField] private SpendButton _traumaButton;
+    [SerializeField] private SpendButton _mutilationButton;
+    [SerializeField] private GameObject _patient;
 
     public GameObject ButtonPanel => _buttonPanel;
     public CharacterInfo Character
@@ -47,18 +41,28 @@ public class UIMedCapsuleSlot : UISlot
         
         if (_characterContainer != null)
         {
-            Character = _characterContainer.Character;
-            _healthButton.gameObject.SetActive(Character.Health < Character.EntityChars.MaxHealth);
-            _traumaButton.gameObject.SetActive(Character.Conditions.HasTrauma);
-            _mutilationButton.gameObject.SetActive(Character.Conditions.Mutilations.Count > 0);
+            CheckButtons();
             _buttonPanel.SetActive(true);
 
-            if (_characterContainer.OldParent.TryGetComponent<UIMedCapsuleSlot>(out UIMedCapsuleSlot slot))
+            if (_characterContainer.OldParent.TryGetComponent(out UIMedCapsuleSlot slot))
             {
                 slot.ButtonPanel.SetActive(false);
                 slot.Character = null;
             }
+            var currentIndex = ButtonPanel.transform.parent.GetSiblingIndex();
+            ButtonPanel.transform.parent.SetSiblingIndex(currentIndex + 1);
         }
+    }
+
+    private void CheckButtons()
+    {
+        Character = _characterContainer.Character;
+        _healthButton.gameObject.SetActive(Character.Health < Character.EntityChars.MaxHealth);
+        _healthButton.CheckEnabled();
+        _traumaButton.gameObject.SetActive(Character.Conditions.HasTrauma);
+        _traumaButton.CheckEnabled();
+        _mutilationButton.gameObject.SetActive(Character.Conditions.Mutilations.Count > 0);
+        _mutilationButton.CheckEnabled();
     }
 
     public void SetMedicalState(int state)
@@ -67,7 +71,8 @@ public class UIMedCapsuleSlot : UISlot
 
         _buttonPanel.SetActive(false);
 
-        _characterContainer.enabled = false;
+        _characterContainer.gameObject.SetActive(false);
+        _patient.SetActive(true);
     }
 
     private void OnDisable()

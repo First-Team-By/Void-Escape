@@ -12,4 +12,9 @@ public class UIItemListController : UIListController<Equipment>
         
         container.SetPanelImages(obj.Icon, obj.Icon);
     }
+
+    protected override void Init()
+    {
+        return;
+    }
 }

@@ -22,6 +22,7 @@ public class JosephSteels : Officer
 		AddPose("FirePistol", "Characters/JosephSteels/joseph-steels-firepistol_sprite");
         AddPose("BladeSlash", "Characters/JosephSteels/joseph-steels-bladeslash_sprite");
 
+        Conditions.Mutilations.Add(new Limping());
     }
 }
 	

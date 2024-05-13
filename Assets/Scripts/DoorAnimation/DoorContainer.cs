@@ -64,7 +64,7 @@ public class DoorContainer : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.ToString());
+            Debug.Log(this + "||" + ex.ToString());
         }
     }
 }

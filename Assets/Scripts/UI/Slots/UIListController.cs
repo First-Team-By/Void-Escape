@@ -17,14 +17,16 @@ public abstract class UIListController<T> : UIList
 
         foreach (var obj in Objects)
         {
-            var objectContainer = GameObject.Instantiate(_objectContainerPrefab.gameObject) as GameObject;
+            var objectContainer = Instantiate(_objectContainerPrefab.gameObject);
             var uiContainer = objectContainer.GetComponent<UIContainer>();
 
             BindObject(uiContainer, obj);
             objectContainer.transform.SetParent(transform, false);
         }
+        Init();
     }
 
+    abstract protected void Init();
     public virtual void BindObject(UIContainer container, T obj)
     {
         container.SetBusinessObject(obj);

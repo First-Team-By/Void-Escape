@@ -579,6 +579,7 @@ MonoBehaviour:
   _uIPopUPWindow: {fileID: 0}
   _plugButton: {fileID: 2606708042107234795}
   _hidePanel: {fileID: 6096867552290549002}
+  _resourceWindow: {fileID: 0}
 --- !u!1 &7741636951218681255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416123993335273128, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 416123993335273128, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1195,10 +1196,10 @@ PrefabInstance:
     - target: {fileID: 416123993335273128, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 7835623523653441201}
+      objectReference: {fileID: 0}
     - target: {fileID: 416123993335273128, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SpendButton, Assembly-CSharp
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 854469735423636578, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_Pivot.x
@@ -1288,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C"
       objectReference: {fileID: 0}
+    - target: {fileID: 4291217206409736448, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
+      propertyPath: m_fontSize
+      value: 11.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4672377106986359642, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
       propertyPath: m_Name
       value: PlugButton
@@ -1330,14 +1335,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 854469735423636578, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
   m_PrefabInstance: {fileID: 2443974339191684931}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7835623523653441201 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5572931456373516786, guid: c0a9c6d58ff37c644a5aa72ff92a7b82, type: 3}
-  m_PrefabInstance: {fileID: 2443974339191684931}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27e1a6138068f842a17477bcb8a5c18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
