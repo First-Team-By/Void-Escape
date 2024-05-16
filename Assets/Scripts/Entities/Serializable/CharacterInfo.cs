@@ -36,15 +36,35 @@ public abstract class CharacterInfo : EntityInfo
 	};
 
 	protected float _currentHealth;
-	public EntityWeapon Weapon { set; get; }
-	public EntityDevice Device { set; get; }
+
+	private EntityWeapon _weapon;
+    private EntityDevice _device;
+    public EntityWeapon Weapon 
+	{
+		set 
+		{
+            _weapon = value;
+            EquipmentChanged?.Invoke(); 
+		} 
+		get { return _weapon; }
+	}
+	public EntityDevice Device
+    {
+        set
+        {
+            _device = value;
+            EquipmentChanged?.Invoke();
+        }
+        get { return _device; }
+    }
 	public EntityArmor Armor { set; get; }
 	public Rarity Rarity { set; get; } = Rarity.Common;
 	public string RarityToString => RarityNames[(int)Rarity];
 	public MedicalState MedicalState { set; get; }
 	public Action<CharacterInfo> AddedToTeam;
-	
-	public void OnAddedToTeam()
+    public Action EquipmentChanged;
+
+    public void OnAddedToTeam()
 	{
 		AddedToTeam?.Invoke(this);
 	}

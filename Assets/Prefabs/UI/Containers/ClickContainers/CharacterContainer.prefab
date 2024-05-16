@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 4456913354449288333}
   - component: {fileID: 6496235720782876299}
   m_Layer: 5
-  m_Name: WeaponImageContainer
+  m_Name: DeviceImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 933340373395756210}
   - component: {fileID: 6385625279092484096}
   m_Layer: 5
-  m_Name: SkillImage_2
+  m_Name: SkillImage_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 8259272574014405540}
   - component: {fileID: 6632569574516298939}
   m_Layer: 5
-  m_Name: SkillImage_1
+  m_Name: SkillImage_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 2627739870344633243}
   - component: {fileID: 3060658826111238068}
   m_Layer: 5
-  m_Name: WeaponSlot
+  m_Name: DeviceSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,7 +1568,13 @@ MonoBehaviour:
   _frontPanel: {fileID: 7250557478242546113}
   _backImage: {fileID: 8880411785099886660}
   _frontImage: {fileID: 5927768361023380314}
-  NameText: {fileID: 8495897608517993509}
+  _nameText: {fileID: 8495897608517993509}
+  _weaponImage: {fileID: 6175034567553822004}
+  _deviceImage: {fileID: 2627739870344633243}
+  _skill1Image: {fileID: 6271337758671229473}
+  _skill2Image: {fileID: 4681943623504688038}
+  _skill3Image: {fileID: 8259272574014405540}
+  _skill4Image: {fileID: 933340373395756210}
 --- !u!1 &8880411784490742813
 GameObject:
   m_ObjectHideFlags: 0

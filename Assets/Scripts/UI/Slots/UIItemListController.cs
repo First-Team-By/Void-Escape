@@ -1,7 +1,7 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
+[Obsolete]
 public class UIItemListController : UIListController<Equipment>
 {
     public override List<Equipment> Objects => Global.Storage.Equipments;

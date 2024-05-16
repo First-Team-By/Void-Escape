@@ -16,6 +16,7 @@ public enum GameStage
 }
 public static class Global
 {
+	public static int GlobalID {  get; set; }
 	public static GameStage Stage = GameStage.StartNewGame;
 	public static List<CharsTemplate> AllCharacterClasses;
 	public static List<CharsTemplate> AllEnemiesClasses;

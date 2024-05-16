@@ -21,11 +21,10 @@ public abstract class UISlot : MonoBehaviour, IDropHandler, IContainerHolder
         set => _container = value;
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag.TryGetComponent<UIDragContainer>(out UIDragContainer container))
         {
-            //RefreshCurrentGroup(uiPosition.Position);
             if (!IsAcceptable(container))
             {
                 return;
@@ -45,12 +44,4 @@ public abstract class UISlot : MonoBehaviour, IDropHandler, IContainerHolder
     }
 
     public abstract void ProcessDrop(UIDragContainer container);
-
-    //private void RefreshCurrentGroup(int position)
-    //{
-    //    var currentCharacter =
-    //            Global.currentGroup.CurrentCharacterInfos.FirstOrDefault(x => x.Position == position);
-
-    //    Global.currentGroup.CurrentCharacterInfos.Remove(currentCharacter);
-    //}
 }

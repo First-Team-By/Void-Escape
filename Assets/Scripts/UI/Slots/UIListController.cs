@@ -1,14 +1,18 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public abstract class UIListController<T> : UIList
 {
-    [SerializeField] private GameObject _objectContainerPrefab;
+    [SerializeField] protected GameObject _objectContainerPrefab;
 
     public abstract List<T> Objects { get; }
 
     private void OnEnable()
+    {
+        FillList();
+    }
+
+    protected virtual void FillList()
     {
         foreach (Transform item in transform.GetComponentInChildren<Transform>())
         {

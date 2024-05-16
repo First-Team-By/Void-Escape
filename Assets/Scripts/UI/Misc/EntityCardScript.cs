@@ -15,8 +15,8 @@ public class EntityCardScript : EntityCardBase
     [SerializeField] protected TMP_Text _initiative;
     [SerializeField] protected TMP_Text _fullName;
     [SerializeField] protected TMP_Text _disabilities;
-    [SerializeField] protected UIEquipmentSlot _weaponSlot;
-    [SerializeField] protected UIEquipmentSlot _deviceSlot;
+    [SerializeField] public UIEquipmentSlot _weaponSlot;
+    [SerializeField] public UIEquipmentSlot _deviceSlot;
     [SerializeField] protected UIEquipmentSlot _armorSlot;
     [SerializeField] protected bool _interactable;
 
@@ -142,7 +142,7 @@ public class EntityCardScript : EntityCardBase
         }
     }
 
-    private UIEquipmentContainer CreateItem(Equipment equipment, Transform transform)
+    private UIDragItemContainer CreateItem(Equipment equipment, Transform transform)
     {
         var item = ItemFactory.CreateItem(equipment, transform);
         item.ParentTo(transform);

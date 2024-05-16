@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Entities.Resources
 {
@@ -12,9 +7,11 @@ namespace Assets.Scripts.Entities.Resources
         [SerializeField] private GameObject _itemContainer;
         [SerializeField] private GameObject _entityPrefab;
         [SerializeField] private GameObject _uiTag;
+        [SerializeField] private GameObject _storagePositionContainer;
         
         public GameObject ItemContainer => _itemContainer;
         public GameObject EntityPrefab => _entityPrefab;
         public GameObject UITag => _uiTag;
+        public GameObject StoragePositionContainer => _storagePositionContainer;
     }
 }

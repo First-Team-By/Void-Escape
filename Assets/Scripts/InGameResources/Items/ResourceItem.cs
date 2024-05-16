@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ResourceItem : IItem 
+public abstract class ResourceItem
 {
     public Resource Resources { get; private set; }
     public Sprite Icon { get; private set; }

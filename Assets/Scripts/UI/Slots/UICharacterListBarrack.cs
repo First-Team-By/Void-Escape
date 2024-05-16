@@ -4,6 +4,8 @@ using UnityEngine;
 public class UICharacterListBarrack : UIAllCharactersListController
 {
     [SerializeField] private EntityCardInventoryInteract _card;
+
+    private UICharacterContainer CurrentCharacter;
     public override void BindObject(UIContainer container, CharacterInfo obj)
     {
         base.BindObject(container, obj);
@@ -11,6 +13,7 @@ public class UICharacterListBarrack : UIAllCharactersListController
         if (container is UICharacterContainer characterContainer)
         {
             characterContainer.ContainerClicked += OnContainerClick;
+            characterContainer.Character.EquipmentChanged += () => CurrentCharacter.RefreshEquipment();
         }
     }
 
@@ -22,7 +25,9 @@ public class UICharacterListBarrack : UIAllCharactersListController
 
     private void OnContainerClick(UIContainer container)
     {
-        SelectCaracter((container as UICharacterContainer).Character);
+        CurrentCharacter = container as UICharacterContainer;
+        SelectCaracter(CurrentCharacter.Character);
+
     }
     protected override void Init()
     {
@@ -30,6 +35,9 @@ public class UICharacterListBarrack : UIAllCharactersListController
         if (character != null) 
         {
             SelectCaracter(character);
+            var firstContainer = gameObject.GetComponentInChildren<UICharacterContainer>();
+            if (firstContainer != null)
+                CurrentCharacter = firstContainer;
         }
     }
 }
