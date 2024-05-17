@@ -3331,7 +3331,7 @@ MonoBehaviour:
   _contentScale: 1
   _objectContainerPrefab: {fileID: 0}
   _contextScale: 1
-  _contextOnDragScale: 1
+  _contextOnDragScale: 1.4
 --- !u!114 &785319200
 MonoBehaviour:
   m_ObjectHideFlags: 0
