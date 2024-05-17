@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -21,11 +19,11 @@ public class UIBattleResultCard : MonoBehaviour
 		
 		if (isWon)
 		{
-			_battleResultText.text = "Win";
+			_battleResultText.text = "Победа";
 		}
 		else
 		{
-			_battleResultText.text = "Lose";
+			_battleResultText.text = "Поражение";
 		}
 
 		var lootedResources = loot.Items.Where(x => x.Type.IsSubclassOf(typeof(ResourceItem))).ToList();

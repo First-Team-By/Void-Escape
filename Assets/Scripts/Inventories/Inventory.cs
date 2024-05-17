@@ -3,25 +3,31 @@ using System.Linq;
 
 public class Inventory
 {
-    public List<ResourceItem> ResourceItems { get; set; }
-    public List<Equipment> Equipments { get; set; }
+    public List<ResourceItem> ResourceItems 
+    {
+        get 
+        {
+            return Items.Where(x => x.Item is ResourceItem).Select(x => x.Item as ResourceItem).ToList();
+        }
+    }
+   // public List<Equipment> Equipments { get; set; }
 
     public List<StoragePosition> Items { get; set; }
 
 
     public Inventory()
     {
-        Equipments = new List<Equipment>();
-        ResourceItems = new List<ResourceItem>();
+       // Equipments = new List<Equipment>();
+        //ResourceItems = new List<ResourceItem>();
         Items = new List<StoragePosition>();
     }
 
-    public StoragePosition AddItem(Item item)
+    public StoragePosition AddItem(Item item, int num = 1)
     {
         var itemInInvetory = Items.Where(x => x.Item.GetType() == item.GetType()).FirstOrDefault();
         if (itemInInvetory != null)
         {
-            itemInInvetory.Amount++;
+            itemInInvetory.Amount += num;
             return itemInInvetory;
         }
         else
@@ -32,12 +38,12 @@ public class Inventory
         }
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item item, int num = 1)
     {
         var itemInInvetory = Items.Where(x => x.Item.GetType() == item.GetType()).FirstOrDefault();
         if (itemInInvetory != null)
         {
-            itemInInvetory.Amount--;
+            itemInInvetory.Amount -= num;
             if (itemInInvetory.Amount < 1)
                 Items.Remove(itemInInvetory);
         }
@@ -51,6 +57,14 @@ public class Inventory
         }
     }
 
+    public void AddItems(List<StoragePosition> positions)
+    {
+        foreach (var pos in positions)
+        {
+            AddItem(pos.Item, pos.Amount);
+        }
+    }
+
     public void RemoveItems(List<Item> items)
     {
         foreach(var item in items)
@@ -60,28 +74,20 @@ public class Inventory
     }
 
 
-    private void AddResourceItem(ResourceItem resourceItem)
-    {
-        ResourceItems.Add(resourceItem);
-    }
+    //private void AddResourceItem(ResourceItem resourceItem)
+    //{
+    //    ResourceItems.Add(resourceItem);
+    //}
 
-    private void AddEquipment(Equipment equipment)
-    {
-        Equipments.Add(equipment);
-    }
+    //private void AddEquipment(Equipment equipment)
+    //{
+    //    Equipments.Add(equipment);
+    //}
 
     public void AddToInventory(LootItem lootItem)
     {
         var item = lootItem.GetItem();
-        if (item is ResourceItem)
-        {
-            AddResourceItem(item as ResourceItem);
-        }
-        else
-            if (item is Equipment)
-        {
-            AddEquipment(item as Equipment);
-        }
+        AddItem(item as Item);
     }
 
     public void AddToInventory(List<LootItem> loot)
@@ -94,7 +100,8 @@ public class Inventory
 
     public void Clear()
     {
-        ResourceItems.Clear();
-        Equipments.Clear();
+        //ResourceItems.Clear();
+        //Equipments.Clear();
+        Items.Clear();
     }
 }

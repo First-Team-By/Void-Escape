@@ -13,5 +13,5 @@ public class Scalpel : EntityWeapon
         SlotType = SlotType.Weapon;
     }
 
-    public override string IconName => "equipment_scalpel_sprite";
+    protected override string IconName => "equipment_scalpel_sprite";
 }

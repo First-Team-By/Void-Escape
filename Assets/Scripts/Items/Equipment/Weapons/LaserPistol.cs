@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserPistol : Pistol
 {
-	public override string IconName => "equipment-laserpistol_sprite";
+	protected override string IconName => "equipment-laserpistol_sprite";
 
     public LaserPistol(): base()
     {

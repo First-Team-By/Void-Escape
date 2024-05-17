@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EntityCardInventoryInteract : EntityCardScript
 {
     protected override void Init()
@@ -36,7 +32,7 @@ public class EntityCardInventoryInteract : EntityCardScript
             characterInfo.Armor = null;
         }
 
-        Global.inventory.Equipments.Add(equipment);
+       // Global.inventory.AddItem(equipment);
         RefreshCommands();
     }
 
@@ -59,7 +55,7 @@ public class EntityCardInventoryInteract : EntityCardScript
             characterInfo.Armor = equipment as EntityArmor;
         }
 
-        Global.inventory.Equipments.Remove(equipment);
+        //Global.inventory.RemoveItem(equipment);
 
         FillInfo(_entity);
         RefreshCommands();

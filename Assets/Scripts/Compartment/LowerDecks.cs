@@ -13,7 +13,7 @@ public class LowerDecks : Compartment
 			new LootItemInfo(typeof(Battery), 5),
 			new LootItemInfo(typeof(MetalScrap), 10),
 			new LootItemInfo(typeof(MedicationSet), 5),
-			new LootItemInfo(typeof(Pistol))
+			new LootItemInfo(typeof(LaserPistol))
 		};
 	}
 }

@@ -18,6 +18,6 @@ public class BodyArmorSapper : EntityArmor
         _resistances.PoisonResistance = 5;
     }
 
-    public override string IconName => "BodyArmorSapper";
+    protected override string IconName => "BodyArmorSapper";
 }
 

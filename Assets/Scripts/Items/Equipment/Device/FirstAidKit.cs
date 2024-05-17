@@ -12,5 +12,6 @@ public class FirstAidKit : EntityDevice
         SlotType = SlotType.Device;
     }
 
-    public override string IconName => "equipment_firstaidkit_sprite";
+    protected override string IconName => "equipment_firstaidkit_sprite";
+
 }

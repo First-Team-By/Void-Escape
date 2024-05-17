@@ -14,6 +14,11 @@ public abstract class UIDragContainer : UIContainer, IDragHandler, IBeginDragHan
 
     public Vector2 OnDragScale => Vector2.one * _onDragScale;
 
+    public void SetOnDragScale(float scale)
+    {
+        _onDragScale = scale;
+    }
+
     public virtual void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta / _mainCanvas.scaleFactor;

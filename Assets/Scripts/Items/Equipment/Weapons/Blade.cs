@@ -7,6 +7,6 @@
         SlotType = SlotType.Weapon;
     }
 
-    public override string IconName => "equipment_blade_sprite"; 
+    protected override string IconName => "equipment_blade_sprite"; 
 }
 

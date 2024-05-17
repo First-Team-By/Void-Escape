@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Item
@@ -13,7 +11,7 @@ public abstract class Item
 
     public bool IsInfinite { get; set; } = false;
     public Sprite Icon { get; set; }
-    public abstract string IconName { get; }
+    protected abstract string IconName { get; }
     protected virtual void Init()
     {
         Icon = Resources.Load<Sprite>("Sprites/Items/" + IconName);

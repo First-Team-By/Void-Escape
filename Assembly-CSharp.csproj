@@ -165,7 +165,7 @@
     <Compile Include="Assets\Scripts\Entities\CharcterGroup.cs" />
     <Compile Include="Assets\Scripts\Items\Equipment\Device\FirstAidKit.cs" />
     <Compile Include="Assets\Scripts\Entities\Resources\Mutilation\EntityMutilation.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UIEquipmentListSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIStoragePositionListSlot.cs" />
     <Compile Include="Assets\Scripts\Items\Equipment\Armor\BodyArmorLigth.cs" />
     <Compile Include="Assets\Scripts\StartSceneScripts\ParallaxBackground.cs" />
     <Compile Include="Assets\Scripts\InGameResources\Items\ResourceItem.cs" />
@@ -201,7 +201,6 @@
     <Compile Include="Assets\Scripts\Items\Equipment\Weapons\Blade.cs" />
     <Compile Include="Assets\Scripts\Quests\UIQuestButton.cs" />
     <Compile Include="Assets\Scripts\Compartment\ContainmentController.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UIItemListController.cs" />
     <Compile Include="Assets\Scripts\Commands\ClawStrike.cs" />
     <Compile Include="Assets\Scripts\Entities\JosephSteels.cs" />
     <Compile Include="Assets\Scripts\UI\Containers\UICharacterContainer.cs" />
@@ -211,6 +210,7 @@
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\Pose.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIInventoryItemListController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

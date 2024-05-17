@@ -4,7 +4,10 @@ using UnityEngine;
 
 public abstract class UIStorgePositionListController : UIListController<StoragePosition>
 {
-    protected abstract GameObject _itemContainerPrefab { get; }
+    // protected abstract GameObject _itemContainerPrefab { get; }
+    [SerializeField] protected float _contextScale = 1;
+    [SerializeField] protected float _contextOnDragScale = 1;
+    private Vector2 ContextScale => Vector2.one * _contextScale;
     protected abstract Inventory _parentInventory { get; }
     protected List<UIStoragePositionContainer> _uIStoragePositionContainers = new List<UIStoragePositionContainer>();
     public UIStoragePositionContainer GetStoragePositionContainer(Item item)
@@ -36,12 +39,16 @@ public abstract class UIStorgePositionListController : UIListController<StorageP
 
     public void AddStoragePositionContainer(StoragePosition storagePosition)
     {
-        var positionContainer = Instantiate(Global.CommonPrefabs.StoragePositionContainer);
+        var positionContainer = Instantiate(Global.CommonPrefabs.StoragePositionContainer).GetComponent<UIStoragePositionContainer>();
         var uiContainer = positionContainer.GetComponent<UIContainer>();
         BindObject(uiContainer, storagePosition);
 
-        positionContainer.GetComponent<UIStoragePositionContainer>().CreateItemContainer(storagePosition.Item);
+        positionContainer.SetContentScale(ContextScale, _contextOnDragScale);
+        
+        positionContainer.CreateItemContainer(storagePosition.Item);
 
+        positionContainer.transform.localScale = ContentScale;
+        
         positionContainer.transform.SetParent(transform, false);
         _uIStoragePositionContainers.Add(positionContainer.GetComponent<UIStoragePositionContainer>());
     }

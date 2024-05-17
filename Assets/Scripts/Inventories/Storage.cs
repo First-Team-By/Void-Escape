@@ -7,8 +7,8 @@ public class Storage : Inventory
 
     public Storage() : base()
     {
-        Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
-            new FirstAidKit()  };
+        //Equipments = new List<Equipment>() { new BodyArmorLigth(), new BodyArmorSapper(), new BodyArmorHidden(), new Pistol(), new Scalpel(), new Blade(),
+        //    new FirstAidKit()  };
         Resources = new Resource() { Electronics = 20 };
         AddItems(new List<Item>()
         {
@@ -32,7 +32,8 @@ public class Storage : Inventory
 
     public void TransferFromInventory()
     {
-        Equipments.AddRange(Global.inventory.Equipments);
+        //Equipments.AddRange(Global.inventory.Equipments);
+        AddItems(Global.inventory.Items);
         ConvertToResources(Global.inventory.ResourceItems);
         Global.inventory.Clear();
     }

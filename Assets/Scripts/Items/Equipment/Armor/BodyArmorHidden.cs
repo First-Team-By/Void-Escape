@@ -19,6 +19,6 @@ public class BodyArmorHidden : EntityArmor
         _resistances.PoisonResistance = 5;
     }
 
-    public override string IconName => "BodyArmorHidden";
+    protected override string IconName => "BodyArmorHidden";
 }
 

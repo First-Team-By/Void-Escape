@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-public abstract class ResourceItem
+public abstract class ResourceItem : Item
 {
     public Resource Resources { get; private set; }
-    public Sprite Icon { get; private set; }
-    protected abstract string IconName { get; }
 
-    public ResourceItem()
+    public ResourceItem(): base()
     {
         Resources = new Resource();
+        
+    }
+    protected override void Init()
+    {
         Icon = UnityEngine.Resources.Load<Sprite>("Sprites/Items/Resources/" + IconName);
     }
 }
