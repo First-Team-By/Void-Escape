@@ -61,7 +61,8 @@ public static class Global
 		Storage = new Storage();
 		Storage.Resources.Energy = 1000;
         Storage.Resources.Medicine = 200;
-		Storage.Resources.Metal = 20;
+		Storage.Resources.Metal = 1000;
+		Storage.Resources.Electronics = 100;
         inventory = new Inventory();
 		
 		CommonPrefabs = Resources.Load<GameObject>("CommonPrefabs").GetComponent<CommonPrefabs>();
@@ -82,7 +83,7 @@ public static class Global
 		//     });
 
 		Capsules = new HibernationCapsuleInfo[] { new HibernationCapsuleInfo(), new HibernationCapsuleInfo(), 
-			new HibernationCapsuleInfo(){ Status = CapsuleStatus.UnPlugged} };
+			new HibernationCapsuleInfo(){ Status = CapsuleStatus.UnPlugged}, new HibernationCapsuleInfo(){ Status = CapsuleStatus.Broken} };
 		
 		LoadCharTemplates();
 

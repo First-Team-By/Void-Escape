@@ -19,6 +19,7 @@ public class SpendButton : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() => Global.SpendResources(Resource));
         Global.ResourcesCanged += CheckEnabled;
+        CheckEnabled();
     }
 
     private void OnEnable()

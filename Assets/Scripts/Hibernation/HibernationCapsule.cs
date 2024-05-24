@@ -12,8 +12,10 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private Animator _topAnimator;
     [SerializeField] private UIPopUPWindow _uIPopUPWindow;
     [SerializeField] private Button _plugButton;
+    [SerializeField] private Button _repairButton;
     [SerializeField] private GameObject _hidePanel;
-    [SerializeField] private UIResourceWindow _resourceWindow;
+    [SerializeField] private GameObject _brokenImage;
+  //  [SerializeField] private UIResourceWindow _resourceWindow;
     private HibernationCapsuleInfo _capsuleInfo;
 
     public HibernationCapsuleInfo CapsuleInfo
@@ -64,6 +66,9 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void CheckStatus()
     {
         _plugButton.gameObject.SetActive(_capsuleInfo.Status == CapsuleStatus.UnPlugged);
+        _repairButton.gameObject.SetActive(_capsuleInfo.Status == CapsuleStatus.Broken);
+        _brokenImage.SetActive(_capsuleInfo.Status == CapsuleStatus.Broken);
+
         _hidePanel.SetActive(_capsuleInfo.Status == CapsuleStatus.UnPlugged || _capsuleInfo.Status == CapsuleStatus.Broken);
 
 
@@ -114,6 +119,11 @@ public class HibernationCapsule : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void ClickPlugButton()
     {
         _capsuleInfo.Status = CapsuleStatus.Freezed;
+        CheckStatus();
+    }
+    public void ClickRepairButton()
+    {
+        _capsuleInfo.Status = CapsuleStatus.UnPlugged;
         CheckStatus();
     }
 }

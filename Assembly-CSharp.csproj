@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Hibernation\HibernationChamber.cs" />
     <Compile Include="Assets\Scripts\Entities\CurrentCharacterGroup.cs" />
     <Compile Include="Assets\Scripts\UI\MainScene\UIResourceWindow.cs" />
+    <Compile Include="Assets\Scripts\UI\Slots\UIInventoryItemListController.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UIAllCharactersListController.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\UIResourceCard.cs" />
     <Compile Include="Assets\Scripts\UI\Slots\UICharacterListSlot.cs" />
@@ -210,7 +211,6 @@
     <Compile Include="Assets\Scripts\InGameResources\Items\MedicationSet.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonGenerator.cs" />
     <Compile Include="Assets\Scripts\Entities\Serializable\Pose.cs" />
-    <Compile Include="Assets\Scripts\UI\Slots\UIInventoryItemListController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
